@@ -37,7 +37,7 @@
                             </a>
                         </div>
                         <div class="info-area">
-                            <h6><b>กิ่งทองใบหยก (A001)</b></h6>
+                            <h6>กิ่งทองใบหยก (A001)</h6>
                             <p>GOLD</p>
                         </div>
                         <div class="profile-tabs">

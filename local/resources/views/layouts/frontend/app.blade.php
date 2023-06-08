@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+y<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -9,7 +9,8 @@
     <link href="{{ asset('assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
     <script src="{{ asset('assets/js/loader.js') }}"></script>
     <!-- Common Styles Starts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet"> --}}
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/structure.css') }}" rel="stylesheet" type="text/css" />
@@ -19,7 +20,7 @@
     <!-- Common Icon Starts -->
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
-    <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
+
     @yield('css')
 </head>
 <body>
@@ -404,6 +405,7 @@
         <div class="rightbar-overlay"></div>
         <!--  Sidebar Starts  -->
         @include('layouts.frontend.sidebar')
+        @yield('content')
         <!--  Sidebar Ends  -->
         <!--  Content Area Starts  -->
         <div id="content" class="main-content">
@@ -767,3 +769,5 @@
     <!-- Common Script Ends -->
 </body>
 </html>
+
+

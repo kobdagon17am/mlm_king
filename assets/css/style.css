@@ -1,6 +1,6 @@
  @font-face {
      font-family: sukhumvitset-text;
-     src: url('../fonts/sukhumvitset-text-webfont.woff2') format('woff2'), url('../fonts/sukhumvitset-text-webfont.woff') format('woff');
+     src: url('../fonts/sukhumvitset-text-webfont.woff') format('woff'), url('../fonts/sukhumvitset-text-webfont.woff') format('woff');
      font-family: Poppins;
      src: url('../fonts/sukhumvitset-text-webfont.woff2') format('woff2'), url('../fonts/sukhumvitset-text-webfont.woff') format('woff');
  }
@@ -15,9 +15,5 @@
  h4,
  h5,
  h6 {
-     font-family: sukhumvitset-text;
- }
- 
- b {
      font-family: sukhumvitset-text;
  }
