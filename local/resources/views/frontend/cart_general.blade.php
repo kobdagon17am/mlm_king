@@ -35,19 +35,19 @@
                 <div class="col-lg-12">
                     <div class="">
                         <div class="widget-content searchable-container grid">
-                            <div class="card-box">
+                            {{-- <div class="card-box">
                                 <div class="row">
-                                    {{-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 filtered-list-search align-self-center">
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-7 filtered-list-search align-self-center">
                                         <form class="form-inline my-2 my-lg-0">
                                             <div class="">
                                                 <i class="las la-search toggle-search"></i>
                                                 <input type="text" id="input-search" class="form-control search-form-control  ml-lg-auto" placeholder="Search Products">
                                             </div>
                                         </form>
-                                    </div> --}}
+                                    </div> 
                                     <div class="col-md-12 text-sm-right text-right align-self-center">
                                         <div class="d-flex justify-content-sm-end justify-content-center contact-options">
-                                            {{-- <a href="apps_ecommerce_add_product.html" title="Add a product" class="pointer font-25 s-o mr-2 bs-tooltip">
+                                            <a href="apps_ecommerce_add_product.html" title="Add a product" class="pointer font-25 s-o mr-2 bs-tooltip">
                                                 <i class="las la-plus-circle"></i>
                                             </a>
                                             <a href="javascript:void(0);" title="List View" class="pointer font-25 view-list s-o mr-2 bs-tooltip">
@@ -58,7 +58,7 @@
                                             </a>
                                             <a title="Filter" class="pointer font-25 s-o bs-tooltip mr-2">
                                                 <i class="las la-filter"></i>
-                                            </a> --}}
+                                            </a>
                                             <select class="btn btn-outline-primary btn-sm h-auto p-2"
                                                 id="exampleFormControlSelect1">
                                                 <option>Sort By</option>
@@ -69,90 +69,109 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="searchable-items grid card-box">
                                 <div class="items">
                                     <div class="item-content">
                                         <div class="product-info">
-                                            <a href="{{route('CartGeneralDetail')}}"><img src="assets/img/product-5.jpg" alt="avatar"></a>
+                                            <a href="{{ route('CartGeneralDetail') }}"><img src="{{asset('assets/img/product-5')}}.jpg"
+                                                    alt="avatar"></a>
                                             <div class="user-meta-info">
-                                                <p class="product-name">Product 1</p>
-                                                <p class="product-category">Category One</p>
+                                                <p class="product-name">
+                                                <h5><b>Product 1</b></h5>
+                                                </p>
                                             </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <p class="product-category-addr"><span><b>ราคา (Price): </b></span>฿ 1,000</p>
-                                        </div>
-                                        <div class="product-rating">
-                                            <p class="product-rating-inner"><span><b>PV: </b></span>50PV</p>
+                                            <div class="product-price">
+                                                <p class="product-category-price"><span><b>ราคา:</b></span>฿ 1,000</p>
+                                            </div>
+                                            <div class="product-rating">
+                                                <p class="product-rating-inner"><span><b>PV:</b></span>50PV</p>
+                                            </div>
+                                            <div class="product-stock-status">
+                                                <p class="product-stock-status-inner">
+                                                    <small class="badge badge-success"><i
+                                                            class="las la-cart-plus las-white font-17"></i> Add to Cart 
+                                                    </small>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="items">
                                     <div class="item-content">
                                         <div class="product-info">
-                                            <img src="assets/img/product-1.jpg" alt="avatar">
+                                            <a href="{{ route('CartGeneralDetail') }}"><img src="{{asset('assets/img/product-1')}}.jpg"
+                                                    alt="avatar"></a>
                                             <div class="user-meta-info">
-                                                <p class="product-name">Product 2</p>
-                                                <p class="product-category">Category Two</p>
+                                                <p class="product-name">
+                                                <h5><b>Product 2</b></h5>
+                                                </p>
                                             </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <p class="product-category-addr"><span><b>ราคา (Price): </b></span>฿ 1,000</p>
-                                        </div>
-                                        <div class="product-rating">
-                                            <p class="product-rating-inner"><span><b>PV: </b></span>50PV</p>
+                                            <div class="product-price">
+                                                <p class="product-category-price"><span><b>ราคา:</b></span>฿ 1,000</p>
+                                            </div>
+                                            <div class="product-rating">
+                                                <p class="product-rating-inner"><span><b>PV:</b></span>50PV</p>
+                                            </div>
+                                            <div class="product-stock-status">
+                                                <p class="product-stock-status-inner">
+                                                    <small class="badge badge-success"><i
+                                                            class="las la-cart-plus las-white font-17"></i> Add to Cart 
+                                                    </small>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="items">
                                     <div class="item-content">
                                         <div class="product-info">
-                                            <img src="assets/img/product-2.jpg" alt="avatar">
+                                            <a href="{{ route('CartGeneralDetail') }}"><img src="{{asset('assets/img/product-2')}}.jpg"
+                                                    alt="avatar"></a>
                                             <div class="user-meta-info">
-                                                <p class="product-name">Product 3</p>
-                                                <p class="product-category">Category One</p>
+                                                <p class="product-name">
+                                                <h5><b>Product 3</b></h5>
+                                                </p>
                                             </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <p class="product-category-addr"><span><b>ราคา (Price): </b></span>฿ 1,000</p>
-                                        </div>
-                                        <div class="product-rating">
-                                            <p class="product-rating-inner"><span><b>PV: </b></span>50PV</p>
+                                            <div class="product-price">
+                                                <p class="product-category-price"><span><b>ราคา:</b></span>฿ 1,000</p>
+                                            </div>
+                                            <div class="product-rating">
+                                                <p class="product-rating-inner"><span><b>PV:</b></span>50PV</p>
+                                            </div>
+                                            <div class="product-stock-status">
+                                                <p class="product-stock-status-inner">
+                                                    <small class="badge badge-success"><i
+                                                            class="las la-cart-plus las-white font-17"></i> Add to Cart 
+                                                    </small>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="items">
                                     <div class="item-content">
                                         <div class="product-info">
-                                            <img src="assets/img/product-3.jpg" alt="avatar">
+                                            <a href="{{ route('CartGeneralDetail') }}"><img src="{{asset('assets/img/product-3')}}.jpg"
+                                                    alt="avatar"></a>
                                             <div class="user-meta-info">
-                                                <p class="product-name">Product 4</p>
-                                                <p class="product-category">Category Four</p>
+                                                <p class="product-name">
+                                                <h5><b>Product 4</b></h5>
+                                                </p>
                                             </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <p class="product-category-addr"><span><b>ราคา (Price): </b></span>฿ 1,000</p>
-                                        </div>
-                                        <div class="product-rating">
-                                            <p class="product-rating-inner"><span><b>PV: </b></span>50PV</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="items">
-                                    <div class="item-content">
-                                        <div class="product-info">
-                                            <img src="assets/img/product-5.jpg" alt="avatar">
-                                            <div class="user-meta-info">
-                                                <p class="product-name">Product 5</p>
-                                                <p class="product-category">Category Five</p>
+                                            <div class="product-price">
+                                                <p class="product-category-price"><span><b>ราคา:</b></span>฿ 1,000</p>
                                             </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <p class="product-category-addr"><span><b>ราคา (Price): </b></span>฿ 1,000</p>
-                                        </div>
-                                        <div class="product-rating">
-                                            <p class="product-rating-inner"><span><b>PV: </b></span>50PV</p>
+                                            <div class="product-rating">
+                                                <p class="product-rating-inner"><span><b>PV:</b></span>50PV</p>
+                                            </div>
+                                            <div class="product-stock-status">
+                                                <p class="product-stock-status-inner">
+                                                    <small class="badge badge-success"><i
+                                                            class="las la-cart-plus las-white font-17"></i> Add to Cart 
+                                                    </small>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
