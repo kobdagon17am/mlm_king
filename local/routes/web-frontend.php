@@ -10,10 +10,24 @@ Route::get('/config-cache', function () {
   return back();
 });
 
+
+Auth::routes();
+
 Route::get('/', function () {
 
     return view('welcome');
 });
+
+Route::get('/', function () {
+
+    if (Auth::check()) {
+
+      return redirect('home');
+    } else {
+
+      return view('frontend/login');
+    }
+  });
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -37,8 +51,6 @@ Route::get('Cart', function () {
   return view('frontend.cart');
 })->name('Cart');
 
-
-Auth::routes();
 
 
 
