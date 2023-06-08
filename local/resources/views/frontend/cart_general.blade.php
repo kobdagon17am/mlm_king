@@ -1,10 +1,9 @@
 @extends('layouts.frontend.app')
 @section('css')
-
-<link href="assets/css/ui-elements/pagination.css" rel="stylesheet" type="text/css" />
-    <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/elements/tooltip.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/apps/ecommerce.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/ui-elements/pagination.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('plugins/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/apps/ecommerce.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     <!--  Content Area Starts  -->
@@ -31,7 +30,7 @@
         </div>
         <!--  Navbar Ends / Breadcrumb Area Ends -->
         <!-- Main Body Starts -->
-        <div class="layout-px-spacing">                
+        <div class="layout-px-spacing">
             <div class="row layout-spacing layout-top-spacing" id="cancel-row">
                 <div class="col-lg-12">
                     <div class="">
@@ -60,64 +59,32 @@
                                             <a title="Filter" class="pointer font-25 s-o bs-tooltip mr-2">
                                                 <i class="las la-filter"></i>
                                             </a> --}}
-                                            <select class="btn btn-outline-primary btn-sm h-auto p-2" id="exampleFormControlSelect1">
-                                                <option>Select Sort By</option>
-                                                <option>Name</option>
-                                                <option>Price Low to High</option>
-                                                <option>Price Hight to Low</option>
-                                                <option>Stock</option>
+                                            <select class="btn btn-outline-primary btn-sm h-auto p-2"
+                                                id="exampleFormControlSelect1">
+                                                <option>Sort By</option>
+                                                <option>ชื่อ</option>
+                                                <option>ราคา ต่ำ-สูง</option>
+                                                <option>ราคา สูง-ต่ำ</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="searchable-items grid card-box">
-                                <div class="items items-header-section">
-                                    <div class="item-content">
-                                        <div class="">
-                                            <h4>Full Name</h4>
-                                        </div>
-                                        <div class="product-price">
-                                            <h4>Price</h4>
-                                        </div>
-                                        <div class="product-rating">
-                                            <h4 style="margin-left: 0;">Rating</h4>
-                                        </div>
-                                        <div class="product-stock-status">
-                                            <h4 style="margin-left: 3px;">Status</h4>
-                                        </div>
-                                        <div class="product-stock-status">
-                                            <h4 style="margin-left: 3px;">Options</h4>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="items">
                                     <div class="item-content">
                                         <div class="product-info">
-                                            <img src="assets/img/product-5.jpg" alt="avatar">
+                                            <a href="{{route('CartGeneralDetail')}}"><img src="assets/img/product-5.jpg" alt="avatar"></a>
                                             <div class="user-meta-info">
                                                 <p class="product-name">Product 1</p>
                                                 <p class="product-category">Category One</p>
                                             </div>
                                         </div>
                                         <div class="product-price">
-                                            <p class="product-category-addr"><span>Price: </span>$1001</p>
+                                            <p class="product-category-addr"><span><b>ราคา (Price): </b></span>฿ 1,000</p>
                                         </div>
                                         <div class="product-rating">
-                                            <p class="product-rating-inner"><span>Rating: </span>
-                                                <a class="d-flex align-center">
-                                                    5  <img src="assets/img/star.png" class="avatar-xxs ml-2" alt="star">
-                                                </a>
-                                            </p>
-                                        </div>
-                                        <div class="product-stock-status">
-                                            <p class="product-stock-status-inner">
-                                                <small class="badge badge-success">In Stock</small>
-                                            </p>
-                                        </div>
-                                        <div class="action-btn">
-                                            <i class="lar la-edit text-primary font-20 mr-2 btn-edit-contact"></i>
-                                            <i class="lar la-trash-alt text-danger font-20 mr-2"></i>
+                                            <p class="product-rating-inner"><span><b>PV: </b></span>50PV</p>
                                         </div>
                                     </div>
                                 </div>
@@ -127,27 +94,14 @@
                                             <img src="assets/img/product-1.jpg" alt="avatar">
                                             <div class="user-meta-info">
                                                 <p class="product-name">Product 2</p>
-                                                <p class="product-category">Category two</p>
+                                                <p class="product-category">Category Two</p>
                                             </div>
                                         </div>
                                         <div class="product-price">
-                                            <p class="product-category-addr"><span>Price: </span>$1975</p>
+                                            <p class="product-category-addr"><span><b>ราคา (Price): </b></span>฿ 1,000</p>
                                         </div>
                                         <div class="product-rating">
-                                            <p class="product-rating-inner"><span>Rating: </span>
-                                                <a class="d-flex align-center">
-                                                    3  <img src="assets/img/star.png" class="avatar-xxs ml-2" alt="star">
-                                                </a>
-                                            </p>
-                                        </div>
-                                        <div class="product-stock-status">
-                                            <p class="product-stock-status-inner">
-                                                <small class="badge badge-danger">No Stock</small>
-                                            </p>
-                                        </div>
-                                        <div class="action-btn">
-                                            <i class="lar la-edit text-primary font-20 mr-2 btn-edit-contact"></i>
-                                            <i class="lar la-trash-alt text-danger font-20 mr-2"></i>
+                                            <p class="product-rating-inner"><span><b>PV: </b></span>50PV</p>
                                         </div>
                                     </div>
                                 </div>
@@ -157,27 +111,14 @@
                                             <img src="assets/img/product-2.jpg" alt="avatar">
                                             <div class="user-meta-info">
                                                 <p class="product-name">Product 3</p>
-                                                <p class="product-category">Category Three</p>
+                                                <p class="product-category">Category One</p>
                                             </div>
                                         </div>
                                         <div class="product-price">
-                                            <p class="product-category-addr"><span>Price: </span>$2455</p>
+                                            <p class="product-category-addr"><span><b>ราคา (Price): </b></span>฿ 1,000</p>
                                         </div>
                                         <div class="product-rating">
-                                            <p class="product-rating-inner"><span>Rating: </span>
-                                                <a class="d-flex align-center">
-                                                    4 <img src="assets/img/star.png" class="avatar-xxs ml-2" alt="star">
-                                                </a>
-                                            </p>
-                                        </div>
-                                        <div class="product-stock-status">
-                                            <p class="product-stock-status-inner">
-                                                <small class="badge badge-danger">No Stock</small>
-                                            </p>
-                                        </div>
-                                        <div class="action-btn">
-                                            <i class="lar la-edit text-primary font-20 mr-2 btn-edit-contact"></i>
-                                            <i class="lar la-trash-alt text-danger font-20 mr-2"></i>
+                                            <p class="product-rating-inner"><span><b>PV: </b></span>50PV</p>
                                         </div>
                                     </div>
                                 </div>
@@ -191,23 +132,10 @@
                                             </div>
                                         </div>
                                         <div class="product-price">
-                                            <p class="product-category-addr"><span>Price: </span>$1655</p>
+                                            <p class="product-category-addr"><span><b>ราคา (Price): </b></span>฿ 1,000</p>
                                         </div>
                                         <div class="product-rating">
-                                            <p class="product-rating-inner"><span>Rating: </span>
-                                                <a class="d-flex align-center">
-                                                    2 <img src="assets/img/star.png" class="avatar-xxs ml-2" alt="star">
-                                                </a>
-                                            </p>
-                                        </div>
-                                        <div class="product-stock-status">
-                                            <p class="product-stock-status-inner">
-                                                <small class="badge badge-success">In Stock</small>
-                                            </p>
-                                        </div>
-                                        <div class="action-btn">
-                                            <i class="lar la-edit text-primary font-20 mr-2 btn-edit-contact"></i>
-                                            <i class="lar la-trash-alt text-danger font-20 mr-2"></i>
+                                            <p class="product-rating-inner"><span><b>PV: </b></span>50PV</p>
                                         </div>
                                     </div>
                                 </div>
@@ -221,93 +149,33 @@
                                             </div>
                                         </div>
                                         <div class="product-price">
-                                            <p class="product-category-addr"><span>Price: </span>$7555</p>
+                                            <p class="product-category-addr"><span><b>ราคา (Price): </b></span>฿ 1,000</p>
                                         </div>
                                         <div class="product-rating">
-                                            <p class="product-rating-inner"><span>Rating: </span>
-                                                <a class="d-flex align-center">
-                                                    5 <img src="assets/img/star.png" class="avatar-xxs ml-2" alt="star">
-                                                </a>
-                                            </p>
-                                        </div>
-                                        <div class="product-stock-status">
-                                            <p class="product-stock-status-inner">
-                                                <small class="badge badge-danger">No Stock</small>
-                                            </p>
-                                        </div>
-                                        <div class="action-btn">
-                                            <i class="lar la-edit text-primary font-20 mr-2 btn-edit-contact"></i>
-                                            <i class="lar la-trash-alt text-danger font-20 mr-2"></i>
+                                            <p class="product-rating-inner"><span><b>PV: </b></span>50PV</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="items">
-                                    <div class="item-content">
-                                        <div class="product-info">
-                                            <img src="assets/img/product-2.jpg" alt="avatar">
-                                            <div class="user-meta-info">
-                                                <p class="product-name">Product 6</p>
-                                                <p class="product-category">Category Six</p>
-                                            </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <p class="product-category-addr"><span>Price: </span>$2655</p>
-                                        </div>
-                                        <div class="product-rating">
-                                            <p class="product-rating-inner"><span>Rating: </span>
-                                                <a class="d-flex align-center">
-                                                    5 <img src="assets/img/star.png" class="avatar-xxs ml-2" alt="star">
-                                                </a>
-                                            </p>
-                                        </div>
-                                        <div class="product-stock-status">
-                                            <p class="product-stock-status-inner">
-                                                <small class="badge badge-success">In Stock</small>
-                                            </p>
-                                        </div>
-                                        <div class="action-btn">
-                                            <i class="lar la-edit text-primary font-20 mr-2 btn-edit-contact"></i>
-                                            <i class="lar la-trash-alt text-danger font-20 mr-2"></i>
-                                        </div>
+                                <div class="widget-content widget-content-area text-center w-100 mt-4">
+                                    <div class="pagination p1">
+                                        <ul class="mx-auto">
+                                            <a href="#">
+                                                <li><i class="las la-angle-left"></i></li>
+                                            </a>
+                                            <a class="is-active" href="#">
+                                                <li>1</li>
+                                            </a>
+                                            <a href="#">
+                                                <li>2</li>
+                                            </a>
+                                            <a href="#">
+                                                <li>3</li>
+                                            </a>
+                                            <a href="#">
+                                                <li><i class="las la-angle-right"></i></li>
+                                            </a>
+                                        </ul>
                                     </div>
-                                </div>
-                                <div class="items">
-                                    <div class="item-content">
-                                        <div class="product-info"><img src="assets/img/product-4.jpg" alt="avatar">
-                                            <div class="user-meta-info">
-                                                <p class="product-name">Product 7</p>
-                                                <p class="product-category">Catgeory Seven</p>
-                                            </div>
-                                        </div>
-                                        <div class="product-price">
-                                            <p class="product-category-addr"><span>Price: </span>$8655</p>
-                                        </div>
-                                        <div class="product-rating">
-                                            <p class="product-rating-inner"><span>Rating: </span>
-                                                <a class="d-flex align-center">
-                                                    3 <img src="assets/img/star.png" class="avatar-xxs ml-2" alt="star">
-                                                </a>
-                                            </p>
-                                        </div>
-                                        <div class="product-stock-status">
-                                            <p class="product-stock-status-inner">
-                                                <small class="badge badge-success">In Stock</small>
-                                            </p>
-                                        </div>
-                                        <div class="action-btn">
-                                            <i class="lar la-edit text-primary font-20 mr-2 btn-edit-contact"></i>
-                                            <i class="lar la-trash-alt text-danger font-20 mr-2"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pagination p13 text-center w-100 mt-4">
-                                    <ul class="mx-auto">
-                                    <a href="#" class="prev"><li>Prev</li></a>
-                                    <a class="is-active" href="#"><li>1</li></a>
-                                    <a href="#"><li>2</li></a>
-                                    <a href="#"><li>3</li></a>
-                                    <a href="#" class="next"><li>Next</li></a>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
