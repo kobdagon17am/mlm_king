@@ -27,10 +27,13 @@
     <link href="{{ asset('plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('plugins/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
-    <!-- Page Level Plugin/Style Ends -->
     <link href="{{ asset('assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/pages/profile.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/ui-elements/pagination.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('plugins/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/apps/ecommerce.css') }}" rel="stylesheet" type="text/css" />
     <!-- Page Level Plugin/Style Ends -->
+
 </head>
 
 <body>

@@ -6,14 +6,14 @@
         <div class="sub-header-container">
             <header class="header navbar navbar-expand-sm">
                 <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom">
-                    <i class="las la-user-alt"></i>
+                    <i class="las la-bars"></i>
                 </a>
                 <ul class="navbar-nav flex-row">
                     <li>
                         <div class="page-header">
                             <nav class="breadcrumb-one" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item active" aria-current="page"><span>Profile</span></li>
+                                    <li class="breadcrumb-item active" aria-current="page"> <span>Profile</span></li>
                                 </ol>
                             </nav>
                         </div>
@@ -29,8 +29,8 @@
                     <div class="profile-left">
                         <div class="image-area">
                             <img class="user-image" src="{{ asset('assets/img/profile-16.jpg') }}">
-                            {{-- <a href="{{ asset('profile_edit.blade.php') }}" class="follow-area"> --}}
-                            {{-- <i class="las la-pen"></i> --}}
+                            <a href="{{ asset('profile_edit.blade.php') }}" class="follow-area">
+                                <i class="las la-pen"></i>
                             </a>
                         </div>
                         <div class="info-area">

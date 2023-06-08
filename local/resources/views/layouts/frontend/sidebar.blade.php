@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li class="menu">
-                <a href="#orders" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#cart" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-boxes"></i>
                         <span>สั่งซื้อสินค้า</span>
@@ -28,7 +28,7 @@
                         <i class="las la-angle-right sidemenu-right-icon"></i>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled" id="orders" data-parent="#accordionExample">
+                <ul class="collapse submenu list-unstyled" id="cart" data-parent="#accordionExample">
                     <li>
                         <a href="{{ route('CartGeneral')}}"> สินค้าทั่วไป </a>
                     </li>
@@ -38,7 +38,7 @@
                 </ul>
             </li>
             <li class="menu">
-                <a href="history.html" aria-expanded="false" class="dropdown-toggle">
+                <a href="order.html" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-clipboard-list"></i>
                         <span>ประวัติการสั่งซื้อ</span>
