@@ -300,7 +300,13 @@ y<!DOCTYPE html>
                     </div>
                 </li>
             </ul>
-
+            {{-- <ul class="navbar-item flex-row">
+                <li class="nav-item dropdown header-setting">
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle rightbarCollapse" data-placement="bottom">
+                        <i class="las la-sliders-h"></i>
+                    </a>
+                </li>
+            </ul> --}}
         </header>
     </div>
     <!--  Navbar Ends  -->
@@ -312,7 +318,51 @@ y<!DOCTYPE html>
         <!--  Sidebar Starts  -->
         @include('layouts.frontend.sidebar')
         @yield('content')
+        <!--  Sidebar Ends  -->
+        <!--  Content Area Starts  -->
 
+        <!--  Content Area Ends  -->
+        <!--  Rightbar Area Starts -->
+        <div class="right-bar">
+            <div class="h-100">
+                <div class="simplebar-wrapper" style="margin: 0px;">
+                    <div class="simplebar-mask">
+                        <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                            <div class="simplebar-content-wrapper" style="height: 100%;">
+                                <div class="simplebar-content" style="padding: 0px;">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs nav-bordered nav-justified" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link  active" data-toggle="tab" href="#chat-tab" role="tab" aria-selected="true">
+                                                <i class="las la-sms"></i>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                    <!-- Tab panes starts -->
+                                    <div class="tab-content pt-0 rightbar-tab-container">
+                                        <div class="tab-pane active rightbar-tab" id="chat-tab" role="tabpanel">
+                                            <form class="search-bar p-3">
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control search-form-control" placeholder="Search">
+                                                    <span class="mdi mdi-magnify"></span>
+                                                </div>
+                                            </form>
+
+
+
+                                        </div>
+
+                                    </div>
+                                    <!-- Tab panes ends -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  Rightbar Area Ends -->
     </div>
     <!-- Main Container Ends -->
     <!-- Common Script Starts -->
