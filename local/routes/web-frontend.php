@@ -14,6 +14,14 @@ Route::get('/', function () {
 
     return view('welcome');
 });
+Route::get('Blank', function () {
+
+  return view('frontend.blank');
+});
+Route::get('CartGeneral', function () {
+
+  return view('frontend.cart_general');
+})->name('CartGeneral');
 
 Auth::routes();
 

@@ -30,7 +30,7 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="orders" data-parent="#accordionExample">
                     <li>
-                        <a href="general_orders.html"> สินค้าทั่วไป </a>
+                        <a href="{{ route('CartGeneral')}}"> สินค้าทั่วไป </a>
                     </li>
                     <li>
                         <a href="fertilizer_orders.html"> สินค้าปุ๋ย </a>

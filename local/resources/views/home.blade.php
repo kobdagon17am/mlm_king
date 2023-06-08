@@ -1,8 +1,6 @@
 @extends('layouts.frontend.app')
 
 @section('content')
-    <!DOCTYPE html>
-    <html lang="en">
     <div id="content" class="main-content">
         <!--  Navbar Starts / Breadcrumb Area  -->
         <div class="sub-header-container">
@@ -72,7 +70,7 @@
                                     aria-labelledby="v-border-pills-home-tab">
                                     <div class="media">
                                         <div class="profile-shadow w-100">
-                                            <h6 class="font-16 mb-3"><b>ข้อมูลพื้นฐาน (General Profile)</b></h6>
+                                            <h6 class="font-16 mb-3"><b>ข้อมูลพื้นฐาน (General Information)</b></h6>
                                             <div class="row">
                                                 <div class="col-md-6"><b>ชื่อ-นามสกุล :</b> คุณกิ่งทอง ใบหยก</div>
                                                 <div class="col-md-6"><b>ชื่อในทางธุรกิจ :</b> กิ่งทอง</div>
