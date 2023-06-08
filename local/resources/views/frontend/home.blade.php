@@ -1,5 +1,9 @@
 @extends('layouts.frontend.app')
+@section('css')
 
+<link href="{{ asset('assets/css/loader.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/css/pages/profile.css')}}" rel="stylesheet" type="text/css" />
+@endsection
 @section('content')
     <div id="content" class="main-content">
         <!--  Navbar Starts / Breadcrumb Area  -->
