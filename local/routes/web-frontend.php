@@ -14,16 +14,22 @@ Route::get('/', function () {
 
     return view('welcome');
 });
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('Blank', function () {
+    return view('frontend.blank');
+  });
 
-  return view('frontend.blank');
-});
+Route::get('Profile', function () {
+    return view('frontend.profile');
+  })->name('Profile');
+
 Route::get('CartGeneral', function () {
-
   return view('frontend.cart_general');
 })->name('CartGeneral');
-Route::get('CartGeneralDetail', function () {
 
+Route::get('CartGeneralDetail', function () {
   return view('frontend.cart_general_detail');
 })->name('CartGeneralDetail');
 Route::get('Cart', function () {
@@ -32,11 +38,8 @@ Route::get('Cart', function () {
 })->name('Cart');
 
 
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 
 // BEGIN eWallet withdraw

@@ -3,7 +3,7 @@
         <ul class="list-unstyled menu-categories" id="accordionExample">
             {{-- <li class="menu-title">Components</li> --}}
             <li class="menu">
-                <a href="{{route('home')}}" aria-expanded="false" class="dropdown-toggle" >
+                <a href="{{route('Profile')}}" aria-expanded="false" class="dropdown-toggle" >
                     <div class="">
                         <i class="las la-user-alt"></i>
                         <span>ข้อมูลส่วนตัว</span>
