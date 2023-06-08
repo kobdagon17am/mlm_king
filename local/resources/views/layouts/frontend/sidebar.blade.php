@@ -21,7 +21,7 @@
             <li class="menu">
                 <a href="#cart" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <i class="las la-boxes"></i>
+                        <i class="las la-cart-arrow-down"></i>
                         <span>สั่งซื้อสินค้า</span>
                     </div>
                     <div>
