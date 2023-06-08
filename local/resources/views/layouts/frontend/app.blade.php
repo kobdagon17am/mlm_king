@@ -1,4 +1,4 @@
-y<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -378,6 +378,10 @@ y<!DOCTYPE html>
     </script>
     <script src="assets/js/custom.js"></script>
     <!-- Common Script Ends -->
+
+
+
+    @yield('js')
 </body>
 </html>
 
