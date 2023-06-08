@@ -1,5 +1,11 @@
 @extends('layouts.frontend.app')
+@section('css')
 
+<link href="assets/css/ui-elements/pagination.css" rel="stylesheet" type="text/css" />
+    <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/elements/tooltip.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/apps/ecommerce.css" rel="stylesheet" type="text/css" />
+@endsection
 @section('content')
     <!--  Content Area Starts  -->
     <div id="content" class="main-content">
