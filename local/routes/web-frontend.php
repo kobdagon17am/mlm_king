@@ -26,6 +26,10 @@ Route::get('CartGeneralDetail', function () {
 
   return view('frontend.cart_general_detail');
 })->name('CartGeneralDetail');
+Route::get('Cart', function () {
+
+  return view('frontend.cart');
+})->name('Cart');
 
 
 

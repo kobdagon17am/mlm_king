@@ -33,7 +33,7 @@
                         <a href="{{ route('CartGeneral')}}"> สินค้าทั่วไป </a>
                     </li>
                     <li>
-                        <a href="fertilizer_orders.html"> สินค้าปุ๋ย </a>
+                        <a href="{{ route('CartGeneral')}}"> สินค้าปุ๋ย </a>
                     </li>
                 </ul>
             </li>
