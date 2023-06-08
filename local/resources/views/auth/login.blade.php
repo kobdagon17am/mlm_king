@@ -66,8 +66,8 @@
             <div class="row main-login-two">
                 <div class="col-xl-8 col-lg-7 col-md-7 d-none d-md-block p-0">
                     <div class="login-bg">
-                        <div class="left-content-area">
-                            <img src="{{ asset('assets/img/logo_white_transparent.png') }}" class="logo" />
+                        {{-- <div class="left-content-area">
+                            <img src="{{ asset('assets/img/logo/Kingthong-Baiyok-Logo.png')}}" class="logo" />
                             <div>
                                 <h2>A few clicks away from creating your account</h2>
                                 <p>Start your journey in minutes. Save your time and money.</p>
@@ -79,14 +79,18 @@
                                 <a class="font-13 text-white mr-3" href="javascript:void(0)">Twitter</a>
                                 <a class="font-13 text-white mr-3" href="javascript:void(0)">Linked In</a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-5 col-md-5 p-0">
+
+
                     <div class="login-two-start">
-                        <h6 class="right-bar-heading px-3 mt-2 text-dark text-center font-30 text-uppercase">Login</h6>
-                        <p class="text-center text-muted mt-1 mb-3 font-14">Please Log into your account</p>
-                        <div class="login-two-inputs mt-5">
+                        <div class="text-center"> <img src="{{ asset('assets/img/logo/Kingthong-Baiyok-Logo.png')}}" width="400" class="logo" /> </div>
+                        {{-- <h6 class="right-bar-heading px-3 mt-2 text-dark text-center font-30 text-uppercase">Login</h6> --}}
+                        {{-- <p class="text-center text-muted mt-1 mb-3 font-14">Please Log into your account</p> --}}
+
+                        <div class="login-two-inputs mt-2">
                             <input type="text" name="email" placeholder="Username" />
                             <i class="las la-user-alt"></i>
                         </div>
@@ -99,29 +103,29 @@
                                     </span>
                                 @enderror --}}
                         </div>
-                        <div class="login-two-inputs  mt-4 check">
+                        {{-- <div class="login-two-inputs  mt-4 check">
                             <div class="box">
                                 <input id="one" type="checkbox">
                                 <span class="check"></span>
                                 <label for="one">Remember me</label>
                             </div>
-                        </div>
-                        <div class="login-two-inputs mt-5 text-center d-flex">
-                            <button class="ripple-button ripple-button-primary w-100 btn-login ml-3 mr-3"
-                                type="submit">
+                        </div> --}}
+                        <div class="login-two-inputs mt-4 text-center ">
+                            <button class="ripple-button ripple-button-primary w-80 btn-login"
+                                type="submit" style="font-size: 1.51em;">
                                 <div class="ripple-ripple js-ripple">
                                     <span class="ripple-ripple__circle"></span>
                                 </div>
                                 Login
                             </button>
-                            <a class="btn btn-sm btn-outline-primary btn-login w-100 ml-3 mr-3"
+                            {{-- <a class="btn btn-sm btn-outline-primary btn-login w-100 ml-3 mr-3"
                                 href="auth_signup_2.html" type="button">
                                 Signup
-                            </a>
+                            </a> --}}
                         </div>
-                        <div class="mt-4 text-center font-12 strong">
+                        {{-- <div class="mt-4 text-center font-12 strong">
                             <a href="auth_forget_password_2.html" class="text-primary">Forgot your Password ?</a>
-                        </div>
+                        </div> --}}
                         <div class="login-two-inputs mt-4">
                             <div class="find-us-container">
                                 <p class="find-us text-center">Continue With</p>

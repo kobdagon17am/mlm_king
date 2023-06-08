@@ -284,7 +284,7 @@ y<!DOCTYPE html>
                                         </div>
                                     </a>
                                     <hr class="account-divider">
-                                    <a class="account-item" href="auth_login_3.html">
+                                    <a class="account-item" href="{{ route('logout') }}">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
                                                 <i class="las la-sign-out-alt font-20"></i>

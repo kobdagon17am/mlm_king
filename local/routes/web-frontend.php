@@ -13,10 +13,7 @@ Route::get('/config-cache', function () {
 
 Auth::routes();
 
-Route::get('/', function () {
 
-    return view('welcome');
-});
 
 Route::get('/', function () {
 
@@ -25,9 +22,14 @@ Route::get('/', function () {
       return redirect('home');
     } else {
 
-      return view('frontend/login');
+      return view('auth/login');
     }
   });
+
+  Route::get('logout', function () {
+    Auth::logout();
+    return redirect('/');
+  })->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
