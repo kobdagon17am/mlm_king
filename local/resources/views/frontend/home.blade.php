@@ -28,7 +28,7 @@
         <!-- Main Body Starts -->
         <div class="layout-px-spacing">
             <div class="row layout-spacing pt-4">
-                <div class="col-xl-3 col-lg-4 col-md-4 mb-4">
+                <div class="col-xl-3 col-lg-4 col-md-12  mb-4">
                     <div class="profile-left">
                         <div class="image-area">
                             <img class="user-image" src="{{ asset('assets/img/profile-16.jpg') }}">
@@ -177,4 +177,7 @@
             </div>
         </div>
     </div>
+
+
+
 @endsection

@@ -162,11 +162,11 @@ code {
 }
 
 .font-13 {
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .font-15 {
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .font-17 {
@@ -247,7 +247,7 @@ code {
 .page-title h3 {
     margin: 0;
     margin-bottom: 0;
-    font-size: 15px;
+    font-size: 16px;
     color: #3b3f5c;
     font-weight: 700;
 }
@@ -284,7 +284,7 @@ code {
     position: relative;
     width: 50%;
     flex-grow: 8;
-    margin-top: 63px;
+    margin-top: 100px;
     margin-bottom: 0;
     margin-left: 222px;
     transition: .600s;
@@ -359,7 +359,7 @@ code {
     border: 2px dashed #888ea8;
     line-height: 1.4;
     padding: 3px 6px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     border-radius: 4px;
     letter-spacing: 1px;
@@ -427,8 +427,8 @@ code {
 }
 
 .navbar .theme-brand li.theme-logo img {
-    width: 34px;
-    height: 34px;
+    width: 140px;
+    /* height: 34px; */
 }
 
 .navbar .theme-brand li.theme-text {
@@ -564,7 +564,7 @@ code {
 .header-container .navbar .language-dropdown .dropdown-menu.megamenu .no-gutters .dropdown-icon-item {
     display: block;
     text-align: center;
-    font-size: 15px;
+    font-size: 16px;
     padding: 10px;
     border: 1px solid #f1f1f1;
     border-radius: 8px;
@@ -787,7 +787,7 @@ code {
 }
 
 .navbar .navbar-item .nav-item.dropdown.message-dropdown .dropdown-menu .media .media-body h5.usr-name {
-    font-size: 15px;
+    font-size: 16px;
     margin-bottom: 0px;
     color: #1b55e2;
 }
@@ -994,17 +994,17 @@ code {
 
 .navbar .navbar-item .nav-item form.form-inline input.search-form-control::-webkit-input-placeholder {
     color: #2262c6;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .navbar .navbar-item .nav-item form.form-inline input.search-form-control::-ms-input-placeholder {
     color: #2262c6;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .navbar .navbar-item .nav-item form.form-inline input.search-form-control::-moz-placeholder {
     color: #2262c6;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .navbar .navbar-item .nav-item form.form-inline input.search-form-control:focus::-webkit-input-placeholder {
@@ -1049,9 +1049,9 @@ code {
 }
 
 .navbar .navbar-item .nav-item .nav-link img {
-    width: 28px;
+    width: 50px;
     border-radius: 50%;
-    height: 28px;
+    /* height: 28px; */
 }
 
 .navbar .navbar-item .nav-item.user-profile-dropdown .dropdown-menu {
@@ -1063,7 +1063,7 @@ code {
 .navbar .navbar-item .nav-item .dropdown-menu .dropdown-item a {
     display: block;
     color: #3b3f5c;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 600;
     padding: 9px 30px;
 }
@@ -1283,7 +1283,7 @@ code {
     border: 1px solid #d3d3d3;
     border-radius: 8px;
     transform: none;
-    font-size: 13px;
+    font-size: 16px;
     line-height: 17px;
     background-color: #fff;
     letter-spacing: normal;
@@ -1326,7 +1326,7 @@ code {
 
 .sub-header-container .more-dropdown .custom-dropdown-icon .dropdown-menu a {
     padding: 8px 15px;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 500;
     color: #3b3f5c;
 }
@@ -1351,7 +1351,7 @@ code {
     -webkit-user-drag: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     left: 0px;
-    top: 55px;
+    top: 107px;
     border-radius: 0px 80px 0px 0px;
     -webkit-border-radius: 0px 80px 0px 0px;
     -moz-border-radius: 0px 80px 0px 0px;
@@ -1441,7 +1441,7 @@ code {
     display: flex;
     justify-content: space-between;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 16px;
     color: #ffffff;
     padding: 11px 14px;
     transition: .600s;
@@ -1526,7 +1526,7 @@ code {
     padding: 10px 12px 10px 48px;
     padding-left: 24px;
     margin-left: 36px;
-    font-size: 13px;
+    font-size: 16px;
     color: #ffffff;
 }
 
@@ -1840,7 +1840,7 @@ code {
 
 .right-bar .search-bar input.search-form-control {
     width: 100%;
-    font-size: 13px;
+    font-size: 16px;
     background-color: #e6f0ff;
     border: none;
     -webkit-border-radius: 30px;
@@ -1866,19 +1866,19 @@ code {
 .right-bar .search-bar input.search-form-control::-webkit-input-placeholder {
     color: #2262c6;
     letter-spacing: 1px;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .right-bar .search-bar input.search-form-control::-ms-input-placeholder {
     color: #2262c6;
     letter-spacing: 1px;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .right-bar .search-bar input.search-form-control::-moz-placeholder {
     color: #2262c6;
     letter-spacing: 1px;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .right-bar .search-bar input.search-form-control::-webkit-input-placeholder {
@@ -2013,7 +2013,7 @@ input:checked+.slider:before {
 .footer-wrapper .footer-section p {
     margin-bottom: 0;
     color: #bfbfbf;
-    font-size: 13px;
+    font-size: 16px;
     letter-spacing: 1px;
     font-weight: 500;
 }
@@ -2233,7 +2233,7 @@ input:checked+.slider:before {
     }
     .sub-header-container .breadcrumb-one .breadcrumb-item span {
         vertical-align: sub;
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 700;
     }
     .sub-header-container .navbar .toggle-sidebar,
