@@ -48,7 +48,7 @@ y<!DOCTYPE html>
         <header class="header navbar navbar-expand-sm">
             <ul class="navbar-item theme-brand flex-row  text-center">
                 <li class="nav-item theme-logo" style="">
-                    <a href="index.html">
+                    <a href="{{route('home')}}">
                         <img src="{{ asset('assets/img/logo/Kingthong-Baiyok-Logo.png')}}" class="navbar-logo" alt="logo" >
                     </a>
                 </li>
