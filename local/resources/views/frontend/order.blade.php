@@ -44,7 +44,8 @@
                                     <!-- Datatable with a dropdown -->
                                     <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
                                         <div class="widget-content widget-content-area br-6">
-                                            {{-- <h4 class="table-header">Basic with a dropdown</h4> --}}
+                                            <h5 class="table-header"><b>รายการสั่งซื้อ</b></h5>
+                                            
                                             <div class="table-responsive mb-4">
                                                 <table id="dropdown-dt" class="table table-hover" style="width:100%">
                                                     <thead>
@@ -55,9 +56,8 @@
                                                             <th>PV</th>
                                                             <th>ชำระโดย</th>
                                                             <th>สถานะ</th>
-                                                            <th>บริษัทขนส่งพัสดุ</th>
-                                                            <th>หมายเลขติดตามพัสดุ</th>
-                                                            <th class="no-content"></th>
+                                                            <th>หมายเลขพัสดุ</th>
+                                                            <th>ACTION</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -67,24 +67,22 @@
                                                             <td>฿ 1,550</td>
                                                             <td>200</td>
                                                             <td>กิ่งทองใบหยก</td>
-                                                            <td>รอชำระเงิน</td>
-                                                            <td>Express</td>
+                                                            <td>
+                                                                <span class="badge badge-warning light">Pending</span>
+                                                            </td>
                                                             <td>TRACK001</td>
                                                             <td class="text-center">
                                                                 <div class="dropdown custom-dropdown">
                                                                     <a class="dropdown-toggle font-20 text-primary"
-                                                                        href="#" role="button" data-toggle="dropdown"
+                                                                        href="view" role="button" data-toggle="dropdown"
                                                                         aria-haspopup="true" aria-expanded="false">
-                                                                        <i class="las la-cog"></i>
+                                                                        <i class="las la-eye"></i>
                                                                     </a>
-                                                                    <div class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuLink1"
-                                                                        style="will-change: transform;">
-                                                                        <a class="dropdown-item"
-                                                                            href="javascript:void(0);">Edit</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="javascript:void(0);">Delete</a>
-                                                                    </div>
+                                                                    <a class="dropdown-toggle font-20 text-primary"
+                                                                        href="delete" role="button" data-toggle="dropdown"
+                                                                        aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="las la-trash-alt"></i>
+                                                                    </a>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -94,24 +92,22 @@
                                                             <td>฿ 1,550</td>
                                                             <td>200</td>
                                                             <td>กิ่งทองใบหยก</td>
-                                                            <td>รอชำระเงิน</td>
-                                                            <td>Express</td>
+                                                            <td>
+                                                                <span class="badge badge-warning light">Pending</span>
+                                                            </td>
                                                             <td>TRACK001</td>
                                                             <td class="text-center">
                                                                 <div class="dropdown custom-dropdown">
                                                                     <a class="dropdown-toggle font-20 text-primary"
-                                                                        href="#" role="button" data-toggle="dropdown"
+                                                                        href="view" role="button" data-toggle="dropdown"
                                                                         aria-haspopup="true" aria-expanded="false">
-                                                                        <i class="las la-cog"></i>
+                                                                        <i class="las la-eye"></i>
                                                                     </a>
-                                                                    <div class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuLink1"
-                                                                        style="will-change: transform;">
-                                                                        <a class="dropdown-item"
-                                                                            href="javascript:void(0);">Edit</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="javascript:void(0);">Delete</a>
-                                                                    </div>
+                                                                    <a class="dropdown-toggle font-20 text-primary"
+                                                                        href="delete" role="button" data-toggle="dropdown"
+                                                                        aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="las la-trash-alt"></i>
+                                                                    </a>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -121,24 +117,22 @@
                                                             <td>฿ 1,550</td>
                                                             <td>200</td>
                                                             <td>กิ่งทองใบหยก</td>
-                                                            <td>รอชำระเงิน</td>
-                                                            <td>Express</td>
+                                                            <td>
+                                                                <span class="badge badge-success-teal light">Success</span>
+                                                            </td>
                                                             <td>TRACK001</td>
                                                             <td class="text-center">
                                                                 <div class="dropdown custom-dropdown">
                                                                     <a class="dropdown-toggle font-20 text-primary"
-                                                                        href="#" role="button" data-toggle="dropdown"
+                                                                        href="view" role="button" data-toggle="dropdown"
                                                                         aria-haspopup="true" aria-expanded="false">
-                                                                        <i class="las la-cog"></i>
+                                                                        <i class="las la-eye"></i>
                                                                     </a>
-                                                                    <div class="dropdown-menu"
-                                                                        aria-labelledby="dropdownMenuLink1"
-                                                                        style="will-change: transform;">
-                                                                        <a class="dropdown-item"
-                                                                            href="javascript:void(0);">Edit</a>
-                                                                        <a class="dropdown-item"
-                                                                            href="javascript:void(0);">Delete</a>
-                                                                    </div>
+                                                                    <a class="dropdown-toggle font-20 text-primary"
+                                                                        href="delete" role="button" data-toggle="dropdown"
+                                                                        aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="las la-trash-alt"></i>
+                                                                    </a>
                                                                 </div>
                                                             </td>
                                                         </tr>
