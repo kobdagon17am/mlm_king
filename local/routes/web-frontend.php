@@ -52,6 +52,10 @@ Route::get('Cart', function () {
 
   return view('frontend.cart');
 })->name('Cart');
+Route::get('Order', function () {
+
+  return view('frontend.order');
+})->name('Order');
 
 
 
