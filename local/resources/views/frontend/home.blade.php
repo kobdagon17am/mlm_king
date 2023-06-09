@@ -98,9 +98,9 @@
                 <div class="widget-chart-one">
                     <div class="widget-content overflow-hidden">
                         <div class="ticker-wrap">
-                            <div class="ticker-heading bg-gradient-info">
+                            {{-- <div class="ticker-heading bg-gradient-info">
                                 <p>ประกาศ</p>
-                            </div>
+                            </div> --}}
                             <div class="ticker">
                                 <div class="ticker-item">Letterpress chambray brunch.</div>
                                 <div class="ticker-item">Vice mlkshk crucifix beard chillwave meditation hoodie asymmetrical Helvetica.</div>
