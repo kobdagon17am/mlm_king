@@ -74,8 +74,10 @@
                                 <div class="items">
                                     <div class="item-content">
                                         <div class="product-info">
-                                            <a href="{{ route('CartGeneralDetail') }}"><img src="{{asset('assets/img/product-5')}}.jpg"
-                                                    alt="avatar"></a>
+                                            <div>
+                                                <a href="{{ route('CartGeneralDetail') }}"><img
+                                                        src="{{ asset('assets/img/product-5') }}.jpg" alt="avatar"></a>
+                                            </div>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
                                                 <h5><b>Product 1</b></h5>
@@ -89,9 +91,9 @@
                                             </div>
                                             <div class="product-stock-status">
                                                 <p class="product-stock-status-inner">
-                                                    <small class="badge badge-success"><i
-                                                            class="las la-cart-plus las-white font-17"></i> Add to Cart 
-                                                    </small>
+                                                    <a href="{{ route('Cart') }}"><small class="badge badge-success"><i
+                                                                class="las la-cart-plus las-white font-17"></i> Add to Cart
+                                                        </small>
                                                 </p>
                                             </div>
                                         </div>
@@ -100,8 +102,8 @@
                                 <div class="items">
                                     <div class="item-content">
                                         <div class="product-info">
-                                            <a href="{{ route('CartGeneralDetail') }}"><img src="{{asset('assets/img/product-1')}}.jpg"
-                                                    alt="avatar"></a>
+                                            <a href="{{ route('CartGeneralDetail') }}"><img
+                                                    src="{{ asset('assets/img/product-1') }}.jpg" alt="avatar"></a>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
                                                 <h5><b>Product 2</b></h5>
@@ -115,9 +117,9 @@
                                             </div>
                                             <div class="product-stock-status">
                                                 <p class="product-stock-status-inner">
-                                                    <small class="badge badge-success"><i
-                                                            class="las la-cart-plus las-white font-17"></i> Add to Cart 
-                                                    </small>
+                                                    <a href="{{ route('Cart') }}"><small class="badge badge-success"><i
+                                                                class="las la-cart-plus las-white font-17"></i> Add to Cart
+                                                        </small>
                                                 </p>
                                             </div>
                                         </div>
@@ -126,8 +128,8 @@
                                 <div class="items">
                                     <div class="item-content">
                                         <div class="product-info">
-                                            <a href="{{ route('CartGeneralDetail') }}"><img src="{{asset('assets/img/product-2')}}.jpg"
-                                                    alt="avatar"></a>
+                                            <a href="{{ route('CartGeneralDetail') }}"><img
+                                                    src="{{ asset('assets/img/product-2') }}.jpg" alt="avatar"></a>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
                                                 <h5><b>Product 3</b></h5>
@@ -141,9 +143,9 @@
                                             </div>
                                             <div class="product-stock-status">
                                                 <p class="product-stock-status-inner">
-                                                    <small class="badge badge-success"><i
-                                                            class="las la-cart-plus las-white font-17"></i> Add to Cart 
-                                                    </small>
+                                                    <a href="{{ route('Cart') }}"><small class="badge badge-success"><i
+                                                                class="las la-cart-plus las-white font-17"></i> Add to Cart
+                                                        </small>
                                                 </p>
                                             </div>
                                         </div>
@@ -152,8 +154,8 @@
                                 <div class="items">
                                     <div class="item-content">
                                         <div class="product-info">
-                                            <a href="{{ route('CartGeneralDetail') }}"><img src="{{asset('assets/img/product-3')}}.jpg"
-                                                    alt="avatar"></a>
+                                            <a href="{{ route('CartGeneralDetail') }}"><img
+                                                    src="{{ asset('assets/img/product-3') }}.jpg" alt="avatar"></a>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
                                                 <h5><b>Product 4</b></h5>
@@ -167,9 +169,9 @@
                                             </div>
                                             <div class="product-stock-status">
                                                 <p class="product-stock-status-inner">
-                                                    <small class="badge badge-success"><i
-                                                            class="las la-cart-plus las-white font-17"></i> Add to Cart 
-                                                    </small>
+                                                    <a href="{{ route('Cart') }}"><small class="badge badge-success"><i
+                                                                class="las la-cart-plus las-white font-17"></i> Add to Cart
+                                                        </small>
                                                 </p>
                                             </div>
                                         </div>

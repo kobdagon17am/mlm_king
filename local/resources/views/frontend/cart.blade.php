@@ -38,7 +38,7 @@
                                         <table class="table table-responsive table table-bordered table-centered mb-0">
                                             <thead class="thead-light text-center">
                                                 <tr>
-                                                    <th>รายการ/th>
+                                                    <th>รายการสินค้า</th>
                                                     <th>จำนวน</th>
                                                     <th>ราคา</th>
                                                     <th>PV</th>
@@ -48,7 +48,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <img src="assets/img/product-1.jpg" alt="contact-img"
+                                                        <img src="{{ asset('assets/img/product-1.jpg') }}" alt="contact-img"
                                                             title="contact-img" class="rounded-circle mr-3" height="48"
                                                             width="48"
                                                             style="object-fit: cover;
@@ -74,7 +74,7 @@
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <h6>$1,000</h6>
+                                                        <h6>฿1,000</h6>
                                                     </td>
                                                     <td>
                                                         <h6>50</h6>
@@ -87,7 +87,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <img src="assets/img/product-2.jpg" alt="contact-img"
+                                                        <img src="{{ asset('assets/img/product-2.jpg') }}" alt="contact-img"
                                                             title="contact-img" class="rounded-circle mr-3" height="48"
                                                             width="48"
                                                             style="object-fit: cover;
@@ -101,78 +101,26 @@
                                                         </p>
                                                     </td>
                                                     <td>
-                                                        $500.00
+                                                        <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                        </select>
                                                     </td>
                                                     <td>
-                                                        <input type="number" min="1" value="1"
-                                                            class="form-control" placeholder="Qty" style="width: 90px;">
+                                                        <h6>฿1,000</h6>
                                                     </td>
                                                     <td>
-                                                        $500.00
+                                                        <h6>50</h6>
                                                     </td>
                                                     <td>
-                                                        <a href="javascript:void(0);" class="action-icon"> <i
-                                                                class="mdi mdi-delete"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="assets/img/product-3.jpg" alt="contact-img"
-                                                            title="contact-img" class="rounded-circle mr-3" height="48"
-                                                            width="48"
-                                                            style="object-fit: cover;
-                                                    ">
-                                                        <p class="mb-0 mt-3 d-inline-block align-middle font-16">
-                                                            <a href="ecommerce-product-detail.html"
-                                                                class="text-body font-family-secondary">My Notebook</a>
-                                                            <br>
-                                                            <small class="mr-2"><b>Size:</b> Medium </small>
-                                                            <small><b>Color:</b> Grey </small>
-                                                        </p>
-                                                    </td>
-                                                    <td>
-                                                        $5000
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" min="1" value="1"
-                                                            class="form-control" placeholder="Qty" style="width: 90px;">
-                                                    </td>
-                                                    <td>
-                                                        $5000.00
-                                                    </td>
-                                                    <td>
-                                                        <a href="javascript:void(0);" class="action-icon"> <i
-                                                                class="mdi mdi-delete"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="assets/img/product-4.jpg" alt="contact-img"
-                                                            title="contact-img" class="rounded-circle mr-3"
-                                                            height="48" width="48"
-                                                            style="object-fit: cover;
-                                                    ">
-                                                        <p class="mb-0 mt-3 d-inline-block align-middle font-16">
-                                                            <a href="ecommerce-product-detail.html"
-                                                                class="text-body font-family-secondary">Canvas Shoe</a>
-                                                            <br>
-                                                            <small class="mr-2"><b>Size:</b> Large </small>
-                                                            <small><b>Color:</b> Green </small>
-                                                        </p>
-                                                    </td>
-                                                    <td>
-                                                        $100.00
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" min="1" value="1"
-                                                            class="form-control" placeholder="Qty" style="width: 90px;">
-                                                    </td>
-                                                    <td>
-                                                        $100.00
-                                                    </td>
-                                                    <td>
-                                                        <a href="javascript:void(0);" class="action-icon"> <i
-                                                                class="mdi mdi-delete"></i></a>
+                                                        <a href="javascript:void(0);" class="action-icon text-center">
+                                                            <button type="button" class="btn btn-danger font-15"><i
+                                                                    class="lar la-trash-alt"></i></button></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -226,34 +174,36 @@
                                                 <table class="table mb-0">
                                                     <tbody>
                                                         <tr>
-                                                            <td>Sub Total :</td>
-                                                            <td>$6100.00</td>
+                                                            <td>จำนวนสินค้า :</td>
+                                                            <td>2</td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="text-success-teal">Discount : </td>
-                                                            <td class="text-success-teal">-$100.00</td>
+                                                            <td>ราคารวม :</td>
+                                                            <td>฿2,000</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Shipping Charge :</td>
-                                                            <td>$25.00</td>
+                                                            <td class="text-success-teal">ส่วนลด : </td>
+                                                            <td class="text-success-teal">-฿50</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Estimated Tax : </td>
-                                                            <td>$10.00</td>
+                                                            <th>คะแนนที่ได้รับ :</th>
+                                                            <th>100 PV</th>
                                                         </tr>
                                                         <tr>
-                                                            <th>GrandTotal :</th>
-                                                            <th>$6035.00</th>
+                                                            <th>ยอดรวมทั้งหมด :</th>
+                                                            <th>฿ 1,550</th>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <a class="w-100 btn btn-dark mb-0 ml-3 mr-3"><i class="las la-arrow-left"></i>
-                                                Go Back</a>
-                                            <a href="apps_ecommerce_checkout.html"
-                                                class="w-100 btn btn-outline-primary mb-0 ml-3 mr-3">Continue <i
+                                            <a href="{{ route('CartGeneral') }}"
+                                                class="w-100 btn btn-outline-info mb-0 ml-3 mr-3"><i
+                                                    class="las la-arrow-left"></i>
+                                                สินค้า</a>
+                                            <a href="{{ route('CartGeneral') }}"
+                                                class="w-100 btn btn-outline-info mb-0 ml-3 mr-3">สั่งซื้อ <i
                                                     class="las la-arrow-right"></i></a>
                                         </div>
                                     </div>

@@ -137,10 +137,11 @@
                                                     <option value="6">6</option>
                                                     <option value="7">7</option>
                                                 </select>
-                                                <div class="text-center w-100">
-                                                    <button type="button" class="btn btn-success btn-rounded">
-                                                        <i class="las la-cart-plus las-white font-17"></i> Add to cart
-                                                    </button>
+                                                <div class="text-center w-40">
+                                                    <a href="{{ route('Cart') }}"><button type="button"
+                                                            class="btn btn-success btn-rounded">
+                                                            <i class="las la-cart-plus las-white font-17"></i> Add to cart
+                                                        </button>
                                                 </div>
                                             </form>
                                         </div>
