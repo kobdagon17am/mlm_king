@@ -44,7 +44,7 @@
     </div>
     <!--  Loader Ends -->
     <!--  Navbar Starts  -->
-    <div class="header-container fixed-top">
+    <div class="header-container fixed-top" style="background-color: #ffff;">
         <header class="header navbar navbar-expand-sm">
             <ul class="navbar-item theme-brand flex-row  text-center">
                 <li class="nav-item theme-logo" style="">
@@ -309,6 +309,7 @@
             </ul> --}}
         </header>
     </div>
+
     <!--  Navbar Ends  -->
     <!--  Main Container Starts  -->
     <div class="main-container" id="container">
