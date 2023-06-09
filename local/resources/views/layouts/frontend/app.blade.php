@@ -149,8 +149,8 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown notification-dropdown">
-                    <a href="javascript:void(0);" class="nav-link dropdown-toggle position-relative" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="las la-bell"></i>
+                    <a href="{{ route('Order') }}" class="nav-link dropdown-toggle position-relative" id="order" ">
+                        <i class="las la-shopping-cart"></i>
                         <div class="blink">
                             <div class="circle"></div>
                         </div>

@@ -45,100 +45,120 @@
                                     <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
                                         <div class="widget-content widget-content-area br-6">
                                             <h5 class="table-header"><b>รายการสั่งซื้อ</b></h5>
-                                            
-                                            <div class="table-responsive mb-4">
-                                                <table id="dropdown-dt" class="table table-hover" style="width:100%">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>วันที่สั่งซื้อ</th>
-                                                            <th>เลขที่ใบสั่งซื้อ</th>
-                                                            <th>ยอดชำระ</th>
-                                                            <th>PV</th>
-                                                            <th>ชำระโดย</th>
-                                                            <th>สถานะ</th>
-                                                            <th>หมายเลขพัสดุ</th>
-                                                            <th>ACTION</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>2023/05/05</td>
-                                                            <td>BILL001</td>
-                                                            <td>฿ 1,550</td>
-                                                            <td>200</td>
-                                                            <td>กิ่งทองใบหยก</td>
-                                                            <td>
-                                                                <span class="badge badge-warning light">Pending</span>
-                                                            </td>
-                                                            <td>TRACK001</td>
-                                                            <td class="text-center">
-                                                                <div class="dropdown custom-dropdown">
-                                                                    <a class="dropdown-toggle font-20 text-primary"
-                                                                        href="view" role="button" data-toggle="dropdown"
-                                                                        aria-haspopup="true" aria-expanded="false">
-                                                                        <i class="las la-eye"></i>
-                                                                    </a>
-                                                                    <a class="dropdown-toggle font-20 text-primary"
-                                                                        href="delete" role="button" data-toggle="dropdown"
-                                                                        aria-haspopup="true" aria-expanded="false">
-                                                                        <i class="las la-trash-alt"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2023/05/05</td>
-                                                            <td>BILL002</td>
-                                                            <td>฿ 1,550</td>
-                                                            <td>200</td>
-                                                            <td>กิ่งทองใบหยก</td>
-                                                            <td>
-                                                                <span class="badge badge-warning light">Pending</span>
-                                                            </td>
-                                                            <td>TRACK001</td>
-                                                            <td class="text-center">
-                                                                <div class="dropdown custom-dropdown">
-                                                                    <a class="dropdown-toggle font-20 text-primary"
-                                                                        href="view" role="button" data-toggle="dropdown"
-                                                                        aria-haspopup="true" aria-expanded="false">
-                                                                        <i class="las la-eye"></i>
-                                                                    </a>
-                                                                    <a class="dropdown-toggle font-20 text-primary"
-                                                                        href="delete" role="button" data-toggle="dropdown"
-                                                                        aria-haspopup="true" aria-expanded="false">
-                                                                        <i class="las la-trash-alt"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2023/05/05</td>
-                                                            <td>BILL003</td>
-                                                            <td>฿ 1,550</td>
-                                                            <td>200</td>
-                                                            <td>กิ่งทองใบหยก</td>
-                                                            <td>
-                                                                <span class="badge badge-success-teal light">Success</span>
-                                                            </td>
-                                                            <td>TRACK001</td>
-                                                            <td class="text-center">
-                                                                <div class="dropdown custom-dropdown">
-                                                                    <a class="dropdown-toggle font-20 text-primary"
-                                                                        href="view" role="button" data-toggle="dropdown"
-                                                                        aria-haspopup="true" aria-expanded="false">
-                                                                        <i class="las la-eye"></i>
-                                                                    </a>
-                                                                    <a class="dropdown-toggle font-20 text-primary"
-                                                                        href="delete" role="button" data-toggle="dropdown"
-                                                                        aria-haspopup="true" aria-expanded="false">
-                                                                        <i class="las la-trash-alt"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <input class="form-control" type="date" value="yyyy-mm-dd"
+                                                            id="searchdate1"><label for="searchdate1">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                   
+                                                        <input class="form-control" type="date" value="yyyy-mm-dd"
+                                                            id="searchdate2"><label for="searchdate2">
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button type="button"
+                                                        class="btn btn-outline-success btn-rounded">FILTER</button>
+                                                </div>
                                             </div>
+                                        </div>
+                                        <div class="table-responsive mb-4">
+                                            <table id="dropdown-dt" class="table table-hover" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>วันที่สั่งซื้อ</th>
+                                                        <th>เลขที่ใบสั่งซื้อ</th>
+                                                        <th>ยอดชำระ</th>
+                                                        <th>PV</th>
+                                                        <th>ชำระโดย</th>
+                                                        <th>สถานะ</th>
+                                                        <th>หมายเลขพัสดุ</th>
+                                                        <th>ACTION</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>06/09/2023</td>
+                                                        <td>BILL001</td>
+                                                        <td>฿ 1,550</td>
+                                                        <td>200</td>
+                                                        <td>กิ่งทองใบหยก</td>
+                                                        <td>
+                                                            <span class="badge badge-warning light">Pending</span>
+                                                        </td>
+                                                        <td>TRACK001</td>
+                                                        <td class="text-center">
+                                                            <div class="dropdown custom-dropdown">
+                                                                <a class="dropdown-toggle font-20 text-primary"
+                                                                    href="view" role="button" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="las la-eye"></i>
+                                                                </a>
+                                                                <a class="dropdown-toggle font-20 text-primary"
+                                                                    href="delete" role="button" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="las la-trash-alt"></i>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>06/09/2023</td>
+                                                        <td>BILL002</td>
+                                                        <td>฿ 1,550</td>
+                                                        <td>200</td>
+                                                        <td>กิ่งทองใบหยก</td>
+                                                        <td>
+                                                            <span class="badge badge-warning light">Pending</span>
+                                                        </td>
+                                                        <td>TRACK002</td>
+                                                        <td class="text-center">
+                                                            <div class="dropdown custom-dropdown">
+                                                                <a class="dropdown-toggle font-20 text-primary"
+                                                                    href="view" role="button" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="las la-eye"></i>
+                                                                </a>
+                                                                <a class="dropdown-toggle font-20 text-primary"
+                                                                    href="delete" role="button" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="las la-trash-alt"></i>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>06/09/2023</td>
+                                                        <td>BILL003</td>
+                                                        <td>฿ 1,550</td>
+                                                        <td>200</td>
+                                                        <td>กิ่งทองใบหยก</td>
+                                                        <td>
+                                                            <span class="badge badge-success-teal light">Success</span>
+                                                        </td>
+                                                        <td>TRACK003</td>
+                                                        <td class="text-center">
+                                                            <div class="dropdown custom-dropdown">
+                                                                <a class="dropdown-toggle font-20 text-primary"
+                                                                    href="view" role="button" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="las la-eye"></i>
+                                                                </a>
+                                                                <a class="dropdown-toggle font-20 text-primary"
+                                                                    href="delete" role="button" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false">
+                                                                    <i class="las la-trash-alt"></i>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -148,6 +168,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- Main Container Ends -->
 @section('css')
