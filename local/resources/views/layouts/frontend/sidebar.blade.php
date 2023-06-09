@@ -46,7 +46,7 @@
                 </ul>
             </li>
             <li class="menu">
-                <a href="order.html" aria-expanded="false" class="dropdown-toggle">
+                <a href="{{ route('Order')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-clipboard-list"></i>
                         <span>ประวัติการสั่งซื้อ</span>

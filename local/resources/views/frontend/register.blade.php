@@ -177,8 +177,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="info-area col-md-12 text-right">
-                                                    <button type="reset" class="btn btn-info mr-2">
-                                                        <i class="las la-save"></i> บันทึก</button>
+                                                    <button type="submit" class="btn btn-info mr-2">
+                                                        <i class="las la-save"></i> ยืนยันข้อมูลการสมัคร</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -215,8 +215,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="info-area col-md-12 text-right">
-                                                    <button type="reset" class="btn btn-info mr-2">
-                                                        <i class="las la-save"></i></i> บันทึก</button>
+                                                    <button type="submit" class="btn btn-info mr-2">
+                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -310,8 +310,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="info-area col-md-12 text-right">
-                                                    <button type="reset" class="btn btn-info mr-2">
-                                                        <i class="las la-save"></i></i> บันทึก</button>
+                                                    <button type="submit" class="btn btn-info mr-2">
+                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -418,8 +418,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="info-area col-md-12 text-right">
-                                                    <button type="reset" class="btn btn-info mr-2">
-                                                        <i class="las la-save"></i></i> บันทึก</button>
+                                                    <button type="submit" class="btn btn-info mr-2">
+                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -507,8 +507,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="info-area col-md-12 text-right">
-                                                    <button type="reset" class="btn btn-info mr-2">
-                                                        <i class="las la-save"></i></i> บันทึก</button>
+                                                    <button type="submit" class="btn btn-info mr-2">
+                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button>
                                                 </div>
                                             </div>
                                         </div>
