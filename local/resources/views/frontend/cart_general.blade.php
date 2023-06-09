@@ -180,19 +180,19 @@
                                 <div class="widget-content widget-content-area text-center w-100 mt-4">
                                     <div class="pagination p1">
                                         <ul class="mx-auto">
-                                            <a href="#">
+                                            <a href="previous">
                                                 <li><i class="las la-angle-left"></i></li>
                                             </a>
-                                            <a class="is-active" href="#">
+                                            <a class="is-active" href="page">
                                                 <li>1</li>
                                             </a>
-                                            <a href="#">
+                                            <a href="page2">
                                                 <li>2</li>
                                             </a>
-                                            <a href="#">
+                                            <a href="page2">
                                                 <li>3</li>
                                             </a>
-                                            <a href="#">
+                                            <a href="next">
                                                 <li><i class="las la-angle-right"></i></li>
                                             </a>
                                         </ul>

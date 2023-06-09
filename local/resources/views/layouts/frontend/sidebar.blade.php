@@ -11,6 +11,14 @@
                 </a>
             </li>
             <li class="menu">
+                <a href="{{route('Register')}}" aria-expanded="false" class="dropdown-toggle" >
+                    <div class="">
+                        <i class="las la-user-plus"></i>
+                        <span>สมัครสมาชิก</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
                 <a href="{{route('home')}}"  aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-sitemap"></i>

@@ -56,7 +56,10 @@ Route::get('Order', function () {
 
   return view('frontend.order');
 })->name('Order');
+Route::get('Register', function () {
 
+  return view('frontend.register');
+})->name('Register');
 
 
 

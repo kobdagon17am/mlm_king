@@ -19,8 +19,7 @@
                     <div class="page-header">
                         <nav class="breadcrumb-one" aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="javascript:void(0);">ข่าวสารและกิจกรรม</a></li>
-                                {{-- <li class="breadcrumb-item active" aria-current="page"><span>Dashboard 2</span></li> --}}
+                                <li class="breadcrumb-item active" aria-current="page"> <span>ข่าวสารและกิจกรรม</span></li>
                             </ol>
                         </nav>
                     </div>
