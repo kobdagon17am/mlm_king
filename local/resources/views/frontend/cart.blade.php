@@ -4,6 +4,7 @@
     <link href="assets/css/ui-elements/pagination.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/elements/tooltip.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/apps/ecommerce.css" rel="stylesheet" type="text/css" />
+@endsection
 @section('content')
     <div id="content" class="main-content">
         <!--  Navbar Starts / Breadcrumb Area Starts -->
@@ -63,7 +64,7 @@
                                                         </p>
                                                     </td>
                                                     <td>
-                                                        <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput">
+                                                        <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput1">
                                                             <option value="1">1</option>
                                                             <option value="2">2</option>
                                                             <option value="3">3</option>
@@ -101,7 +102,7 @@
                                                         </p>
                                                     </td>
                                                     <td>
-                                                        <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput">
+                                                        <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput2">
                                                             <option value="1">1</option>
                                                             <option value="2">2</option>
                                                             <option value="3">3</option>
@@ -168,7 +169,7 @@
                                         </div>
                                     </div> --}}
                                     <div class="card-box">
-                                        <div class="border border-light p-3 mt-4 rounded mb-3">
+                                        <div class="border border-light p-3 mt-1 rounded mb-3">
                                             <h5 class="mb-3"><b>สรุปรายการสั่งซื้อ</b></h5>
                                             <div class="table-responsive">
                                                 <table class="table mb-0">

@@ -1,6 +1,6 @@
 @extends('layouts.frontend.app')
 @section('css')
-
+@endsection
 
 @section('content')
 <div id="content" class="main-content">
@@ -19,4 +19,6 @@
     </div>
     <!-- Main Body Ends -->
 </div>
+@endsection
+@section('js')
 @endsection

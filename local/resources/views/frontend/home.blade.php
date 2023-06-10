@@ -6,6 +6,7 @@
     <link href="{{ asset('plugins/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/basic-ui/custom_countdown.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/basic-ui/custom-carousel.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     <div id="content" class="main-content">
@@ -41,7 +42,7 @@
                             <div class="col-lg-4">
                                 <div class="media">
                                     <div class="mr-3">
-                                        <img src="assets/img/profile-16.jpg" alt="" class="avatar-md rounded-circle img-thumbnail">
+                                        <img src="assets/img/profile-16.jpg')}}" alt="" class="avatar-md rounded-circle img-thumbnail">
                                     </div>
                                     <div class="align-self-center media-body">
                                         <div class="text-muted">
@@ -120,17 +121,57 @@
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                     <h2 class="text-center"><b>โปรโมชั่นสินค้า</b></h2>
-                                    <h6 class="text-center"><span class="text-danger">รีบซื้อด่วน!
-                                            โปรโมชั่นเหลือเวลาแค่</span></h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <div id="promotionpic" class="carousel slide" data-ride="carousel">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="pic1" data-slide-to="0" class="active"></li>
+                                            <li data-target="pic2" data-slide-to="1"></li>
+                                            <li data-target="pic3" data-slide-to="2"></li>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img class="d-block w-100" src="assets/img/1.jpg" alt="First slide">
+                                                {{-- <div class="carousel-caption d-none d-sm-block">
+                                                    <h3>First label</h3>
+                                                    <h5>Nulla vitae elit libero, a pharetra augue mollis.</h5>
+                                                </div> --}}
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img class="d-block w-100" src="assets/img/3.jpg" alt="Second slide">
+                                                {{-- <div class="carousel-caption d-none d-sm-block">
+                                                    <h3>Second label</h3>
+                                                    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
+                                                </div> --}}
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img class="d-block w-100" src="assets/img/2.jpg" alt="Third slide">
+                                                {{-- <div class="carousel-caption d-none d-sm-block">
+                                                    <h3>Third label</h3>
+                                                    <h5>Praesent commodo cursus magna, vel scelerisque nisl.</h5>
+                                                </div> --}}
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#promotionpic" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#promotionpic" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <div id="nocolor" class="square-countdown no-color">
-                                <div class="days"><span class="count">21</span> <span class="text">วัน</span></div>
+                            <h6 class="text-center"><span class="text-danger">รีบซื้อด่วน!
+                                โปรโมชั่นเหลือเวลาแค่</span></h6>
+                            <div id="timer" class="square-countdown no-color">
+                                <div class="days"><span class="count">00</span> <span class="text">วัน</span></div>
                                 <div class="hours"><span class="count">00</span> <span class="text">ชม.</span></div>
-                                <div class="min"><span class="count">57</span> <span class="text">นาที</span></div>
-                                <div class="sec"><span class="count">10</span> <span class="text">วินาที</span></div>
+                                <div class="min"><span class="count">00</span> <span class="text">นาที</span></div>
+                                <div class="sec"><span class="count">00</span> <span class="text">วินาที</span></div>
                             </div>
                         </div>
                     </div>
@@ -141,17 +182,57 @@
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                     <h2 class="text-center"><b>โปรโมชั่นเปิดคลังใบหยก</b></h2>
-                                    <h6 class="text-center"><span class="text-danger">รีบซื้อด่วน!
-                                            โปรโมชั่นเหลือเวลาแค่</span></h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <div id="promotionpic1" class="carousel slide" data-ride="carousel">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="pic1" data-slide-to="0" class="active"></li>
+                                            <li data-target="pic2" data-slide-to="1"></li>
+                                            <li data-target="pic3" data-slide-to="2"></li>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img class="d-block w-100" src="{{asset('assets/img/1.jpg')}}" alt="First slide">
+                                                {{-- <div class="carousel-caption d-none d-sm-block">
+                                                    <h3>First label</h3>
+                                                    <h5>Nulla vitae elit libero, a pharetra augue mollis.</h5>
+                                                </div> --}}
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img class="d-block w-100" src="{{ asset('assets/img/3.jpg')}}" alt="Second slide">
+                                                {{-- <div class="carousel-caption d-none d-sm-block">
+                                                    <h3>Second label</h3>
+                                                    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
+                                                </div> --}}
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img class="d-block w-100" src="{{ asset('assets/img/2.jpg')}}" alt="Third slide">
+                                                {{-- <div class="carousel-caption d-none d-sm-block">
+                                                    <h3>Third label</h3>
+                                                    <h5>Praesent commodo cursus magna, vel scelerisque nisl.</h5>
+                                                </div> --}}
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#promotionpic1" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#promotionpic1" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <div id="nocolor" class="square-countdown no-color">
-                                <div class="days"><span class="count">21</span> <span class="text">วัน</span></div>
+                            <h6 class="text-center"><span class="text-danger">รีบซื้อด่วน!
+                                โปรโมชั่นเหลือเวลาแค่</span></h6>
+                            <div id="timersquare" class="square-countdown no-color">                              
+                                <div class="days"><span class="count">00</span> <span class="text">วัน</span></div>
                                 <div class="hours"><span class="count">00</span> <span class="text">ชม.</span></div>
-                                <div class="min"><span class="count">57</span> <span class="text">นาที</span></div>
-                                <div class="sec"><span class="count">10</span> <span class="text">วินาที</span></div>
+                                <div class="min"><span class="count">00</span> <span class="text">นาที</span></div>
+                                <div class="sec"><span class="count">00</span> <span class="text">วินาที</span></div>
                             </div>
                         </div>
                     </div>
@@ -160,7 +241,7 @@
             <div class="row mt-3">
                 <div class="col-md-4">
                     <div class="card">
-                        <img class="card-img-top img-fluid" src="assets/img/lightbox-7.jpg" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="{{ asset('assets/img/lightbox-7.jpg')}}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">This is a wider card with supporting text below as a
@@ -175,7 +256,7 @@
 
                 <div class="col-md-4">
                     <div class="card">
-                        <img class="card-img-top img-fluid" src="assets/img/lightbox-6.jpg" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="{{ asset('assets/img/lightbox-6.jpg')}}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">This is a wider card with supporting text below as a
@@ -190,7 +271,7 @@
 
                 <div class="col-md-4">
                     <div class="card">
-                        <img class="card-img-top img-fluid" src="assets/img/lightbox-5.jpg" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="{{ asset('assets/img/lightbox-5.jpg')}}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">This is a wider card with supporting text below as a
@@ -218,8 +299,9 @@
     </div>
 @endsection
 @section('js')
-    <script src="plugins/apex/apexcharts.min.js"></script>
-    <script src="plugins/flatpickr/flatpickr.js"></script>
-    <script src="assets/js/dashboard/dashboard_2.js"></script>
-    
+    <script src="{{ asset('plugins/apex/apexcharts.min.js')}}"></script>
+    <script src="{{ asset('plugins/flatpickr/flatpickr.js')}}"></script>
+    <script src="{{ asset('assets/js/dashboard/dashboard_2.js')}}"></script>
+    <script src="{{ asset('plugins/countdown/jquery.countdown.min.js')}}"></script>
+    <script src="{{ asset('assets/js/basicui/custom-countdown.js')}}"></script>
 @endsection

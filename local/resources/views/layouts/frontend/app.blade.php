@@ -7,8 +7,7 @@
     <title>Kingthong Baiyok</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}"/>
     <link href="{{ asset('assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
-    <script src="{{ asset('assets/js/loader.js') }}"></script>
-    <!-- Common Styles Starts -->
+        <!-- Common Styles Starts -->
     <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
     {{-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet"> --}}
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -390,7 +389,7 @@
     </script>
     <script src="assets/js/custom.js"></script>
     <!-- Common Script Ends -->
-
+    <script src="{{ asset('assets/js/loader.js') }}"></script>
 
 
     @yield('js')

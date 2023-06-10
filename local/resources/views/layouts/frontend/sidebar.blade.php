@@ -29,7 +29,7 @@
             <li class="menu">
                 <a href="{{route('home')}}"  aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <i class="las la-sitemap"></i>
+                        <i class="las la-handshake"></i>
                         <span>แนะนำตรง</span>
                     </div>
                 </a>
@@ -37,7 +37,7 @@
             <li class="menu">
                 <a href="{{route('home')}}"  aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <i class="las la-sitemap"></i>
+                        <i class="las la-coins"></i>
                         <span>โบนัส</span>
                     </div>
                 </a>
@@ -45,7 +45,7 @@
             <li class="menu">
                 <a href="#cart" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <i class="las la-cart-arrow-down"></i>
+                        <i class="las la-shopping-basket"></i>
                         <span>สั่งซื้อสินค้า</span>
                     </div>
                     <div>
@@ -64,7 +64,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('CartGeneral')}}"> สินค้าโปนโมชั่น </a>
+                        <a href="{{ route('CartGeneral')}}"> สินค้าโปรโมชั่น </a>
                     </li>
                 </ul>
             </li>
@@ -72,8 +72,8 @@
             <li class="menu">
                 <a href="{{ route('Order')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <i class="las la-clipboard-list"></i>
-                        <span>แจงยอดบิลโฮ</span>
+                        <i class="las la-clipboard-check"></i>
+                        <span>แจงยอด/บิลโฮล</span>
                     </div>
                 </a>
             </li>
@@ -89,7 +89,7 @@
             <li class="menu">
                 <a href="#stock" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <i class="las la-boxes"></i>
+                        <i class="las la-box-open"></i>
                         <span>สต๊อกสินค้า</span>
                     </div>
                     <div>
