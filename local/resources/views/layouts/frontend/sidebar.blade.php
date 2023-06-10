@@ -27,6 +27,22 @@
                 </a>
             </li>
             <li class="menu">
+                <a href="{{route('home')}}"  aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <i class="las la-sitemap"></i>
+                        <span>แนะนำตรง</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
+                <a href="{{route('home')}}"  aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <i class="las la-sitemap"></i>
+                        <span>โบนัส</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
                 <a href="#cart" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-cart-arrow-down"></i>
@@ -38,13 +54,30 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="cart" data-parent="#accordionExample">
                     <li>
-                        <a href="{{ route('CartGeneral')}}"> สินค้าทั่วไป </a>
+                        <a href="{{ route('CartGeneral')}}"> สินค้าเพื่อสุขภาพ </a>
                     </li>
                     <li>
-                        <a href="{{ route('CartGeneral')}}"> สินค้าปุ๋ย </a>
+                        <a href="{{ route('CartGeneral')}}"> สินค้าเกษตร </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('CartGeneral')}}"> สินค้าอื่นๆ </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('CartGeneral')}}"> สินค้าโปนโมชั่น </a>
                     </li>
                 </ul>
             </li>
+
+            <li class="menu">
+                <a href="{{ route('Order')}}" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <i class="las la-clipboard-list"></i>
+                        <span>แจงยอดบิลโฮ</span>
+                    </div>
+                </a>
+            </li>
+
             <li class="menu">
                 <a href="{{ route('Order')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
