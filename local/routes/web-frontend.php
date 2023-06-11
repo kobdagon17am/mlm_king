@@ -60,6 +60,18 @@ Route::get('Register', function () {
 
   return view('frontend.register');
 })->name('Register');
+Route::get('ProfileUpload', function () {
+
+  return view('frontend.profile_upload');
+})->name('ProfileUpload');
+Route::get('Document', function () {
+
+  return view('frontend.doc');
+})->name('Document');
+Route::get('ChangePassword', function () {
+
+  return view('frontend.change_pwd');
+})->name('ChangePassword');
 
 
 

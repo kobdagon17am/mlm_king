@@ -60,7 +60,7 @@
                         <a href="{{ route('CartGeneral')}}"> สินค้าเกษตร </a>
                     </li>
                     <li>
-                        <a href="{{ route('CartGeneral')}}"> สินค้าอื่นๆ </a>
+                        <a href="{{ route('CartGeneral')}}"> สินค้าอื่น ๆ </a>
                     </li>
 
                     <li>

@@ -464,7 +464,7 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-form-label">
-                                                        <label for="bankbranch">ประเภทบัญชี
+                                                        <label for="banktype">ประเภทบัญชี
                                                             <span class="text-danger">* </span></label>
                                                         <div class="radio-inline">
                                                             <label class="radio radio-success">
@@ -482,7 +482,7 @@
                                                         <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button> --}}
                                                 </div>
                                             </div>
-                                            <h6 class="font-16 mb-4"><b>ผู้สือทอดผลประโยชน์</b></h6>
+                                            <h6 class="font-16 mb-4"><b>ผู้สืบทอดผลประโยชน์</b></h6>
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -520,7 +520,7 @@
                                                 <div class="col-md-6">
                                                     <div class="widget-header">
                                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                            <label for="id1">อัปโหลดภาพถ่ายบัตรประชาชน
+                                                            <label for="idcard_image">อัพโหลดภาพถ่ายบัตรประชาชน
                                                                 <span class="text-danger">* </span></label>
                                                         </div>
                                                     </div>
@@ -536,13 +536,13 @@
                                                     <div class="widget-header">
 
                                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                            <label for="id1">อัปโหลดภาพหน้าตรงพร้อมบัตรประชาชน
+                                                            <label for="user_idcard_image">อัพโหลดภาพหน้าตรงพร้อมบัตรประชาชน
                                                                 <span class="text-danger">* </span></label>
                                                         </div>
 
                                                     </div>
                                                     <div class="upload text-center img-thumbnail">
-                                                        <input type="file" id="idcard_image" class="dropify"
+                                                        <input type="file" id="user_idcard_image" class="dropify"
                                                             data-default-file="{{ asset('assets/img/user_card.jpg') }}"
                                                             data-max-file-size="2M" />
                                                         {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
@@ -550,16 +550,17 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <p></p>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="widget-header">
                                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                            <label for="id1">อัปโหลดภาพถ่ายหน้าตรง
+                                                            <label for="user_image">อัพโหลดภาพถ่ายหน้าตรง
                                                                 <span class="text-danger">* </span></label>
                                                         </div>
                                                     </div>
                                                     <div class="upload text-center img-thumbnail">
-                                                        <input type="file" id="idcard_image" class="dropify"
+                                                        <input type="file" id="user_image" class="dropify"
                                                             data-default-file="{{ asset('assets/img/user.png') }}"
                                                             data-max-file-size="2M" />
                                                         {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
@@ -569,12 +570,12 @@
                                                 <div class="col-md-6">
                                                     <div class="widget-header">
                                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                            <label for="id1">อัปโหลดภาพถ่ายหน้าบัญชีธนาคาร
+                                                            <label for="bookbank_image">อัพโหลดภาพถ่ายหน้าบัญชีธนาคาร
                                                                 <span class="text-danger">* </span></label>
                                                         </div>
                                                     </div>
                                                     <div class="upload text-center img-thumbnail">
-                                                        <input type="file" id="idcard_image" class="dropify"
+                                                        <input type="file" id="bookbank_image" class="dropify"
                                                             data-default-file="{{ asset('assets/img/BookBank.png') }}"
                                                             data-max-file-size="2M" />
                                                         {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
@@ -582,9 +583,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="info-area col-md-12 text-right">
-                                                <button type="submit" class="btn btn-info mr-2">
-                                                    <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button>
+                                            <div class="info-area col-md-12 text-center">
+                                                <button type="submit" class="btn btn-info ">
+                                                    <i class="las la-save"></i> ยืนยันข้อมูลการสมัคร</button>
                                             </div>
                                         </div>
                                     </div>

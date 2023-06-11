@@ -82,7 +82,7 @@
                                                     </td>
                                                     <td>
                                                         <a href="javascript:void(0);" class="action-icon text-center">
-                                                            <button type="button" class="btn btn-danger font-15"><i
+                                                            <button type="delete" class="btn btn-danger font-15"><i
                                                                     class="lar la-trash-alt"></i></button></a>
                                                     </td>
                                                 </tr>
@@ -120,7 +120,7 @@
                                                     </td>
                                                     <td>
                                                         <a href="javascript:void(0);" class="action-icon text-center">
-                                                            <button type="button" class="btn btn-danger font-15"><i
+                                                            <button type="delete" class="btn btn-danger font-15"><i
                                                                     class="lar la-trash-alt"></i></button></a>
                                                     </td>
                                                 </tr>

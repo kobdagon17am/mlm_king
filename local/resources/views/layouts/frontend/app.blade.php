@@ -219,13 +219,13 @@
                 </li>
                 <li class="nav-item dropdown user-profile-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <img src="assets/img/profile-16.jpg" alt="avatar">
+                        <img class="rounded-circle img-thumbnail" src="assets/img/profile-16.jpg" alt="avatar">
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                         <div class="nav-drop is-account-dropdown">
                             <div class="inner">
                                 <div class="nav-drop-body account-items pb-0">
-                                    <a id="profile-link" class="account-item" href="pages_profile.html">
+                                    <a id="profile-link" class="account-item" href="{{ asset('Profile')}}">
                                         <div class="media align-center">
                                             <div class="media-left">
                                                 <div class="image">
@@ -242,7 +242,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="account-item" href="pages_profile.html">
+                                    <a class="account-item" href="{{ asset('ProfileUpload')}}">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
                                                 <i class="las la-image font-20"></i>
@@ -256,14 +256,14 @@
                                     <a class="account-item" href="pages_profile.html">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
-                                                <i class="las la-image font-20"></i>
+                                                <i class="las la-exchange-alt font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
                                                 <h6 class="font-13 mb-0 strong">สลับบัญชี</h6>
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="account-item" href="pages_timeline.html">
+                                    <a class="account-item" href="{{ asset('Profile')}}">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
                                                 <i class="las la-edit font-20"></i>
@@ -273,7 +273,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="account-item settings">
+                                    <a class="account-item" settings href="{{ asset('Document')}}">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
                                                 <i class="las la-clipboard font-20"></i>
@@ -283,10 +283,10 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="account-item" href="auth_lock_screen_3.html">
+                                    <a class="account-item" href="{{ asset('ChangePassword')}}">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
-                                                <i class="lab la-expeditedssl font-20"></i>
+                                                <i class="las la-key font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
                                                 <h6 class="font-13 mb-0 strong">แก้ไขรหัส Login</h6>
