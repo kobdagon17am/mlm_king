@@ -72,7 +72,10 @@ Route::get('ChangePassword', function () {
 
   return view('frontend.change_pwd');
 })->name('ChangePassword');
+Route::get('ContactUs', function () {
 
+  return view('frontend.contact');
+})->name('ContactUs');
 
 
 // BEGIN eWallet withdraw

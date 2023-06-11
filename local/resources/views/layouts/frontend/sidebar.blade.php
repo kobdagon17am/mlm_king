@@ -134,7 +134,7 @@
                 </ul>
             </li>
             <li class="menu">
-                <a href="contact.html" aria-expanded="false" class="dropdown-toggle">
+                <a href="{{ route('ContactUs')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="lab la-telegram-plane"></i>
                         <span>Contact Us</span>
