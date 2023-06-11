@@ -15,7 +15,7 @@
                         <div class="page-header">
                             <nav class="breadcrumb-one" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item active" aria-current="page"> <span>Profile</span></li>
+                                    <li class="breadcrumb-item active" aria-current="page"> <span>ข้อมูลส่วนตัว</span></li>
                                 </ol>
                             </nav>
                         </div>

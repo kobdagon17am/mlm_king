@@ -1,6 +1,8 @@
 @extends('layouts.frontend.app')
 @section('css')
     <link href="{{ asset('assets/css/pages/profile.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="plugins/dropify/dropify.min.css">
+    <link href="{{ asset('assets/css/pages/profile_edit.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     <div id="content" class="main-content">
@@ -27,7 +29,7 @@
         <!-- Main Body Starts -->
         <div class="layout-px-spacing">
             <div class="row layout-spacing pt-4">
-                <div class="col-xl-3 col-lg-4 col-md-4  mb-4">
+                {{-- <div class="col-xl-3 col-lg-4 col-md-4  mb-4">
                     <div class="profile-left">
                         <div class="image-area">
                             <img class="user-image" src="{{ asset('assets/img/user.png') }}">
@@ -36,8 +38,8 @@
                             </a>
                         </div>
                         <div class="info-area">
-                            {{-- <h5><b>กิ่งทองใบหยก (A001)</b></h5>
-                            <p>GOLD</p> --}}
+                            <h5><b>กิ่งทองใบหยก (A001)</b></h5>
+                            <p>GOLD</p>
                         </div>
                         <div class="profile-tabs">
                             <div class="nav flex-column nav-pills mb-sm-0 mb-3 mx-auto" id="v-border-pills-tab"
@@ -57,14 +59,14 @@
                                 <a class="nav-link" id="v-border-pills-orders-tab" data-toggle="pill"
                                     href="#v-border-pills-orders" role="tab" aria-controls="v-border-pills-orders"
                                     aria-selected="false"><i class="las la-donate"></i> ข้อมูลบัญชี</a>
-                                {{-- <a class="nav-link" id="v-border-pills-settings-tab" data-toggle="pill"
+                                <a class="nav-link" id="v-border-pills-settings-tab" data-toggle="pill"
                                     href="#v-border-pills-settings" role="tab" aria-controls="v-border-pills-settings"
-                                    aria-selected="false">อื่น ๆ</a> --}}
+                                    aria-selected="false">อื่น ๆ</a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-9 col-lg-8 col-md-8">
+                </div> --}}
+                <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="row tab-area-content">
                         <div class="col-xl-12 col-lg-12 col-md-12 mb-4">
                             <div class="tab-content" id="v-border-pills-tabContent">
@@ -72,7 +74,53 @@
                                     aria-labelledby="v-border-pills-home-tab">
                                     <div class="media">
                                         <div class="profile-shadow w-100">
-                                            <h5 class="font-16 mb-3"><b>ข้อมูลพื้นฐาน (GENERAL INFORMATION)</b></h5>
+                                            <h5 class="font-16 mb-3"><b>กรอกข้อมูลลงทะเบียนสมาชิกใหม่</b></h5>
+                                            <hr>
+                                            {{-- <h6 class="font-16 mb-3"><b>ข้อมูลสายงาน (SPONSOR/UPLINE)</b></h6> --}}
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="sponsor">Sponsor
+                                                            <span class="text-danger">* </span></label>
+                                                        <input type="text" class="form-control" id="sponsor"
+                                                            placeholder="Sponsor">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="upline_id">Upline
+                                                            <span class="text-danger">* </span></label>
+                                                        <input type="text" class="form-control" id="upline_id"
+                                                            placeholder="Upline">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="side">Side
+                                                            <span class="text-danger">* </span></label>
+                                                        <input type="text" class="form-control" id="side"
+                                                            placeholder="Side">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="Prefix">Business Location
+                                                            <span class="text-danger">* </span></label>
+                                                        <select class="form-control" id="business_location">
+                                                            <option>Cambodia</option>
+                                                            <option>Laos</option>
+                                                            <option>Myanmar</option>
+                                                            <option>Thailand</option>
+                                                            <option>Vietnam</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="info-area col-md-12 text-right">
+                                                    {{-- <button type="submit" class="btn btn-info mr-2">
+                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button> --}}
+                                                </div>
+                                            </div>
+                                            {{-- <h5 class="font-16 mb-3">ข้อมูลพื้นฐาน (GENERAL INFORMATION)</h5> --}}
                                             <div class="row">
                                                 <div class="col-md-2">
                                                     <div class="form-group">
@@ -177,56 +225,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="info-area col-md-12 text-right">
-                                                    <button type="submit" class="btn btn-info mr-2">
-                                                        <i class="las la-save"></i> ยืนยันข้อมูลการสมัคร</button>
+                                                    {{-- <button type="submit" class="btn btn-info mr-2">
+                                                        <i class="las la-save"></i> ยืนยันข้อมูลการสมัคร</button> --}}
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="v-border-pills-team" role="tabpanel"
-                                    aria-labelledby="v-border-pills-team-tab">
-                                    <div class="media">
-                                        <div class="profile-shadow w-100">
-                                            <h5 class="font-16 mb-3"><b>ข้อมูลสายงาน (SPONSOR/UPLINE)</b></h5>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="sponsor">Sponsor
-                                                            <span class="text-danger"> </span></label>
-                                                        <input type="text" class="form-control" id="sponsor"
-                                                            placeholder="Sponsor">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="upline">Upline
-                                                            <span class="text-danger"> </span></label>
-                                                        <input type="text" class="form-control" id="upline"
-                                                            placeholder="Upline">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="side">Side
-                                                            <span class="text-danger"> </span></label>
-                                                        <input type="text" class="form-control" id="side"
-                                                            placeholder="Side">
-                                                    </div>
-                                                </div>
-                                                <div class="info-area col-md-12 text-right">
-                                                    <button type="submit" class="btn btn-info mr-2">
-                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="v-border-pills-work" role="tabpanel"
-                                    aria-labelledby="v-border-pills-work-tab">
-                                    <div class="media">
-                                        <div class="profile-shadow w-100">
-                                            <h5 class="font-16 mb-3"><b>ที่อยู่ตามบัตรประชาชน (ADDRESS)</b></h5>
+                                            <h6 class="font-16 mb-3"><b>ที่อยู่ตามบัตรประชาชน (ADDRESS)</b></h6>
+                                            <hr>
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <div class="form-group">
@@ -310,32 +314,28 @@
                                                     </div>
                                                 </div>
                                                 <div class="info-area col-md-12 text-right">
-                                                    <button type="submit" class="btn btn-info mr-2">
-                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button>
+                                                    {{-- <button type="submit" class="btn btn-info mr-2">
+                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button> --}}
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="v-border-pills-products" role="tabpanel"
-                                    aria-labelledby="v-border-pills-work-tab">
-                                    <div class="media">
-                                        <div class="profile-shadow w-100">
-                                            <h5 class="font-16 mb-3"><b>ที่อยู่สำหรับการติดต่อและจัดส่งผลิตภัณฑ์ถึงบ้าน
+                                            <h6 class="font-16 mb-3"><b>ที่อยู่สำหรับการติดต่อและจัดส่งผลิตภัณฑ์ถึงบ้าน
                                                     (DELIVERY ADDRESS)</b>
-                                            </h5>
+                                            </h6>
+                                            <hr>
                                             <div class="row">
-                                                {{-- <div class="col-md-12">
+                                                <div class="col-md-12">
                                                     <div class="form-group row">
-                                                        <div class="col-9 col-form-label">
+                                                        <div class="col-12 col-form-label">
                                                             <div class="checkbox-inline">
                                                                 <label class="checkbox checkbox-success ">
-                                                                    <input type="checkbox" name="deliveryaddress">
-                                                                    <span></span>ใช้ที่อยู่ตามบัตรประชาชน</label>
+                                                                    <input type="checkbox" class="p-2"
+                                                                        name="copy_card_address">
+                                                                    <span class="ml-2">
+                                                                        ที่อยู่ตามบัตรประชาชน</span></label>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div> --}}
+                                                </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="no1">บ้านเลขที่
@@ -418,18 +418,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="info-area col-md-12 text-right">
-                                                    <button type="submit" class="btn btn-info mr-2">
-                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button>
+                                                    {{-- <button type="submit" class="btn btn-info mr-2">
+                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button> --}}
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="v-border-pills-orders" role="tabpanel"
-                                    aria-labelledby="v-border-pills-work-tab">
-                                    <div class="media">
-                                        <div class="profile-shadow w-100">
-                                            <h5 class="font-16 mb-3"><b>ข้อมูลบัญชี (ACCOUNT DATA)</b></h5>
+                                            <h6 class="font-16 mb-4"><b>ข้อมูลบัญชี (ACCOUNT DATA)</b></h6>
+                                            <hr>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -482,6 +476,15 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="info-area col-md-12 text-right">
+                                                    {{-- <button type="submit" class="btn btn-info mr-2">
+                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button> --}}
+                                                </div>
+                                            </div>
+                                            <h6 class="font-16 mb-4"><b>ผู้สือทอดผลประโยชน์</b></h6>
+                                            <hr>
+                                            <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="benefitname">ชื่อ-นามสกุล ผู้รับผลประโยชน์
@@ -507,9 +510,81 @@
                                                     </div>
                                                 </div>
                                                 <div class="info-area col-md-12 text-right">
-                                                    <button type="submit" class="btn btn-info mr-2">
-                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button>
+                                                    {{-- <button type="submit" class="btn btn-info mr-2">
+                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button> --}}
                                                 </div>
+                                            </div>
+                                            <h6 class="font-16 mb-4"><b>เอกสารสำหรับการสมัคร</b></h6>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="widget-header">
+                                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                                            <label for="id1">อัปโหลดภาพถ่ายบัตรประชาชน
+                                                                <span class="text-danger">* </span></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="upload text-center img-thumbnail">
+                                                        <input type="file" id="idcard_image" class="dropify"
+                                                            data-default-file="{{ asset('assets/img/idcard.png') }}"
+                                                            data-max-file-size="2M" />
+                                                        {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
+                                                            อัปโหลดรูปภาพ</p> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="widget-header">
+
+                                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                                            <label for="id1">อัปโหลดภาพหน้าตรงพร้อมบัตรประชาชน
+                                                                <span class="text-danger">* </span></label>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="upload text-center img-thumbnail">
+                                                        <input type="file" id="idcard_image" class="dropify"
+                                                            data-default-file="{{ asset('assets/img/user_card.jpg') }}"
+                                                            data-max-file-size="2M" />
+                                                        {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
+                                                            อัปโหลดรูปภาพ</p> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="widget-header">
+                                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                                            <label for="id1">อัปโหลดภาพถ่ายหน้าตรง
+                                                                <span class="text-danger">* </span></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="upload text-center img-thumbnail">
+                                                        <input type="file" id="idcard_image" class="dropify"
+                                                            data-default-file="{{ asset('assets/img/user.png') }}"
+                                                            data-max-file-size="2M" />
+                                                        {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
+                                                            อัปโหลดรูปภาพ</p> --}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="widget-header">
+                                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                                            <label for="id1">อัปโหลดภาพถ่ายหน้าบัญชีธนาคาร
+                                                                <span class="text-danger">* </span></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="upload text-center img-thumbnail">
+                                                        <input type="file" id="idcard_image" class="dropify"
+                                                            data-default-file="{{ asset('assets/img/BookBank.png') }}"
+                                                            data-max-file-size="2M" />
+                                                        {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
+                                                            อัปโหลดรูปภาพ</p> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="info-area col-md-12 text-right">
+                                                <button type="submit" class="btn btn-info mr-2">
+                                                    <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button>
                                             </div>
                                         </div>
                                     </div>
@@ -521,4 +596,9 @@
             </div>
         </div>
     </div>
+    </div>
+@endsection
+@section('js')
+    <script src="{{ asset('plugins/dropify/dropify.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/profile_edit.js') }}"></script>
 @endsection
