@@ -287,6 +287,8 @@
 
 
             </div>
+
+ 
         </div>
 
 
@@ -296,6 +298,7 @@
             <i class="las la-angle-up"></i>
         </div>
         <!-- Arrow Ends -->
+        
     </div>
 @endsection
 @section('js')

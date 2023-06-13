@@ -74,76 +74,152 @@
                                     <div class="media">
                                         <div class="profile-shadow w-100">
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="widget-header">
-                                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                            <label for="idcard_image">อัพโหลดภาพถ่ายบัตรประชาชน
-                                                                <span class="text-danger">* </span></label>
+                                                <div class="col-md-6 p-2">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h6><b>อัพโหลดภาพถ่ายบัตรประชาชน</b>
+                                                                <span class="text-danger">* </span>
+                                                            </h6>
                                                         </div>
-                                                    </div>
-                                                    <div class="upload text-center img-thumbnail">
-                                                        <input type="file" id="idcard_image" class="dropify"
-                                                            data-default-file="{{ asset('assets/img/idcard.png') }}"
-                                                            data-max-file-size="2M" />
-                                                        {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
-                                                            อัปโหลดรูปภาพ</p> --}}
+                                                        <div class="upload text-center img-thumbnail">
+                                                            <input type="file" id="idcard_image" class="dropify"
+                                                                data-default-file="{{ asset('assets/img/idcard.png') }}"
+                                                                data-max-file-size="2M">
+                                                            <div class="info-area col-md-12 text-center p-2">
+                                                                <button type="submit" class="btn btn-info">
+                                                                    <i class="las la-save"></i>
+                                                                    อัพโหลดรูปภาพ</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="widget-header">
-
-                                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                            <label for="user_idcard_image">อัพโหลดภาพหน้าตรงพร้อมบัตรประชาชน
-                                                                <span class="text-danger">* </span></label>
+                                                <div class="col-md-6 p-2">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h6><b>อัพโหลดภาพหน้าตรงพร้อมบัตรประชาชน</b>
+                                                                <span class="text-danger">* </span>
+                                                            </h6>
                                                         </div>
-
-                                                    </div>
-                                                    <div class="upload text-center img-thumbnail">
-                                                        <input type="file" id="user_idcard_image" class="dropify"
-                                                            data-default-file="{{ asset('assets/img/user_card.jpg') }}"
-                                                            data-max-file-size="2M" />
-                                                        {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
-                                                            อัปโหลดรูปภาพ</p> --}}
+                                                        <div class="upload text-center img-thumbnail">
+                                                            <input type="file" id="user_idcard_image" class="dropify"
+                                                                data-default-file="{{ asset('assets/img/user_card.jpg') }}"
+                                                                data-max-file-size="2M">
+                                                            <div class="info-area col-md-12 text-center p-2">
+                                                                <button type="submit" class="btn btn-info">
+                                                                    <i class="las la-save"></i>
+                                                                    อัพโหลดรูปภาพ</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <p></p>
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="widget-header">
-                                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                            <label for="user_image">อัพโหลดภาพถ่ายหน้าตรง
-                                                                <span class="text-danger">* </span></label>
+                                                <div class="col-md-6 p-2">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h6><b>อัพโหลดภาพถ่ายหน้าตรง</b>
+                                                                <span class="text-danger">* </span>
+                                                            </h6>
                                                         </div>
-                                                    </div>
-                                                    <div class="upload text-center img-thumbnail">
-                                                        <input type="file" id="user_image" class="dropify"
-                                                            data-default-file="{{ asset('assets/img/user.png') }}"
-                                                            data-max-file-size="2M" />
-                                                        {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
-                                                            อัปโหลดรูปภาพ</p> --}}
+                                                        <div class="upload text-center img-thumbnail">
+                                                            <input type="file" id="user_image" class="dropify"
+                                                                data-default-file="{{ asset('assets/img/user.png') }}"
+                                                                data-max-file-size="2M">
+                                                            <div class="info-area col-md-12 text-center p-2">
+                                                                <button type="submit" class="btn btn-info">
+                                                                    <i class="las la-save"></i>
+                                                                    อัพโหลดรูปภาพ</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="widget-header">
-                                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                            <label for="bookbank_image">อัพโหลดภาพถ่ายหน้าบัญชีธนาคาร
-                                                                <span class="text-danger">* </span></label>
+                                                <div class="col-md-6 p-2">
+
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h6><b>อัพโหลดภาพถ่ายหน้าบัญชีธนาคาร</b>
+                                                                <span class="text-danger">* </span>
+                                                            </h6>
                                                         </div>
-                                                    </div>
-                                                    <div class="upload text-center img-thumbnail">
-                                                        <input type="file" id="bookbank_image" class="dropify"
-                                                            data-default-file="{{ asset('assets/img/BookBank.png') }}"
-                                                            data-max-file-size="2M" />
-                                                        {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
-                                                            อัปโหลดรูปภาพ</p> --}}
+                                                        <div class="upload text-center img-thumbnail">
+                                                            <input type="file" id="bookbank_image" class="dropify"
+                                                                data-default-file="{{ asset('assets/img/BookBank.png') }}"
+                                                                data-max-file-size="2M">
+                                                            <div class="info-area col-md-12 text-center p-2">
+                                                                <button type="submit" class="btn btn-info">
+                                                                    <i class="las la-save"></i>
+                                                                    อัพโหลดรูปภาพ</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <p></p>
-                                            <div class="info-area col-md-12 text-center">
-                                                <button type="submit" class="btn btn-info ">
-                                                    <i class="las la-save"></i> ยืนยันข้อมูลการสมัคร</button>
+                                            <div class="row">
+                                                <div class="col-md-12 p-2">
+                                                    <div class="card">
+                                                        <div class="widget-content widget-content-area br-6">
+                                                            <h5 class="table-header"><b>สถานะเอกสาร</b></h5>
+                                                            <div class="table-responsive mb-4">
+                                                                <table id="ordertable" class="table table-hover"
+                                                                    style="width:100%">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>วันที่สมัคร</th>
+                                                                            <th>เอกสาร</th>
+                                                                            <th>สถานะ</th>
+                                                                            <th>รายละเอียด</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>06/09/2023</td>
+                                                                            <td>ภาพถ่ายหน้าตรง</td>
+                                                                            <td>
+                                                                                <span class="badge badge-info light">กำลังดำเนินการ</span>
+                                                                            </td>
+                                                                            <td>---</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>06/09/2023</td>
+                                                                            <td>ภาพถ่ายหน้าตรง</td>
+                                                                            <td>
+                                                                                <span class="badge badge-success-teal light">สำเร็จ</span>
+                                                                            </td>
+                                                                            <td>---</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>06/09/2023</td>
+                                                                            <td>ภาพถ่ายหน้าตรง</td>
+                                                                            <td>
+                                                                                <span class="badge badge-warning light">ไม่สำเร็จ</span>
+                                                                            </td>
+                                                                            <td>---</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>06/09/2023</td>
+                                                                            <td>ภาพถ่ายหน้าตรง</td>
+                                                                            <td>
+                                                                                <span class="badge badge-danger light">ยกเลิก</span>
+                                                                            </td>
+                                                                            <td>---</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                   
+                                                                        
+                                                                    
+                                                                </table>
+                                                                <p class="text-danger" style="font-size: 13px">
+                                                                    *กรณีเอกสารไม่ผ่านการอนุมัติ
+                                                                    สามารถส่งเอกสารเพิ่มเติมได้ โดยการแนบไฟล์เอกสารด้านบน
+                                                                    ทางทีมงานจะรีบดำเนินการตรวจสอบให้ภายใน 1-2 วันทำการค่ะ
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>

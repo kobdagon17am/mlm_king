@@ -242,6 +242,26 @@
                                             </div>
                                         </div>
                                     </a>
+                                    <a class="account-item" href="pages_profile.html">
+                                        <div class="media align-center">
+                                            <div class="icon-wrap">
+                                                <i class="las la-exchange-alt font-20"></i>
+                                            </div>
+                                            <div class="media-content ml-3">
+                                                <h6 class="font-13 mb-0 strong">สลับบัญชี</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="account-item" href="pages_profile.html">
+                                        <div class="media align-center">
+                                            <div class="icon-wrap">
+                                                <i class="las la-money-check font-20"></i>
+                                            </div>
+                                            <div class="media-content ml-3">
+                                                <h6 class="font-13 mb-0 strong">โค้ดคูปอง</h6>
+                                            </div>
+                                        </div>
+                                    </a>
                                     <a class="account-item" href="{{ asset('ProfileUpload')}}">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
@@ -253,16 +273,7 @@
                                         </div>
                                     </a>
 
-                                    <a class="account-item" href="pages_profile.html">
-                                        <div class="media align-center">
-                                            <div class="icon-wrap">
-                                                <i class="las la-exchange-alt font-20"></i>
-                                            </div>
-                                            <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">สลับบัญชี</h6>
-                                            </div>
-                                        </div>
-                                    </a>
+                                    
                                     <a class="account-item" href="{{ asset('Profile')}}">
                                         <div class="media align-center">
                                             <div class="icon-wrap">

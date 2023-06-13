@@ -7,7 +7,7 @@
 @section('content')
 
     <!--  Main Container Starts  -->
-    <div class="main-container" id="container">
+    
         <!--  Content Area Starts  -->
         <div id="content" class="main-content">
             <!--  Navbar Starts / Breadcrumb Area  -->
@@ -91,7 +91,7 @@
                                                             <td>200</td>
                                                             <td>กิ่งทองใบหยก</td>
                                                             <td>
-                                                                <span class="badge badge-warning light">Pending</span>
+                                                                <span class="badge badge-danger light">ยกเลิก</span>
                                                             </td>
                                                             <td>TRACK001</td>
                                                             <td class="text-center">
@@ -116,7 +116,32 @@
                                                             <td>200</td>
                                                             <td>กิ่งทองใบหยก</td>
                                                             <td>
-                                                                <span class="badge badge-warning light">Pending</span>
+                                                                <span class="badge badge-warning light">ไม่สำเร็จ</span>
+                                                            </td>
+                                                            <td>TRACK002</td>
+                                                            <td class="text-center">
+                                                                <div class="dropdown custom-dropdown">
+                                                                    <a class="dropdown-toggle font-20 text-primary"
+                                                                        href="view" role="button" data-toggle="dropdown"
+                                                                        aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="las la-eye"></i>
+                                                                    </a>
+                                                                    <a class="dropdown-toggle font-20 text-primary"
+                                                                        href="delete" role="button" data-toggle="dropdown"
+                                                                        aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="las la-trash-alt"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>06/09/2023</td>
+                                                            <td>BILL002</td>
+                                                            <td>฿ 1,550</td>
+                                                            <td>200</td>
+                                                            <td>กิ่งทองใบหยก</td>
+                                                            <td>
+                                                                <span class="badge badge-info light">กำลังดำเนินการ</span>
                                                             </td>
                                                             <td>TRACK002</td>
                                                             <td class="text-center">
@@ -141,7 +166,7 @@
                                                             <td>200</td>
                                                             <td>กิ่งทองใบหยก</td>
                                                             <td>
-                                                                <span class="badge badge-success-teal light">Success</span>
+                                                                <span class="badge badge-success-teal light">สำเร็จ</span>
                                                             </td>
                                                             <td>TRACK003</td>
                                                             <td class="text-center">
@@ -192,8 +217,8 @@
                 </div>
             </div>
         </div>
-    </div>
-
+    
+    @endsection
     <!-- Main Container Ends -->
-@section('css')
+@section('js')
 @endsection
