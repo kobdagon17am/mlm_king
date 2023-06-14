@@ -29,7 +29,157 @@
         <p></p>
         <div class="layout-px-spacing text">
             <div class="row layout-spacing pt-4">
-                <div class="col-md-6">
+                <div class="col-md-6 md-2">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="media align-center">
+                                <div class="media-content ml-3">
+                                    <u>
+                                        <h5 class="font-16 mb-0 strong">ติดต่อเจ้าหน้าที่</h5>
+                                    </u>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="media align-center">
+                                <div class="icon-wrap">
+                                    <i class="las la-bullhorn font-20"></i>
+                                </div>
+                                <div class="media-content ml-3">
+                                    <h3 class="text-muted font-13 mb-0">บริษัท พียู เน็ตเวิร์ค จำกัด</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="media align-center">
+                                <div class="icon-wrap">
+                                    <i class="las la-route font-20"></i>
+                                </div>
+                                <div class="media-content ml-3">
+                                    <h3 class="text-muted font-13 mb-0">169/97-98 หมู่ 3 ตำบลคูคต อำเภอลำลูกกา
+                                        จังหวัดปทุมธานี 12130
+
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="media align-center">
+                                <div class="icon-wrap">
+                                    <i class="las la-calendar-check font-20"></i>
+                                </div>
+                                <div class="media-content ml-3">
+                                    <h3 class="text-muted font-13 mb-0">วันอังคาร-วันอาทิตย์
+                                        (10.30-19.30 น.)
+
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="media align-center">
+                                <div class="icon-wrap">
+                                    <i class="las la-phone-volume font-20"></i>
+                                </div>
+                                <div class="media-content ml-3">
+                                    <h3 class="text-muted font-13 mb-0">โทรศัพท์ :
+                                        <span class="text-info">08XXXXXXXX</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="media align-center">
+                                <div class="icon-wrap">
+                                    <i class="lab la-line font-20"></i>
+                                </div>
+                                <div class="media-content ml-3">
+                                    <h3 class="text-muted font-13 mb-0">Line :
+                                        <span class="text-info">@KINGTHONG</span>
+                                    </h3>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            {{-- <div class="media align-center">
+                                <div class="info-area col-md-12"> --}}
+                                    <div class="image-area text-left" style="margin-left: 30px">
+                                        <img class="avatar-xl" src="{{ asset('assets/img/qrcode1.png') }} ">
+                                    </div>
+                                    <a href="https://line.me/R/ti/p/%40190evelx" target="_blank" class="btn btn-success mt-2" style="margin-left: 18px">
+                                        <i class="lab la-line font-15"></i>
+                                        แอดไลน์</a>
+                                {{-- </div>
+                            </div> --}}
+                        </div>
+                    </div>
+                    {{-- <hr> --}}
+                    {{-- <div class="row">
+                        <div class="col-md-12">
+                            <div class="media align-center">
+                                <div class="media-content ml-3">
+                                    <u>
+                                        <h5 class="font-16 mb-0 strong">ติดต่อฝ่ายขาย</h5>
+                                    </u>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-md-12">
+                            <div class="media align-center">
+                                <div class="icon-wrap">
+                                    <i class="las la-calendar-check font-20"></i>
+                                </div>
+                                <div class="media-content ml-3">
+                                    <h3 class="text-muted font-13 mb-0">วันอังคาร-วันอาทิตย์
+                                        (10.30-19.30 น.)
+
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="media align-center">
+                                <div class="icon-wrap">
+                                    <i class="las la-phone-volume font-20"></i>
+                                </div>
+                                <div class="media-content ml-3">
+                                    <h3 class="text-muted font-13 mb-0">โทรศัพท์ :
+                                        <span class="text-info">08XXXXXXXX</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="media align-center">
+                                <div class="icon-wrap">
+                                    <i class="lab la-line font-20"></i>
+                                </div>
+                                <div class="media-content ml-3">
+                                    <h3 class="text-muted font-13 mb-0">Line :
+                                        <span class="text-info">@KINGTHONG</span>
+                                    </h3>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            
+                                    <div class="image-area text-left" style="margin-left: 30px">
+                                        <img class="avatar-xl" src="{{ asset('assets/img/qrcode1.png') }} ">
+                                    </div>
+                                    <a href="https://line.me/R/ti/p/%40190evelx" target="_blank" class="btn btn-success mt-2" style="margin-left: 18px">
+                                        <i class="lab la-line font-15"></i>
+                                        แอดไลน์</a>
+                              
+                        </div>
+                    </div> --}}
+                </div>
+                <div class="col-md-6 md-2">
                     <div class="widget-content widget-content-area">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
@@ -41,43 +191,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="layout-px-spacing">
-                        <div class="col-md-12 ">
-                            <div class="widget">
-                                <div class="widget-heading p-2">
-                                    <h6><b>บริษัท พียู เน็ตเวิร์ค จำกัด</b></h6>
-                                    <p style="font-size: 13px">เลขประจำตัวผู้เสียภาษี 0105556048753</p>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-
-
-                {{-- <div class="card">
-                        <div class="card-body">
-                            <h5><b>บริษัท พียู เน็ตเวิร์ค จำกัด</b></h5>
-                            <p class="product-category-price"><span>เลขประจำตัวผู้เสียภาษี 0105556048753</span></p>
-                            <p class="product-category-price"><span>169/97-98 หมู่ 3 ตำบลคูคต อำเภอลำลูกกา
-                                    จังหวัดปทุมธานี 12130</span></p>
-                            <p class="product-category-price"><span>วันอังคาร-วันอาทิตย์
-                                    10.30-19.30 น.</span></p>
-                            <div class="image-area">
-                                    <img class="avatar-md sale_qrcode" src="{{ asset('assets/img/qrcode.png') }}">
-               
-                                </div>
-                        </div>
-                      </div> --}}
-
-
-
+                
             </div>
         </div>
+        
 
-        <!-- Main Body Ends -->
+        
     </div>
 @endsection
 @section('js')

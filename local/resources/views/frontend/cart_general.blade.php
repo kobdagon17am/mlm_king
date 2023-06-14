@@ -4,6 +4,10 @@
     <link href="{{ asset('plugins/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/apps/ecommerce.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet"
+        href="{{ asset('https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css') }}">
+    <link href="{{ asset('assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     <!--  Content Area Starts  -->
@@ -70,6 +74,94 @@
                                     </div>
                                 </div>
                             </div> --}}
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-soft-warning" data-toggle="modal"
+                                                    data-target=".bd-example-modal-lg" type="button">โค้ดคูปอง</button>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="รหัสคูปอง">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-warning" type="button">ใช้งาน!</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="myLargeModalLabel"><b>โค้ดคูปอง</b></h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <i class="las la-times"></i>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p class="modal-text">
+                                                <div class="table-responsive mb-4">
+                                                    <table id="ordertable" class="table table-hover" style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>วันหมดอายุ</th>
+                                                                <th>Code</th>
+                                                                <th>รายละเอียด</th>
+                                                                <th>สถานะ</th>
+                                                                <th>ACTION</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>15/09/2023</td>
+                                                                <td><span class="badge outline-badge-dark">AAA</span></td>
+                                                                <td>BUY 1 GET 1 FREE</td>
+                                                                <td>
+                                                                    <span
+                                                                        class="badge badge-success light">ใช้งานได้</span>
+                                                                </td>
+                                                                <td><button type="submit"
+                                                                        class="btn btn-info width-sm btn-sm">
+                                                                        <i class="las la-check-circle"></i> ใช้งาน</button>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>15/09/2023</td>
+                                                                <td><span class="badge outline-badge-dark">AAA</span></td>
+                                                                <td>BUY 1 GET 1 FREE</td>
+                                                                <td>
+                                                                    <span
+                                                                        class="badge badge-success light">ใช้งานได้</span>
+                                                                </td>
+                                                                <td><button type="submit"
+                                                                    class="btn btn-info width-sm btn-sm">
+                                                                    <i class="las la-check-circle"></i> ใช้งาน</button>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>15/09/2023</td>
+                                                                <td><span class="badge outline-badge-dark">AAA</span></td>
+                                                                <td>BUY 1 GET 1 FREE</td>
+                                                                <td>
+                                                                    <span
+                                                                        class="badge badge-success light">ใช้งานได้</span>
+                                                                </td>
+                                                                <td><button type="submit"
+                                                                    class="btn btn-info width-sm btn-sm">
+                                                                    <i class="las la-check-circle"></i> ใช้งาน</button>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="searchable-items grid card-box">
                                 <div class="items">
                                     <div class="item-content">

@@ -242,7 +242,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="account-item" href="pages_profile.html">
+                                    <a class="account-item" href="{{ asset('ChangeAccount')}}">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
                                                 <i class="las la-exchange-alt font-20"></i>
@@ -252,7 +252,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="account-item" href="pages_profile.html">
+                                    <a class="account-item" href="{{ asset('Coupon')}}">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
                                                 <i class="las la-money-check font-20"></i>
@@ -277,7 +277,7 @@
                                     <a class="account-item" href="{{ asset('Profile')}}">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
-                                                <i class="las la-edit font-20"></i>
+                                                <i class="las la-user-edit font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
                                                 <h6 class="font-13 mb-0 strong">แก้ไขข้อมูลส่วนตัว</h6>

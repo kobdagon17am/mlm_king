@@ -76,6 +76,13 @@ Route::get('ContactUs', function () {
 
   return view('frontend.contact');
 })->name('ContactUs');
+Route::get('Coupon', function () {
 
+  return view('frontend.code');
+})->name('Coupon');
+Route::get('ChangeAccount', function () {
+
+  return view('frontend.change_account');
+})->name('ChangeAccount');
 
 // BEGIN eWallet withdraw
