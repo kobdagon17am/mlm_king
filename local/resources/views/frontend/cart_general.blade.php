@@ -184,7 +184,7 @@
                                             <div class="product-stock-status">
                                                 <p class="product-stock-status-inner">
                                                     <a href="{{ route('Cart') }}"><small class="badge badge-success"><i
-                                                                class="las la-cart-plus las-white font-17"></i> Add to Cart
+                                                                class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
                                                         </small>
                                                 </p>
                                             </div>
@@ -210,7 +210,7 @@
                                             <div class="product-stock-status">
                                                 <p class="product-stock-status-inner">
                                                     <a href="{{ route('Cart') }}"><small class="badge badge-success"><i
-                                                                class="las la-cart-plus las-white font-17"></i> Add to Cart
+                                                                class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
                                                         </small>
                                                 </p>
                                             </div>
@@ -236,7 +236,7 @@
                                             <div class="product-stock-status">
                                                 <p class="product-stock-status-inner">
                                                     <a href="{{ route('Cart') }}"><small class="badge badge-success"><i
-                                                                class="las la-cart-plus las-white font-17"></i> Add to Cart
+                                                                class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
                                                         </small>
                                                 </p>
                                             </div>
@@ -262,7 +262,7 @@
                                             <div class="product-stock-status">
                                                 <p class="product-stock-status-inner">
                                                     <a href="{{ route('Cart') }}"><small class="badge badge-success"><i
-                                                                class="las la-cart-plus las-white font-17"></i> Add to Cart
+                                                                class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
                                                         </small>
                                                 </p>
                                             </div>
