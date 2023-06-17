@@ -85,7 +85,7 @@ class LoginController extends Controller
           session()->put('access_from_admin', 1);
         }
 
-        return redirect('profile');
+        return redirect('home');
      }
 
      return redirect('/')->withError('Cannot access with this user.');

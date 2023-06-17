@@ -35,9 +35,11 @@ Auth::routes();
 
   Route::post('login','Frontend\LoginController@login')->name('login');
 
+
   Route::get('logout', function () {
-    Auth::logout();
-    return redirect('/');
+    Auth::guard('c_user')->logout();
+    //Session::flush();
+    return redirect('login');
   })->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
