@@ -219,7 +219,7 @@
                 </li>
                 <li class="nav-item dropdown user-profile-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <img class="rounded-circle img-thumbnail" src="assets/img/profile-16.jpg" alt="avatar">
+                        <img class="rounded-circle img-thumbnail" src="{{ asset('frontend/assets/img/profile-16.jpg') }}" alt="avatar">
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                         <div class="nav-drop is-account-dropdown">
