@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/config-cache', function () {
+Route::get('/c', function () {
   $exitCode = Artisan::call('cache:clear');
   $exitCode = Artisan::call('config:clear');
   $exitCode = Artisan::call('view:clear');
@@ -14,17 +14,26 @@ Route::get('/config-cache', function () {
 Auth::routes();
 
 
+  Route::get('/', function () {
 
-Route::get('/', function () {
-
-    if (Auth::check()) {
-
+    // if(session('id')){
+    if(Auth::guard('c_user')->check()){
       return redirect('home');
-    } else {
-
+    }else{
       return view('auth/login');
     }
   });
+
+  Route::get('login', function () {
+    if(Auth::guard('c_user')->check()){
+      return redirect('home');
+    }else{
+      return view('auth/login');
+
+    }
+  });
+
+  Route::post('login','Frontend\LoginController@login')->name('login');
 
   Route::get('logout', function () {
     Auth::logout();

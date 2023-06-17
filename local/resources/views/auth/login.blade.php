@@ -88,20 +88,29 @@
                     <div class="login-two-start">
                         <div class="text-center"> <img src="{{ asset('assets/img/logo/Kingthong-Baiyok-Logo.png')}}" width="400" class="logo" /> </div>
                         {{-- <h6 class="right-bar-heading px-3 mt-2 text-dark text-center font-30 text-uppercase">Login</h6> --}}
-                        {{-- <p class="text-center text-muted mt-1 mb-3 font-14">Please Log into your account</p> --}}
+                        @error('username')
+                        <p class="text-center text-danger  mt-1 mb-3 font-14">UserName ไม่ถูกต้องกรุณาใช้ UserName ที่ถูกต้องในการเข้าสู่ระบบ </p>
+                        @enderror
 
+                        @error('password')
+                        <p class="text-center text-danger  mt-1 mb-3 font-14">Password ไม่ถูกต้อง </p>
+                        @enderror
                         <div class="login-two-inputs mt-2">
-                            <input type="text" name="email" placeholder="Username" />
+                            <input type="text" name="username" placeholder="Username" maxlength="20"/>
                             <i class="las la-user-alt"></i>
+                            {{-- <span class="text-danger" role="alert">
+                                <strong> ddddcxcxc </strong>
+                            </span> --}}
+                            {{-- @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror --}}
                         </div>
                         <div class="login-two-inputs mt-4">
-                            <input type="password" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password placeholder="Password" />
+                            <input type="password" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password placeholder="Password" maxlength="20" />
                             <i class="las la-lock"></i>
-                            {{-- @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror --}}
+
                         </div>
                         {{-- <div class="login-two-inputs  mt-4 check">
                             <div class="box">
