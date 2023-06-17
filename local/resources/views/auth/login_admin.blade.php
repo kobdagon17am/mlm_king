@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title>Xato Auth Login 1 | Xato - Multipurpose Bootstrap Admin Dashboard Template</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
-    <link href="assets/css/loader.css" rel="stylesheet" type="text/css" />
-    <script src="assets/js/loader.js"></script>
+    <link href="{{ asset('backend/assets/css/loader.css') }}"" rel="stylesheet" type="text/css" />
+    <script src="{{ asset('backend/assets/js/loader.js') }}""></script>
     <!-- Common Styles Starts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="{{ asset('backend/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -27,7 +27,7 @@
 </head>
 <body class="login-one">
     <!-- Loader Starts -->
-    <div id="load_screen"> 
+    <div id="load_screen">
         <div class="boxes">
             <div class="box">
                 <div></div><div></div><div></div><div></div>
@@ -55,10 +55,10 @@
                         <p class="text-center text-muted mt-3 mb-3 font-14">Please Log into your account</p>
                         <div class="login-one-inputs mt-5">
                             <input type="text" placeholder="Username"/>
-                            <i class="las la-user-alt"></i> 
+                            <i class="las la-user-alt"></i>
                         </div>
                         <div class="login-one-inputs mt-3">
-                            <input type="password" placeholder="Password"/> 
+                            <input type="password" placeholder="Password"/>
                             <i class="las la-lock"></i>
                         </div>
                         <div class="login-one-inputs check mt-4">
@@ -124,7 +124,7 @@
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
     <!-- Main Body Ends -->
     <!-- Page Level Plugin/Script Starts -->
