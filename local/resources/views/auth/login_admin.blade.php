@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Xato Auth Login 1 | Xato - Multipurpose Bootstrap Admin Dashboard Template</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
-    <link href="{{ asset('backend/assets/css/loader.css') }}"" rel="stylesheet" type="text/css" />
-    <script src="{{ asset('backend/assets/js/loader.js') }}""></script>
+    <title>บริษัท กิ่งทองใบหยก นำโชค</title>
+    {{-- <link rel="icon" type="image/x-icon" href="{{ asset ('backend/assets/img/favicon.ico') }}"/> --}}
+    <link href="{{ asset('backend/assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
+    <script src="{{ asset('backend/assets/js/loader.js') }}"></script>
     <!-- Common Styles Starts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="{{ asset('backend/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -42,7 +42,7 @@
                 <div></div><div></div><div></div><div></div>
             </div>
         </div>
-        <p class="xato-loader-heading">Xato</p>
+        {{-- <p class="xato-loader-heading">Xato</p> --}}
     </div>
     <!--  Loader Ends -->
     <!-- Main Body Starts -->
@@ -73,12 +73,12 @@
                             </label>
                         </div>
                         <div class="login-one-inputs mt-4">
-                            <button class="ripple-button ripple-button-primary btn-lg btn-login" type="button">
+                            <a href="{{route('admin/Dashboard')}}" class="ripple-button ripple-button-primary btn-lg btn-login" type="button">
                                 <div class="ripple-ripple js-ripple">
                                 <span class="ripple-ripple__circle"></span>
                                 </div>
                                 LOG IN
-                            </button>
+                            </a>
                         </div>
                         <div class="login-one-inputs mt-4 text-center font-12 strong">
                             <a href="auth_forget_password_1.html" class="text-primary">Forgot your Password ?</a>
@@ -95,13 +95,13 @@
                 <div class="col-xl-8 col-lg-6 col-md-6 d-none d-md-block p-0">
                     <div class="slider-half">
                         <div class="slide-content">
-                            <div class="top-sign-up ">
+                            {{-- <div class="top-sign-up ">
                                 <div class="about-comp text-white mt-2">XatoWeb</div>
                                 <div class="for-sign-up">
                                     <p class="text-white font-12 mt-2 font-weight-300">Don't have an account ?</p>
                                     <a href="auth_signup_1.html">Sign Up</a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="clearfix"></div>
                             <div class="owl-carousel owl-theme">
                                 <div class="item">
