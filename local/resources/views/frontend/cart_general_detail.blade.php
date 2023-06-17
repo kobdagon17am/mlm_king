@@ -39,19 +39,19 @@
                                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12">
                                         <div class="tab-content pt-0">
                                             <div class="tab-pane show" id="product-1-item">
-                                                <img src="{{ asset('assets/img/product-detail-1.jpg') }}" alt=""
+                                                <img src="{{ asset('frontend/assets/img/product-detail-1.jpg') }}" alt=""
                                                     class="img-fluid mx-auto d-block rounded">
                                             </div>
                                             <div class="tab-pane" id="product-2-item">
-                                                <img src="{{ asset('assets/img/product-detail-2.jpg') }}" alt=""
+                                                <img src="{{ asset('frontend/assets/img/product-detail-2.jpg') }}" alt=""
                                                     class="img-fluid mx-auto d-block rounded">
                                             </div>
                                             <div class="tab-pane" id="product-3-item">
-                                                <img src="{{ asset('assets/img/product-detail-3.jpg') }}" alt=""
+                                                <img src="{{ asset('frontend/assets/img/product-detail-3.jpg') }}" alt=""
                                                     class="img-fluid mx-auto d-block rounded">
                                             </div>
                                             <div class="tab-pane active" id="product-4-item">
-                                                <img src="{{ asset('assets/img/product-detail-4.jpg') }}" alt=""
+                                                <img src="{{ asset('frontend/assets/img/product-detail-4.jpg') }}" alt=""
                                                     class="img-fluid mx-auto d-block rounded">
                                             </div>
                                         </div>
@@ -59,28 +59,28 @@
                                             <li class="nav-item">
                                                 <a href="#product-1-item" data-toggle="tab" aria-expanded="false"
                                                     class="nav-link product-thumb show">
-                                                    <img src="{{ asset('assets/img/product-detail-1.jpg') }}" alt=""
+                                                    <img src="{{ asset('frontend/assets/img/product-detail-1.jpg') }}" alt=""
                                                         class="img-fluid mx-auto d-block rounded">
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a href="#product-2-item" data-toggle="tab" aria-expanded="true"
                                                     class="nav-link product-thumb">
-                                                    <img src="{{ asset('assets/img/product-detail-2.jpg') }}" alt=""
+                                                    <img src="{{ asset('frontend/assets/img/product-detail-2.jpg') }}" alt=""
                                                         class="img-fluid mx-auto d-block rounded">
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a href="#product-3-item" data-toggle="tab" aria-expanded="false"
                                                     class="nav-link product-thumb">
-                                                    <img src="{{ asset('assets/img/product-detail-3.jpg') }}" alt=""
+                                                    <img src="{{ asset('frontend/assets/img/product-detail-3.jpg') }}" alt=""
                                                         class="img-fluid mx-auto d-block rounded">
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a href="#product-4-item" data-toggle="tab" aria-expanded="false"
                                                     class="nav-link product-thumb active">
-                                                    <img src="{{ asset('assets/img/product-detail-4.jpg') }}" alt=""
+                                                    <img src="{{ asset('frontend/assets/img/product-detail-4.jpg') }}" alt=""
                                                         class="img-fluid mx-auto d-block rounded">
                                                 </a>
                                             </li>

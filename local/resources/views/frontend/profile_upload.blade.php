@@ -1,7 +1,7 @@
 @extends('layouts.frontend.app')
 @section('css')
     <link rel="stylesheet" type="text/css" href="plugins/dropify/dropify.min.css">
-    <link href="{{ asset('assets/css/pages/profile_edit.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/pages/profile_edit.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -34,7 +34,7 @@
             <div class="col-md-4">
                 <div class="upload text-center img-thumbnail">
                     <input type="file" id="idcard_image" class="dropify"
-                        data-default-file="{{ asset('assets/img/user.png') }}" data-max-file-size="2M" />
+                        data-default-file="{{ asset('frontend/assets/img/user.png') }}" data-max-file-size="2M" />
                     <p></p>
                     <div class="info-area col-md-12 text-center">
                         <button type="submit" class="btn btn-info ">
@@ -50,6 +50,6 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('plugins/dropify/dropify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/profile_edit.js') }}"></script>
+    <script src="{{ asset('frontend/plugins/dropify/dropify.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/pages/profile_edit.js') }}"></script>
 @endsection

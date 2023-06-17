@@ -6,24 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title>Kingthong Baiyok</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('frontend/assets/img/favicon.ico') }}"/>
     <!-- Common Styles Starts -->
     {{-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
         rel="stylesheet"> --}}
-        <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/structure.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('plugins/highlight/styles/monokai-sublime.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('frontend/assets/css/style.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/main.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/structure.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/plugins/highlight/styles/monokai-sublime.css') }}" rel="stylesheet" type="text/css" />
     <!-- Common Styles Ends -->
     <!-- Common Icon Starts -->
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <!-- Common Icon Ends -->
     <!-- Page Level Plugin/Style Starts -->
-    <link href="{{ asset('assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/authentication/auth_2.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('frontend/assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/authentication/auth_2.css') }}" rel="stylesheet" type="text/css">
     <!-- Page Level Plugin/Style Ends -->
 </head>
 
@@ -67,7 +67,7 @@
                 <div class="col-xl-8 col-lg-7 col-md-7 d-none d-md-block p-0">
                     <div class="login-bg">
                         {{-- <div class="left-content-area">
-                            <img src="{{ asset('assets/img/logo/Kingthong-Baiyok-Logo.png')}}" class="logo" />
+                            <img src="{{ asset('frontend/assets/img/logo/Kingthong-Baiyok-Logo.png')}}" class="logo" />
                             <div>
                                 <h2>A few clicks away from creating your account</h2>
                                 <p>Start your journey in minutes. Save your time and money.</p>
@@ -86,7 +86,7 @@
 
 
                     <div class="login-two-start">
-                        <div class="text-center"> <img src="{{ asset('assets/img/logo/Kingthong-Baiyok-Logo.png')}}" width="400" class="logo" /> </div>
+                        <div class="text-center"> <img src="{{ asset('frontend/assets/img/logo/Kingthong-Baiyok-Logo.png')}}" width="400" class="logo" /> </div>
                         {{-- <h6 class="right-bar-heading px-3 mt-2 text-dark text-center font-30 text-uppercase">Login</h6> --}}
                         @error('username')
                         <p class="text-center text-danger  mt-1 mb-3 font-14">UserName ไม่ถูกต้องกรุณาใช้ UserName ที่ถูกต้องในการเข้าสู่ระบบ </p>
@@ -157,10 +157,10 @@
     </form>
     <!-- Main Body Ends -->
     <!-- Page Level Plugin/Script Starts -->
-    <script src="{{ asset('assets/js/loader.js') }}"></script>
-    <script src="{{ asset('assets/js/libs/jquery-3.1.1.min.js') }}"></script>
-    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/authentication/auth_2.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/loader.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/libs/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('frontend/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/authentication/auth_2.js') }}"></script>
     <!-- Page Level Plugin/Script Ends -->
 </body>
 

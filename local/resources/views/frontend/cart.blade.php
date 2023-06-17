@@ -50,7 +50,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <img src="{{ asset('assets/img/product-1.jpg') }}" alt="contact-img"
+                                                        <img src="{{ asset('frontend/assets/img/product-1.jpg') }}" alt="contact-img"
                                                             title="contact-img" class="rounded-circle mr-3" height="60"
                                                             width="60"
                                                             style="object-fit: cover;">
@@ -76,7 +76,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <img src="{{ asset('assets/img/product-2.jpg') }}" alt="contact-img"
+                                                        <img src="{{ asset('frontend/assets/img/product-2.jpg') }}" alt="contact-img"
                                                             title="contact-img" class="rounded-circle mr-3" height="60"
                                                             width="60"
                                                             style="object-fit: cover;">

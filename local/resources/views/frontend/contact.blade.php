@@ -1,6 +1,6 @@
 @extends('layouts.frontend.app')
 @section('css')
-    <link href="{{ asset('assets/css/pages/profile.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/pages/profile.css') }}" rel="stylesheet" type="text/css" />
     <link href="assets/css/pages/contact_us_2.css" rel="stylesheet" type="text/css" />
 @endsection
 
@@ -99,14 +99,14 @@
                                         <span class="text-info">@KINGTHONG</span>
                                     </h3>
                                 </div>
-                                
+
                             </div>
                         </div>
                         <div class="col-md-12">
                             {{-- <div class="media align-center">
                                 <div class="info-area col-md-12"> --}}
                                     <div class="image-area text-left" style="margin-left: 30px">
-                                        <img class="avatar-xl" src="{{ asset('assets/img/qrcode1.png') }} ">
+                                        <img class="avatar-xl" src="{{ asset('frontend/assets/img/qrcode1.png') }} ">
                                     </div>
                                     <a href="https://line.me/R/ti/p/%40190evelx" target="_blank" class="btn btn-success mt-2" style="margin-left: 18px">
                                         <i class="lab la-line font-15"></i>
@@ -127,8 +127,8 @@
                                 <hr>
                             </div>
                         </div>
-                        
-                        
+
+
                         <div class="col-md-12">
                             <div class="media align-center">
                                 <div class="icon-wrap">
@@ -164,18 +164,18 @@
                                         <span class="text-info">@KINGTHONG</span>
                                     </h3>
                                 </div>
-                                
+
                             </div>
                         </div>
                         <div class="col-md-12">
-                            
+
                                     <div class="image-area text-left" style="margin-left: 30px">
-                                        <img class="avatar-xl" src="{{ asset('assets/img/qrcode1.png') }} ">
+                                        <img class="avatar-xl" src="{{ asset('frontend/assets/img/qrcode1.png') }} ">
                                     </div>
                                     <a href="https://line.me/R/ti/p/%40190evelx" target="_blank" class="btn btn-success mt-2" style="margin-left: 18px">
                                         <i class="lab la-line font-15"></i>
                                         แอดไลน์</a>
-                              
+
                         </div>
                     </div> --}}
                 </div>
@@ -192,12 +192,12 @@
                     </div>
                 </div>
 
-                
+
             </div>
         </div>
-        
 
-        
+
+
     </div>
 @endsection
 @section('js')

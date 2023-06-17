@@ -1,6 +1,6 @@
 @extends('layouts.frontend.app')
 @section('css')
-    <link href="{{ asset('assets/css/pages/profile.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/pages/profile.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -35,7 +35,7 @@
                     <div class="profile-left">
                         <div class="image-area">
                             <img class="rounded-circle img-thumbnail user-image"
-                                src="{{ asset('assets/img/profile-16.jpg') }}">
+                                src="{{ asset('frontend/assets/img/profile-16.jpg') }}">
                         </div>
                         <div class="info-area">
                             <h5><b>กิ่งทองใบหยก (A001)</b></h5>

@@ -1,12 +1,12 @@
 @extends('layouts.frontend.app')
 @section('css')
-    <link href="{{ asset('plugins/apex/apexcharts.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/dashboard/dashboard_2.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('plugins/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/basic-ui/custom_countdown.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/basic-ui/custom-carousel.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/plugins/apex/apexcharts.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('frontend/assets/css/dashboard/dashboard_2.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('frontend/plugins/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('frontend/assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/basic-ui/custom_countdown.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/basic-ui/custom-carousel.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     <div id="content" class="main-content">
@@ -199,14 +199,14 @@
                                                 </div> --}}
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block w-100" src="{{ asset('assets/img/3.jpg')}}" alt="Second slide">
+                                                <img class="d-block w-100" src="{{ asset('frontend/assets/img/3.jpg')}}" alt="Second slide">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>Second label</h3>
                                                     <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
                                                 </div> --}}
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block w-100" src="{{ asset('assets/img/2.jpg')}}" alt="Third slide">
+                                                <img class="d-block w-100" src="{{ asset('frontend/assets/img/2.jpg')}}" alt="Third slide">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>Third label</h3>
                                                     <h5>Praesent commodo cursus magna, vel scelerisque nisl.</h5>
@@ -228,7 +228,7 @@
                         <div class="widget-content widget-content-area">
                             <h6 class="text-center"><span class="text-danger">รีบซื้อด่วน!
                                 โปรโมชั่นเหลือเวลาแค่</span></h6>
-                            <div id="timersquare" class="square-countdown no-color">                              
+                            <div id="timersquare" class="square-countdown no-color">
                                 <div class="days"><span class="count">00</span> <span class="text">วัน</span></div>
                                 <div class="hours"><span class="count">00</span> <span class="text">ชม.</span></div>
                                 <div class="min"><span class="count">00</span> <span class="text">นาที</span></div>
@@ -241,7 +241,7 @@
             <div class="row mt-3">
                 <div class="col-md-4">
                     <div class="card">
-                        <img class="card-img-top img-fluid" src="{{ asset('assets/img/lightbox-7.jpg')}}" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="{{ asset('frontend/assets/img/lightbox-7.jpg')}}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">This is a wider card with supporting text below as a
@@ -256,7 +256,7 @@
 
                 <div class="col-md-4">
                     <div class="card">
-                        <img class="card-img-top img-fluid" src="{{ asset('assets/img/lightbox-6.jpg')}}" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="{{ asset('frontend/assets/img/lightbox-6.jpg')}}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">This is a wider card with supporting text below as a
@@ -271,7 +271,7 @@
 
                 <div class="col-md-4">
                     <div class="card">
-                        <img class="card-img-top img-fluid" src="{{ asset('assets/img/lightbox-5.jpg')}}" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="{{ asset('frontend/assets/img/lightbox-5.jpg')}}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">This is a wider card with supporting text below as a
@@ -288,7 +288,7 @@
 
             </div>
 
- 
+
         </div>
 
 
@@ -298,13 +298,13 @@
             <i class="las la-angle-up"></i>
         </div>
         <!-- Arrow Ends -->
-        
+
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('plugins/apex/apexcharts.min.js')}}"></script>
-    <script src="{{ asset('plugins/flatpickr/flatpickr.js')}}"></script>
-    <script src="{{ asset('assets/js/dashboard/dashboard_2.js')}}"></script>
-    <script src="{{ asset('plugins/countdown/jquery.countdown.min.js')}}"></script>
-    <script src="{{ asset('assets/js/basicui/custom-countdown.js')}}"></script>
+    <script src="{{ asset('frontend/plugins/apex/apexcharts.min.js')}}"></script>
+    <script src="{{ asset('frontend/plugins/flatpickr/flatpickr.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/dashboard/dashboard_2.js')}}"></script>
+    <script src="{{ asset('frontend/plugins/countdown/jquery.countdown.min.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/basicui/custom-countdown.js')}}"></script>
 @endsection

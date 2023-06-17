@@ -1,7 +1,7 @@
 @extends('layouts.frontend.app')
 @section('css')
     <link rel="stylesheet" type="text/css" href="plugins/dropify/dropify.min.css">
-    <link href="{{ asset('assets/css/pages/profile_edit.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/pages/profile_edit.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -31,7 +31,7 @@
                 {{-- <div class="col-xl-3 col-lg-4 col-md-4  mb-4">
                     <div class="profile-left">
                         <div class="image-area">
-                            <img class="user-image" src="{{ asset('assets/img/user.png') }}">
+                            <img class="user-image" src="{{ asset('frontend/assets/img/user.png') }}">
                             <a href="{{ asset('profile_edit.blade.php') }}" class="follow-area">
                                 <i class="las la-pen"></i>
                             </a>
@@ -83,7 +83,7 @@
                                                         </div>
                                                         <div class="upload text-center img-thumbnail">
                                                             <input type="file" id="idcard_image" class="dropify"
-                                                                data-default-file="{{ asset('assets/img/idcard.png') }}"
+                                                                data-default-file="{{ asset('frontend/assets/img/idcard.png') }}"
                                                                 data-max-file-size="2M">
                                                             <div class="info-area col-md-12 text-center p-2">
                                                                 <button type="submit" class="btn btn-info">
@@ -102,7 +102,7 @@
                                                         </div>
                                                         <div class="upload text-center img-thumbnail">
                                                             <input type="file" id="user_idcard_image" class="dropify"
-                                                                data-default-file="{{ asset('assets/img/user_card.jpg') }}"
+                                                                data-default-file="{{ asset('frontend/assets/img/user_card.jpg') }}"
                                                                 data-max-file-size="2M">
                                                             <div class="info-area col-md-12 text-center p-2">
                                                                 <button type="submit" class="btn btn-info">
@@ -124,7 +124,7 @@
                                                         </div>
                                                         <div class="upload text-center img-thumbnail">
                                                             <input type="file" id="user_image" class="dropify"
-                                                                data-default-file="{{ asset('assets/img/user.png') }}"
+                                                                data-default-file="{{ asset('frontend/assets/img/user.png') }}"
                                                                 data-max-file-size="2M">
                                                             <div class="info-area col-md-12 text-center p-2">
                                                                 <button type="submit" class="btn btn-info">
@@ -144,7 +144,7 @@
                                                         </div>
                                                         <div class="upload text-center img-thumbnail">
                                                             <input type="file" id="bookbank_image" class="dropify"
-                                                                data-default-file="{{ asset('assets/img/BookBank.png') }}"
+                                                                data-default-file="{{ asset('frontend/assets/img/BookBank.png') }}"
                                                                 data-max-file-size="2M">
                                                             <div class="info-area col-md-12 text-center p-2">
                                                                 <button type="submit" class="btn btn-info">
@@ -206,9 +206,9 @@
                                                                             <td>---</td>
                                                                         </tr>
                                                                     </tbody>
-                                                                   
-                                                                        
-                                                                    
+
+
+
                                                                 </table>
                                                                 <p class="text-danger" style="font-size: 13px">
                                                                     *กรณีเอกสารไม่ผ่านการอนุมัติ
@@ -234,6 +234,6 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('plugins/dropify/dropify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/profile_edit.js') }}"></script>
+    <script src="{{ asset('frontend/plugins/dropify/dropify.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/pages/profile_edit.js') }}"></script>
 @endsection

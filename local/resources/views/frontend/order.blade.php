@@ -2,12 +2,12 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="plugins/table/datatable/datatables.css">
     <link rel="stylesheet" type="text/css" href="plugins/table/datatable/dt-global_style.css">
-    <link href="{{ asset('assets/css/ui-elements/pagination.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/ui-elements/pagination.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
 
     <!--  Main Container Starts  -->
-    
+
         <!--  Content Area Starts  -->
         <div id="content" class="main-content">
             <!--  Navbar Starts / Breadcrumb Area  -->
@@ -217,7 +217,7 @@
                 </div>
             </div>
         </div>
-    
+
     @endsection
     <!-- Main Container Ends -->
 @section('js')

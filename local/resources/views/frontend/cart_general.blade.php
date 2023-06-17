@@ -1,13 +1,13 @@
 @extends('layouts.frontend.app')
 @section('css')
-    <link href="{{ asset('assets/css/ui-elements/pagination.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('plugins/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/apps/ecommerce.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/ui-elements/pagination.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/plugins/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/apps/ecommerce.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet"
         href="{{ asset('https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css') }}">
-    <link href="{{ asset('assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     <!--  Content Area Starts  -->
@@ -48,7 +48,7 @@
                                                 <input type="text" id="input-search" class="form-control search-form-control  ml-lg-auto" placeholder="Search Products">
                                             </div>
                                         </form>
-                                    </div> 
+                                    </div>
                                     <div class="col-md-12 text-sm-right text-right align-self-center">
                                         <div class="d-flex justify-content-sm-end justify-content-center contact-options">
                                             <a href="apps_ecommerce_add_product.html" title="Add a product" class="pointer font-25 s-o mr-2 bs-tooltip">
@@ -168,7 +168,7 @@
                                         <div class="product-info">
                                             <div>
                                                 <a href="{{ route('CartGeneralDetail') }}"><img
-                                                        src="{{ asset('assets/img/product-5.jpg') }}" alt="avatar"></a>
+                                                        src="{{ asset('frontend/assets/img/product-5.jpg') }}" alt="avatar"></a>
                                             </div>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
@@ -195,7 +195,7 @@
                                     <div class="item-content">
                                         <div class="product-info">
                                             <a href="{{ route('CartGeneralDetail') }}"><img
-                                                    src="{{ asset('assets/img/product-1.jpg') }}" alt="avatar"></a>
+                                                    src="{{ asset('frontend/assets/img/product-1.jpg') }}" alt="avatar"></a>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
                                                 <h5><b>Product 2</b></h5>
@@ -221,7 +221,7 @@
                                     <div class="item-content">
                                         <div class="product-info">
                                             <a href="{{ route('CartGeneralDetail') }}"><img
-                                                    src="{{ asset('assets/img/product-2.jpg') }}" alt="avatar"></a>
+                                                    src="{{ asset('frontend/assets/img/product-2.jpg') }}" alt="avatar"></a>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
                                                 <h5><b>Product 3</b></h5>
@@ -247,7 +247,7 @@
                                     <div class="item-content">
                                         <div class="product-info">
                                             <a href="{{ route('CartGeneralDetail') }}"><img
-                                                    src="{{ asset('assets/img/product-3.jpg') }}" alt="avatar"></a>
+                                                    src="{{ asset('frontend/assets/img/product-3.jpg') }}" alt="avatar"></a>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
                                                 <h5><b>Product 4</b></h5>

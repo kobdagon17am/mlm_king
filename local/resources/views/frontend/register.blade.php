@@ -1,8 +1,8 @@
 @extends('layouts.frontend.app')
 @section('css')
-    <link href="{{ asset('assets/css/pages/profile.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/pages/profile.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="plugins/dropify/dropify.min.css">
-    <link href="{{ asset('assets/css/pages/profile_edit.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/pages/profile_edit.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     <div id="content" class="main-content">
@@ -32,7 +32,7 @@
                 {{-- <div class="col-xl-3 col-lg-4 col-md-4  mb-4">
                     <div class="profile-left">
                         <div class="image-area">
-                            <img class="user-image" src="{{ asset('assets/img/user.png') }}">
+                            <img class="user-image" src="{{ asset('frontend/assets/img/user.png') }}">
                             <a href="{{ asset('profile_edit.blade.php') }}" class="follow-area">
                                 <i class="las la-pen"></i>
                             </a>
@@ -526,7 +526,7 @@
                                                     </div>
                                                     <div class="upload text-center img-thumbnail">
                                                         <input type="file" id="idcard_image" class="dropify"
-                                                            data-default-file="{{ asset('assets/img/idcard.png') }}"
+                                                            data-default-file="{{ asset('frontend/assets/img/idcard.png') }}"
                                                             data-max-file-size="2M" />
                                                         {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
                                                             อัปโหลดรูปภาพ</p> --}}
@@ -543,7 +543,7 @@
                                                     </div>
                                                     <div class="upload text-center img-thumbnail">
                                                         <input type="file" id="user_idcard_image" class="dropify"
-                                                            data-default-file="{{ asset('assets/img/user_card.jpg') }}"
+                                                            data-default-file="{{ asset('frontend/assets/img/user_card.jpg') }}"
                                                             data-max-file-size="2M" />
                                                         {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
                                                             อัปโหลดรูปภาพ</p> --}}
@@ -561,7 +561,7 @@
                                                     </div>
                                                     <div class="upload text-center img-thumbnail">
                                                         <input type="file" id="user_image" class="dropify"
-                                                            data-default-file="{{ asset('assets/img/user.png') }}"
+                                                            data-default-file="{{ asset('frontend/assets/img/user.png') }}"
                                                             data-max-file-size="2M" />
                                                         {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
                                                             อัปโหลดรูปภาพ</p> --}}
@@ -576,7 +576,7 @@
                                                     </div>
                                                     <div class="upload text-center img-thumbnail">
                                                         <input type="file" id="bookbank_image" class="dropify"
-                                                            data-default-file="{{ asset('assets/img/BookBank.png') }}"
+                                                            data-default-file="{{ asset('frontend/assets/img/BookBank.png') }}"
                                                             data-max-file-size="2M" />
                                                         {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
                                                             อัปโหลดรูปภาพ</p> --}}
@@ -600,6 +600,6 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('plugins/dropify/dropify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/profile_edit.js') }}"></script>
+    <script src="{{ asset('frontend/plugins/dropify/dropify.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/pages/profile_edit.js') }}"></script>
 @endsection
