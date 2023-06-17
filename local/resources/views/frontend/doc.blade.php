@@ -1,7 +1,10 @@
 @extends('layouts.frontend.app')
 @section('css')
     <link rel="stylesheet" type="text/css" href="plugins/dropify/dropify.min.css">
-    <link href="{{ asset('frontend/assets/css/pages/profile_edit.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/pages/profile_edit.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('frontend/assets/css/forms/form-widgets.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('frontend/assets/css/forms/file-upload.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('frontend/plugins/dropzone/dropzone.min.css')}}" rel="stylesheet" type="text/css">
 @endsection
 
 @section('content')
@@ -236,4 +239,6 @@
 @section('js')
     <script src="{{ asset('frontend/plugins/dropify/dropify.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/pages/profile_edit.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/forms/file-upload.js')}}"></script>
+    <script src="{{ asset('frontend/plugins/dropzone/dropzone.min.js')}}"></script>
 @endsection

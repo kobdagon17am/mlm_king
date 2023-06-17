@@ -19,11 +19,11 @@
     <!-- Common Icon Ends -->
     <!-- Page Level Plugin/Style Starts -->
     <link href="{{ asset('backend/assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
-    {{-- <link href="{{ asset('backend/plugins/apex/apexcharts.css') }}" rel="stylesheet" type="text/css"> --}}
-    {{-- <link href="{{ asset('backend/assets/css/dashboard/dashboard_1.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/plugins/apex/apexcharts.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('backend/assets/css/dashboard/dashboard_2.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend/plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend/plugins/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('backend/assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" /> --}}
+    <link href="{{ asset('backend/assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
 
 
     @yield('css')
@@ -331,12 +331,12 @@
              @yield('content')
             </div>
             <!-- Main Body Ends -->
-            <div class="responsive-msg-component">
+            {{-- <div class="responsive-msg-component">
                 <p>
                     <a class="close-msg-component"><i class="las la-times"></i></a>
                     Please reload the page to view the responsive functionalities
                 </p>
-            </div>
+            </div> --}}
             <!-- Copyright Footer Starts -->
             <div class="footer-wrapper">
                 {{-- <div class="footer-section f-section-1">
