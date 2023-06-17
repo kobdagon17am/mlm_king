@@ -57,11 +57,11 @@
             </ul>
 
             <ul class="navbar-item flex-row ml-md-auto">
-                <li class="nav-item dropdown fullscreen-dropdown d-none d-lg-flex">
+                {{-- <li class="nav-item dropdown fullscreen-dropdown d-none d-lg-flex">
                     <a class="nav-link full-screen-mode" href="javascript:void(0);">
                         <i class="las la-compress" id="fullScreenIcon"></i>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item dropdown language-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="las la-language"></i>
@@ -85,7 +85,7 @@
                         </a>
                     </div>
                 </li>
-                <li class="nav-item dropdown message-dropdown">
+                {{-- <li class="nav-item dropdown message-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="las la-envelope"></i>
                     </a>
@@ -146,7 +146,7 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </li> --}}
                 <li class="nav-item dropdown notification-dropdown">
                     <a href="{{ route('Cart') }}" class="nav-link dropdown-toggle position-relative" id="order" ">
                         <i class="las la-shopping-cart"></i>

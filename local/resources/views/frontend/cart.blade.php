@@ -39,7 +39,8 @@
                                         <table class="table table-responsive table table-bordered table-centered mb-0">
                                             <thead class="thead-light text-center">
                                                 <tr>
-                                                    <th>รายการสินค้า</th>
+                                                    <th>รูปภาพ</th>
+                                                    <th>รายการ</th>
                                                     <th>จำนวน</th>
                                                     <th>ราคา</th>
                                                     <th>PV</th>
@@ -50,35 +51,22 @@
                                                 <tr>
                                                     <td>
                                                         <img src="{{ asset('assets/img/product-1.jpg') }}" alt="contact-img"
-                                                            title="contact-img" class="rounded-circle mr-3" height="48"
-                                                            width="48"
-                                                            style="object-fit: cover;
-                                                    ">
-                                                        <p class="mb-0 mt-3 d-inline-block align-middle font-16">
-                                                            <a href="ecommerce-product-detail.html"
-                                                                class="text-reset font-family-secondary">Jose Headphone</a>
-                                                            <br>
-                                                            <small class="mr-2"><b>Size:</b> Large </small>
-                                                            <small><b>Color:</b> Black
-                                                            </small>
-                                                        </p>
+                                                            title="contact-img" class="rounded-circle mr-3" height="60"
+                                                            width="60"
+                                                            style="object-fit: cover;">
                                                     </td>
                                                     <td>
-                                                        <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput1">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                        </select>
+                                                        <b>Jose Headphone</b>
                                                     </td>
                                                     <td>
-                                                        <h6>฿1,000</h6>
+                                                        <input type="number" min="1" value="2"
+                                                            class="form-control" placeholder="Qty" style="width: 75px;">
                                                     </td>
                                                     <td>
-                                                        <h6>50</h6>
+                                                        ฿1,000
+                                                    </td>
+                                                    <td>
+                                                        50
                                                     </td>
                                                     <td>
                                                         <a href="javascript:void(0);" class="action-icon text-center">
@@ -89,34 +77,22 @@
                                                 <tr>
                                                     <td>
                                                         <img src="{{ asset('assets/img/product-2.jpg') }}" alt="contact-img"
-                                                            title="contact-img" class="rounded-circle mr-3" height="48"
-                                                            width="48"
-                                                            style="object-fit: cover;
-                                                    ">
-                                                        <p class="mb-0 mt-3 d-inline-block align-middle font-16">
-                                                            <a href="ecommerce-product-detail.html"
-                                                                class="text-body font-family-secondary">Zikkon Camera</a>
-                                                            <br>
-                                                            <small class="mr-2"><b>Model:</b> ZK90R </small>
-                                                            <small><b>Color:</b> Black </small>
-                                                        </p>
+                                                            title="contact-img" class="rounded-circle mr-3" height="60"
+                                                            width="60"
+                                                            style="object-fit: cover;">
                                                     </td>
                                                     <td>
-                                                        <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput2">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                        </select>
+                                                        <b>Zikkon Camera</b>
                                                     </td>
                                                     <td>
-                                                        <h6>฿1,000</h6>
+                                                        <input type="number" min="1" value="5"
+                                                            class="form-control" placeholder="Qty" style="width: 75px;">
                                                     </td>
                                                     <td>
-                                                        <h6>50</h6>
+                                                        ฿1,000
+                                                    </td>
+                                                    <td>
+                                                        50
                                                     </td>
                                                     <td>
                                                         <a href="javascript:void(0);" class="action-icon text-center">
@@ -175,23 +151,23 @@
                                                 <table class="table mb-0">
                                                     <tbody>
                                                         <tr>
-                                                            <td>จำนวนสินค้า :</td>
-                                                            <td>2</td>
+                                                            <td><h6>จำนวนสินค้า :</h6></td>
+                                                            <td><h6>2</h6></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>ราคารวม :</td>
-                                                            <td>฿2,000</td>
+                                                            <td><h6>ราคารวม :</h6></td>
+                                                            <td><h6>฿2,000</h6></td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="text-success-teal">ส่วนลด : </td>
-                                                            <td class="text-success-teal">-฿50</td>
+                                                            <td class="text-success-teal strong">ส่วนลด : </td>
+                                                            <td class="text-success-teal strong">-฿50</td>
                                                         </tr>
                                                         <tr>
                                                             <th>คะแนนที่ได้รับ :</th>
                                                             <th>100 PV</th>
                                                         </tr>
                                                         <tr>
-                                                            <th>ยอดรวมทั้งหมด :</th>
+                                                            <th>ยอดชำระทั้งหมด :</th>
                                                             <th>฿ 1,550</th>
                                                         </tr>
                                                     </tbody>
@@ -216,5 +192,4 @@
             </div>
         </div>
     </div>
-
 @endsection
