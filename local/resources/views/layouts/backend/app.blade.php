@@ -4,27 +4,31 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Kingthong Baiyok</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('frontend/assets/img/favicon.ico') }}"/>
-    <link href="{{ asset('frontend/assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
-        <!-- Common Styles Starts -->
-    <link href="{{ asset('frontend/assets/css/style.css')}}" rel="stylesheet" type="text/css" />
-    {{-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet"> --}}
-    <link href="{{ asset('frontend/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('frontend/assets/css/main.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('frontend/assets/css/structure.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('frontend/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('frontend/plugins/highlight/styles/monokai-sublime.css') }}" rel="stylesheet" type="text/css" />
+    <title>Xato Admin Dashboard 1 | Xato - Multipurpose Bootstrap Admin Dashboard Template </title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
+    <!-- Common Styles Starts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="{{ asset('backend/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/assets/css/main.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/assets/css/structure.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/plugins/highlight/styles/monokai-sublime.css') }}" rel="stylesheet" type="text/css" />
     <!-- Common Styles Ends -->
     <!-- Common Icon Starts -->
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-
-
-    @yield('css')
+    <!-- Common Icon Ends -->
+    <!-- Page Level Plugin/Style Starts -->
+    <link href="{{ asset('backend/assets/css/loader.css') }}" rel="stylesheet" type="text/css" />  
+    <link href="{{ asset('backend/plugins/apex/apexcharts.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('backend/assets/css/dashboard/dashboard_1.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('backend/plugins/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('backend/assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Page Level Plugin/Style Ends -->
 </head>
 <body>
     <!-- Loader Starts -->
-    <div id="load_screen">
+    <div id="load_screen"> 
         <div class="boxes">
             <div class="box">
                 <div></div><div></div><div></div><div></div>
@@ -39,53 +43,141 @@
                 <div></div><div></div><div></div><div></div>
             </div>
         </div>
-        {{-- <p class="xato-loader-heading">Xato</p> --}}
+        <p class="xato-loader-heading">Xato</p>
     </div>
     <!--  Loader Ends -->
     <!--  Navbar Starts  -->
-    <div class="header-container fixed-top" style="background-color: #ffff;">
+    <div class="header-container fixed-top">
         <header class="header navbar navbar-expand-sm">
             <ul class="navbar-item theme-brand flex-row  text-center">
-                <li class="nav-item theme-logo" style="">
-                    <a href="{{route('home')}}">
-                        <img src="{{ asset('frontend/assets/img/logo/Kingthong-Baiyok-Logo.png')}}" class="navbar-logo" alt="logo" >
+                <li class="nav-item theme-logo">
+                    <a href="index.html">
+                        <img src="assets/img/logo.png" class="navbar-logo" alt="logo">
                     </a>
                 </li>
                 <li class="nav-item theme-text">
-                    {{-- <a href="index.html" class="nav-link"> Xato </a> --}}
+                    <a href="index.html" class="nav-link"> Xato </a>
                 </li>
             </ul>
-
+            <ul class="navbar-item flex-row ml-md-0 ml-auto">
+                <li class="nav-item align-self-center search-animated">
+                    <i class="las la-search toggle-search"></i>
+                    <form class="form-inline search-full form-inline search" action="pages_search_result.html" role="search">
+                        <div class="search-bar">
+                            <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="Search here">
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item dropdown language-dropdown d-none d-lg-flex">
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle d-flex align-center text-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mega Menu  <i class="las la-angle-down font-11 ml-1"></i>
+                    </a>
+                    <div class="dropdown-menu megamenu">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5 class="font-17 mt-0">Applications</h5>
+                                        <ul class="list-unstyled megamenu-list">
+                                            <li class="font-15 mb-1"><a href="apps_ecommerce.html">Ecommerce</a></li>
+                                            <li class="font-15 mb-1"><a href="apps_chat.html">Chat</a></li>
+                                            <li class="font-15 mb-1"><a href="apps_mail.html">Email</a></li>
+                                            <li class="font-15 mb-1"><a href="apps_file_manager.html">File Manager</a></li>
+                                            <li class="font-15 mb-1"><a href="apps_calendar.html">Calender</a></li>
+                                            <li class="font-15 mb-1"><a href="apps_notes.html">Notes</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5 class="font-17 mt-0">Extra Pages</h5>
+                                        <ul class="list-unstyled megamenu-list">
+                                            <li class="font-15 mb-1"><a href="pages_contact_us.html">Contact Us</a></li>
+                                            <li class="font-15 mb-1"><a href="pages_faq.html">FAQ</a></li>
+                                            <li class="font-15 mb-1"><a href="pages_helpdesk.html">Helpdesk</a></li>
+                                            <li class="font-15 mb-1"><a href="pages_pricing_2.html">Pricing</a></li>
+                                            <li class="font-15 mb-1"><a href="pages_search_result.html">Search Result</a></li>
+                                            <li class="font-15 mb-1"><a href="pages_privacy_policy.html">Privacy Policy</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="p-lg-1">
+                                    <div class="row no-gutters">
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="#">
+                                                <img src="assets/img/company-1.jpg" alt="slack">
+                                                <span>Cube</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="#">
+                                                <img src="assets/img/company-2.jpg" alt="Github">
+                                                <span>HTech</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="#">
+                                                <img src="assets/img/company-3.jpg" alt="dribbble">
+                                                <span>Inovation</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters">
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="#">
+                                                <img src="assets/img/company-4.jpg" alt="bitbucket">
+                                                <span>Circle</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="#">
+                                                <img src="assets/img/company-5.jpg" alt="dropbox">
+                                                <span>Techno</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="#">
+                                                <img src="assets/img/company-6.jpg" alt="G Suite">
+                                                <span>T Logy</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
             <ul class="navbar-item flex-row ml-md-auto">
-                {{-- <li class="nav-item dropdown fullscreen-dropdown d-none d-lg-flex">
+                <li class="nav-item dropdown fullscreen-dropdown d-none d-lg-flex">
                     <a class="nav-link full-screen-mode" href="javascript:void(0);">
                         <i class="las la-compress" id="fullScreenIcon"></i>
                     </a>
-                </li> --}}
+                </li>
                 <li class="nav-item dropdown language-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="las la-language"></i>
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
                         <a class="dropdown-item d-flex" href="javascript:void(0);">
-                            <img src="assets/img/flag/usa-flag.png" class="flag-width" alt="flag">
+                            <img src="assets/img/flag/usa-flag.png" class="flag-width" alt="flag"> 
                             <span class="align-self-center">&nbsp;English</span>
                         </a>
                         <a class="dropdown-item d-flex" href="javascript:void(0);">
-                            <img src="assets/img/flag/spain-flag.png" class="flag-width" alt="flag">
+                            <img src="assets/img/flag/spain-flag.png" class="flag-width" alt="flag"> 
                             <span class="align-self-center">&nbsp;Spanish</span>
                         </a>
                         <a class="dropdown-item d-flex" href="javascript:void(0);">
-                            <img src="assets/img/flag/france-flag.png" class="flag-width" alt="flag">
+                            <img src="assets/img/flag/france-flag.png" class="flag-width" alt="flag"> 
                             <span class="align-self-center">&nbsp;French</span>
                         </a>
                         <a class="dropdown-item d-flex" href="javascript:void(0);">
-                            <img src="assets/img/flag/saudi-arabia-flag.png" class="flag-width" alt="flag">
+                            <img src="assets/img/flag/saudi-arabia-flag.png" class="flag-width" alt="flag"> 
                             <span class="align-self-center">&nbsp;Arabic</span>
                         </a>
                     </div>
                 </li>
-                {{-- <li class="nav-item dropdown message-dropdown">
+                <li class="nav-item dropdown message-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="las la-envelope"></i>
                     </a>
@@ -146,10 +238,10 @@
                             </div>
                         </div>
                     </div>
-                </li> --}}
+                </li>
                 <li class="nav-item dropdown notification-dropdown">
-                    <a href="{{ route('Cart') }}" class="nav-link dropdown-toggle position-relative" id="order" ">
-                        <i class="las la-shopping-cart"></i>
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle position-relative" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="las la-bell"></i>
                         <div class="blink">
                             <div class="circle"></div>
                         </div>
@@ -219,93 +311,73 @@
                 </li>
                 <li class="nav-item dropdown user-profile-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <img class="rounded-circle img-thumbnail" src="{{ asset('frontend/assets/img/profile-16.jpg') }}" alt="avatar">
+                        <img src="assets/img/profile-16.jpg" alt="avatar">
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
-                        <div class="nav-drop is-account-dropdown">
+                        <div class="nav-drop is-account-dropdown" >
                             <div class="inner">
+                                <div class="nav-drop-header">
+                                      <span class="text-primary font-15">Welcome Admin !</span>
+                                </div>
                                 <div class="nav-drop-body account-items pb-0">
-                                    <a id="profile-link" class="account-item" href="{{ asset('Profile')}}">
+                                    <a id="profile-link"  class="account-item" href="pages_profile.html">
                                         <div class="media align-center">
                                             <div class="media-left">
                                                 <div class="image">
-                                                    <img class="rounded-circle avatar-xs"
-                                                        src="{{ asset('frontend/assets/img/profile-16.jpg') }}"
-                                                        alt="">
+                                                    <img class="rounded-circle avatar-xs" src="assets/img/profile-16.jpg" alt="">
                                                 </div>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <span class="text-primary font-15">{{ Auth::guard('c_user')->user()->first_name }} ({{ Auth::guard('c_user')->user()->username }})</span>
+                                                <h6 class="font-13 mb-0 strong">Sara</h6>
+                                                <small>Britannia</small>
                                             </div>
                                             <div class="media-right">
                                                 <i data-feather="check"></i>
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="account-item" href="{{ asset('ChangeAccount')}}">
+                                    <a class="account-item" href="pages_profile.html">
+                                      <div class="media align-center">
+                                          <div class="icon-wrap">
+                                            <i class="las la-user font-20"></i>
+                                          </div>
+                                          <div class="media-content ml-3">
+                                              <h6 class="font-13 mb-0 strong">My Account</h6>
+                                          </div>
+                                      </div>
+                                    </a>
+                                    <a class="account-item" href="pages_timeline.html">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
-                                                <i class="las la-exchange-alt font-20"></i>
+                                                <i class="las la-briefcase font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">สลับบัญชี</h6>
+                                                <h6 class="font-13 mb-0 strong">My Activity</h6>
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="account-item" href="{{ asset('Coupon')}}">
-                                        <div class="media align-center">
-                                            <div class="icon-wrap">
-                                                <i class="las la-money-check font-20"></i>
-                                            </div>
-                                            <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">โค้ดคูปอง</h6>
-                                            </div>
-                                        </div>
+                                    <a class="account-item settings">
+                                      <div class="media align-center">
+                                          <div class="icon-wrap">
+                                            <i class="las la-cog font-20"></i>
+                                          </div>
+                                          <div class="media-content ml-3">
+                                              <h6 class="font-13 mb-0 strong">Settings</h6>
+                                          </div>
+                                      </div>
                                     </a>
-                                    <a class="account-item" href="{{ asset('ProfileUpload')}}">
+                                    <a class="account-item" href="auth_lock_screen_3.html">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
-                                                <i class="las la-image font-20"></i>
+                                                <i class="las la-lock font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">อัพโหลดรูปโปรไฟล์</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-
-
-                                    <a class="account-item" href="{{ asset('Profile')}}">
-                                        <div class="media align-center">
-                                            <div class="icon-wrap">
-                                                <i class="las la-user-edit font-20"></i>
-                                            </div>
-                                            <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">แก้ไขข้อมูลส่วนตัว</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="account-item" settings href="{{ asset('Document')}}">
-                                        <div class="media align-center">
-                                            <div class="icon-wrap">
-                                                <i class="las la-clipboard font-20"></i>
-                                            </div>
-                                            <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">เอกสารการลงทะเบียน</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="account-item" href="{{ asset('ChangePassword')}}">
-                                        <div class="media align-center">
-                                            <div class="icon-wrap">
-                                                <i class="las la-key font-20"></i>
-                                            </div>
-                                            <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">แก้ไขรหัส Login</h6>
+                                                <h6 class="font-13 mb-0 strong">Lock Screen</h6>
                                             </div>
                                         </div>
                                     </a>
                                     <hr class="account-divider">
-                                    <a class="account-item" href="{{ route('logout') }}">
+                                    <a class="account-item" href="auth_login_3.html">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
                                                 <i class="las la-sign-out-alt font-20"></i>
@@ -321,90 +393,37 @@
                     </div>
                 </li>
             </ul>
-            {{-- <ul class="navbar-item flex-row">
+            <ul class="navbar-item flex-row">
                 <li class="nav-item dropdown header-setting">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle rightbarCollapse" data-placement="bottom">
                         <i class="las la-sliders-h"></i>
                     </a>
                 </li>
-            </ul> --}}
+            </ul>
         </header>
     </div>
-
     <!--  Navbar Ends  -->
     <!--  Main Container Starts  -->
-    <div class="main-container" id="container">
-        <div class="overlay"></div>
-        <div class="search-overlay"></div>
-        <div class="rightbar-overlay"></div>
-        <!--  Sidebar Starts  -->
-        @include('layouts.frontend.sidebar')
-        @yield('content')
-        <!--  Sidebar Ends  -->
-        <!--  Content Area Starts  -->
-
-        <!--  Content Area Ends  -->
-        <!--  Rightbar Area Starts -->
-        <div class="right-bar">
-            <div class="h-100">
-                <div class="simplebar-wrapper" style="margin: 0px;">
-                    <div class="simplebar-mask">
-                        <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
-                            <div class="simplebar-content-wrapper" style="height: 100%;">
-                                <div class="simplebar-content" style="padding: 0px;">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs nav-bordered nav-justified" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link  active" data-toggle="tab" href="#chat-tab" role="tab" aria-selected="true">
-                                                <i class="las la-sms"></i>
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                    <!-- Tab panes starts -->
-                                    <div class="tab-content pt-0 rightbar-tab-container">
-                                        <div class="tab-pane active rightbar-tab" id="chat-tab" role="tabpanel">
-                                            <form class="search-bar p-3">
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control search-form-control" placeholder="Search">
-                                                    <span class="mdi mdi-magnify"></span>
-                                                </div>
-                                            </form>
-
-
-
-                                        </div>
-
-                                    </div>
-                                    <!-- Tab panes ends -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--  Rightbar Area Ends -->
-    </div>
+    
     <!-- Main Container Ends -->
     <!-- Common Script Starts -->
-    <script src="{{ asset('frontend/assets/js/libs/jquery-3.1.1.min.js') }}"></script>
-    <script src="{{ asset('frontend/bootstrap//js/popper.min.js') }}"></script>
-    <script src="{{ asset('frontend/bootstrap//js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('frontend/plugins//perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/app.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/libs/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('backend/bootstrap/js/popper.min.js') }}"></script>
+    <script src="{{ asset('backend/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/app.js') }}"></script>
     <script>
         $(document).ready(function() {
             App.init();
         });
     </script>
-    <script src="{{ asset('frontend/assets/js/custom.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
     <!-- Common Script Ends -->
-    <script src="{{ asset('frontend/assets/js/loader.js') }}"></script>
-
-
-    @yield('js')
+    <!-- Page Level Plugin/Script Starts -->
+    <script src="{{ asset('backend/assets/js/loader.js') }}"></script>
+    <script src="{{ asset('backend/plugins/apex/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/flatpickr/flatpickr.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/dashboard/dashboard_1.js') }}"></script>
+    <!-- Page Level Plugin/Script Ends -->
 </body>
 </html>
-
-
