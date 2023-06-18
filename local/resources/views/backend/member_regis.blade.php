@@ -10,7 +10,7 @@
     <nav class="breadcrumb-one" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">ระบบบริการสมาชิก</li>
-            <li class="breadcrumb-item active" aria-current="page"><span>ระบบตรวจสอบเอกสาร</span></li>
+            <li class="breadcrumb-item active" aria-current="page"><span>ระบบบริการสมาชิก</span></li>
         </ol>
     </nav>
 @endsection
@@ -54,8 +54,8 @@
                 </div>
             </div>
 
-            <div class="col-md-2 mt-4">
-                <button type="button" class="btn btn-outline-primary btn-rounded"><i class="las la-search"></i>
+            <div class="col-md-2 text-center">
+                <button type="button" class="btn btn-outline-primary btn-rounded mt-4"><i class="las la-search"></i>
                     สืบค้น</button>
             </div>
         </div>
@@ -71,7 +71,7 @@
                         <th>รหัสผู้แนะนำ</th>
                         <th>สถานะการสมัคร</th>
                         <th>วันที่อนุมัติ</th>
-                        <th>ข้อมูลส่วนตัว</th>
+                        <th>รายละเอียด</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -92,7 +92,7 @@
                         </td>
                         <td>06/09/2023</td>
                         <td>
-                            <div class="row">
+                            
                                 <div class="info-area col-md-12 mb-2">
                                     <button type="submit" class="btn btn-rounded btn-primary">
                                         <i class="las la-eye"></i></button>
@@ -118,7 +118,7 @@
                         </td>
                         <td>06/09/2023</td>
                         <td>
-                            <div class="row">
+                            
                                 <div class="info-area col-md-12 mb-2">
                                     <button type="submit" class="btn btn-rounded btn-primary">
                                         <i class="las la-eye"></i></button>

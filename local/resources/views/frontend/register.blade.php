@@ -78,7 +78,7 @@
                                             <hr>
                                             {{-- <h6 class="font-16 mb-3"><b>ข้อมูลสายงาน (SPONSOR/UPLINE)</b></h6> --}}
                                             <div class="row">
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label for="sponsor">Sponsor
                                                             <span class="text-danger">* </span></label>
@@ -86,7 +86,7 @@
                                                             placeholder="Sponsor">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label for="upline_id">Upline
                                                             <span class="text-danger">* </span></label>
@@ -94,7 +94,7 @@
                                                             placeholder="Upline">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label for="side">Side
                                                             <span class="text-danger">* </span></label>
@@ -104,13 +104,24 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="Prefix">Business Location
+                                                        <label for="Prefix">จองรหัส
+                                                            <span class="text-danger">* </span></label>
+                                                        <select class="form-control" id="number_of_member">
+                                                            <option>1 รหัส</option>
+                                                            <option>2 รหัส</option>
+                                                            <option>3 รหัส</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="Prefix">ประเทศ
                                                             <span class="text-danger">* </span></label>
                                                         <select class="form-control" id="business_location">
+                                                            <option>Thailand</option>
                                                             <option>Cambodia</option>
                                                             <option>Laos</option>
                                                             <option>Myanmar</option>
-                                                            <option>Thailand</option>
                                                             <option>Vietnam</option>
                                                         </select>
                                                     </div>

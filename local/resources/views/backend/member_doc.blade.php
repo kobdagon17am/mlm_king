@@ -5,18 +5,20 @@
     <link href="{{ asset('backend/assets/css/ui-elements/pagination.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/select2/select2.min.css') }}">
     <link href="{{ asset('backend/assets/css/forms/form-widgets.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('backend/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('page-header')
     <nav class="breadcrumb-one" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">ระบบบริการสมาชิก</li>
-            <li class="breadcrumb-item active" aria-current="page"><span>ระบบบริการสมาชิก</span></li>
+            <li class="breadcrumb-item active" aria-current="page"><span>ระบบตรวจสอบเอกสาร</span></li>
         </ol>
     </nav>
 @endsection
 @section('content')
     <div class="widget-content widget-content-area br-6">
         <div class="row">
+
             <div class="col-md-2">
                 <div class="form-group row">
                     <label class="col-form-label text-left col-lg-12 col-sm-12"><b>รหัสสมาชิก</b></label>
@@ -35,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            {{-- <div class="col-md-2">
                 <div class="form-group row">
                     <label class="col-form-label text-left col-lg-12 col-sm-12"><b>รหัสผู้แนะนำ</b></label>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -43,8 +45,34 @@
                         </select>
                     </div>
                 </div>
+            </div> --}}
+            <div class="col-md-2">
+                <div class="form-group row">
+                    <label class="col-form-label text-left col-lg-12 col-sm-12"><b>สถานะการตรวจสอบ</b></label>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <select class="form-control" id="verifyDoc_status">
+                            <option>รอตรวจสอบ</option>
+                            <option>ผ่าน</option>
+                            <option>ไม่ผ่าน</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="col-md-3">
+                <div class="form-group row">
+                    <label class="col-form-label text-left col-lg-12 col-sm-12"><b>ประเทศ</b></label>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <select class="form-control" id="business_location">
+                            <option>Thailand</option>
+                            <option>Cambodia</option>
+                            <option>Laos</option>
+                            <option>Myanmar</option>
+                            <option>Vietnam</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="col-md-6">
                 <div class="form-group row">
                     <label class="col-form-label text-left col-lg-12 col-sm-12"><b>หมายเลขบัตรประชาชน</b></label>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -52,10 +80,9 @@
                         </select>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-md-2">
-                <button type="button" class="btn btn-outline-primary btn-rounded mt-4"><i class="las la-search"></i>
+            </div> --}}
+            <div class="col-md-2 mt-4 text-center">
+                <button type="button" class="btn btn-outline-primary btn-rounded"><i class="las la-search"></i>
                     สืบค้น</button>
             </div>
         </div>
@@ -67,11 +94,10 @@
                     <tr>
                         <th>รหัสสมาชิก</th>
                         <th>ชื่อสมาชิก</th>
-                        <th>คะแนน PV</th>
-                        <th>รหัสผู้แนะนำ</th>
-                        <th>สถานะการสมัคร</th>
+                        <th>สถานะการตรวจสอบ</th>
+                        <th>ผู้อนุมัติ</th>
                         <th>วันที่อนุมัติ</th>
-                        <th>ข้อมูลส่วนตัว</th>
+                        <th>รายละเอียด</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -92,7 +118,7 @@
                         </td>
                         <td>06/09/2023</td>
                         <td>
-                            <div class="row">
+                            
                                 <div class="info-area col-md-12 mb-2">
                                     <button type="submit" class="btn btn-rounded btn-primary">
                                         <i class="las la-eye"></i></button>
@@ -118,7 +144,7 @@
                         </td>
                         <td>06/09/2023</td>
                         <td>
-                            <div class="row">
+                            
                                 <div class="info-area col-md-12 mb-2">
                                     <button type="submit" class="btn btn-rounded btn-primary">
                                         <i class="las la-eye"></i></button>
@@ -150,41 +176,6 @@
                 </a>
             </ul>
         </div>
-        <div class="row ml-4">
-            <label class="text-left"><b>*หมายเหตุ :</b></label>
-            <label class="text-left ml-2">สีดำ = ยังไม่ส่ง,</label>
-            <label class="text-left text-info ml-2">สีน้ำเงิน = รอตรวจสอบ,</label>
-            <label class="text-left text-success ml-2">สีเขียว = ผ่าน,</label>
-            <label class="text-left text-danger ml-2">สีแดง = ไม่ผ่าน</label>
-        </div>
-        <div class="row">
-            
-            <div class="col-md-12">
-                
-                <li class="las la-id-card font-25 ml-4"></li>
-                <label class="text-left"><b>: ภาพถ่ายหน้าบัตรประชาชน</b></label>
-            </div>
-            
-            <div class="col-md-12">
-                
-                <i class="las la-portrait font-25 ml-4"></i>
-                <label class="text-left"><b>: ภาพถ่ายหน้าตรง</b></label>
-            </div>
-            
-            <div class="col-md-12">
-                
-                <i class="las la-id-card-alt font-25 ml-4"></i>
-                <label class="text-left"><b>: ภาพหน้าตรงพร้อมบัตรประชาชน</b></label>
-            </div>
-            
-            <div class="col-md-12">
-                
-                <i class="las la-money-check font-25 ml-4"></i>
-                <label class="text-left"><b>: ภาพถ่ายหน้าบัญชีธนาคาร</b></label>
-            </div>
-        </div>
-        
-
     </div>
 @endsection
 @section('js')

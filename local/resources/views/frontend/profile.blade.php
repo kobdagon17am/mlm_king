@@ -76,7 +76,7 @@
                                             <div class="row">
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <label for="Prefix">คำนำหน้าชื่อ
+                                                        <label for="Prefix">คำนำหน้า
                                                             <span class="text-danger">* </span></label>
                                                         <select class="form-control" id="Prefix">
                                                             <option>นาย</option>
