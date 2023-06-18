@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li class="menu">
-                <a href="{{route('home')}}"  aria-expanded="false" class="dropdown-toggle">
+                <a href="{{route('tree')}}"  aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-sitemap"></i>
                         <span>โครงสร้างสายงาน</span>

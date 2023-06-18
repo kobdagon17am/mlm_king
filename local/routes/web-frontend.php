@@ -43,6 +43,16 @@ Auth::routes();
   })->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home_check_customer_id','Frontend\TreeController@home_check_customer_id')->name('home_check_customer_id');
+Route::post('search','Frontend\TreeController@search')->name('search');
+Route::get('modal_tree','Frontend\TreeController@modal_tree')->name('modal_tree');
+Route::get('modal_add','Frontend\TreeController@modal_add')->name('modal_add');
+Route::get('tree','Frontend\TreeController@index')->name('tree');
+Route::get('home_type_tree','Frontend\TreeController@home_type_tree')->name('home_type_tree');
+Route::post('tree','Frontend\TreeController@index')->name('tree');
+
+Route::post('under_a','Frontend\TreeController@under_a')->name('under_a');
+Route::post('under_b','Frontend\TreeController@under_b')->name('under_b');
 
 Route::get('Blank', function () {
     return view('frontend.blank');

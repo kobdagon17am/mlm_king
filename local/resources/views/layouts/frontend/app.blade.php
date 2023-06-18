@@ -68,21 +68,21 @@
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
                         <a class="dropdown-item d-flex" href="javascript:void(0);">
-                            <img src="assets/img/flag/usa-flag.png" class="flag-width" alt="flag">
+                            <img src="{{ asset('frontend/assets/img/flag/usa-flag.png')}}" class="flag-width" alt="flag">
                             <span class="align-self-center">&nbsp;English</span>
                         </a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);">
-                            <img src="assets/img/flag/spain-flag.png" class="flag-width" alt="flag">
+                        {{-- <a class="dropdown-item d-flex" href="javascript:void(0);">
+                            <img src="{{ asset('frontend/assets/img/flag/spain-flag.png')}}" class="flag-width" alt="flag">
                             <span class="align-self-center">&nbsp;Spanish</span>
                         </a>
                         <a class="dropdown-item d-flex" href="javascript:void(0);">
-                            <img src="assets/img/flag/france-flag.png" class="flag-width" alt="flag">
+                            <img src="{{ asset('frontend/assets/img/flag/france-flag.png')}}" class="flag-width" alt="flag">
                             <span class="align-self-center">&nbsp;French</span>
                         </a>
                         <a class="dropdown-item d-flex" href="javascript:void(0);">
-                            <img src="assets/img/flag/saudi-arabia-flag.png" class="flag-width" alt="flag">
+                            <img src="{{ asset('frontend/assets/img/flag/saudi-arabia-flag.png')}}" class="flag-width" alt="flag">
                             <span class="align-self-center">&nbsp;Arabic</span>
-                        </a>
+                        </a> --}}
                     </div>
                 </li>
                 {{-- <li class="nav-item dropdown message-dropdown">
@@ -102,7 +102,7 @@
                                     <a class="account-item">
                                         <div class="media">
                                             <div class="user-img">
-                                                <img class="rounded-circle avatar-xs" src="assets/img/profile-11.jpg" alt="profile">
+                                                <img class="rounded-circle avatar-xs" src="{{ asset('frontend/assets/img/profile-11.jpg" alt="profile">
                                             </div>
                                             <div class="media-body">
                                                 <div class="">
@@ -115,7 +115,7 @@
                                     <a class="account-item marked-read">
                                         <div class="media">
                                             <div class="user-img">
-                                                <img class="rounded-circle avatar-xs" src="assets/img/profile-10.jpg" alt="profile">
+                                                <img class="rounded-circle avatar-xs" src="{{ asset('frontend/assets/img/profile-10.jpg" alt="profile">
                                             </div>
                                             <div class="media-body">
                                                 <div class="">
@@ -128,7 +128,7 @@
                                     <a class="account-item marked-read">
                                         <div class="media">
                                             <div class="user-img">
-                                                <img class="rounded-circle avatar-xs" src="assets/img/profile-9.jpg" alt="profile">
+                                                <img class="rounded-circle avatar-xs" src="{{ asset('frontend/assets/img/profile-9.jpg" alt="profile">
                                             </div>
                                             <div class="media-body">
                                                 <div class="">

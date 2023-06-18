@@ -42,7 +42,7 @@
                             <div class="col-lg-4">
                                 <div class="media">
                                     <div class="mr-3">
-                                        <img src="assets/img/profile-16.jpg')}}" alt="" class="avatar-md rounded-circle img-thumbnail">
+                                        <img src="{{ asset('frontend/assets/img/profi')}}le-16.jpg')}}" alt="" class="avatar-md rounded-circle img-thumbnail">
                                     </div>
                                     <div class="align-self-center media-body">
                                         <div class="text-muted">
@@ -131,21 +131,21 @@
                                         </ol>
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img class="d-block w-100" src="assets/img/1.jpg" alt="First slide">
+                                                <img class="d-block w-100" src="{{ asset('frontend/assets/img/1.jpg')}}" alt="First slide">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>First label</h3>
                                                     <h5>Nulla vitae elit libero, a pharetra augue mollis.</h5>
                                                 </div> --}}
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block w-100" src="assets/img/3.jpg" alt="Second slide">
+                                                <img class="d-block w-100" src="{{ asset('frontend/assets/img/3.jpg')}}" alt="Second slide">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>Second label</h3>
                                                     <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
                                                 </div> --}}
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block w-100" src="assets/img/2.jpg" alt="Third slide">
+                                                <img class="d-block w-100" src="{{ asset('frontend/assets/img/2.jpg')}}" alt="Third slide">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>Third label</h3>
                                                     <h5>Praesent commodo cursus magna, vel scelerisque nisl.</h5>
@@ -192,7 +192,7 @@
                                         </ol>
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img class="d-block w-100" src="{{asset('assets/img/1.jpg')}}" alt="First slide">
+                                                <img class="d-block w-100" src="{{asset('frontend/assets/img/1.jpg')}}" alt="First slide">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>First label</h3>
                                                     <h5>Nulla vitae elit libero, a pharetra augue mollis.</h5>
