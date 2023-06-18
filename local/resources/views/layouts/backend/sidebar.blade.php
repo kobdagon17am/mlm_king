@@ -18,10 +18,10 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="stock" data-parent="#accordionExample">
                     <li>
-                        <a href="{{route('admin/Member')}}"> ระบบบริการสมาชิก </a>
+                        <a href="{{route('admin/MemberRegister')}}"> ระบบบริการสมาชิก </a>
                     </li>
                     <li>
-                        <a href="{{route('admin/MemberRegister')}}"> ระบบตรวจสอบเอกสาร </a>
+                        <a href="{{route('admin/MemberDocument')}}"> ระบบตรวจสอบเอกสาร </a>
                     </li>
                 </ul>
             </li>

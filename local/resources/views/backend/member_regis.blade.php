@@ -10,7 +10,7 @@
     <nav class="breadcrumb-one" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">ระบบบริการสมาชิก</li>
-            <li class="breadcrumb-item active" aria-current="page"><span>ระบบตรวจสอบเอกสาร</span></li>
+            <li class="breadcrumb-item active" aria-current="page"><span>ระบบบริการสมาชิก</span></li>
         </ol>
     </nav>
 @endsection
@@ -54,13 +54,12 @@
                 </div>
             </div>
 
-            <div class="col-md-2 mt-4">
-                <button type="button" class="btn btn-outline-primary btn-rounded"><i class="las la-search"></i>
+            <div class="col-md-2 text-center">
+                <button type="button" class="btn btn-outline-primary btn-rounded mt-4"><i class="las la-search"></i>
                     สืบค้น</button>
             </div>
         </div>
-        <p>
-        </p>
+        <br>
         <div class="table-responsive mb-4">
             <table id="ordertable" class="table table-hover" style="width:100%">
                 <thead>
@@ -71,7 +70,7 @@
                         <th>รหัสผู้แนะนำ</th>
                         <th>สถานะการสมัคร</th>
                         <th>วันที่อนุมัติ</th>
-                        <th>ข้อมูลส่วนตัว</th>
+                        <th>รายละเอียด</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,24 +80,30 @@
                         <td>200</td>
                         <td>A000</td>
                         <td>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <i class="las la-id-card font-25 text-success"></i>
-                                    <i class="las la-portrait font-25 text-success"></i>
-                                    <i class="las la-id-card-alt font-25 text-info"></i>
-                                    <i class="las la-money-check font-25 text-info"></i>
-                                </div>
-                            </div>
+
+                            <i class="las la-id-card font-35 text-success"></i>
+                            <i class="las la-portrait font-35 text-success"></i>
+                            <i class="las la-id-card-alt font-35 text-info"></i>
+                            <i class="las la-money-check font-35 text-info"></i>
+
                         </td>
                         <td>06/09/2023</td>
                         <td>
-                            <div class="row">
-                                <div class="info-area col-md-12 mb-2">
-                                    <button type="submit" class="btn btn-rounded btn-primary">
-                                        <i class="las la-eye"></i></button>
-                                    <button type="edit" class="btn btn-rounded btn-warning">
-                                        <i class="las la-edit"></i></button>
-                                </div>
+
+
+                            <a href="#!" class="p-2">
+                                <i class="las la-search font-35 text-primary"></i></a>
+
+                            <a href="#!" class="p-2" id="btnGroupDrop1" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="las la-tools font-35 text-primary"></i></a>
+
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <a class="dropdown-item" href="#">เปลี่ยนแปลงรหัสผ่าน</a>
+                                <a class="dropdown-item" href="#">ยกเลิกรหัสสมาชิก</a>
+                            </div>
+
+
                         </td>
                     </tr>
                     <tr>
@@ -109,26 +114,25 @@
                         <td>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <i class="las la-id-card font-25"></i>
-                                    <i class="las la-portrait font-25 text-danger"></i>
-                                    <i class="las la-id-card-alt font-25 text-danger"></i>
-                                    <i class="las la-money-check font-25 text-info"></i>
+                                    <i class="las la-id-card font-35"></i>
+                                    <i class="las la-portrait font-35 text-danger"></i>
+                                    <i class="las la-id-card-alt font-35 text-danger"></i>
+                                    <i class="las la-money-check font-35 text-info"></i>
                                 </div>
                             </div>
                         </td>
                         <td>06/09/2023</td>
                         <td>
-                            <div class="row">
-                                <div class="info-area col-md-12 mb-2">
-                                    <button type="submit" class="btn btn-rounded btn-primary">
-                                        <i class="las la-eye"></i></button>
-                                    <button type="edit" class="btn btn-rounded btn-warning">
-                                        <i class="las la-edit"></i></button>
-                                </div>
+
+                            <div class="info-area col-md-12 mb-2">
+                                <button type="submit" class="btn btn-rounded btn-outline-primary">
+                                    <i class="las la-search"></i></button>
+                                <button type="edit" class="btn btn-rounded btn-outline-warning">
+                                    <i class="las la-edit"></i></button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
-
             </table>
         </div>
         <div class="pagination p1">
@@ -158,32 +162,32 @@
             <label class="text-left text-danger ml-2">สีแดง = ไม่ผ่าน</label>
         </div>
         <div class="row">
-            
+
             <div class="col-md-12">
-                
+
                 <li class="las la-id-card font-25 ml-4"></li>
                 <label class="text-left"><b>: ภาพถ่ายหน้าบัตรประชาชน</b></label>
             </div>
-            
+
             <div class="col-md-12">
-                
+
                 <i class="las la-portrait font-25 ml-4"></i>
                 <label class="text-left"><b>: ภาพถ่ายหน้าตรง</b></label>
             </div>
-            
+
             <div class="col-md-12">
-                
+
                 <i class="las la-id-card-alt font-25 ml-4"></i>
                 <label class="text-left"><b>: ภาพหน้าตรงพร้อมบัตรประชาชน</b></label>
             </div>
-            
+
             <div class="col-md-12">
-                
+
                 <i class="las la-money-check font-25 ml-4"></i>
                 <label class="text-left"><b>: ภาพถ่ายหน้าบัญชีธนาคาร</b></label>
             </div>
         </div>
-        
+
 
     </div>
 @endsection
