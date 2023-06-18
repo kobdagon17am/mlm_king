@@ -1,6 +1,6 @@
 @extends('layouts.frontend.app')
 @section('css')
-    <link rel="stylesheet" type="text/css" href="plugins/dropify/dropify.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/dropify/dropify.min.css') }}">
     <link href="{{ asset('frontend/assets/css/pages/profile_edit.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('frontend/assets/css/forms/form-widgets.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('frontend/assets/css/forms/file-upload.css')}}" rel="stylesheet" type="text/css">
