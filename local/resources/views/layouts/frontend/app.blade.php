@@ -94,7 +94,7 @@
                             <div class="inner">
                                 <div class="nav-drop-header">
                                       <span class="text-black font-12 strong">3 new mails</span>
-                                      <a class="text-muted font-12" href="#">
+                                      <a class="text-muted font-12" href="#!">
                                         Mark all read
                                       </a>
                                 </div>
@@ -159,7 +159,7 @@
                             <div class="inner">
                                 <div class="nav-drop-header">
                                       <span class="text-black font-12 strong">5 Notifications</span>
-                                      <a class="text-muted font-12" href="#">
+                                      <a class="text-muted font-12" href="#!">
                                         Clear All
                                       </a>
                                 </div>

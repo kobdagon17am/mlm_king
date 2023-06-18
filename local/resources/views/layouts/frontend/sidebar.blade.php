@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="menu">
-                <a href="{{route('home')}}"  aria-expanded="false" class="dropdown-toggle">
+                <a href="#!"  aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-handshake"></i>
                         <span>แนะนำตรง</span>
@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li class="menu">
-                <a href="{{route('home')}}"  aria-expanded="false" class="dropdown-toggle">
+                <a href="#!"  aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-coins"></i>
                         <span>โบนัส</span>
@@ -98,10 +98,10 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="stock" data-parent="#accordionExample">
                     <li>
-                        <a href="stock.html"> สต๊อกสินค้า </a>
+                        <a href="#!"> สต๊อกสินค้า </a>
                     </li>
                     <li>
-                        <a href="stock_history.html"> ประวัติสต๊อกสินค้า </a>
+                        <a href="#!"> ประวัติสต๊อกสินค้า </a>
                     </li>
                 </ul>
             </li>
@@ -117,19 +117,19 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="salespage" data-parent="#accordionExample">
                     <li>
-                        <a href="salespage1.html"> เพจซื้อขาย 1 </a>
+                        <a href="#!""> เพจซื้อขาย 1 </a>
                     </li>
                     <li>
-                        <a href="salespag2.html"> เพจซื้อขาย 2 </a>
+                        <a href="#!"> เพจซื้อขาย 2 </a>
                     </li>
                     <li>
-                        <a href="salespag3.html"> เพจซื้อขาย 3 </a>
+                        <a href="#!"> เพจซื้อขาย 3 </a>
                     </li>
                     <li>
-                        <a href="salespag4.html"> เพจซื้อขาย 4 </a>
+                        <a href="#!"> เพจซื้อขาย 4 </a>
                     </li>
                     <li>
-                        <a href="salespag5.html"> เพจซื้อขาย 5 </a>
+                        <a href="#!"> เพจซื้อขาย 5 </a>
                     </li>
                 </ul>
             </li>
