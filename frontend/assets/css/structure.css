@@ -5,7 +5,7 @@ html {
 body {
     color: #000000;
     height: 100%;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     background: #ffffff;
     overflow-x: hidden;
     overflow-y: auto;
@@ -1442,7 +1442,7 @@ code {
     display: flex;
     justify-content: space-between;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     color: #ffffff;
     padding: 11px 14px;
     transition: .600s;
