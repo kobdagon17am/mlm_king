@@ -4,10 +4,6 @@
     <link href="{{ asset('frontend/plugins/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('frontend/assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('frontend/assets/css/apps/ecommerce.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet"
-        href="{{ asset('https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css') }}">
-    <link href="{{ asset('frontend/assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('frontend/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     <!--  Content Area Starts  -->
@@ -111,7 +107,7 @@
                                                                 <th>Code</th>
                                                                 <th>รายละเอียด</th>
                                                                 <th>สถานะ</th>
-                                                                <th>ACTION</th>
+                                                                <th>ใช้งานโค้ดคูปอง</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -120,36 +116,39 @@
                                                                 <td><span class="badge outline-badge-dark">AAA</span></td>
                                                                 <td>BUY 1 GET 1 FREE</td>
                                                                 <td>
-                                                                    <span
-                                                                        class="badge badge-success light">ใช้งานได้</span>
+                                                                    <span class="badge badge-success light">ใช้งานได้</span>
                                                                 </td>
                                                                 <td><button type="submit"
-                                                                        class="btn btn-info width-sm btn-sm">
-                                                                        <i class="las la-check-circle"></i> ใช้งาน</button>
+                                                                        class="btn btn-outline-warning width-sm btn-sm">
+                                                                        <i class="las la-check-circle font-13"></i>
+                                                                        ใช้งาน</button>
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>15/09/2023</td>
                                                                 <td><span class="badge outline-badge-dark">AAA</span></td>
                                                                 <td>BUY 1 GET 1 FREE</td>
                                                                 <td>
-                                                                    <span
-                                                                        class="badge badge-success light">ใช้งานได้</span>
+                                                                    <span class="badge badge-success light">ใช้งานได้</span>
                                                                 </td>
                                                                 <td><button type="submit"
-                                                                    class="btn btn-info width-sm btn-sm">
-                                                                    <i class="las la-check-circle"></i> ใช้งาน</button>
+                                                                        class="btn btn-outline-warning width-sm btn-sm">
+                                                                        <i class="las la-check-circle font-13"></i>
+                                                                        ใช้งาน</button>
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>15/09/2023</td>
                                                                 <td><span class="badge outline-badge-dark">AAA</span></td>
                                                                 <td>BUY 1 GET 1 FREE</td>
                                                                 <td>
-                                                                    <span
-                                                                        class="badge badge-success light">ใช้งานได้</span>
+                                                                    <span class="badge badge-success light">ใช้งานได้</span>
                                                                 </td>
                                                                 <td><button type="submit"
-                                                                    class="btn btn-info width-sm btn-sm">
-                                                                    <i class="las la-check-circle"></i> ใช้งาน</button>
+                                                                        class="btn btn-outline-warning width-sm btn-sm">
+                                                                        <i class="las la-check-circle font-13"></i>
+                                                                        ใช้งาน</button>
+                                                                </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -168,7 +167,8 @@
                                         <div class="product-info">
                                             <div>
                                                 <a href="{{ route('CartGeneralDetail') }}"><img
-                                                        src="{{ asset('frontend/assets/img/product-5.jpg') }}" alt="avatar"></a>
+                                                        src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
+                                                        alt="avatar"></a>
                                             </div>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
@@ -176,16 +176,15 @@
                                                 </p>
                                             </div>
                                             <div class="product-price">
-                                                <p class="product-category-price"><span><b>ราคา:</b></span>฿ 1,000</p>
+                                                <p class="product-category-price"><span><b>฿ 1,000</b></span>(50PV)</p>
                                             </div>
-                                            <div class="product-rating">
-                                                <p class="product-rating-inner"><span><b>PV:</b></span>50PV</p>
-                                            </div>
+
                                             <div class="product-stock-status">
                                                 <p class="product-stock-status-inner">
-                                                    <a href="{{ route('Cart') }}"><small class="badge badge-success"><i
+                                                    <a href="{{ route('Cart') }}"><button type="button"
+                                                            class="btn btn-outline-success btn-rounded"><i
                                                                 class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
-                                                        </small>
+                                                        </button>
                                                 </p>
                                             </div>
                                         </div>
@@ -195,23 +194,22 @@
                                     <div class="item-content">
                                         <div class="product-info">
                                             <a href="{{ route('CartGeneralDetail') }}"><img
-                                                    src="{{ asset('frontend/assets/img/product-1.jpg') }}" alt="avatar"></a>
+                                                    src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png') }}"
+                                                    alt="avatar"></a>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
                                                 <h5><b>Product 2</b></h5>
                                                 </p>
                                             </div>
                                             <div class="product-price">
-                                                <p class="product-category-price"><span><b>ราคา:</b></span>฿ 1,000</p>
-                                            </div>
-                                            <div class="product-rating">
-                                                <p class="product-rating-inner"><span><b>PV:</b></span>50PV</p>
+                                                <p class="product-category-price"><span><b>฿ 1,000</b></span>(50PV)</p>
                                             </div>
                                             <div class="product-stock-status">
                                                 <p class="product-stock-status-inner">
-                                                    <a href="{{ route('Cart') }}"><small class="badge badge-success"><i
+                                                    <a href="{{ route('Cart') }}"><button type="button"
+                                                            class="btn btn-outline-success btn-rounded"><i
                                                                 class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
-                                                        </small>
+                                                        </button>
                                                 </p>
                                             </div>
                                         </div>
@@ -221,23 +219,22 @@
                                     <div class="item-content">
                                         <div class="product-info">
                                             <a href="{{ route('CartGeneralDetail') }}"><img
-                                                    src="{{ asset('frontend/assets/img/product-2.jpg') }}" alt="avatar"></a>
+                                                    src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png') }}"
+                                                    alt="avatar"></a>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
                                                 <h5><b>Product 3</b></h5>
                                                 </p>
                                             </div>
                                             <div class="product-price">
-                                                <p class="product-category-price"><span><b>ราคา:</b></span>฿ 1,000</p>
-                                            </div>
-                                            <div class="product-rating">
-                                                <p class="product-rating-inner"><span><b>PV:</b></span>50PV</p>
+                                                <p class="product-category-price"><span><b>฿ 1,000</b></span>(50PV)</p>
                                             </div>
                                             <div class="product-stock-status">
                                                 <p class="product-stock-status-inner">
-                                                    <a href="{{ route('Cart') }}"><small class="badge badge-success"><i
+                                                    <a href="{{ route('Cart') }}"><button type="button"
+                                                            class="btn btn-outline-success btn-rounded"><i
                                                                 class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
-                                                        </small>
+                                                        </button>
                                                 </p>
                                             </div>
                                         </div>
@@ -247,23 +244,22 @@
                                     <div class="item-content">
                                         <div class="product-info">
                                             <a href="{{ route('CartGeneralDetail') }}"><img
-                                                    src="{{ asset('frontend/assets/img/product-3.jpg') }}" alt="avatar"></a>
+                                                    src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
+                                                    alt="avatar"></a>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
                                                 <h5><b>Product 4</b></h5>
                                                 </p>
                                             </div>
                                             <div class="product-price">
-                                                <p class="product-category-price"><span><b>ราคา:</b></span>฿ 1,000</p>
-                                            </div>
-                                            <div class="product-rating">
-                                                <p class="product-rating-inner"><span><b>PV:</b></span>50PV</p>
+                                                <p class="product-category-price"><span><b>฿ 1,000</b></span>(50PV)</p>
                                             </div>
                                             <div class="product-stock-status">
                                                 <p class="product-stock-status-inner">
-                                                    <a href="{{ route('Cart') }}"><small class="badge badge-success"><i
+                                                    <a href="{{ route('Cart') }}"><button type="button"
+                                                            class="btn btn-outline-success btn-rounded"><i
                                                                 class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
-                                                        </small>
+                                                        </button>
                                                 </p>
                                             </div>
                                         </div>
@@ -298,5 +294,4 @@
         </div>
     </div>
     <!--  Content Area Ends  -->
-    </div>
 @endsection

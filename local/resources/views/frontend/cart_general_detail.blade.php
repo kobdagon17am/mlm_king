@@ -39,49 +39,49 @@
                                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12">
                                         <div class="tab-content pt-0">
                                             <div class="tab-pane show" id="product-1-item">
-                                                <img src="{{ asset('frontend/assets/img/product-detail-1.jpg') }}" alt=""
-                                                    class="img-fluid mx-auto d-block rounded">
+                                                <img src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
+                                                    alt="" class="img-fluid mx-auto d-block rounded">
                                             </div>
                                             <div class="tab-pane" id="product-2-item">
-                                                <img src="{{ asset('frontend/assets/img/product-detail-2.jpg') }}" alt=""
-                                                    class="img-fluid mx-auto d-block rounded">
+                                                <img src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png') }}"
+                                                    alt="" class="img-fluid mx-auto d-block rounded">
                                             </div>
                                             <div class="tab-pane" id="product-3-item">
-                                                <img src="{{ asset('frontend/assets/img/product-detail-3.jpg') }}" alt=""
-                                                    class="img-fluid mx-auto d-block rounded">
+                                                <img src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png') }}"
+                                                    alt="" class="img-fluid mx-auto d-block rounded">
                                             </div>
                                             <div class="tab-pane active" id="product-4-item">
-                                                <img src="{{ asset('frontend/assets/img/product-detail-4.jpg') }}" alt=""
-                                                    class="img-fluid mx-auto d-block rounded">
+                                                <img src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
+                                                    alt="" class="img-fluid mx-auto d-block rounded">
                                             </div>
                                         </div>
                                         <ul class="nav nav-pills nav-justified">
                                             <li class="nav-item">
                                                 <a href="#product-1-item" data-toggle="tab" aria-expanded="false"
                                                     class="nav-link product-thumb show">
-                                                    <img src="{{ asset('frontend/assets/img/product-detail-1.jpg') }}" alt=""
-                                                        class="img-fluid mx-auto d-block rounded">
+                                                    <img src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
+                                                        alt="" class="img-fluid mx-auto d-block rounded">
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a href="#product-2-item" data-toggle="tab" aria-expanded="true"
                                                     class="nav-link product-thumb">
-                                                    <img src="{{ asset('frontend/assets/img/product-detail-2.jpg') }}" alt=""
-                                                        class="img-fluid mx-auto d-block rounded">
+                                                    <img src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png') }}"
+                                                        alt="" class="img-fluid mx-auto d-block rounded">
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a href="#product-3-item" data-toggle="tab" aria-expanded="false"
                                                     class="nav-link product-thumb">
-                                                    <img src="{{ asset('frontend/assets/img/product-detail-3.jpg') }}" alt=""
-                                                        class="img-fluid mx-auto d-block rounded">
+                                                    <img src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png') }}"
+                                                        alt="" class="img-fluid mx-auto d-block rounded">
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a href="#product-4-item" data-toggle="tab" aria-expanded="false"
                                                     class="nav-link product-thumb active">
-                                                    <img src="{{ asset('frontend/assets/img/product-detail-4.jpg') }}" alt=""
-                                                        class="img-fluid mx-auto d-block rounded">
+                                                    <img src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
+                                                        alt="" class="img-fluid mx-auto d-block rounded">
                                                 </a>
                                             </li>
                                         </ul>
@@ -126,24 +126,26 @@
                                                     </div>
                                                 </div>
                                             </div> --}}
-                                            <form class="form-inline mb-4">
-                                                <label class="my-1 mr-2" for="quantityinput">Quantity</label>
-                                                <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                </select>
-                                                <div class="text-center w-40">
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                                        <label class="my-1 mr-2" for="quantityinput">จำนวนสินค้า</label>
+                                                        <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                        </select>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center " id="" style="margin-top:30px">
                                                     <a href="{{ route('Cart') }}"><button type="button"
-                                                            class="btn btn-success btn-rounded">
-                                                            <i class="las la-cart-plus las-white font-17"></i> Add to cart
+                                                            class="btn btn-success btn-rounded btn-block">
+                                                            <i class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
                                                         </button>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
 
