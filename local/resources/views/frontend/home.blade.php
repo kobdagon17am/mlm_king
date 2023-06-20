@@ -120,7 +120,7 @@
                         <div class="widget-header">
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <h2 class="text-center"><b>โปรโมชั่นสินค้า</b></h2>
+                                    <h3 class="text-center"><b>โปรโมชั่นสินค้า</b></h3>
                                 </div>
                                 <div class="col-lg-12 col-md-12">
                                     <div id="promotionpic" class="carousel slide" data-ride="carousel">
@@ -131,21 +131,21 @@
                                         </ol>
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img class="d-block w-100" src="{{ asset('frontend/assets/img/1.jpg')}}" alt="First slide">
+                                                <img class="d-block img-fluid" src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png')}}" alt="First slide">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>First label</h3>
                                                     <h5>Nulla vitae elit libero, a pharetra augue mollis.</h5>
                                                 </div> --}}
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block w-100" src="{{ asset('frontend/assets/img/3.jpg')}}" alt="Second slide">
+                                                <img class="d-block img-fluid" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png')}}">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>Second label</h3>
                                                     <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
                                                 </div> --}}
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block w-100" src="{{ asset('frontend/assets/img/2.jpg')}}" alt="Third slide">
+                                                <img class="d-block img-fluid" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png')}}">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>Third label</h3>
                                                     <h5>Praesent commodo cursus magna, vel scelerisque nisl.</h5>
@@ -181,7 +181,7 @@
                         <div class="widget-header">
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <h2 class="text-center"><b>โปรโมชั่นเปิดคลังใบหยก</b></h2>
+                                    <h3 class="text-center"><b>โปรโมชั่นเปิดคลังใบหยก</b></h3>
                                 </div>
                                 <div class="col-lg-12 col-md-12">
                                     <div id="promotionpic1" class="carousel slide" data-ride="carousel">
@@ -192,21 +192,21 @@
                                         </ol>
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img class="d-block w-100" src="{{asset('frontend/assets/img/1.jpg')}}" alt="First slide">
+                                                <img class="d-block img-fluid" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png')}}" alt="First slide">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>First label</h3>
                                                     <h5>Nulla vitae elit libero, a pharetra augue mollis.</h5>
                                                 </div> --}}
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block w-100" src="{{ asset('frontend/assets/img/3.jpg')}}" alt="Second slide">
+                                                <img class="d-block img-fluid" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-05.png')}}">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>Second label</h3>
                                                     <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
                                                 </div> --}}
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block w-100" src="{{ asset('frontend/assets/img/2.jpg')}}" alt="Third slide">
+                                                <img class="d-block img-fluid" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-06.png')}}">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>Third label</h3>
                                                     <h5>Praesent commodo cursus magna, vel scelerisque nisl.</h5>

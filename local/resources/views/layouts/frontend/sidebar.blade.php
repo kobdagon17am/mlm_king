@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="menu">
-                <a href="#!"  aria-expanded="false" class="dropdown-toggle">
+                <a href="{{route('DirectSponsor')}}"  aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-handshake"></i>
                         <span>แนะนำตรง</span>

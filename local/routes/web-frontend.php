@@ -69,41 +69,56 @@ Route::get('CartGeneral', function () {
 Route::get('CartGeneralDetail', function () {
   return view('frontend.cart_general_detail');
 })->name('CartGeneralDetail');
+
 Route::get('Cart', function () {
 
   return view('frontend.cart');
 })->name('Cart');
+
 Route::get('Order', function () {
 
   return view('frontend.order');
 })->name('Order');
+
 Route::get('Register', function () {
 
   return view('frontend.register');
 })->name('Register');
+
 Route::get('ProfileUpload', function () {
 
   return view('frontend.profile_upload');
 })->name('ProfileUpload');
+
 Route::get('Document', function () {
 
   return view('frontend.doc');
 })->name('Document');
+
 Route::get('ChangePassword', function () {
 
   return view('frontend.change_pwd');
 })->name('ChangePassword');
+
 Route::get('ContactUs', function () {
 
   return view('frontend.contact');
 })->name('ContactUs');
+
 Route::get('Coupon', function () {
 
-  return view('frontend.code');
+  return view('frontend.coupon');
 })->name('Coupon');
+
 Route::get('ChangeAccount', function () {
 
   return view('frontend.change_account');
 })->name('ChangeAccount');
+
+Route::get('DirectSponsor', function () {
+
+  return view('frontend.direct_sponsor');
+})->name('DirectSponsor');
+
 
 // BEGIN eWallet withdraw
