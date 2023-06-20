@@ -109,7 +109,6 @@
                                                         <select class="form-control" id="number_of_member">
                                                             <option>1 รหัส</option>
                                                             <option>2 รหัส</option>
-                                                            <option>3 รหัส</option>
                                                         </select>
                                                     </div>
                                                 </div>
