@@ -80,29 +80,24 @@
                         <td>200</td>
                         <td>A000</td>
                         {{-- <td>
-
                             <i class="las la-id-card font-35 text-success"></i>
                             <i class="las la-portrait font-35 text-success"></i>
                             <i class="las la-id-card-alt font-35 text-info"></i>
                             <i class="las la-money-check font-35 text-info"></i>
-
                         </td> --}}
                         <td>06/09/2023</td>
                         <td>
-
-
                             <a href="#!" class="p-2">
-                                <i class="las la-search font-35 text-primary"></i></a>
+                                <i class="las la-search font-25 text-info"></i></a>
 
                             <a href="#!" class="p-2" id="btnGroupDrop1" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                                <i class="las la-tools font-35 text-primary"></i></a>
+                                <i class="las la-tools font-25 text-warning"></i></a>
 
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                 <a class="dropdown-item" href="#">เปลี่ยนแปลงรหัสผ่าน</a>
                                 <a class="dropdown-item" href="#">ยกเลิกรหัสสมาชิก</a>
                             </div>
-
 
                         </td>
                     </tr>
@@ -124,11 +119,16 @@
                         <td>06/09/2023</td>
                         <td>
 
-                            <div class="info-area col-md-12 mb-2">
-                                <button type="submit" class="btn btn-rounded btn-outline-primary">
-                                    <i class="las la-search"></i></button>
-                                <button type="edit" class="btn btn-rounded btn-outline-warning">
-                                    <i class="las la-edit"></i></button>
+                            <a href="#!" class="p-2">
+                                <i class="las la-search font-25 text-info"></i></a>
+
+                            <a href="#!" class="p-2" id="btnGroupDrop1" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="las la-tools font-25 text-warning"></i></a>
+
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <a class="dropdown-item" href="#">เปลี่ยนแปลงรหัสผ่าน</a>
+                                <a class="dropdown-item" href="#">ยกเลิกรหัสสมาชิก</a>
                             </div>
                         </td>
                     </tr>
