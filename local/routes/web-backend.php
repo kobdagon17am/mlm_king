@@ -18,3 +18,7 @@ Route::get('admin/Blank', function () {
   Route::get('admin/MemberDocument', function () {
     return view('backend.member_doc');
   })->name('admin/MemberDocument');
+
+  Route::get('admin/HistoryDocument', function () {
+    return view('backend.history_doc');
+  })->name('admin/HistoryDocument');

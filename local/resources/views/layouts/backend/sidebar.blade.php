@@ -29,6 +29,9 @@
                     <li>
                         <a href="{{route('admin/MemberDocument')}}"> ระบบตรวจสอบเอกสาร </a>
                     </li>
+                    <li>
+                        <a href="{{route('admin/HistoryDocument')}}"> ประวัติการตรวจสอบเอกสาร </a>
+                    </li>
                 </ul>
             </li>
 
