@@ -287,20 +287,20 @@
                             </div>
                         {{-- </div> --}}
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 mt-4">
                         <hr>
                         <label
                             class="col-form-label text-center col-lg-12 col-sm-12"><u><b>ยืนยันการตรวจสอบเอกสาร</b></u></label>
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-2 ">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 p-4">
                                 <div class="form-group">
                                     <label for="firstname"><b>หมายเหตุ : </b></label>
                                     <textarea class="form-control" id="remark" placeholder="หมายเหตุ"></textarea>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 p-4">
                                 <div class="form-group">
                                     <label for="maritalstatus"><b>ผลการตรวจสอบ :</b></label>
                                     <select class="form-control" id="verify_status">
@@ -317,6 +317,8 @@
                             </div>
                         </div>
                     </div>
+
+
                 </div>
 
                 </p>
