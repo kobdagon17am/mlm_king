@@ -68,7 +68,7 @@
                         <th>ชื่อสมาชิก</th>
                         <th>คะแนน PV</th>
                         <th>รหัสผู้แนะนำ</th>
-                        <th>สถานะการสมัคร</th>
+                        {{-- <th>สถานะการสมัคร</th> --}}
                         <th>วันที่อนุมัติ</th>
                         <th>รายละเอียด</th>
                     </tr>
@@ -79,14 +79,14 @@
                         <td>กิ่งทองใบหยก</td>
                         <td>200</td>
                         <td>A000</td>
-                        <td>
+                        {{-- <td>
 
                             <i class="las la-id-card font-35 text-success"></i>
                             <i class="las la-portrait font-35 text-success"></i>
                             <i class="las la-id-card-alt font-35 text-info"></i>
                             <i class="las la-money-check font-35 text-info"></i>
 
-                        </td>
+                        </td> --}}
                         <td>06/09/2023</td>
                         <td>
 
@@ -111,7 +111,7 @@
                         <td>กิ่งทองใบหยก</td>
                         <td>200</td>
                         <td>A000</td>
-                        <td>
+                        {{-- <td>
                             <div class="row">
                                 <div class="col-md-12">
                                     <i class="las la-id-card font-35"></i>
@@ -120,7 +120,7 @@
                                     <i class="las la-money-check font-35 text-info"></i>
                                 </div>
                             </div>
-                        </td>
+                        </td> --}}
                         <td>06/09/2023</td>
                         <td>
 
@@ -154,7 +154,7 @@
                 </a>
             </ul>
         </div>
-        <div class="row ml-4">
+        {{-- <div class="row ml-4">
             <label class="text-left"><b>*หมายเหตุ :</b></label>
             <label class="text-left ml-2">สีดำ = ยังไม่ส่ง,</label>
             <label class="text-left text-info ml-2">สีน้ำเงิน = รอตรวจสอบ,</label>
@@ -186,7 +186,7 @@
                 <i class="las la-money-check font-25 ml-4"></i>
                 <label class="text-left"><b>: ภาพถ่ายหน้าบัญชีธนาคาร</b></label>
             </div>
-        </div>
+        </div> --}}
 
 
     </div>
