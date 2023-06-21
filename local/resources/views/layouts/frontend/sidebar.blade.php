@@ -54,17 +54,10 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="cart" data-parent="#accordionExample">
                     <li>
-                        <a href="{{ route('CartGeneral')}}"> สินค้าเพื่อสุขภาพ </a>
+                        <a href="{{ route('CartGeneral')}}"> สินค้าทั่วไป </a>
                     </li>
                     <li>
-                        <a href="{{ route('CartGeneral')}}"> สินค้าเกษตร </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('CartGeneral')}}"> สินค้าอื่น ๆ </a>
-                    </li>
-
-                    <li>
-                        <a href="{{ route('CartGeneral')}}"> สินค้าโปรโมชั่น </a>
+                        <a href="{{ route('CartGeneral')}}"> สินค้า (คลัง) </a>
                     </li>
                 </ul>
             </li>
@@ -117,7 +110,7 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="salespage" data-parent="#accordionExample">
                     <li>
-                        <a href="#!""> เพจซื้อขาย 1 </a>
+                        <a href="#!"> เพจซื้อขาย 1 </a>
                     </li>
                     <li>
                         <a href="#!"> เพจซื้อขาย 2 </a>
