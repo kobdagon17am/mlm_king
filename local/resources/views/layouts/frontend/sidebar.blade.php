@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li class="menu">
-                <a href="#!"  aria-expanded="false" class="dropdown-toggle">
+                <a href="{{route('Bonus')}}"  aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-coins"></i>
                         <span>โบนัส</span>

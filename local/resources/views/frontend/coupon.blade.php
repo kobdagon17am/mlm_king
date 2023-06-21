@@ -60,6 +60,7 @@
                             <input class="form-control" type="date" value="yyyy-mm-dd"
                                 id="validtodate"><label for="searchdate2">
                         </div>
+                        
                         <div class="col-md-2 ">
                             <button type="button"
                                 class="btn btn-outline-success btn-rounded">FILTER</button>
@@ -78,36 +79,30 @@
                                                                                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($get_coupon as $value)
                                 <tr>
-                                    <td>06/09/2023</td>
-                                    <td>15/09/2023</td>
-                                    <td>AAA</td>
-                                    <td>BUY 1 GET 1 FREE</td>
-                                    <td>กิ่งทองใบหยก</td>
+                                    <td>{{ date('Y/m/d',strtotime($value->coupon_start_date))}}</td>
+                                    <td>{{$value->coupon_expire_date}}</td>
+                                    <td>{{$value->coupon_code}}</td>
+                                    <td>{{$value->coupon_name}}</td>
+                                    <td>{{$value->username_coupon_use}}</td>
                                     <td>
-                                        <span class="badge badge-danger light">หมดอายุ</span>
+                                        @if($value->coupon_status == 'Available')
+                                        <span class="badge badge-success light">ใช้งานได้</span>
+                                        @endif
+                                        @if($value->coupon_status == 'Pending')
+                                        <span class="badge badge-info light">รอเปิดใช้งาน</span>
+                                        @endif
+                                        @if($value->coupon_status == 'Success')
+                                        <span class="badge badge-warning light">ใช้งานแล้ว</span>
+                                        @endif
+                                        @if($value->coupon_status == 'Cencle')
+                                        <span class="badge badge-warning light">ยกเลิก</span>
+                                        @endif
+                                       
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>06/09/2023</td>
-                                    <td>15/09/2023</td>
-                                    <td>AAA</td>
-                                    <td>BUY 1 GET 1 FREE</td>
-                                    <td>กิ่งทองใบหยก</td>
-                                    <td>
-                                        <span class="badge badge-warning light">ถูกใช้งานแล้ว</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>06/09/2023</td>
-                                    <td>15/09/2023</td>
-                                    <td>AAA</td>
-                                    <td>BUY 1 GET 1 FREE</td>
-                                    <td>กิ่งทองใบหยก</td>
-                                    <td>
-                                        <span class="badge badge-success-teal light">ใช้งานได้</span>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

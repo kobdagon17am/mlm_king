@@ -105,10 +105,11 @@ Route::get('ContactUs', function () {
   return view('frontend.contact');
 })->name('ContactUs');
 
-Route::get('Coupon', function () {
+// Route::get('Coupon', function () {
 
-  return view('frontend.coupon');
-})->name('Coupon');
+//   return view('frontend.coupon');
+// })->name('Coupon');
+Route::get('Coupon','Frontend\CouponController@index')->name('Coupon');
 
 Route::get('ChangeAccount', function () {
 
@@ -120,5 +121,9 @@ Route::get('DirectSponsor', function () {
   return view('frontend.direct_sponsor');
 })->name('DirectSponsor');
 
+Route::get('Bonus', function () {
+
+  return view('frontend.bonus');
+})->name('Bonus');
 
 // BEGIN eWallet withdraw

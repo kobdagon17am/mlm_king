@@ -300,6 +300,8 @@
         <!-- Arrow Ends -->
 
     </div>
+
+    
 @endsection
 @section('js')
     <script src="{{ asset('frontend/plugins/apex/apexcharts.min.js')}}"></script>
