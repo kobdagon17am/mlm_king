@@ -96,7 +96,7 @@
                                         @if($value->coupon_status == 'Success')
                                         <span class="badge badge-warning light">ใช้งานแล้ว</span>
                                         @endif
-                                        @if($value->coupon_status == 'Cencle')
+                                        @if($value->coupon_status == 'Cencel')
                                         <span class="badge badge-warning light">ยกเลิก</span>
                                         @endif
                                        
