@@ -22,3 +22,9 @@ Route::get('admin/Blank', function () {
   Route::get('admin/HistoryDocument', function () {
     return view('backend.history_doc');
   })->name('admin/HistoryDocument');
+
+  Route::get('admin/Products', function () {
+    return view('backend.products');
+  })->name('admin/Products');
+
+  

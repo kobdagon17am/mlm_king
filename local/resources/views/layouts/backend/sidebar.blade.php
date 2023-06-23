@@ -48,7 +48,7 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="a2" data-parent="#accordionExample">
                     <li>
-                        <a href="#"> สินค้า </a>
+                        <a href="{{route('admin/Products')}}"> สินค้า </a>
                     </li>
                     <li>
                         <a href="#"> สินค้าโปรโมชั่น </a>
@@ -95,7 +95,7 @@
                         <a href="#"> รายงานรายเดือน </a>
                     </li>
                     <li>
-                        <a href="#"> อัพโหลดทวิ 50 </a>
+                        <a href="#"> อัปโหลดใบทวิ 50 </a>
                     </li>
                 </ul>
             </li>
