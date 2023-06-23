@@ -25,6 +25,12 @@
     <link href="{{ asset('backend/plugins/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend/assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
 
+    <link {{ asset('backend/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
+    <script src="{{ asset('backend/plugins/sweetalerts/promise-polyfill.js') }}"></script>
+    <link {{ asset('backend/plugins/sweetalerts/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link {{ asset('backend/plugins/sweetalerts/sweetalert.css') }}" rel="stylesheet" type="text/css" />
+    <link {{ asset('backend/assets/css/basic-ui/custom_sweetalert.css') }}" rel="stylesheet" type="text/css" />
+
 
     @yield('css')
     <!-- Page Level Plugin/Style Ends -->
@@ -471,6 +477,13 @@
     <!-- Common Script Ends -->
     <!-- Page Level Plugin/Script Starts -->
     <script src="{{ asset('backend/assets/js/loader.js') }}"></script>
+
+    <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
+    <!-- Common Script Ends -->
+    <script src="{{ asset('backend/assets/js/loader.js') }}"></script>
+
+    <script src="{{ asset('backend/plugins/sweetalerts/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/basicui/sweet_alerts.js') }}"></script>
     @include('layouts.frontend.flash-message')
     {{-- <script src="{{ asset('backend/plugins/apex/apexcharts.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/flatpickr/flatpickr.js') }}"></script>

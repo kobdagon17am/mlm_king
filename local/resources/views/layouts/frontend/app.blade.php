@@ -20,6 +20,13 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
 
+    <link {{ asset('frontend/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
+    <script src="{{ asset('frontend/plugins/sweetalerts/promise-polyfill.js') }}"></script>
+    <link {{ asset('frontend/plugins/sweetalerts/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link {{ asset('frontend/plugins/sweetalerts/sweetalert.css') }}" rel="stylesheet" type="text/css" />
+    <link {{ asset('frontend/assets/css/basic-ui/custom_sweetalert.css') }}" rel="stylesheet" type="text/css" />
+
+
     @yield('css')
 </head>
 <body>
@@ -401,6 +408,9 @@
     <script src="{{ asset('frontend/assets/js/custom.js') }}"></script>
     <!-- Common Script Ends -->
     <script src="{{ asset('frontend/assets/js/loader.js') }}"></script>
+
+    <script src="{{ asset('frontend/plugins/sweetalerts/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/basicui/sweet_alerts.js') }}"></script>
     @include('layouts.frontend.flash-message')
 
 

@@ -1,4 +1,6 @@
-@if ($message = Session::get('success'))
+
+
+@if($message = Session::get('success'))
 
 <script type="text/javascript">
     swal.fire({
@@ -12,7 +14,8 @@
 </script>
 @endif
 
-@if ($message = Session::get('error'))
+@if($message = Session::get('error'))
+
 <script type="text/javascript">
     swal.fire({
     	icon: 'error',
@@ -24,7 +27,7 @@
     }).catch(swal.noop);
 </script>
 @endif
-@if ($message = Session::get('warning'))
+@if($message = Session::get('warning'))
 <script type="text/javascript">
     swal.fire({
         icon: 'warning',
