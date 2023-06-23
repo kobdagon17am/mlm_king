@@ -78,9 +78,18 @@
                                             <hr>
                                             {{-- <h6 class="font-16 mb-3"><b>ข้อมูลสายงาน (SPONSOR/UPLINE)</b></h6> --}}
                                             <div class="row">
+                                                
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <label for="sponsor">Sponsor
+                                                        <label for="upline_id">ภายใต้
+                                                            <span class="text-danger">* </span></label>
+                                                        <input type="text" class="form-control" id="upline_id"
+                                                            placeholder="Upline">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="sponsor">ผู้แนะนำ
                                                             <span class="text-danger">* </span></label>
                                                         <input type="text" class="form-control" id="sponsor"
                                                             placeholder="Sponsor">
@@ -88,32 +97,23 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <label for="upline_id">Upline
-                                                            <span class="text-danger">* </span></label>
-                                                        <input type="text" class="form-control" id="upline_id"
-                                                            placeholder="Upline">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <label for="side">Side
+                                                        <label for="side">สาย
                                                             <span class="text-danger">* </span></label>
                                                         <input type="text" class="form-control" id="side"
                                                             placeholder="Side">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label for="Prefix">จองรหัส
                                                             <span class="text-danger">* </span></label>
                                                         <select class="form-control" id="number_of_member">
-                                                            <option>1 รหัส</option>
-                                                            <option>2 รหัส</option>
-                                                            <option>3 รหัส</option>
+                                                            <option>ทั่วไป</option>
+                                                            <option>จอง 3 รหัส</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label for="Prefix">ประเทศ
                                                             <span class="text-danger">* </span></label>

@@ -131,21 +131,21 @@
                                         </ol>
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img class="d-block img-fluid" src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png')}}" alt="First slide">
+                                                <img class="d-block w-50 mx-auto" src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png')}}" alt="First slide">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>First label</h3>
                                                     <h5>Nulla vitae elit libero, a pharetra augue mollis.</h5>
                                                 </div> --}}
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block img-fluid" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png')}}">
+                                                <img class="d-block w-50 mx-auto" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png')}}">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>Second label</h3>
                                                     <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
                                                 </div> --}}
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block img-fluid" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png')}}">
+                                                <img class="d-block w-50 mx-auto" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png')}}">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>Third label</h3>
                                                     <h5>Praesent commodo cursus magna, vel scelerisque nisl.</h5>
@@ -192,21 +192,21 @@
                                         </ol>
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img class="d-block img-fluid" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png')}}" alt="First slide">
+                                                <img class="d-block w-50 mx-auto" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png')}}" alt="First slide">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>First label</h3>
                                                     <h5>Nulla vitae elit libero, a pharetra augue mollis.</h5>
                                                 </div> --}}
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block img-fluid" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-05.png')}}">
+                                                <img class="d-block w-50 mx-auto" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-05.png')}}">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>Second label</h3>
                                                     <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
                                                 </div> --}}
                                             </div>
                                             <div class="carousel-item">
-                                                <img class="d-block img-fluid" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-06.png')}}">
+                                                <img class="d-block w-50 mx-auto" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-06.png')}}">
                                                 {{-- <div class="carousel-caption d-none d-sm-block">
                                                     <h3>Third label</h3>
                                                     <h5>Praesent commodo cursus magna, vel scelerisque nisl.</h5>
@@ -300,6 +300,8 @@
         <!-- Arrow Ends -->
 
     </div>
+
+    
 @endsection
 @section('js')
     <script src="{{ asset('frontend/plugins/apex/apexcharts.min.js')}}"></script>
