@@ -94,7 +94,9 @@
                     <li>
                         <a href="#"> รายงานรายเดือน </a>
                     </li>
-                   
+                    <li>
+                        <a href="#"> อัปโหลดใบทวิ 50 </a>
+                    </li>
                 </ul>
             </li>
             <li class="menu main-single-menu">
