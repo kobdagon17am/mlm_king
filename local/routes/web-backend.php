@@ -27,4 +27,18 @@ Route::get('admin/Blank', function () {
     return view('backend.products');
   })->name('admin/Products');
 
+  Route::get('admin/EditProfile', function () {
+    return view('backend.admin_edit_member');
+  })->name('admin/EditProfile');
+
+  // Route::get('admin/Category', function () {
+  //   return view('backend.category');
+  // })->name('admin/Category');
+  Route::get('admin/Category','admin\CategoryController@index')->name('admin/Category');
+  Route::post('admin/Category_insert','admin\CategoryController@insert')->name('admin/Category_insert');
+
+
+  Route::get('admin/Unit', function () {
+    return view('backend.unit');
+  })->name('admin/Unit');
   

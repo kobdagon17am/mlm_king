@@ -30,7 +30,7 @@
 
             <div class="col-md-12 text-right">
                 <div class="input-group-prepend">
-                    <button class="btn btn-outline-warning btn-rounded" data-toggle="modal"
+                    <button class="btn btn-success btn-rounded " data-toggle="modal"
                         data-target=".bd-example-modal-lg" type="button"><i class="las la-plus-circle font-20"></i>
                         เพิ่มสินค้า</button>
                 </div>
@@ -260,126 +260,6 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="product_id">รหัสสินค้า
-                                            <input type="text" class="form-control" id="product_id"
-                                                placeholder="รหัสสินค้า">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="product_name">ชื่อสินค้า
-                                            <input type="text" class="form-control" id="product_name"
-                                                placeholder="ชื่อสินค้า">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="product_status">สถานะสินค้าขาย
-                                        <select class="form-control" id="product_status">
-                                            <option>เปิดใช้งาน</option>
-                                            <option>รอเปิดใช้งาน</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="product_amount">จำนวนสินค้า
-                                            <input type="text" class="form-control" id="product_amount"
-                                                placeholder="จำนวนสินค้า">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="product_unit">หน่วย
-                                        <select class="form-control" id="product_unit">
-                                            <option>กระปุก</option>
-                                            <option>กระสอบ</option>
-                                            <option>กล่อง</option>
-                                            <option>ขวด</option>
-                                            <option>ชิ้น</option>
-                                            <option>ชุด</option>
-                                            <option>ตัว</option>
-                                            <option>ถุง</option>
-                                            <option>ใบ</option>
-                                            <option>แพ็ค</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="product_group">หมวดสินค้า
-                                        <select class="form-control" id="product_group">
-                                            <option>เกษตร</option>
-                                            <option>คลังเกษตร</option>
-                                            <option>ความงาม</option>
-                                            <option>ดูแลผิวกาย</option>
-                                            <option>บำรุงผิวหน้า</option>
-                                            <option>ส่งเสริมการขาย</option>
-                                            <option>สินค้าการขาย</option>
-                                            <option>อื่น ๆ</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="product_detail">รายละเอียดสินค้า</label>
-                                        <textarea class="form-control" id="product_detail" placeholder="รายละเอียดสินค้า"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="product_detail">อัพโหลดรูปภาพ</label>
-                                    <div class="upload text-center img-thumbnail">
-                                        <input type="file" id="bookbank_image" class="dropify"
-                                            data-default-file="{{ asset('frontend/assets/img/BookBank.png') }}"
-                                            data-max-file-size="2M">
-                                        <div class="info-area col-md-12 text-center p-2">
-                                            <button type="submit" class="btn btn-info">
-                                                <i class="las la-save"></i>
-                                                อัพโหลดรูปภาพ</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="product_cost">ราคาต้นทุน
-                                            <input type="text" class="form-control" id="product_cost"
-                                                placeholder="ราคาต้นทุน">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="product_price">ราคาทั่วไป
-                                            <input type="text" class="form-control" id="product_price"
-                                                placeholder="ราคาทั่วไป">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="product_price_member">ราคาขาย (สมาชิก)
-                                            <input type="text" class="form-control" id="product_price_member"
-                                                placeholder="ราคาขาย (สมาชิก)">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="product_discount_percent">ส่วนลด (%)
-                                            <input type="text" class="form-control" id="product_discount_percent"
-                                                placeholder="ส่วนลด (%)">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="product_discount">ส่วนลด (บาท)
-                                            <input type="text" class="form-control" id="product_discount"
-                                                placeholder="ส่วนลด (บาท)">
-                                    </div>
-                                </div>
-                            </div> --}}
-
                             </p>
                         </div>
 
@@ -389,15 +269,15 @@
         </div>
         <br>
         <div class="table-responsive mb-4">
-            <table id="ordertable" class="table table-hover" style="width:100%">
+            <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
                     <tr>
                         <th>รหัสสินค้า</th>
                         <th>ชื่อสินค้า</th>
                         <th>หมวดสินค้า</th>
                         <th>หน่วย</th>
-                        <th>ราคาต้นทุน</th>
-                        <th>ราคาขาย</th>
+                        <th>ราคาต้นทุน (บาท)</th>
+                        <th>ราคาขาย (บาท)</th>
                         <th>PV</th>
                         <th>สถานะ</th>
                         <th>แก้ไข</th>
@@ -406,23 +286,23 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>กิ่งทองใบหยก</td>
+                        <td>ปุ๋ย</td>
+                        <td>เกษตร</td>
+                        <td>ถุง</td>
+                        <td>1,500</td>
+                        <td>1,000</td>
                         <td>200</td>
-                        <td>A000</td>
-                        <td>A000</td>
-                        <td>A000</td>
-                        <td>A000</td>
                         <td><span class="badge badge-pill badge-success light">เปิดใช้งาน</span></td>
                         <td>
                             <a href="#!" class="p-2">
-                                <i class="las la-tools font-25 text-danger"></i></a>
+                                <i class="lab la-whmcs font-25 text-warning"></i></a>
                         </td>
                     </tr>
 
                 </tbody>
             </table>
         </div>
-        <div class="pagination p1">
+        {{-- <div class="pagination p1">
             <ul class="mx-auto">
                 <a href="previous">
                     <li><i class="las la-angle-left"></i></li>
@@ -440,7 +320,7 @@
                     <li><i class="las la-angle-right"></i></li>
                 </a>
             </ul>
-        </div>
+        </div> --}}
 
 
 

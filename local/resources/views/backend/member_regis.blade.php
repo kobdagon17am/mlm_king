@@ -61,7 +61,7 @@
         </div>
         <br>
         <div class="table-responsive mb-4">
-            <table id="ordertable" class="table table-hover" style="width:100%">
+            <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
                     <tr>
                         <th>รหัสสมาชิก</th>
@@ -88,11 +88,13 @@
                         <td>06/09/2023</td>
                         <td>
                             <a href="#!" class="p-2">
-                                <i class="las la-search font-25 text-info"></i></a>
+                                <i class="las la-sign-in-alt font-25 text-success"></i></a>
+                            <a href="{{route('admin/EditProfile')}}" class="p-2">
+                                <i class="las la-user-edit font-25 text-info"></i></a>
 
                             <a href="#!" class="p-2" id="btnGroupDrop1" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                                <i class="las la-tools font-25 text-warning"></i></a>
+                                <i class="lab la-whmcs font-25 text-warning"></i></a>
 
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                 <a class="dropdown-item" href="#">เปลี่ยนแปลงรหัสผ่าน</a>
@@ -118,13 +120,14 @@
                         </td> --}}
                         <td>06/09/2023</td>
                         <td>
-
                             <a href="#!" class="p-2">
-                                <i class="las la-search font-25 text-info"></i></a>
+                                <i class="las la-sign-in-alt font-25 text-success"></i></a>
+                            <a href="{{route('admin/EditProfile')}}" class="p-2">
+                                <i class="las la-user-edit font-25 text-info"></i></a>
 
                             <a href="#!" class="p-2" id="btnGroupDrop1" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                                <i class="las la-tools font-25 text-warning"></i></a>
+                                <i class="lab la-whmcs font-25 text-warning"></i></a>
 
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                 <a class="dropdown-item" href="#">เปลี่ยนแปลงรหัสผ่าน</a>
@@ -135,7 +138,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="pagination p1">
+        {{-- <div class="pagination p1">
             <ul class="mx-auto">
                 <a href="previous">
                     <li><i class="las la-angle-left"></i></li>
@@ -153,7 +156,7 @@
                     <li><i class="las la-angle-right"></i></li>
                 </a>
             </ul>
-        </div>
+        </div> --}}
         {{-- <div class="row ml-4">
             <label class="text-left"><b>*หมายเหตุ :</b></label>
             <label class="text-left ml-2">สีดำ = ยังไม่ส่ง,</label>

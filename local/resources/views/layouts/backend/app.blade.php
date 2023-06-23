@@ -54,7 +54,7 @@
         <header class="header navbar navbar-expand-sm">
             <ul class="navbar-item theme-brand flex-row  text-center">
                 <li class="nav-item theme-logo">
-                    <a href="index.html">
+                    <a href="{{ route('admin/Dashboard')}}">
                         <img src="{{ asset('frontend/assets/img/logo/Kingthong-Baiyok-Logo.png')}}" class="navbar-logo" alt="logo">
                     </a>
                 </li>
@@ -66,11 +66,11 @@
 
             </ul>
             <ul class="navbar-item flex-row ml-md-auto">
-                <li class="nav-item dropdown fullscreen-dropdown d-none d-lg-flex">
+                {{-- <li class="nav-item dropdown fullscreen-dropdown d-none d-lg-flex">
                     <a class="nav-link full-screen-mode" href="javascript:void(0);">
                         <i class="las la-compress" id="fullScreenIcon"></i>
                     </a>
-                </li>
+                </li> --}}
                 {{-- <li class="nav-item dropdown language-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="las la-language"></i>

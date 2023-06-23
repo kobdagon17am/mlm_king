@@ -19,7 +19,7 @@
 @section('content')
     <div class="widget-content widget-content-area br-6">
                 <div class="table-responsive mb-4">
-            <table id="ordertable" class="table table-hover" style="width:100%">
+            <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
                     <tr>
                         <th>วันที่สมัคร</th>
@@ -54,7 +54,7 @@
 
             </table>
         </div>
-        <div class="pagination p1">
+        {{-- <div class="pagination p1">
             <ul class="mx-auto">
                 <a href="previous">
                     <li><i class="las la-angle-left"></i></li>
@@ -72,7 +72,7 @@
                     <li><i class="las la-angle-right"></i></li>
                 </a>
             </ul>
-        </div>
+        </div> --}}
         
     </div>
 

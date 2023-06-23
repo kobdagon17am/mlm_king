@@ -50,11 +50,18 @@
                     <li>
                         <a href="{{route('admin/Products')}}"> สินค้า </a>
                     </li>
+                    
                     <li>
                         <a href="#"> สินค้าโปรโมชั่น </a>
                     </li>
                     <li>
                         <a href="#"> คูปองโปรโมชั่น </a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin/Category')}}"> หมวดสินค้า </a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin/Unit')}}"> หน่วยสินค้า </a>
                     </li>
                 </ul>
             </li>

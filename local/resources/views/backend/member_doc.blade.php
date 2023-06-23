@@ -90,7 +90,7 @@
         <p>
         </p>
         <div class="table-responsive mb-4">
-            <table id="ordertable" class="table table-hover" style="width:100%">
+            <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
                     <tr>
                         <th>รหัสสมาชิก</th>
@@ -127,7 +127,7 @@
 
             </table>
         </div>
-        <div class="pagination p1">
+        {{-- <div class="pagination p1">
             <ul class="mx-auto">
                 <a href="previous">
                     <li><i class="las la-angle-left"></i></li>
@@ -145,7 +145,7 @@
                     <li><i class="las la-angle-right"></i></li>
                 </a>
             </ul>
-        </div>
+        </div> --}}
         <div class="row ml-4">
             <label class="text-left"><b>*หมายเหตุ :</b></label>
             <label class="text-left ml-2">สีดำ = ยังไม่ส่ง,</label>
