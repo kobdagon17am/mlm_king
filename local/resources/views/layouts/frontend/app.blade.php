@@ -401,6 +401,7 @@
     <script src="{{ asset('frontend/assets/js/custom.js') }}"></script>
     <!-- Common Script Ends -->
     <script src="{{ asset('frontend/assets/js/loader.js') }}"></script>
+    @include('layouts.frontend.flash-message')
 
 
     @yield('js')

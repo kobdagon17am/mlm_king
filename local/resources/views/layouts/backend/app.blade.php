@@ -471,6 +471,7 @@
     <!-- Common Script Ends -->
     <!-- Page Level Plugin/Script Starts -->
     <script src="{{ asset('backend/assets/js/loader.js') }}"></script>
+    @include('layouts.frontend.flash-message')
     {{-- <script src="{{ asset('backend/plugins/apex/apexcharts.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/flatpickr/flatpickr.js') }}"></script>
     <script src="{{ asset('backend/assets/js/dashboard/dashboard_1.js') }}"></script> --}}
