@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
+
 class CategoryController extends Controller
 {
   public function index()
@@ -39,13 +40,54 @@ class CategoryController extends Controller
       DB::commit();
       return redirect('admin/Category')->withSuccess('เพิ่มหมวดสินค้าสำเร็จ');
     } catch (Exception $e) {
-      return redirect('admin/Category')->withError('บันทึกข้อมูลไม่สำเร็จ');
-
-      //code
       DB::rollback();
+      return redirect('admin/Category')->withError('เพิ่มหมวดสินค้าไม่สำเร็จ');
+      
     }
 
-    // dd('success');
+    
 
+  }
+
+
+  public function edit_category(Request $rs)
+  {
+    // dd($rs->all());
+
+    $dataPrepare = [
+      'category_name' => $rs->category_name,
+      'category_en_name' => $rs->category_en_name,
+      'status' => $rs->category_status,
+    ];
+
+    try {
+      DB::BeginTransaction();
+      $get_category = DB::table('categories')
+      ->where('id','=',$rs->id)
+        ->update($dataPrepare);
+      DB::commit();
+      return redirect('admin/Category')->withSuccess('แก้ไขข้อมูลสำเร็จ');
+    } catch (Exception $e) {
+      DB::rollback();
+      return redirect('admin/Category')->withError('แก้ไขข้อมูลไม่สำเร็จ');
+      
+    }
+
+    
+
+  }
+
+  public function view_category(Request $rs)
+  {
+  
+     $categories = DB::table('categories')
+     ->where('id','=',$rs->id)
+     ->first();
+
+     $data = ['status' => 'success', 'data' => $categories];
+
+ 
+     return $data;
+  
   }
 }

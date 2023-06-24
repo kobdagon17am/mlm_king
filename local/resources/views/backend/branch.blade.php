@@ -12,36 +12,27 @@
 @section('page-header')
     <nav class="breadcrumb-one" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">ระบบสินค้า</li>
-            <li class="breadcrumb-item active" aria-current="page"><span>หมวดสินค้า</span></li>
+            <li class="breadcrumb-item">การตั้งค่าระบบทั่วไป</li>
+            <li class="breadcrumb-item active" aria-current="page"><span>ข้อมูลสาขาบริษัท</span></li>
         </ol>
     </nav>
 @endsection
 @section('content')
     <div class="widget-content widget-content-area br-6">
         <div class="row">
-            {{-- <div class="col-md-2">
-                <div class="form-group row">
-                    <label class="col-form-label text-left col-lg-12 col-sm-12"><b>รหัสสินค้า</b></label>
-                    <input type="text" class="form-control float-left text-center w130 myLike product_code "
-                        placeholder="รหัสสินค้า">
-                </div>
-            </div> --}}
-
             <div class="col-md-12 text-right">
                 <div class="input-group-prepend">
                     <button class="btn btn-success btn-rounded " data-toggle="modal" data-target="#add" type="button"><i
                             class="las la-plus-circle font-20"></i>
-                        เพิ่มหมวดสินค้า</button>
+                        เพิ่มสาขาบริษัท</button>
                 </div>
             </div>
-
             <div class="modal fade bd-example-modal-lg" id="add" tabindex="-1" role="dialog"
                 aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header ml-4">
-                            <h5 class="modal-title" id="myLargeModalLabel"><b>เพิ่มหมวดสินค้า</b></h5>
+                            <h5 class="modal-title" id="myLargeModalLabel"><b>เพิ่มสาขาบริษัท</b></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <i class="las la-times"></i>
                             </button>
@@ -52,7 +43,7 @@
                                 <div class="form-group row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="card multiple-form-one px-0 pb-0 mb-3">
-                                            <form method="post" action="{{ route('admin/Category_insert') }}">
+                                            <form method="post" action="{{ route('admin/Branch_insert') }}">
                                                 @csrf
                                                 <div class="row">
                                                     <div class="col-md-12 mx-0">
@@ -60,20 +51,35 @@
                                                             <div class="w-100">
                                                                 <div class="form-group row">
                                                                     <div class="col-lg-6  mt-2">
-                                                                        <label><b>หมวดสินค้า:</b></label>
-                                                                        <input type="text" name="category_name"
-                                                                            class="form-control" placeholder="หมวดสินค้า"
-                                                                            required>
+                                                                        <label><b>รหัสสาขา:</b></label>
+                                                                        <input type="text" name="branch_code"
+                                                                            class="form-control" placeholder="รหัสสาขา">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2">
-                                                                        <label><b>หมวดสินค้า (ภาษาอังกฤษ):</b></label>
-                                                                        <input type="text" name="category_en_name"
-                                                                            class="form-control"
-                                                                            placeholder="หมวดสินค้า (ภาษาอังกฤษ)" required>
+                                                                        <label><b>ชื่อสาขา:</b></label>
+                                                                        <input type="text" name="branch_name"
+                                                                            class="form-control" placeholder="ชื่อสาขา">
                                                                     </div>
-                                                                    <div class="col-lg-12 mt-2">
-                                                                        <label><b>สถานะหมวดสินค้า:</b></label>
-                                                                        <select class="form-control" name="category_status">
+                                                                    <div class="col-lg-6  mt-2">
+                                                                        <label><b>ชื่อสาขา (ภาษาอังกฤษ):</b></label>
+                                                                        <input type="text" name="branch_en_name"
+                                                                            class="form-control"
+                                                                            placeholder="ชื่อสาขา (ภาษาอังกฤษ)">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2">
+                                                                        <label><b>จังหวัด:</b></label>
+                                                                        <input type="text" name="province"
+                                                                            class="form-control" placeholder="จังหวัด">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2">
+                                                                        <label><b>เบอร์ติดต่อ:</b></label>
+                                                                        <input type="number" name="phone"
+                                                                            class="form-control"
+                                                                            placeholder="เบอร์ติดต่อ" maxlength="10">
+                                                                    </div>
+                                                                    <div class="col-lg-6 mt-2">
+                                                                        <label><b>สถานะ:</b></label>
+                                                                        <select class="form-control" name="branch_status">
                                                                             <option value="1">เปิดใช้งาน</option>
                                                                             <option value="0">ปิดใช้งาน</option>
                                                                         </select>
@@ -84,8 +90,9 @@
                                                         </div>
                                                         <div class="info-area col-md-12 text-center mt-4 ">
                                                             <button type="submit" class="btn btn-info btn-rounded">
-                                                                <i class="las la-save"></i> เพิ่มหมวดสินค้า</button>
+                                                                <i class="las la-save"></i> เพิ่มสาขาบริษัท</button>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </form>
@@ -99,14 +106,13 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="modal fade bd-example-modal-lg" id="edit" tabindex="-1" role="dialog"
                 aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header ml-4">
-                            <h5 class="modal-title" id="myLargeModalLabel"><b>แก้ไขหมวดสินค้า</b></h5>
+                            <h5 class="modal-title" id="myLargeModalLabel"><b>เพิ่มสาขาบริษัท</b></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <i class="las la-times"></i>
                             </button>
@@ -117,7 +123,7 @@
                                 <div class="form-group row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="card multiple-form-one px-0 pb-0 mb-3">
-                                            <form method="post" action="{{ route('admin/edit_category') }}">
+                                            <form method="post" action="{{ route('admin/edit_branch') }}">
                                                 @csrf
                                                 <div class="row">
                                                     <div class="col-md-12 mx-0">
@@ -125,22 +131,39 @@
                                                             <div class="w-100">
                                                                 <div class="form-group row">
                                                                     <div class="col-lg-6  mt-2">
-                                                                        <label><b>หมวดสินค้า:</b></label>
-                                                                        <input type="hidden" name="id" id="id">
-                                                                        <input type="text" name="category_name" id="category_name"
-                                                                            class="form-control" placeholder="หมวดสินค้า"
-                                                                            required>
+                                                                        <label><b>รหัสสาขา:</b></label>
+                                                                        <input type="text" name="branch_code"  id="branch_code" 
+                                                                            class="form-control" placeholder="รหัสสาขา">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2">
-                                                                        <label><b>หมวดสินค้า (ภาษาอังกฤษ):</b></label>
-                                                                        <input type="text" name="category_en_name" id="category_en_name"
-                                                                            class="form-control"
-                                                                            placeholder="หมวดสินค้า (ภาษาอังกฤษ)" required>
+                                                                        <label><b>ชื่อสาขา:</b></label>
+                                                                        <input type="hidden" name="id"
+                                                                            id="id">
+                                                                        <input type="text" name="branch_name"
+                                                                            id="branch_name" class="form-control"
+                                                                            placeholder="ชื่อสาขา">
                                                                     </div>
-                                                                    <div class="col-lg-12 mt-2">
-                                                                        <label><b>สถานะหมวดสินค้า:</b></label>
-                                                                        <select class="form-control"
-                                                                            name="category_status" id="category_status">
+                                                                    <div class="col-lg-6  mt-2">
+                                                                        <label><b>ชื่อสาขา (ภาษาอังกฤษ):</b></label>
+                                                                        <input type="text" name="branch_en_name"
+                                                                            id="branch_en_name" class="form-control"
+                                                                            placeholder="ชื่อสาขา (ภาษาอังกฤษ)">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2">
+                                                                        <label><b>จังหวัด:</b></label>
+                                                                        <input type="text" name="province" id="province"
+                                                                            class="form-control" placeholder="จังหวัด">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2">
+                                                                        <label><b>เบอร์ติดต่อ:</b></label>
+                                                                        <input type="number" name="phone" id="phone"
+                                                                            class="form-control"
+                                                                            placeholder="เบอร์ติดต่อ" maxlength="10">
+                                                                    </div>
+                                                                    <div class="col-lg-6 mt-2">
+                                                                        <label><b>สถานะ:</b></label>
+                                                                        <select class="form-control" name="branch_status" 
+                                                                            id="branch_status">
                                                                             <option value="1">เปิดใช้งาน</option>
                                                                             <option value="0">ปิดใช้งาน</option>
                                                                         </select>
@@ -151,8 +174,9 @@
                                                         </div>
                                                         <div class="info-area col-md-12 text-center mt-4 ">
                                                             <button type="submit" class="btn btn-info btn-rounded">
-                                                                <i class="las la-save"></i> แก้ไขหมวดสินค้า</button>
+                                                                <i class="las la-save"></i> เพิ่มสาขาบริษัท</button>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </form>
@@ -166,7 +190,6 @@
                     </div>
                 </div>
             </div>
-
 
         </div>
         <br>
@@ -175,19 +198,25 @@
                 <thead>
                     <tr>
                         <th>ลำดับ</th>
-                        <th>หมวดสินค้า</th>
-                        <th>หมวดสินค้า (ภาษาอังกฤษ)</th>
-                        <th>สถานะหมวดสินค้า</th>
+                        <th>รหัสสาขา</th>
+                        <th>ชื่อสาขา</th>
+                        <th>ชื่อสาขา (ภาษาอังกฤษ)</th>
+                        <th>จังหวัด</th>
+                        <th>เบอร์ติดต่อ</th>
+                        <th>สถานะ</th>
                         <th>แก้ไข</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
-                    @foreach ($get_category as $value)
+                    @foreach ($get_branch as $value)
                         <tr>
                             <td>{{ $i++ }}</td>
-                            <td>{{ $value->category_name }}</td>
-                            <td>{{ $value->category_en_name }}</td>
+                            <td>{{ $value->branch_code }}</td>
+                            <td>{{ $value->branch_name }}</td>
+                            <td>{{ $value->branch_en_name }}</td>
+                            <td>{{ $value->province }}</td>
+                            <td>{{ $value->phone }}</td>
                             <td>
                                 @if ($value->status == '1')
                                     <span class="badge badge-pill badge-success light">เปิดใช้งาน</span>
@@ -196,11 +225,22 @@
                                     <span class="badge badge-pill badge-danger light">ปิดใช้งาน</span>
                                 @endif
                             <td>
-                                <a href="#!" onclick="edit({{$value->id}})" class="p-2">
+                                <a href="#!" onclick="edit({{ $value->id }})" class="p-2">
                                     <i class="lab la-whmcs font-25 text-warning"></i></a>
                             </td>
                         </tr>
                     @endforeach
+                    {{-- <tr>
+                        <td>1</td>
+                        <td>ถุง</td>
+                        <td>Pack</td>
+                        <td><span class="badge badge-pill badge-success light">เปิดใช้งาน</span></td>
+                        <td>
+                            <a href="#!" class="p-2">
+                                <i class="lab la-whmcs font-25 text-warning"></i></a>
+                        </td>
+                    </tr> --}}
+
                 </tbody>
             </table>
         </div>
@@ -218,30 +258,30 @@
     <script src="{{ asset('backend/plugins/dropify/dropify.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/pages/profile_edit.js') }}"></script>
     <script>
-       
-
         function edit(id) {
             $.ajax({
-                    url: '{{ route('admin/view_category') }}',
+                    url: '{{ route('admin/view_branch') }}',
                     type: 'GET',
                     data: {
                         id
                     }
                 })
                 .done(function(data) {
-                   //console.log(data);
+                    //console.log(data['data']['status']);
                     $("#edit").modal();
                     $("#id").val(data['data']['id']);
 
-                    $("#category_name").val(data['data']['category_name']);
-                    $("#category_en_name").val(data['data']['category_en_name']);
-                    $("#category_status").val(data['data']['status']);
- 
-                })
+                    $("#branch_code").val(data['data']['branch_code']);
+                    $("#branch_name").val(data['data']['branch_name']);
+                    $("#branch_en_name").val(data['data']['branch_en_name']);
+                    $("#province").val(data['data']['province']);
+                    $("#phone").val(data['data']['phone']);
+                    $("#branch_status").val(data['data']['status']); 
+
+                }) 
                 .fail(function() {
                     console.log("error");
                 })
         }
-
     </script>
 @endsection

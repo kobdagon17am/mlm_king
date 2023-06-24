@@ -134,6 +134,12 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="a6" data-parent="#accordionExample">
                     <li>
+                        <a href="{{route('admin/Branch')}}"> ข้อมูลสาขาบริษัท </a>
+                    </li>
+                    {{-- <li>
+                        <a href="#"> ข้อมูลแผนกบริษัท </a>
+                    </li> --}}
+                    <li>
                         <a href="#"> ข้อมูลผู้ใช้งาน </a>
                     </li>
                     <li>
