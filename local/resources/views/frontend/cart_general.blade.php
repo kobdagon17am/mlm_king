@@ -168,7 +168,7 @@
                                             <div>
                                                 <a href="{{ route('CartGeneralDetail') }}"><img
                                                         src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
-                                                        alt="avatar"></a>
+                                                        class="h-25" alt="Responsive image" ></a>
                                             </div>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
@@ -195,7 +195,7 @@
                                         <div class="product-info">
                                             <a href="{{ route('CartGeneralDetail') }}"><img
                                                     src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png') }}"
-                                                    alt="avatar"></a>
+                                                    class="h-25" alt="Responsive image" ></a>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
                                                 <h5><b>Product 2</b></h5>
@@ -220,7 +220,7 @@
                                         <div class="product-info">
                                             <a href="{{ route('CartGeneralDetail') }}"><img
                                                     src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png') }}"
-                                                    alt="avatar"></a>
+                                                    class="h-25" alt="Responsive image" ></a>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
                                                 <h5><b>Product 3</b></h5>
@@ -245,7 +245,7 @@
                                         <div class="product-info">
                                             <a href="{{ route('CartGeneralDetail') }}"><img
                                                     src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
-                                                    alt="avatar"></a>
+                                                    class="h-25" alt="Responsive image" ></a>
                                             <div class="user-meta-info">
                                                 <p class="product-name">
                                                 <h5><b>Product 4</b></h5>
