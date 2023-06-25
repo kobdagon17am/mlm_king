@@ -20,6 +20,8 @@
 @section('content')
     <div class="widget-content widget-content-area br-6">
         <div class="row">
+
+
             {{-- <div class="col-md-2">
                 <div class="form-group row">
                     <label class="col-form-label text-left col-lg-12 col-sm-12"><b>รหัสสินค้า</b></label>
@@ -54,7 +56,9 @@
 
                                             <div class="row">
                                                 <div class="col-md-12 mx-0">
-                                                    <form id="msform">
+                                                    <form method="POST" action="{{ route('admin/Products_insert') }}"
+                                                        enctype="multipart/form-data" id="msform">
+                                                        @csrf
                                                         <ul id="progressbar">
                                                             <li class="active" id="account" style="width: 50%;">
                                                                 <strong>ข้อมูลสินค้า</strong>
@@ -66,194 +70,161 @@
                                                                 <strong>เพิ่มสินค้าสำเร็จ</strong>
                                                             </li> --}}
                                                         </ul>
-                                                        <form method="post" action="{{ route('admin/Products_insert') }}">
-                                                            @csrf
-                                                            <fieldset>
-                                                                <div class="form-card">
-                                                                    <h6 class="fs-title mb-4"><u>รายละเอียดสินค้า</u></h6>
-                                                                    <div class="w-100">
-                                                                        <div class="form-group row">
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>รหัสสินค้า:</b></label>
-                                                                                <input type="text" class="form-control" name="product_code"
-                                                                                    placeholder="รหัสสินค้า">
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>ชื่อสินค้าสินค้า:</b></label>
-                                                                                <input type="text" class="form-control" name="product_name"
-                                                                                    placeholder="ชื่อสินค้าสินค้า">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <div class="col-lg-6 mt-2">
-                                                                                <label><b>หมวดสินค้า:</b></label>
-                                                                                <select class="form-control" name="product_category_name"> 
-                                                                                    <option>เกษตร</option>
-                                                                                    <option>คลังเกษตร</option>
-                                                                                    <option>ความงาม</option>
-                                                                                    <option>ดูแลผิวกาย</option>
-                                                                                    <option>บำรุงผิวหน้า</option>
-                                                                                    <option>ส่งเสริมการขาย</option>
-                                                                                    <option>สินค้าการขาย</option>
-                                                                                    <option>อื่น ๆ</option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>รายละเอียดสินค้า:</b></label>
-                                                                                <textarea class="form-control" name="product_detail" placeholder="รายละเอียดสินค้า"></textarea>
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>จำนวนสินค้า:</b></label>
-                                                                                <input type="text" class="form-control" name="product_amount"
-                                                                                    placeholder="จำนวนสินค้า">
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>หน่วยสินค้า:</b></label>
-                                                                                <select class="form-control" name="product_unit_name">
-                                                                                    <option>กระปุก</option>
-                                                                                    <option>กระสอบ</option>
-                                                                                    <option>กล่อง</option>
-                                                                                    <option>ขวด</option>
-                                                                                    <option>ชิ้น</option>
-                                                                                    <option>ชุด</option>
-                                                                                    <option>ตัว</option>
-                                                                                    <option>ถุง</option>
-                                                                                    <option>ใบ</option>
-                                                                                    <option>แพ็ค</option>
-                                                                                </select>
-                                                                            </div>
 
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>ราคาต้นทุน (บาท):</b></label>
-                                                                                <input type="text" class="form-control" name="product_cost"
-                                                                                    placeholder="ราคาต้นทุน">
+                                                        <fieldset>
+                                                            <div class="form-card">
+                                                                <h6 class="fs-title mb-4"><u>รายละเอียดสินค้า</u></h6>
+                                                                <div class="w-100">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <input type="hidden" name="id">
+                                                                            <label><b>รหัสสินค้า:</b></label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="product_code"
+                                                                                placeholder="รหัสสินค้า">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>ชื่อสินค้าสินค้า:</b></label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="product_name"
+                                                                                placeholder="ชื่อสินค้าสินค้า">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-lg-6 mt-2">
+                                                                            <label><b>หมวดสินค้า:</b></label>
+                                                                            <select class="form-control"
+                                                                                name="product_category_name">
+                                                                                @foreach ($get_categories as $item)
+                                                                                    <option value="{{ $item->id }}">
+                                                                                        {{ $item->category_name }}</option>
+                                                                                @endforeach
+
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>รายละเอียดสินค้า:</b></label>
+                                                                            <textarea class="form-control" name="product_detail" placeholder="รายละเอียดสินค้า"></textarea>
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>จำนวนสินค้า:</b></label>
+                                                                            <input type="number" class="form-control"
+                                                                                name="product_amount"
+                                                                                placeholder="จำนวนสินค้า">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>หน่วยสินค้า:</b></label>
+                                                                            <select class="form-control"
+                                                                                name="product_unit_name">
+                                                                                @foreach ($get_unit as $item)
+                                                                                    <option value="{{ $item->id }}">
+                                                                                        {{ $item->product_unit_th }}
+                                                                                    </option>
+                                                                                @endforeach
+
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>ราคาต้นทุน (บาท):</b></label>
+                                                                            <input type="number" step="any"
+                                                                                class="form-control" name="product_cost"
+                                                                                placeholder="ราคาต้นทุน">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>ราคาขายสมาชิก (บาท):</b></label>
+                                                                            <input type="number" step="any"
+                                                                                class="form-control"
+                                                                                name="product_price_member"
+                                                                                placeholder="ราคาขายสมาชิก">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>ส่วนลด (%):</b></label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="product_discount_percent"
+                                                                                placeholder="ส่วนลด (%)">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>ส่วนลด (บาท):</b></label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="product_discount"
+                                                                                placeholder="ส่วนลด (บาท)">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>คะแนน PV:</b></label>
+                                                                            <input type="number" class="form-control"
+                                                                                name="product_pv" placeholder="คะแนน PV">
+                                                                        </div>
+                                                                        <div class="col-lg-6 mt-2">
+                                                                            <label><b>สถานะสินค้า:</b></label>
+                                                                            <select class="form-control"
+                                                                                name="product_status">
+                                                                                <option value="1">เปิดใช้งาน
+                                                                                </option>
+                                                                                <option value="0">ปิดใช้งาน
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input type="button" name="next"
+                                                                class="next action-button btn btn-info btn-rounded"
+                                                                value="ถัดไป">
+                                                        </fieldset>
+                                                        <fieldset>
+                                                            <div class="form-card">
+                                                                <h6 class="fs-title mb-4"><u>รูปภาพสินค้า</u> (ขนาดภาพ
+                                                                    500*500px)</h6>
+                                                                <div class="w-100">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6  mt-2">
+
+                                                                            <label for="product_image1">รูปภาพที่ 1
+                                                                                <b
+                                                                                    class="text-danger">(ภาพหลัก)</b></label>
+                                                                            <div class="upload text-center img-thumbnail">
+                                                                                <input type="file"
+                                                                                    name="product_image1" class="dropify">
                                                                             </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>ราคาขายสมาชิก (บาท):</b></label>
-                                                                                <input type="text" class="form-control" name="product_price_member"
-                                                                                    placeholder="ราคาขายสมาชิก">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label for="product_image2">รูปภาพที่
+                                                                                2</label>
+                                                                            <div class="upload text-center img-thumbnail">
+                                                                                <input type="file"
+                                                                                    name="product_image2" class="dropify">
                                                                             </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>ส่วนลด (%):</b></label>
-                                                                                <input type="text" class="form-control" name="product_discount_percent"
-                                                                                    placeholder="ส่วนลด (%)">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label for="product_image3">รูปภาพที่
+                                                                                3</label>
+                                                                            <div class="upload text-center img-thumbnail">
+                                                                                <input type="file"
+                                                                                    name="product_image3" class="dropify">
                                                                             </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>ส่วนลด (บาท):</b></label>
-                                                                                <input type="text" class="form-control" name="product_discount"
-                                                                                    placeholder="ส่วนลด (บาท)">
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>คะแนน PV:</b></label>
-                                                                                <input type="text" class="form-control" name="product_pv"
-                                                                                    placeholder="คะแนน PV">
-                                                                            </div>
-                                                                            <div class="col-lg-6 mt-2">
-                                                                                <label><b>สถานะสินค้าขาย:</b></label>
-                                                                                <select class="form-control" name="status">
-                                                                                    <option>เปิดใช้งาน</option>
-                                                                                    <option>ปิดใช้งาน</option>
-                                                                                </select>
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label for="product_image4">รูปภาพที่
+                                                                                4</label>
+                                                                            <div class="upload text-center img-thumbnail">
+                                                                                <input type="file"
+                                                                                    name="product_image4" class="dropify">
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <input type="button" name="next"
-                                                                    class="next action-button btn btn-info btn-rounded"
-                                                                    value="ถัดไป">
-                                                            </fieldset>
-                                                            
-                                                            <fieldset>
-                                                                <div class="form-card">
-                                                                    <h6 class="fs-title mb-4"><u>รูปภาพสินค้า</u> (ขนาดภาพ
-                                                                        500*500px)</h6>
-                                                                    <div class="w-100">
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label for="product_detail">รูปภาพที่ 1
-                                                                                    <b
-                                                                                        class="text-danger">(ภาพหลัก)</b></label>
-                                                                                <div
-                                                                                    class="upload text-center img-thumbnail">
-                                                                                    <input type="file"
-                                                                                        id="product_image1"
-                                                                                        class="dropify">
-                                                                                    <div
-                                                                                        class="info-area col-md-12 text-center p-2">
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-warning btn-rounded">
-                                                                                            <i
-                                                                                                class="las la-check-circle"></i>
-                                                                                            อัพโหลด</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label for="product_detail">รูปภาพที่
-                                                                                    2</label>
-                                                                                <div
-                                                                                    class="upload text-center img-thumbnail">
-                                                                                    <input type="file"
-                                                                                        id="product_image2"
-                                                                                        class="dropify">
-                                                                                    <div
-                                                                                        class="info-area col-md-12 text-center p-2">
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-warning btn-rounded">
-                                                                                            <i
-                                                                                                class="las la-check-circle"></i>
-                                                                                            อัพโหลด</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label for="product_detail">รูปภาพที่
-                                                                                    3</label>
-                                                                                <div
-                                                                                    class="upload text-center img-thumbnail">
-                                                                                    <input type="file"
-                                                                                        id="product_image2"
-                                                                                        class="dropify">
-                                                                                    <div
-                                                                                        class="info-area col-md-12 text-center p-2">
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-warning btn-rounded">
-                                                                                            <i
-                                                                                                class="las la-check-circle"></i>
-                                                                                            อัพโหลด</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label for="product_detail">รูปภาพที่
-                                                                                    4</label>
-                                                                                <div
-                                                                                    class="upload text-center img-thumbnail">
-                                                                                    <input type="file"
-                                                                                        id="product_image2"
-                                                                                        class="dropify">
-                                                                                    <div
-                                                                                        class="info-area col-md-12 text-center p-2">
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-warning btn-rounded">
-                                                                                            <i
-                                                                                                class="las la-check-circle"></i>
-                                                                                            อัพโหลด</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <input type="button" name="previous"
-                                                                    class="previous action-button-previous btn btn-info btn-rounded"
-                                                                    value="ย้อนกลับ">
-                                                                <button type="submit" class="btn btn-info btn-rounded">
-                                                                    <i class="las la-save"></i> เพิ่มสินค้า</button>
-                                                            </fieldset>
-                                                        </form>
+                                                            </div>
+                                                            <input type="button" name="previous"
+                                                                class="previous action-button-previous btn btn-info btn-rounded"
+                                                                value="ย้อนกลับ">
+                                                            <button type="submit" class="btn btn-info btn-rounded">
+                                                                <i class="las la-save"></i> เพิ่มสินค้า</button>
+                                                        </fieldset>
+                                                    </form>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -280,217 +251,190 @@
                                 <div class="form-group row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="card multiple-form-one px-0 pb-0 mb-3">
-                                            <form method="post" action="{{ route('admin/edit_products') }}">
-                                                @csrf
-                                                <div class="row">
-                                                    <div class="col-md-12 mx-0">
-                                                        <form id="msform">
-                                                            <ul id="progressbar">
-                                                                <li class="active" id="account" style="width: 50%;">
-                                                                    <strong>ข้อมูลสินค้า</strong>
-                                                                </li>
-                                                                <li id="payment" style="width: 50%;">
-                                                                    <strong>อัพโหลดรูปภาพ</strong>
-                                                                </li>
-                                                            </ul>
-                                                            <fieldset>
-                                                                <div class="form-card">
-                                                                    <h6 class="fs-title mb-4"><u>รายละเอียดสินค้า</u></h6>
-                                                                    <div class="w-100">
-                                                                        <div class="form-group row">
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>รหัสสินค้า:</b></label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="product_code"
-                                                                                    placeholder="รหัสสินค้า">
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>ชื่อสินค้าสินค้า:</b></label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="product_name"
-                                                                                    placeholder="ชื่อสินค้าสินค้า">
+
+                                            <div class="row">
+                                                <div class="col-md-12 mx-0">
+                                                    <form method="POST" action="{{ route('admin/edit_products') }}"
+                                                        enctype="multipart/form-data" id="msform">
+                                                        @csrf
+                                                        <ul id="progressbar">
+                                                            <li class="active" id="account" style="width: 50%;">
+                                                                <strong>ข้อมูลสินค้า</strong>
+                                                            </li>
+                                                            <li id="payment" style="width: 50%;">
+                                                                <strong>อัพโหลดรูปภาพ</strong>
+                                                            </li>
+                                                            {{-- <li id="confirm" style="width: 33.33%;">
+                                                            <strong>เพิ่มสินค้าสำเร็จ</strong>
+                                                        </li> --}}
+                                                        </ul>
+
+                                                        <fieldset>
+                                                            <div class="form-card">
+                                                                <h6 class="fs-title mb-4"><u>รายละเอียดสินค้า</u></h6>
+                                                                <div class="w-100">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <input type="hidden" name="id"
+                                                                                id="id">
+                                                                            <label><b>รหัสสินค้า:</b></label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="product_code" name="product_code"
+                                                                                placeholder="รหัสสินค้า">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>ชื่อสินค้าสินค้า:</b></label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="product_name" name="product_name"
+                                                                                placeholder="ชื่อสินค้าสินค้า">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-lg-6 mt-2">
+                                                                            <label><b>หมวดสินค้า:</b></label>
+                                                                            <select class="form-control"
+                                                                                id="product_category_name"
+                                                                                name="product_category_name">
+                                                                                @foreach ($get_categories as $item)
+                                                                                    <option value="{{ $item->id }}">
+                                                                                        {{ $item->category_name }}</option>
+                                                                                @endforeach
+
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>รายละเอียดสินค้า:</b></label>
+                                                                            <textarea class="form-control" id="product_detail" name="product_detail" placeholder="รายละเอียดสินค้า"></textarea>
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>จำนวนสินค้า:</b></label>
+                                                                            <input type="number" class="form-control"
+                                                                                id="product_amount" name="product_amount"
+                                                                                placeholder="จำนวนสินค้า">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>หน่วยสินค้า:</b></label>
+                                                                            <select class="form-control"
+                                                                                id="product_unit_name"
+                                                                                name="product_unit_name">
+                                                                                @foreach ($get_unit as $item)
+                                                                                    <option value="{{ $item->id }}">
+                                                                                        {{ $item->product_unit_th }}
+                                                                                    </option>
+                                                                                @endforeach
+
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>ราคาต้นทุน (บาท):</b></label>
+                                                                            <input type="number" step="any"
+                                                                                class="form-control" id="product_cost"
+                                                                                name="product_cost"
+                                                                                placeholder="ราคาต้นทุน">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>ราคาขายสมาชิก (บาท):</b></label>
+                                                                            <input type="number" step="any"
+                                                                                class="form-control"
+                                                                                id="product_price_member"
+                                                                                name="product_price_member"
+                                                                                placeholder="ราคาขายสมาชิก">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>ส่วนลด (%):</b></label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="product_discount_percent"
+                                                                                name="product_discount_percent"
+                                                                                placeholder="ส่วนลด (%)">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>ส่วนลด (บาท):</b></label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="product_discount"
+                                                                                name="product_discount"
+                                                                                placeholder="ส่วนลด (บาท)">
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label><b>คะแนน PV:</b></label>
+                                                                            <input type="number" class="form-control"
+                                                                                id="product_pv" name="product_pv"
+                                                                                placeholder="คะแนน PV">
+                                                                        </div>
+                                                                        <div class="col-lg-6 mt-2">
+                                                                            <label><b>สถานะสินค้า:</b></label>
+                                                                            <select class="form-control"
+                                                                                id="product_status" name="product_status">
+                                                                                <option value="1">เปิดใช้งาน
+                                                                                </option>
+                                                                                <option value="0">ปิดใช้งาน
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input type="button" name="next"
+                                                                class="next action-button btn btn-info btn-rounded"
+                                                                value="ถัดไป">
+                                                        </fieldset>
+                                                        <fieldset>
+                                                            <div class="form-card">
+                                                                <h6 class="fs-title mb-4"><u>รูปภาพสินค้า</u> (ขนาดภาพ
+                                                                    500*500px)</h6>
+                                                                <div class="w-100">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6  mt-2">
+                                                                           
+                                                                            <label for="product_image1">รูปภาพที่ 1
+                                                                                <b
+                                                                                    class="text-danger">(ภาพหลัก)</b></label>
+                                                                            <div class="upload text-center img-thumbnail">
+                                                                                <input type="file" id="product_image1"
+                                                                                    name="product_image1" class="dropify"
+                                                                                    data-default-file="">
                                                                             </div>
                                                                         </div>
-                                                                        <div class="form-group row">
-                                                                            <div class="col-lg-6 mt-2">
-                                                                                <label><b>หมวดสินค้า:</b></label>
-                                                                                <select class="form-control"
-                                                                                    id="product_category_name">
-                                                                                    <option>เกษตร</option>
-                                                                                    <option>คลังเกษตร</option>
-                                                                                    <option>ความงาม</option>
-                                                                                    <option>ดูแลผิวกาย</option>
-                                                                                    <option>บำรุงผิวหน้า</option>
-                                                                                    <option>ส่งเสริมการขาย</option>
-                                                                                    <option>สินค้าการขาย</option>
-                                                                                    <option>อื่น ๆ</option>
-                                                                                </select>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label for="product_image2">รูปภาพที่
+                                                                                2</label>
+                                                                            <div class="upload text-center img-thumbnail">
+                                                                                <input type="file" id="product_image2"
+                                                                                    name="product_image2" class="dropify"
+                                                                                    data-default-file="">
                                                                             </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>รายละเอียดสินค้า:</b></label>
-                                                                                <textarea class="form-control" id="product_detail" placeholder="รายละเอียดสินค้า"></textarea>
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label for="product_image3">รูปภาพที่
+                                                                                3</label>
+                                                                            <div class="upload text-center img-thumbnail">
+                                                                                <input type="file" id="product_image3"
+                                                                                    name="product_image3" class="dropify"
+                                                                                    data-default-file="">
                                                                             </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>จำนวนสินค้า:</b></label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="product_amount"
-                                                                                    placeholder="จำนวนสินค้า">
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>หน่วยสินค้า:</b></label>
-                                                                                <select class="form-control"
-                                                                                    id="product_unit_name">
-                                                                                    <option>กระปุก</option>
-                                                                                    <option>กระสอบ</option>
-                                                                                    <option>กล่อง</option>
-                                                                                    <option>ขวด</option>
-                                                                                    <option>ชิ้น</option>
-                                                                                    <option>ชุด</option>
-                                                                                    <option>ตัว</option>
-                                                                                    <option>ถุง</option>
-                                                                                    <option>ใบ</option>
-                                                                                    <option>แพ็ค</option>
-                                                                                </select>
-                                                                            </div>
-
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>ราคาต้นทุน (บาท):</b></label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="product_cost"
-                                                                                    placeholder="ราคาต้นทุน">
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>ราคาขายสมาชิก (บาท):</b></label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="product_price_member"
-                                                                                    placeholder="ราคาขายสมาชิก">
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>ส่วนลด (%):</b></label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="product_discount_percent"
-                                                                                    placeholder="ส่วนลด (%)">
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>ส่วนลด (บาท):</b></label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="product_discount"
-                                                                                    placeholder="ส่วนลด (บาท)">
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label><b>คะแนน pv:</b></label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="product_pv"
-                                                                                    placeholder="คะแนน pv">
-                                                                            </div>
-                                                                            <div class="col-lg-6 mt-2">
-                                                                                <label><b>สถานะสินค้าขาย:</b></label>
-                                                                                <select class="form-control"
-                                                                                    id="product_status">
-                                                                                    <option>เปิดใช้งาน</option>
-                                                                                    <option>ปิดใช้งาน</option>
-                                                                                </select>
+                                                                        </div>
+                                                                        <div class="col-lg-6  mt-2">
+                                                                            <label for="product_image4">รูปภาพที่
+                                                                                4</label>
+                                                                            <div class="upload text-center img-thumbnail">
+                                                                                <input type="file" id="product_image4"
+                                                                                    name="product_image4" class="dropify"
+                                                                                    data-default-file="">
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <input type="button" name="next"
-                                                                    class="next action-button btn btn-info btn-rounded"
-                                                                    value="ถัดไป">
-                                                            </fieldset>
-
-                                                            <fieldset>
-                                                                <div class="form-card">
-                                                                    <h6 class="fs-title mb-4"><u>รูปภาพสินค้า</u> (ขนาดภาพ
-                                                                        500*500px)</h6>
-                                                                    <div class="w-100">
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label for="product_detail">รูปภาพที่ 1
-                                                                                    <b
-                                                                                        class="text-danger">(ภาพหลัก)</b></label>
-                                                                                <div
-                                                                                    class="upload text-center img-thumbnail">
-                                                                                    <input type="file"
-                                                                                        id="product_image1"
-                                                                                        class="dropify">
-                                                                                    <div
-                                                                                        class="info-area col-md-12 text-center p-2">
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-warning btn-rounded">
-                                                                                            <i
-                                                                                                class="las la-check-circle"></i>
-                                                                                            อัพโหลด</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label for="product_detail">รูปภาพที่
-                                                                                    2</label>
-                                                                                <div
-                                                                                    class="upload text-center img-thumbnail">
-                                                                                    <input type="file"
-                                                                                        id="product_image2"
-                                                                                        class="dropify">
-                                                                                    <div
-                                                                                        class="info-area col-md-12 text-center p-2">
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-warning btn-rounded">
-                                                                                            <i
-                                                                                                class="las la-check-circle"></i>
-                                                                                            อัพโหลด</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label for="product_detail">รูปภาพที่
-                                                                                    3</label>
-                                                                                <div
-                                                                                    class="upload text-center img-thumbnail">
-                                                                                    <input type="file"
-                                                                                        id="product_image2"
-                                                                                        class="dropify">
-                                                                                    <div
-                                                                                        class="info-area col-md-12 text-center p-2">
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-warning btn-rounded">
-                                                                                            <i
-                                                                                                class="las la-check-circle"></i>
-                                                                                            อัพโหลด</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-6  mt-2">
-                                                                                <label for="product_detail">รูปภาพที่
-                                                                                    4</label>
-                                                                                <div
-                                                                                    class="upload text-center img-thumbnail">
-                                                                                    <input type="file"
-                                                                                        id="product_image2"
-                                                                                        class="dropify">
-                                                                                    <div
-                                                                                        class="info-area col-md-12 text-center p-2">
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-warning btn-rounded">
-                                                                                            <i
-                                                                                                class="las la-check-circle"></i>
-                                                                                            อัพโหลด</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <input type="button" name="previous"
-                                                                    class="previous action-button-previous btn btn-info btn-rounded"
-                                                                    value="ย้อนกลับ">
-                                                                <button type="submit" class="btn btn-info btn-rounded">
-                                                                    <i class="las la-save"></i> เพิ่มหมวดสินค้า</button>
-                                                            </fieldset>
-                                                        </form>
-                                                    </div>
+                                                            </div>
+                                                            <input type="button" name="previous"
+                                                                class="previous action-button-previous btn btn-info btn-rounded"
+                                                                value="ย้อนกลับ">
+                                                            <button type="submit" class="btn btn-info btn-rounded">
+                                                                <i class="las la-save"></i> เพิ่มสินค้า</button>
+                                                        </fieldset>
+                                                    </form>
                                                 </div>
-                                            </form>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -520,11 +464,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i=1; ?>
+                    <?php $i = 1; ?>
                     @foreach ($get_products as $value)
                         <tr>
                             <td>{{ $value->product_code }}</td>
-                            <td></td>
+
+                            <td> <img src="{{ asset($value->product_image_url . '' . $value->product_image_name) }}"
+                                    alt="contact-img" title="contact-img" class="rounded-circle mr-3" height="60"
+                                    width="60" style="object-fit: cover;"></td>
                             <td>{{ $value->product_name }}</td>
                             <td>{{ $value->product_category_name }}</td>
                             <td>{{ $value->product_unit_name }}</td>
@@ -589,21 +536,52 @@
                     }
                 })
                 .done(function(data) {
-                    //console.log(data);
+                    // console.log(data);
                     $("#edit").modal();
                     $("#id").val(data['data']['id']);
-
                     $("#product_code").val(data['data']['product_code']);
-                    $("#product_category_name").val(data['data']['product_category_name']);
+                    $("#product_name").val(data['data']['product_name']);
+                    $("#product_category_name").val(data['data']['product_category_id_fk']);
                     $("#product_detail").val(data['data']['product_detail']);
                     $("#product_amount").val(data['data']['product_amount']);
-                    $("#product_unit_name").val(data['data']['product_unit_name']);
+                    $("#product_unit_name").val(data['data']['product_unit_id_fk']);
                     $("#product_cost").val(data['data']['product_cost']);
                     $("#product_price_member").val(data['data']['product_price_member']);
                     $("#product_discount_percent").val(data['data']['product_discount_percent']);
                     $("#product_discount").val(data['data']['product_discount']);
                     $("#product_pv").val(data['data']['product_pv']);
                     $("#product_status").val(data['data']['status']);
+
+                    $.each(data['img'], function(index, value) {
+                        if (value['product_image_orderby'] == 1) {
+
+                            var img = '{{ asset('') }}' + value['product_image_url'] + value[
+                                'product_image_name'];
+                            $('#product_image1').attr('data-default-file', img).dropify();
+                        }
+
+                        if (value['product_image_orderby'] == 2) {
+                            var img = '{{ asset('') }}' + value['product_image_url'] + value[
+                                'product_image_name'];
+                            $('#product_image2').attr('data-default-file', img).dropify();
+                        }
+
+                        if (value['product_image_orderby'] == 3) {
+                            var img = '{{ asset('') }}' + value['product_image_url'] + value[
+                                'product_image_name'];
+                            $('#product_image3').attr('data-default-file', img).dropify();
+                        }
+
+                        if (value['product_image_orderby'] == 4) {
+                            var img = '{{ asset('') }}' + value['product_image_url'] + value[
+                                'product_image_name'];
+                            $('#product_image4').attr('data-default-file', img).dropify();
+                        }
+
+                    });
+
+                    //$('#product_image1').attr('data-default-file', 'เส้นทางไปยังรูปภาพใหม่');
+
 
                 })
                 .fail(function() {

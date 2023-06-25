@@ -34,7 +34,7 @@
             <div class="col-md-4">
                 <div class="upload text-center img-thumbnail">
                     <input type="file" id="idcard_image" class="dropify"
-                        data-default-file="{{ asset('frontend/assets/img/user.png') }}" data-max-file-size="2M" />
+                        data-default-file="{{ asset('frontend/assets/img/user.png') }}"/>
                     <p></p>
                     <div class="info-area col-md-12 text-center">
                         <button type="submit" class="btn btn-info ">
