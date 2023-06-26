@@ -173,21 +173,25 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" id="agriculture_stock-tab" data-toggle="tab"
                                                     href="#agriculture_stock" role="tab"
-                                                    aria-controls="agriculture_stock" aria-selected="false" style="font-size: 14px;"> คลังเกษตร</a>
+                                                    aria-controls="agriculture_stock" aria-selected="false"
+                                                    style="font-size: 14px;"> คลังเกษตร</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="beauty-tab" data-toggle="tab" href="#beauty"
-                                                    role="tab" aria-controls="beauty" aria-selected="false" style="font-size: 14px;">
+                                                    role="tab" aria-controls="beauty" aria-selected="false"
+                                                    style="font-size: 14px;">
                                                     ความงาม</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="body-tab" data-toggle="tab" href="#body"
-                                                    role="tab" aria-controls="Body" aria-selected="false" style="font-size: 14px;">
+                                                    role="tab" aria-controls="Body" aria-selected="false"
+                                                    style="font-size: 14px;">
                                                     ดูแลผิวกาย</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="cosmetic-tab" data-toggle="tab" href="#cosmetic"
-                                                    role="tab" aria-controls="cosmetic" aria-selected="false" style="font-size: 14px;">
+                                                    role="tab" aria-controls="cosmetic" aria-selected="false"
+                                                    style="font-size: 14px;">
                                                     บำรุงผิวหน้า</a>
                                             </li>
                                             <li class="nav-item">
@@ -197,12 +201,14 @@
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="healthy-tab" data-toggle="tab" href="#healthy"
-                                                    role="tab" aria-controls="healthy" aria-selected="false" style="font-size: 14px;">
+                                                    role="tab" aria-controls="healthy" aria-selected="false"
+                                                    style="font-size: 14px;">
                                                     สินค้าสุขภาพ</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="other-tab" data-toggle="tab" href="#other"
-                                                    role="tab" aria-controls="other" aria-selected="false" style="font-size: 14px;"> อื่นๆ</a>
+                                                    role="tab" aria-controls="other" aria-selected="false"
+                                                    style="font-size: 14px;"> อื่นๆ</a>
                                             </li>
                                         </ul>
                                         <div class="tab-content make-post-tab" id="animateLineContent-4">
@@ -210,8 +216,8 @@
                                                 aria-labelledby="agriculture-tab">
                                                 <div class="searchable-items grid card-box">
                                                     @foreach ($get_cart_agriculture as $value)
-                                                    <div class="items">
-                                                        <div class="item-content">
+                                                        <div class="items">
+                                                            <div class="item-content">
                                                                 <div class="product-info">
                                                                     <div>
                                                                         <a href="{{ route('CartGeneralDetail') }}"><img
@@ -226,7 +232,8 @@
                                                                     </div>
                                                                     <div class="product-price">
                                                                         <p class="product-category-price"><span><b>฿
-                                                                                    {{ $value->product_price_member }}</b></span>({{ $value->product_pv }})
+                                                                                    {{ $value->product_price_member }}</b></span>({{ $value->product_pv }}
+                                                                            pv)
                                                                         </p>
                                                                     </div>
 
@@ -240,9 +247,9 @@
                                                                                 </button>
                                                                         </p>
                                                                     </div>
-                                                                </div>                                                    
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
                                                     @endforeach
                                                     {{-- <div class="widget-content widget-content-area text-center w-100 mt-4">
                                                         <div class="pagination p1">

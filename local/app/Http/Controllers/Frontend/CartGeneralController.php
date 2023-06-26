@@ -19,9 +19,17 @@ class CartGeneralController extends Controller
       // ->first();
       ->select('products.*', 'product_images.product_image_url', 'product_images.product_image_name')
       ->leftJoin('product_images', 'product_images.product_id_fk', '=', 'products.id')
-      //->where('products.product_category_id_fk', '=', '1')
+      ->where('products.product_category_id_fk', '=', '1')
       ->where('product_images.product_image_orderby', '=', '1')
       ->get();
-    return view('frontend.cart_general', compact('get_cart_agriculture'));;
+
+      $get_cart_agriculture_stock = DB::table('products')
+      ->select('products.*', 'product_images.product_image_url', 'product_images.product_image_name')
+      ->leftJoin('product_images', 'product_images.product_id_fk', '=', 'products.id')
+      ->where('products.product_category_id_fk', '=', '2')
+      ->where('product_images.product_image_orderby', '=', '1')
+      ->get();
+
+    return view('frontend.cart_general', compact('get_cart_agriculture','get_cart_agriculture_stock'));
   }
 }
