@@ -209,122 +209,47 @@
                                             <div class="tab-pane fade active show" id="agriculture" role="tabpanel"
                                                 aria-labelledby="agriculture-tab">
                                                 <div class="searchable-items grid card-box">
+                                                    @foreach ($get_cart_general as $value)
                                                     <div class="items">
                                                         <div class="item-content">
-                                                            <div class="product-info">
-                                                                <div>
-                                                                    <a href="{{ route('CartGeneralDetail') }}"><img
-                                                                            src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
-                                                                            style="max-height: 150px; max-width: 150px;" alt="Responsive image"></a>
-                                                                </div>
-                                                                <div class="user-meta-info">
-                                                                    <p class="product-name">
-                                                                    <h5><b>Product 1</b></h5>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="product-price">
-                                                                    <p class="product-category-price"><span><b>฿
-                                                                                1,000</b></span>(50PV)</p>
-                                                                </div>
+                                                            
+                                                                <div class="product-info">
 
-                                                                <div class="product-stock-status">
-                                                                    <p class="product-stock-status-inner">
-                                                                        <a href="{{ route('Cart') }}"><button
-                                                                                type="button"
-                                                                                class="btn btn-outline-success btn-rounded"><i
-                                                                                    class="las la-cart-plus las-white font-17"></i>
-                                                                                เพิ่มสินค้า
-                                                                            </button>
-                                                                    </p>
+                                                                    <div>
+                                                                        <a href="{{ route('CartGeneralDetail') }}"><img
+                                                                                src="{{ asset($value->product_image_url . '' . $value->product_image_name) }}"
+                                                                                style="max-height: 150px; max-width: 150px;"
+                                                                                alt="Responsive image"></a>
+                                                                    </div>
+                                                                    <div class="user-meta-info">
+                                                                        <p class="product-name">
+                                                                        <h5><b>{{ $value->product_name }}</b></h5>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="product-price">
+                                                                        <p class="product-category-price"><span><b>฿
+                                                                                    {{ $value->product_price_member }}</b></span>({{ $value->product_pv }})
+                                                                        </p>
+                                                                    </div>
+
+                                                                    <div class="product-stock-status">
+                                                                        <p class="product-stock-status-inner">
+                                                                            <a href="{{ route('Cart') }}"><button
+                                                                                    type="button"
+                                                                                    class="btn btn-outline-success btn-rounded"><i
+                                                                                        class="las la-cart-plus las-white font-17"></i>
+                                                                                    เพิ่มสินค้า
+                                                                                </button>
+                                                                        </p>
+                                                                    </div>
+
                                                                 </div>
-                                                            </div>
+                                                           
                                                         </div>
+
                                                     </div>
-                                                    <div class="items">
-                                                        <div class="item-content">
-                                                            <div class="product-info">
-                                                                <a href="{{ route('CartGeneralDetail') }}"><img
-                                                                        src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png') }}"
-                                                                        style="max-height: 150px; max-width: 150px;" alt="Responsive image"></a>
-                                                                <div class="user-meta-info">
-                                                                    <p class="product-name">
-                                                                    <h5><b>Product 2</b></h5>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="product-price">
-                                                                    <p class="product-category-price"><span><b>฿
-                                                                                1,000</b></span>(50PV)</p>
-                                                                </div>
-                                                                <div class="product-stock-status">
-                                                                    <p class="product-stock-status-inner">
-                                                                        <a href="{{ route('Cart') }}"><button
-                                                                                type="button"
-                                                                                class="btn btn-outline-success btn-rounded"><i
-                                                                                    class="las la-cart-plus las-white font-17"></i>
-                                                                                เพิ่มสินค้า
-                                                                            </button>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="items">
-                                                        <div class="item-content">
-                                                            <div class="product-info">
-                                                                <a href="{{ route('CartGeneralDetail') }}"><img
-                                                                        src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png') }}"
-                                                                        style="max-height: 150px; max-width: 150px;" alt="Responsive image"></a>
-                                                                <div class="user-meta-info">
-                                                                    <p class="product-name">
-                                                                    <h5><b>Product 3</b></h5>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="product-price">
-                                                                    <p class="product-category-price"><span><b>฿
-                                                                                1,000</b></span>(50PV)</p>
-                                                                </div>
-                                                                <div class="product-stock-status">
-                                                                    <p class="product-stock-status-inner">
-                                                                        <a href="{{ route('Cart') }}"><button
-                                                                                type="button"
-                                                                                class="btn btn-outline-success btn-rounded"><i
-                                                                                    class="las la-cart-plus las-white font-17"></i>
-                                                                                เพิ่มสินค้า
-                                                                            </button>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="items">
-                                                        <div class="item-content">
-                                                            <div class="product-info">
-                                                                <a href="{{ route('CartGeneralDetail') }}"><img
-                                                                        src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
-                                                                        style="max-height: 150px; max-width: 150px;" alt="Responsive image"></a>
-                                                                <div class="user-meta-info">
-                                                                    <p class="product-name">
-                                                                    <h5><b>Product 4</b></h5>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="product-price">
-                                                                    <p class="product-category-price"><span><b>฿
-                                                                                1,000</b></span>(50PV)</p>
-                                                                </div>
-                                                                <div class="product-stock-status">
-                                                                    <p class="product-stock-status-inner">
-                                                                        <a href="{{ route('Cart') }}"><button
-                                                                                type="button"
-                                                                                class="btn btn-outline-success btn-rounded"><i
-                                                                                    class="las la-cart-plus las-white font-17"></i>
-                                                                                เพิ่มสินค้า
-                                                                            </button>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="widget-content widget-content-area text-center w-100 mt-4">
+                                                    @endforeach
+                                                    {{-- <div class="widget-content widget-content-area text-center w-100 mt-4">
                                                         <div class="pagination p1">
                                                             <ul class="mx-auto">
                                                                 <a href="previous">
@@ -344,7 +269,7 @@
                                                                 </a>
                                                             </ul>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="agriculture_stock" role="tabpanel"

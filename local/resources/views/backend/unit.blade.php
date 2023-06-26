@@ -178,7 +178,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i=1; ?>
+                    <?php $product_category_name=1; ?>
                     @foreach ($get_unit as $value)
                         <tr>
                             <td>{{ $i++ }}</td>

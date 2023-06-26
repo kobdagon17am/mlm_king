@@ -62,9 +62,12 @@ Route::get('Profile', function () {
     return view('frontend.profile');
   })->name('Profile');
 
-Route::get('CartGeneral', function () {
-  return view('frontend.cart_general');
-})->name('CartGeneral');
+// Route::get('CartGeneral', function () {
+//   return view('frontend.cart_general');
+// })->name('CartGeneral');
+Route::get('CartGeneral','Frontend\CartGeneralController@index')->name('CartGeneral');
+
+
 
 Route::get('CartGeneralDetail', function () {
   return view('frontend.cart_general_detail');
