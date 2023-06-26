@@ -38,48 +38,48 @@
                                 <div class="row">
                                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12">
                                         <div class="tab-content pt-0">
-                                            <div class="tab-pane show" id="product-1-item">
+                                            <div class="tab-pane active" id="product1">
                                                 <img src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
-                                                    alt="" class="img-fluid mx-auto d-block rounded">
+                                                style="max-height: 300px; max-width: 300px;" alt="" class="img-fluid mx-auto d-block rounded">
                                             </div>
-                                            <div class="tab-pane" id="product-2-item">
+                                            <div class="tab-pane" id="product2">
                                                 <img src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png') }}"
-                                                    alt="" class="img-fluid mx-auto d-block rounded">
+                                                style="max-height: 300px; max-width: 300px;" alt="" class="img-fluid mx-auto d-block rounded">
                                             </div>
-                                            <div class="tab-pane" id="product-3-item">
+                                            <div class="tab-pane" id="product3">
                                                 <img src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png') }}"
-                                                    alt="" class="img-fluid mx-auto d-block rounded">
+                                                style="max-height: 300px; max-width: 300px;" alt="" class="img-fluid mx-auto d-block rounded">
                                             </div>
-                                            <div class="tab-pane active" id="product-4-item">
+                                            <div class="tab-pane" id="product4">
                                                 <img src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
-                                                    alt="" class="img-fluid mx-auto d-block rounded">
+                                                style="max-height: 300px; max-width: 300px;"alt="" class="img-fluid mx-auto d-block rounded">
                                             </div>
                                         </div>
                                         <ul class="nav nav-pills nav-justified">
                                             <li class="nav-item">
-                                                <a href="#product-1-item" data-toggle="tab" aria-expanded="false"
-                                                    class="nav-link product-thumb show">
+                                                <a href="#product1" data-toggle="tab" aria-expanded="true"
+                                                    class="nav-link product-thumb active">
                                                     <img src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
                                                         alt="" class="img-fluid mx-auto d-block rounded">
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="#product-2-item" data-toggle="tab" aria-expanded="true"
+                                                <a href="#product2" data-toggle="tab" aria-expanded="false"
                                                     class="nav-link product-thumb">
                                                     <img src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png') }}"
                                                         alt="" class="img-fluid mx-auto d-block rounded">
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="#product-3-item" data-toggle="tab" aria-expanded="false"
+                                                <a href="#product3" data-toggle="tab" aria-expanded="false"
                                                     class="nav-link product-thumb">
                                                     <img src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png') }}"
                                                         alt="" class="img-fluid mx-auto d-block rounded">
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="#product-4-item" data-toggle="tab" aria-expanded="false"
-                                                    class="nav-link product-thumb active">
+                                                <a href="#product4" data-toggle="tab" aria-expanded="false"
+                                                    class="nav-link product-thumb">
                                                     <img src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
                                                         alt="" class="img-fluid mx-auto d-block rounded">
                                                 </a>

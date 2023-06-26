@@ -168,41 +168,41 @@
                                             <li class="nav-item">
                                                 <a class="nav-link active" id="agriculture-tab" data-toggle="tab"
                                                     href="#agriculture" role="tab" aria-controls="agriculture"
-                                                    aria-selected="true"> เกษตร</a>
+                                                    aria-selected="true" style="font-size: 14px;"> เกษตร</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="agriculture_stock-tab" data-toggle="tab"
                                                     href="#agriculture_stock" role="tab"
-                                                    aria-controls="agriculture_stock" aria-selected="false"> คลังเกษตร</a>
+                                                    aria-controls="agriculture_stock" aria-selected="false" style="font-size: 14px;"> คลังเกษตร</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="beauty-tab" data-toggle="tab" href="#beauty"
-                                                    role="tab" aria-controls="beauty" aria-selected="false">
+                                                    role="tab" aria-controls="beauty" aria-selected="false" style="font-size: 14px;">
                                                     ความงาม</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="Body-tab" data-toggle="tab" href="#Body"
-                                                    role="tab" aria-controls="Body" aria-selected="false">
+                                                    role="tab" aria-controls="Body" aria-selected="false" style="font-size: 14px;">
                                                     ดูแลผิวกาย</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="cosmetic-tab" data-toggle="tab" href="#cosmetic"
-                                                    role="tab" aria-controls="cosmetic" aria-selected="false">
+                                                    role="tab" aria-controls="cosmetic" aria-selected="false" style="font-size: 14px;">
                                                     บำรุงผิวหน้า</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="promotion-tab" data-toggle="tab"
                                                     href="#promotion" role="tab" aria-controls="promotion"
-                                                    aria-selected="false"> ส่งเสริมการขาย</a>
+                                                    aria-selected="false" style="font-size: 14px;"> ส่งเสริมการขาย</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="healthy-tab" data-toggle="tab" href="#healthy"
-                                                    role="tab" aria-controls="healthy" aria-selected="false">
+                                                    role="tab" aria-controls="healthy" aria-selected="false" style="font-size: 14px;">
                                                     สินค้าสุขภาพ</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" id="other-tab" data-toggle="tab" href="#other"
-                                                    role="tab" aria-controls="other" aria-selected="false"> อื่นๆ</a>
+                                                    role="tab" aria-controls="other" aria-selected="false" style="font-size: 14px;"> อื่นๆ</a>
                                             </li>
                                         </ul>
                                         <div class="tab-content make-post-tab" id="animateLineContent-4">
