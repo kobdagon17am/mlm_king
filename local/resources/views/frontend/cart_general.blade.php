@@ -181,7 +181,7 @@
                                                     ความงาม</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" id="Body-tab" data-toggle="tab" href="#Body"
+                                                <a class="nav-link" id="body-tab" data-toggle="tab" href="#body"
                                                     role="tab" aria-controls="Body" aria-selected="false" style="font-size: 14px;">
                                                     ดูแลผิวกาย</a>
                                             </li>
@@ -209,12 +209,10 @@
                                             <div class="tab-pane fade active show" id="agriculture" role="tabpanel"
                                                 aria-labelledby="agriculture-tab">
                                                 <div class="searchable-items grid card-box">
-                                                    @foreach ($get_cart_general as $value)
+                                                    @foreach ($get_cart_agriculture as $value)
                                                     <div class="items">
                                                         <div class="item-content">
-                                                            
                                                                 <div class="product-info">
-
                                                                     <div>
                                                                         <a href="{{ route('CartGeneralDetail') }}"><img
                                                                                 src="{{ asset($value->product_image_url . '' . $value->product_image_name) }}"
@@ -242,11 +240,8 @@
                                                                                 </button>
                                                                         </p>
                                                                     </div>
-
-                                                                </div>
-                                                           
+                                                                </div>                                                    
                                                         </div>
-
                                                     </div>
                                                     @endforeach
                                                     {{-- <div class="widget-content widget-content-area text-center w-100 mt-4">
