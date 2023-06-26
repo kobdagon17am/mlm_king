@@ -161,132 +161,229 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="searchable-items grid card-box">
-                                <div class="items">
-                                    <div class="item-content">
-                                        <div class="product-info">
-                                            <div>
-                                                <a href="{{ route('CartGeneralDetail') }}"><img
-                                                        src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
-                                                        class="h-25" alt="Responsive image" ></a>
-                                            </div>
-                                            <div class="user-meta-info">
-                                                <p class="product-name">
-                                                <h5><b>Product 1</b></h5>
-                                                </p>
-                                            </div>
-                                            <div class="product-price">
-                                                <p class="product-category-price"><span><b>฿ 1,000</b></span>(50PV)</p>
-                                            </div>
-
-                                            <div class="product-stock-status">
-                                                <p class="product-stock-status-inner">
-                                                    <a href="{{ route('Cart') }}"><button type="button"
-                                                            class="btn btn-outline-success btn-rounded"><i
-                                                                class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
-                                                        </button>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="items">
-                                    <div class="item-content">
-                                        <div class="product-info">
-                                            <a href="{{ route('CartGeneralDetail') }}"><img
-                                                    src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png') }}"
-                                                    class="h-25" alt="Responsive image" ></a>
-                                            <div class="user-meta-info">
-                                                <p class="product-name">
-                                                <h5><b>Product 2</b></h5>
-                                                </p>
-                                            </div>
-                                            <div class="product-price">
-                                                <p class="product-category-price"><span><b>฿ 1,000</b></span>(50PV)</p>
-                                            </div>
-                                            <div class="product-stock-status">
-                                                <p class="product-stock-status-inner">
-                                                    <a href="{{ route('Cart') }}"><button type="button"
-                                                            class="btn btn-outline-success btn-rounded"><i
-                                                                class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
-                                                        </button>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="items">
-                                    <div class="item-content">
-                                        <div class="product-info">
-                                            <a href="{{ route('CartGeneralDetail') }}"><img
-                                                    src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png') }}"
-                                                    class="h-25" alt="Responsive image" ></a>
-                                            <div class="user-meta-info">
-                                                <p class="product-name">
-                                                <h5><b>Product 3</b></h5>
-                                                </p>
-                                            </div>
-                                            <div class="product-price">
-                                                <p class="product-category-price"><span><b>฿ 1,000</b></span>(50PV)</p>
-                                            </div>
-                                            <div class="product-stock-status">
-                                                <p class="product-stock-status-inner">
-                                                    <a href="{{ route('Cart') }}"><button type="button"
-                                                            class="btn btn-outline-success btn-rounded"><i
-                                                                class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
-                                                        </button>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="items">
-                                    <div class="item-content">
-                                        <div class="product-info">
-                                            <a href="{{ route('CartGeneralDetail') }}"><img
-                                                    src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
-                                                    class="h-25" alt="Responsive image" ></a>
-                                            <div class="user-meta-info">
-                                                <p class="product-name">
-                                                <h5><b>Product 4</b></h5>
-                                                </p>
-                                            </div>
-                                            <div class="product-price">
-                                                <p class="product-category-price"><span><b>฿ 1,000</b></span>(50PV)</p>
-                                            </div>
-                                            <div class="product-stock-status">
-                                                <p class="product-stock-status-inner">
-                                                    <a href="{{ route('Cart') }}"><button type="button"
-                                                            class="btn btn-outline-success btn-rounded"><i
-                                                                class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
-                                                        </button>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content widget-content-area text-center w-100 mt-4">
-                                    <div class="pagination p1">
-                                        <ul class="mx-auto">
-                                            <a href="previous">
-                                                <li><i class="las la-angle-left"></i></li>
-                                            </a>
-                                            <a class="is-active" href="page">
-                                                <li>1</li>
-                                            </a>
-                                            <a href="page2">
-                                                <li>2</li>
-                                            </a>
-                                            <a href="page2">
-                                                <li>3</li>
-                                            </a>
-                                            <a href="next">
-                                                <li><i class="las la-angle-right"></i></li>
-                                            </a>
+                            <div class="row">
+                                <div class="col-ml-12">
+                                    <div class="widget-content widget-content-area tab-horizontal-line pt-0">
+                                        <ul class="nav nav-tabs" id="animateLine" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="agriculture-tab" data-toggle="tab"
+                                                    href="#agriculture" role="tab" aria-controls="agriculture"
+                                                    aria-selected="true"> เกษตร</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="agriculture_stock-tab" data-toggle="tab"
+                                                    href="#agriculture_stock" role="tab"
+                                                    aria-controls="agriculture_stock" aria-selected="false"> คลังเกษตร</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="beauty-tab" data-toggle="tab" href="#beauty"
+                                                    role="tab" aria-controls="beauty" aria-selected="false">
+                                                    ความงาม</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="Body-tab" data-toggle="tab" href="#Body"
+                                                    role="tab" aria-controls="Body" aria-selected="false">
+                                                    ดูแลผิวกาย</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="cosmetic-tab" data-toggle="tab" href="#cosmetic"
+                                                    role="tab" aria-controls="cosmetic" aria-selected="false">
+                                                    บำรุงผิวหน้า</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="promotion-tab" data-toggle="tab"
+                                                    href="#promotion" role="tab" aria-controls="promotion"
+                                                    aria-selected="false"> ส่งเสริมการขาย</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="healthy-tab" data-toggle="tab" href="#healthy"
+                                                    role="tab" aria-controls="healthy" aria-selected="false">
+                                                    สินค้าสุขภาพ</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="other-tab" data-toggle="tab" href="#other"
+                                                    role="tab" aria-controls="other" aria-selected="false"> อื่นๆ</a>
+                                            </li>
                                         </ul>
+                                        <div class="tab-content make-post-tab" id="animateLineContent-4">
+                                            <div class="tab-pane fade active show" id="agriculture" role="tabpanel"
+                                                aria-labelledby="agriculture-tab">
+                                                <div class="searchable-items grid card-box">
+                                                    <div class="items">
+                                                        <div class="item-content">
+                                                            <div class="product-info">
+                                                                <div>
+                                                                    <a href="{{ route('CartGeneralDetail') }}"><img
+                                                                            src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
+                                                                            style="max-height: 150px; max-width: 150px;" alt="Responsive image"></a>
+                                                                </div>
+                                                                <div class="user-meta-info">
+                                                                    <p class="product-name">
+                                                                    <h5><b>Product 1</b></h5>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="product-price">
+                                                                    <p class="product-category-price"><span><b>฿
+                                                                                1,000</b></span>(50PV)</p>
+                                                                </div>
+
+                                                                <div class="product-stock-status">
+                                                                    <p class="product-stock-status-inner">
+                                                                        <a href="{{ route('Cart') }}"><button
+                                                                                type="button"
+                                                                                class="btn btn-outline-success btn-rounded"><i
+                                                                                    class="las la-cart-plus las-white font-17"></i>
+                                                                                เพิ่มสินค้า
+                                                                            </button>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="items">
+                                                        <div class="item-content">
+                                                            <div class="product-info">
+                                                                <a href="{{ route('CartGeneralDetail') }}"><img
+                                                                        src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png') }}"
+                                                                        style="max-height: 150px; max-width: 150px;" alt="Responsive image"></a>
+                                                                <div class="user-meta-info">
+                                                                    <p class="product-name">
+                                                                    <h5><b>Product 2</b></h5>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="product-price">
+                                                                    <p class="product-category-price"><span><b>฿
+                                                                                1,000</b></span>(50PV)</p>
+                                                                </div>
+                                                                <div class="product-stock-status">
+                                                                    <p class="product-stock-status-inner">
+                                                                        <a href="{{ route('Cart') }}"><button
+                                                                                type="button"
+                                                                                class="btn btn-outline-success btn-rounded"><i
+                                                                                    class="las la-cart-plus las-white font-17"></i>
+                                                                                เพิ่มสินค้า
+                                                                            </button>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="items">
+                                                        <div class="item-content">
+                                                            <div class="product-info">
+                                                                <a href="{{ route('CartGeneralDetail') }}"><img
+                                                                        src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png') }}"
+                                                                        style="max-height: 150px; max-width: 150px;" alt="Responsive image"></a>
+                                                                <div class="user-meta-info">
+                                                                    <p class="product-name">
+                                                                    <h5><b>Product 3</b></h5>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="product-price">
+                                                                    <p class="product-category-price"><span><b>฿
+                                                                                1,000</b></span>(50PV)</p>
+                                                                </div>
+                                                                <div class="product-stock-status">
+                                                                    <p class="product-stock-status-inner">
+                                                                        <a href="{{ route('Cart') }}"><button
+                                                                                type="button"
+                                                                                class="btn btn-outline-success btn-rounded"><i
+                                                                                    class="las la-cart-plus las-white font-17"></i>
+                                                                                เพิ่มสินค้า
+                                                                            </button>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="items">
+                                                        <div class="item-content">
+                                                            <div class="product-info">
+                                                                <a href="{{ route('CartGeneralDetail') }}"><img
+                                                                        src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
+                                                                        style="max-height: 150px; max-width: 150px;" alt="Responsive image"></a>
+                                                                <div class="user-meta-info">
+                                                                    <p class="product-name">
+                                                                    <h5><b>Product 4</b></h5>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="product-price">
+                                                                    <p class="product-category-price"><span><b>฿
+                                                                                1,000</b></span>(50PV)</p>
+                                                                </div>
+                                                                <div class="product-stock-status">
+                                                                    <p class="product-stock-status-inner">
+                                                                        <a href="{{ route('Cart') }}"><button
+                                                                                type="button"
+                                                                                class="btn btn-outline-success btn-rounded"><i
+                                                                                    class="las la-cart-plus las-white font-17"></i>
+                                                                                เพิ่มสินค้า
+                                                                            </button>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="widget-content widget-content-area text-center w-100 mt-4">
+                                                        <div class="pagination p1">
+                                                            <ul class="mx-auto">
+                                                                <a href="previous">
+                                                                    <li><i class="las la-angle-left"></i></li>
+                                                                </a>
+                                                                <a class="is-active" href="page">
+                                                                    <li>1</li>
+                                                                </a>
+                                                                <a href="page2">
+                                                                    <li>2</li>
+                                                                </a>
+                                                                <a href="page2">
+                                                                    <li>3</li>
+                                                                </a>
+                                                                <a href="next">
+                                                                    <li><i class="las la-angle-right"></i></li>
+                                                                </a>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="agriculture_stock" role="tabpanel"
+                                                aria-labelledby="agriculture_stock-tab">
+                                                agriculture_stock
+                                            </div>
+                                            <div class="tab-pane fade" id="beauty" role="tabpanel"
+                                                aria-labelledby="beauty-tab">
+                                                beauty
+                                            </div>
+                                            <div class="tab-pane fade" id="body" role="tabpanel"
+                                                aria-labelledby="body-tab">
+                                                body
+                                            </div>
+                                            <div class="tab-pane fade" id="cosmetic" role="tabpanel"
+                                                aria-labelledby="cosmetic-tab">
+                                                cosmetic
+                                            </div>
+                                            <div class="tab-pane fade" id="promotion" role="tabpanel"
+                                                aria-labelledby="promotion-tab">
+                                                promotion
+                                            </div>
+                                            <div class="tab-pane fade" id="healthy" role="tabpanel"
+                                                aria-labelledby="healthy-tab">
+                                                healthy
+                                            </div>
+                                            <div class="tab-pane fade" id="other" role="tabpanel"
+                                                aria-labelledby="other-tab">
+                                                other
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+
+
+
+
                         </div>
                     </div>
                 </div>

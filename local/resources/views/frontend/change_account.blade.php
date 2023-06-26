@@ -28,10 +28,10 @@
         <p></p>
 
         <div class="layout-px-spacing text">
-            <div class="row layout-spacing pt-4">
+            <div class="row layout-spacing">
                 <div class="col-md-2">
                 </div>
-                <div class="col-md-4  text-center">
+                <div class="col-md-4  text-center mt-3">
                     <div class="profile-left">
                         <div class="image-area">
                             <img class="rounded-circle img-thumbnail user-image"
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4 text-center">
+                <div class="col-md-4 mb-4 text-center mt-3">
                     <div class="profile-left">
                         <div class="image-area">
                             <img class="rounded-circle img-thumbnail user-image"

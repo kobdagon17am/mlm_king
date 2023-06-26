@@ -28,7 +28,7 @@
         <p></p>
 
         <div class="layout-px-spacing text">
-            <div class="row layout-spacing pt-4">
+            <div class="row layout-spacing pt-2">
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-4  text-center">

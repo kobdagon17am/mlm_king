@@ -100,7 +100,7 @@
                         <div class="nav-drop is-notification-dropdown" >
                             <div class="inner">
                                 <div class="nav-drop-header">
-                                      <span class="text-black font-12 strong">3 new mails</span>
+                                      <span class="text-black font-12">3 new mails</span>
                                       <a class="text-muted font-12" href="#!">
                                         Mark all read
                                       </a>
@@ -113,7 +113,7 @@
                                             </div>
                                             <div class="media-body">
                                                 <div class="">
-                                                    <h6 class="text-primary font-13 mb-0 strong">Jennifer Queen</h6>
+                                                    <h6 class="text-primary font-12 mb-0">Jennifer Queen</h6>
                                                     <p class="m-0 mt-1 font-10 text-muted">Permission Required</p>
                                                 </div>
                                             </div>
@@ -126,7 +126,7 @@
                                             </div>
                                             <div class="media-body">
                                                 <div class="">
-                                                    <h6 class="text-primary font-13 mb-0 strong">Lara Smith</h6>
+                                                    <h6 class="text-primary font-12 mb-0">Lara Smith</h6>
                                                     <p class="m-0 mt-1 font-10 text-muted">Invoice needed</p>
                                                 </div>
                                             </div>
@@ -139,7 +139,7 @@
                                             </div>
                                             <div class="media-body">
                                                 <div class="">
-                                                    <h6 class="text-primary font-13 mb-0 strong">Victoria Williamson</h6>
+                                                    <h6 class="text-primary font-12 mb-0">Victoria Williamson</h6>
                                                     <p class="m-0 mt-1 font-10 text-muted">Account need to be synced</p>
                                                 </div>
                                             </div>
@@ -147,7 +147,7 @@
                                     </a>
                                     <hr class="account-divider">
                                     <div class="text-center">
-                                        <a class="text-primary strong font-13" href="apps_mail.html">View All</a>
+                                        <a class="text-primary font-12" href="apps_mail.html">View All</a>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
                         <div class="nav-drop is-notification-dropdown" >
                             <div class="inner">
                                 <div class="nav-drop-header">
-                                      <span class="text-black font-12 strong">5 Notifications</span>
+                                      <span class="text-black font-12">5 Notifications</span>
                                       <a class="text-muted font-12" href="#!">
                                         Clear All
                                       </a>
@@ -177,7 +177,7 @@
                                             <i class="las la-box font-20"></i>
                                           </div>
                                           <div class="media-content ml-3">
-                                              <h6 class="font-13 mb-0 strong">2 New orders placed</h6>
+                                              <h6 class="font-12 mb-0">2 New orders placed</h6>
                                               <p class="m-0 mt-1 font-10 text-muted">10 sec ago</p>
                                           </div>
                                       </div>
@@ -188,7 +188,7 @@
                                             <i class="las la-user-plus font-20"></i>
                                         </div>
                                         <div class="media-content ml-3">
-                                            <h6 class="font-13 mb-0 strong">New User registered</h6>
+                                            <h6 class="font-12 mb-0">New User registered</h6>
                                             <p class="m-0 mt-1 font-10 text-muted">5 minute ago</p>
                                         </div>
                                     </div>
@@ -199,7 +199,7 @@
                                             <i class="las la-grin-beam font-20"></i>
                                           </div>
                                           <div class="media-content ml-3">
-                                              <h6 class="font-13 mb-0 strong">21 Queries solved</h6>
+                                              <h6 class="font-12 mb-0">21 Queries solved</h6>
                                               <p class="m-0 mt-1 font-10 text-muted">1 hour ago</p>
                                           </div>
                                       </div>
@@ -210,14 +210,14 @@
                                                 <i class="las la-cloud-download-alt font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">New update available</h6>
+                                                <h6 class="font-12 mb-0">New update available</h6>
                                                 <p class="m-0 mt-1 font-10 text-muted">1 day ago</p>
                                             </div>
                                         </div>
                                     </a>
                                     <hr class="account-divider">
                                     <div class="text-center">
-                                        <a class="text-primary strong font-13" href="pages_notifications.html">View All</a>
+                                        <a class="text-primary font-12" href="pages_notifications.html">View All</a>
                                     </div>
                                 </div>
                             </div>
@@ -255,7 +255,7 @@
                                                 <i class="las la-exchange-alt font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">สลับบัญชี</h6>
+                                                <h6 class="font-12 mb-0">สลับบัญชี</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -265,7 +265,7 @@
                                                 <i class="las la-money-check font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">โค้ดคูปอง</h6>
+                                                <h6 class="font-12 mb-0">โค้ดคูปอง</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -275,7 +275,7 @@
                                                 <i class="las la-image font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">อัพโหลดรูปโปรไฟล์</h6>
+                                                <h6 class="font-12 mb-0">อัพโหลดรูปโปรไฟล์</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -287,7 +287,7 @@
                                                 <i class="las la-user-edit font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">แก้ไขข้อมูลส่วนตัว</h6>
+                                                <h6 class="font-12 mb-0">แก้ไขข้อมูลส่วนตัว</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -297,7 +297,7 @@
                                                 <i class="las la-clipboard font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">เอกสารการลงทะเบียน</h6>
+                                                <h6 class="font-12 mb-0">เอกสารการลงทะเบียน</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -307,7 +307,7 @@
                                                 <i class="las la-key font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">แก้ไขรหัส Login</h6>
+                                                <h6 class="font-12 mb-0">แก้ไขรหัส Login</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -318,7 +318,7 @@
                                                 <i class="las la-sign-out-alt font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong ">Logout</h6>
+                                                <h6 class="font-12 mb-0 ">Logout</h6>
                                             </div>
                                         </div>
                                     </a>
