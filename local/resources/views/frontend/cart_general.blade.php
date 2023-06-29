@@ -164,62 +164,32 @@
                             <div class="row">
                                 <div class="col-ml-12">
                                     <div class="widget-content widget-content-area tab-horizontal-line pt-0">
-                                        <ul class="nav nav-tabs" id="animateLine" role="tablist">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" id="agriculture-tab" data-toggle="tab"
-                                                    href="#agriculture" role="tab" aria-controls="agriculture"
-                                                    aria-selected="true" style="font-size: 14px;"> เกษตร</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="agriculture_stock-tab" data-toggle="tab"
-                                                    href="#agriculture_stock" role="tab"
-                                                    aria-controls="agriculture_stock" aria-selected="false"
-                                                    style="font-size: 14px;"> คลังเกษตร</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="beauty-tab" data-toggle="tab" href="#beauty"
-                                                    role="tab" aria-controls="beauty" aria-selected="false"
-                                                    style="font-size: 14px;">
-                                                    ความงาม</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="body-tab" data-toggle="tab" href="#body"
-                                                    role="tab" aria-controls="Body" aria-selected="false"
-                                                    style="font-size: 14px;">
-                                                    ดูแลผิวกาย</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="cosmetic-tab" data-toggle="tab" href="#cosmetic"
-                                                    role="tab" aria-controls="cosmetic" aria-selected="false"
-                                                    style="font-size: 14px;">
-                                                    บำรุงผิวหน้า</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="promotion-tab" data-toggle="tab"
-                                                    href="#promotion" role="tab" aria-controls="promotion"
-                                                    aria-selected="false" style="font-size: 14px;"> ส่งเสริมการขาย</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="healthy-tab" data-toggle="tab" href="#healthy"
-                                                    role="tab" aria-controls="healthy" aria-selected="false"
-                                                    style="font-size: 14px;">
-                                                    สินค้าสุขภาพ</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="other-tab" data-toggle="tab" href="#other"
-                                                    role="tab" aria-controls="other" aria-selected="false"
-                                                    style="font-size: 14px;"> อื่นๆ</a>
-                                            </li>
+
+                                        <ul class="nav nav-tabs" id="category" role="tablist">
+                                            @foreach ($get_category as $index => $value)
+                                                <li class="nav-item">
+                                                    <a class="nav-link {{ $index == 0 ? 'active' : '' }}"
+                                                        id="tab{{ $index }}" data-toggle="tab"
+                                                        href="#other{{ $index }}" role="tab"
+                                                        aria-controls="other{{ $index }}"
+                                                        aria-selected="{{ $index == 0 ? 'true' : 'false' }}"
+                                                        style="font-size: 14px;">{{ $value->category_name }}</a>
+                                                </li>
+                                            @endforeach
                                         </ul>
+
                                         <div class="tab-content make-post-tab" id="animateLineContent-4">
-                                            <div class="tab-pane fade active show" id="agriculture" role="tabpanel"
-                                                aria-labelledby="agriculture-tab">
-                                                <div class="searchable-items grid card-box">
-                                                    @foreach ($get_cart_agriculture as $value)
+                                            @foreach ($get_category as $index => $value)
+                                                <div class="tab-pane fade {{ $index == 0 ? 'active show' : '' }}"
+                                                    id="other{{ $index }}" role="tabpanel"
+                                                    aria-labelledby="tab{{ $index }}">
+                                                    <div class="searchable-items grid card-box">
                                                         <div class="items">
                                                             <div class="item-content">
+                                                                
                                                                 <div class="product-info">
-                                                                    <div>
+                                                                    {{ $value->category_name }}
+                                                                    {{-- <div>
                                                                         <a href="{{ route('CartGeneralDetail') }}"><img
                                                                                 src="{{ asset($value->product_image_url . '' . $value->product_image_name) }}"
                                                                                 style="max-height: 150px; max-width: 150px;"
@@ -236,7 +206,6 @@
                                                                             pv)
                                                                         </p>
                                                                     </div>
-
                                                                     <div class="product-stock-status">
                                                                         <p class="product-stock-status-inner">
                                                                             <a href="{{ route('Cart') }}"><button
@@ -246,67 +215,20 @@
                                                                                     เพิ่มสินค้า
                                                                                 </button>
                                                                         </p>
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    @endforeach
-                                                    {{-- <div class="widget-content widget-content-area text-center w-100 mt-4">
-                                                        <div class="pagination p1">
-                                                            <ul class="mx-auto">
-                                                                <a href="previous">
-                                                                    <li><i class="las la-angle-left"></i></li>
-                                                                </a>
-                                                                <a class="is-active" href="page">
-                                                                    <li>1</li>
-                                                                </a>
-                                                                <a href="page2">
-                                                                    <li>2</li>
-                                                                </a>
-                                                                <a href="page2">
-                                                                    <li>3</li>
-                                                                </a>
-                                                                <a href="next">
-                                                                    <li><i class="las la-angle-right"></i></li>
-                                                                </a>
-                                                            </ul>
-                                                        </div>
-                                                    </div> --}}
+                                                    </div>
+
                                                 </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="agriculture_stock" role="tabpanel"
-                                                aria-labelledby="agriculture_stock-tab">
-                                                agriculture_stock
-                                            </div>
-                                            <div class="tab-pane fade" id="beauty" role="tabpanel"
-                                                aria-labelledby="beauty-tab">
-                                                beauty
-                                            </div>
-                                            <div class="tab-pane fade" id="body" role="tabpanel"
-                                                aria-labelledby="body-tab">
-                                                body
-                                            </div>
-                                            <div class="tab-pane fade" id="cosmetic" role="tabpanel"
-                                                aria-labelledby="cosmetic-tab">
-                                                cosmetic
-                                            </div>
-                                            <div class="tab-pane fade" id="promotion" role="tabpanel"
-                                                aria-labelledby="promotion-tab">
-                                                promotion
-                                            </div>
-                                            <div class="tab-pane fade" id="healthy" role="tabpanel"
-                                                aria-labelledby="healthy-tab">
-                                                healthy
-                                            </div>
-                                            <div class="tab-pane fade" id="other" role="tabpanel"
-                                                aria-labelledby="other-tab">
-                                                other
-                                            </div>
+                                            @endforeach
                                         </div>
+
+
                                     </div>
                                 </div>
                             </div>
-
 
 
 
