@@ -41,7 +41,7 @@ class UnitController extends Controller
     } catch (Exception $e) {
       DB::rollback();
       return redirect('admin/Unit')->withError('เพิ่มหน่วยสินค้าไม่สำเร็จ');
-  
+
     }
 
     // dd('success');
@@ -49,7 +49,6 @@ class UnitController extends Controller
   }
   public function edit_unit(Request $rs)
   {
-    // dd($rs->all());
 
     $dataPrepare = [
       'product_unit_th' => $rs->unit_name,
@@ -59,20 +58,21 @@ class UnitController extends Controller
 
     try {
       DB::BeginTransaction();
+
       $get_unit = DB::table('dataset_product_unit')
       ->where('id','=',$rs->id)
         ->update($dataPrepare);
+
       DB::commit();
       return redirect('admin/Unit')->withSuccess('แก้ไขข้อมูลสำเร็จ');
     } catch (Exception $e) {
       DB::rollback();
       return redirect('admin/Unit')->withError('แก้ไขข้อมูลไม่สำเร็จ');
-      
+
     }
 
-    
-
   }
+
 
   public function view_unit(Request $rs)
   {
@@ -80,10 +80,12 @@ class UnitController extends Controller
      ->where('id','=',$rs->id)
      ->first();
 
+
+
      $data = ['status' => 'success', 'data' => $dataset_product_unit];
 
- 
+
      return $data;
-  
+
   }
 }

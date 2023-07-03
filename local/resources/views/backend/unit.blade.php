@@ -226,7 +226,7 @@
     <script src="{{ asset('backend/plugins/dropify/dropify.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/pages/profile_edit.js') }}"></script>
     <script>
-       
+
 
         function edit(id) {
             $.ajax({
@@ -238,13 +238,15 @@
                 })
                 .done(function(data) {
                    //console.log(data);
-                    $("#edit").modal();
+
                     $("#id").val(data['data']['id']);
 
                     $("#unit_name").val(data['data']['product_unit_th']);
                     $("#unit_en_name").val(data['data']['product_unit_en']);
                     $("#unit_status").val(data['data']['status']);
- 
+
+                    $("#edit").modal();
+
                 })
                 .fail(function() {
                     console.log("error");
