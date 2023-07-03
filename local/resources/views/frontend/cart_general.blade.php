@@ -173,7 +173,7 @@
                                                         
                                                             @if ($item->product_category_id_fk == $value->id)
                                                                 <div>
-                                                                    <a href="{{ route('CartGeneralDetail') }}"><img
+                                                                    <a href="{{ route('CartGeneralDetail', ['type' => 1, 'id' => $value->id])  }}"><img
                                                                             src="{{ asset($item->product_image_url . '' . $item->product_image_name) }}"
                                                                             style="max-height: 150px; max-width: 150px;"
                                                                             alt="Responsive image"></a>

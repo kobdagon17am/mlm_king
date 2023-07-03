@@ -17,7 +17,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="javascript:void(0);">สั่งซื้อสินค้า</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a
-                                            href="{{ route('CartGeneral') }}">สินค้าทั่วไป</a></li>
+                                            href="{{ route('CartGeneral', ['type' => 'general']) }}">สินค้าทั่วไป</a></li>
                                     <li class="breadcrumb-item active" aria-current="page"><span>รายละเอียดสินค้า</span>
                                     </li>
                                 </ol>
@@ -34,11 +34,23 @@
                 <div class="col-lg-12">
                     <div class="">
                         <div class="widget-content searchable-container grid">
+                            
                             <div class="card-box product-details">
                                 <div class="row">
                                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12">
                                         <div class="tab-content pt-0">
-                                            <div class="tab-pane active" id="product1">
+                                            <div id="big_banner">
+                                                @foreach ($product as $item)
+                                                    <div class="port_big_img">
+
+                                                        <img class="img img-fluid"
+                                                            src="{{ asset($item->product_image_url . '' . $item->product_image_name) }}"
+                                                            alt="">
+
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            {{-- <div class="tab-pane active" id="product1">
                                                 <img src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
                                                 style="max-height: 300px; max-width: 300px;" alt="" class="img-fluid mx-auto d-block rounded">
                                             </div>
@@ -53,7 +65,7 @@
                                             <div class="tab-pane" id="product4">
                                                 <img src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
                                                 style="max-height: 300px; max-width: 300px;"alt="" class="img-fluid mx-auto d-block rounded">
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <ul class="nav nav-pills nav-justified">
                                             <li class="nav-item">
@@ -88,7 +100,8 @@
                                     </div>
                                     <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12">
                                         <div class="mt-3 mt-xl-0">
-                                            <a href="{{ route('CartGeneral') }}" class="text-primary mb-3 d-block">
+                                            <a href="{{ route('CartGeneral', ['type' => 'general']) }}"
+                                                class="text-primary mb-3 d-block">
                                                 <i class="las la-arrow-left"></i> รายการสินค้า
                                             </a>
                                             <h2 class="mb-3 text-black strong">Product 1</h2>
@@ -128,18 +141,19 @@
                                             </div> --}}
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                                        <label class="my-1 mr-2" for="quantityinput">จำนวนสินค้า</label>
-                                                        <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                        </select>
+                                                    <label class="my-1 mr-2" for="quantityinput">จำนวนสินค้า</label>
+                                                    <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                    </select>
                                                 </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center " id="" style="margin-top:30px">
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center " id=""
+                                                    style="margin-top:30px">
                                                     <a href="{{ route('Cart') }}"><button type="button"
                                                             class="btn btn-success btn-rounded btn-block">
                                                             <i class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
@@ -218,7 +232,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <!--  Content Area Ends  -->
 @endsection

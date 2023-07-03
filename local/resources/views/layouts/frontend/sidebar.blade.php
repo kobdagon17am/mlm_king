@@ -54,10 +54,10 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="cart" data-parent="#accordionExample">
                     <li>
-                        <a href="{{ route('CartGeneral')}}"> สินค้าทั่วไป </a>
+                        <a href="{{ route('CartGeneral',['type' => 'general'])}}"> สินค้าทั่วไป </a>
                     </li>
                     <li>
-                        <a href="{{ route('CartGeneral')}}"> สินค้า (คลัง) </a>
+                        <a href="{{ route('CartGeneral',['type' => 'stock'])}}"> สินค้า (คลัง) </a>
                     </li>
                 </ul>
             </li>

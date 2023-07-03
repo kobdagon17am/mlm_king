@@ -23,16 +23,6 @@ class CartGeneralController extends Controller
       //->where('product_images.product_image_orderby', '=', '1')
       ->get();
 
-
-// dd($get_category);
-
-    // $get_product = DB::table('products')
-    //   ->select('products.*', 'product_images.product_image_url', 'product_images.product_image_name')
-    //   ->leftJoin('product_images', 'product_images.product_id_fk', '=', 'products.id')
-    //   //->where('products.product_category_name', '=', 'คลังเกษตร')
-    //   ->where('product_images.product_image_orderby', '=', '1')
-    //   ->get();
-
     return view('frontend.cart_general', compact('get_category'));
   }
   public static function product_detail($c_id){
