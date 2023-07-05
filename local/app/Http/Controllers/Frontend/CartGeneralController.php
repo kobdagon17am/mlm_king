@@ -9,9 +9,9 @@ use App\Http\Controllers\Controller;
 
 class CartGeneralController extends Controller
 {
-  public function index()
+  public function index($type)
   {
-    // dd('111');
+    // dd($type);
 
    //$product =\App\Http\Controllers\Frontend\CartGeneralController::product_detail(9);
    //dd($product);
@@ -23,7 +23,8 @@ class CartGeneralController extends Controller
       //->where('product_images.product_image_orderby', '=', '1')
       ->get();
 
-    return view('frontend.cart_general', compact('get_category'));
+    return view('frontend.cart_general', compact('get_category','type'));
+   
   }
   public static function product_detail($c_id){
 

@@ -128,81 +128,86 @@
                         <div class="col-ml-12">
                             <div class="widget-content widget-content-area tab-horizontal-line">
                                 <ul class="nav nav-tabs" id="category" role="tablist">
-                                    
+
                                     @foreach ($get_category as $index => $value)
-                                            <li class="nav-item">
-                                                <a class="nav-link {{ $index == 0 ? 'active' : '' }}"
-                                                    id="tab-{{ $value->category_name }}" data-toggle="tab"
-                                                    href="#other-{{ $value->id }}" role="tab"
-                                                    aria-controls="other-{{ $value->category_name }}"
-                                                    aria-selected="{{ $index == 0 ? 'true' : 'false' }}"
-                                                    style="font-size: 14px;">{{ $value->category_name }}</a>
-                                            </li>                   
+                                        <li class="nav-item">
+                                            <a class="nav-link {{ $index == 0 ? 'active' : '' }}"
+                                                id="tab-{{ $value->category_name }}" data-toggle="tab"
+                                                href="#other-{{ $value->id }}" role="tab"
+                                                aria-controls="other-{{ $value->category_name }}"
+                                                aria-selected="{{ $index == 0 ? 'true' : 'false' }}"
+                                                style="font-size: 14px;">{{ $value->category_name }}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
                         </div>
                     </div>
+
                     <div class="tab-content make-post-tab" id="animateLineContent-4">
                         <?php
-                        $i=0;
+                        $i = 0;
                         ?>
                         @foreach ($get_category as $index => $value)
-                        <?php
-                        $i++;
-                        if($i == 1){
-                            $class = 'active show';
-                        }else{
-                            $class = '';
-                        }
-                        ?>
-                            <div class="tab-pane fade {{$class}}" id="other-{{ $value->id }}" role="tabpanel"
-                                aria-labelledby="tab-{{ $value->category_name }}">
+                            <?php
+                            $i++;
+                            if ($i == 1) {
+                                $class = 'active show';
+                            } else {
+                                $class = '';
+                            }
+                            ?>
+
+                            <div class="tab-pane fade {{ $class }}" id="other-{{ $value->id }}"
+                                role="tabpanel" aria-labelledby="tab-{{ $value->category_name }}">
                                 <?php
-                                $product =\App\Http\Controllers\Frontend\CartGeneralController::product_detail($value->id);
-                             
+                                $product = \App\Http\Controllers\Frontend\CartGeneralController::product_detail($value->id);
+                                
                                 ?>
+
                                 <div class="container">
                                     <div class="row">
-                                    
                                         <div class="col-12">
-                                            <div class="searchable-items grid card-box">
-                                                @foreach ($product as $item)
-                                                <div class="items">
-                                                    <div class="item-content">
-                                                        
-                                                            @if ($item->product_category_id_fk == $value->id)
-                                                                <div>
-                                                                    <a href="{{ route('CartGeneralDetail', ['type' => 1, 'id' => $value->id])  }}"><img
-                                                                            src="{{ asset($item->product_image_url . '' . $item->product_image_name) }}"
-                                                                            style="max-height: 150px; max-width: 150px;"
-                                                                            alt="Responsive image"></a>
-                                                                </div>
-                                                                <div class="user-meta-info">
-                                                                    <p class="product-name">
-                                                                    <h5><b>{{ $item->product_name }}</b></h5>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="product-price">
-                                                                    <p class="product-category-price">
-                                                                        <span><b>฿{{ $item->product_price_member }}</b></span>({{ $item->product_pv }}
-                                                                        pv)
-                                                                    </p>
-                                                                </div>
-                                                                <div class="product-stock-status">
-                                                                    <p class="product-stock-status-inner">
-                                                                        <a href="{{ route('Cart') }}"><button
-                                                                                type="button"
-                                                                                class="btn btn-outline-success btn-rounded"><i
-                                                                                    class="las la-cart-plus las-white font-17"></i>
-                                                                                เพิ่มสินค้า</button>
-                                                                    </p>
-                                                                </div>
-                                                            @endif
-                                                       
-                                                    </div>
+                                            <div class="widget-content searchable-container grid">
+                                                <div class="searchable-items grid card-box">
+                                                    @foreach ($product as $item)
+                                                        <div class="items">
+                                                            <div class="item-content">
+
+                                                                @if ($item->product_category_id_fk == $value->id)
+                                                                    <div class="product-info">
+                                                                        <a
+                                                                            href="{{ route('CartGeneralDetail', ['type' => $type, 'id' => $value->id]) }}"><img
+                                                                                src="{{ asset($item->product_image_url . '' . $item->product_image_name) }}"
+                                                                                style="max-height: 150px; max-width: 150px;"
+                                                                                alt="Responsive image"></a>
+                                                                    </div>
+                                                                    <div class="user-meta-info">
+                                                                        <p class="product-name">
+                                                                        <h5 class="text-center"><b>{{ $item->product_name }}</b></h5>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="product-price">
+                                                                        <p class="product-category-price">
+                                                                            <span><b>฿{{ $item->product_price_member }}</b></span>({{ $item->product_pv }}
+                                                                            pv)
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="product-stock-status">
+                                                                        <p class="product-stock-status-inner">
+                                                                            <a href="{{ route('Cart') }}"><button
+                                                                                    type="button"
+                                                                                    class="btn btn-outline-success btn-rounded"><i
+                                                                                        class="las la-cart-plus las-white font-17"></i>
+                                                                                    เพิ่มสินค้า</button>
+                                                                        </p>
+                                                                    </div>
+                                                                @endif
+
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
                                                 </div>
-                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -215,6 +220,8 @@
                 </div>
             </div>
         </div>
+        
+    </div>
     </div>
     <!--  Content Area Ends  -->
 @endsection

@@ -34,69 +34,47 @@
                 <div class="col-lg-12">
                     <div class="">
                         <div class="widget-content searchable-container grid">
-                            
+
                             <div class="card-box product-details">
                                 <div class="row">
                                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12">
                                         <div class="tab-content pt-0">
                                             <div id="big_banner">
-                                                @foreach ($product as $item)
+                                                @foreach ($data['img'] as $value_img)
                                                     <div class="port_big_img">
 
-                                                        <img class="img img-fluid"
-                                                            src="{{ asset($item->product_image_url . '' . $item->product_image_name) }}"
+                                                        <img class="img-fluid mx-auto d-block rounde"
+                                                            src="{{ asset($value_img->product_image_url . '' . $value_img->product_image_name) }}"
+                                                            style="max-height: 300px; max-width: 300px;"alt="">
+
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 product-right">
+                                            <div id="small_banner">
+                                                @foreach ($data['img'] as $value_img_small)
+                                                    <div>
+
+                                                        <img class="img img-fluid" width="120"
+                                                            src="{{ asset($value_img->product_image_url . '' . $value_img->product_image_name) }}"
                                                             alt="">
 
                                                     </div>
                                                 @endforeach
                                             </div>
-                                            {{-- <div class="tab-pane active" id="product1">
-                                                <img src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
-                                                style="max-height: 300px; max-width: 300px;" alt="" class="img-fluid mx-auto d-block rounded">
-                                            </div>
-                                            <div class="tab-pane" id="product2">
-                                                <img src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png') }}"
-                                                style="max-height: 300px; max-width: 300px;" alt="" class="img-fluid mx-auto d-block rounded">
-                                            </div>
-                                            <div class="tab-pane" id="product3">
-                                                <img src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png') }}"
-                                                style="max-height: 300px; max-width: 300px;" alt="" class="img-fluid mx-auto d-block rounded">
-                                            </div>
-                                            <div class="tab-pane" id="product4">
-                                                <img src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
-                                                style="max-height: 300px; max-width: 300px;"alt="" class="img-fluid mx-auto d-block rounded">
-                                            </div> --}}
                                         </div>
-                                        <ul class="nav nav-pills nav-justified">
+                                        {{-- <ul class="nav nav-pills nav-justified">
                                             <li class="nav-item">
-                                                <a href="#product1" data-toggle="tab" aria-expanded="true"
-                                                    class="nav-link product-thumb active">
-                                                    <img src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
-                                                        alt="" class="img-fluid mx-auto d-block rounded">
-                                                </a>
+                                                @foreach ($data['img'] as $value_img_small)
+                                                    <a href="#product1" data-toggle="tab" aria-expanded="true"
+                                                        class="nav-link product-thumb active">
+                                                        <img src="{{ asset($value_img->product_image_url . '' . $value_img->product_image_name) }}"
+                                                            alt="" class="img-fluid mx-auto d-block rounded">
+                                                    </a>
+                                                @endforeach
                                             </li>
-                                            <li class="nav-item">
-                                                <a href="#product2" data-toggle="tab" aria-expanded="false"
-                                                    class="nav-link product-thumb">
-                                                    <img src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png') }}"
-                                                        alt="" class="img-fluid mx-auto d-block rounded">
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#product3" data-toggle="tab" aria-expanded="false"
-                                                    class="nav-link product-thumb">
-                                                    <img src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png') }}"
-                                                        alt="" class="img-fluid mx-auto d-block rounded">
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#product4" data-toggle="tab" aria-expanded="false"
-                                                    class="nav-link product-thumb">
-                                                    <img src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
-                                                        alt="" class="img-fluid mx-auto d-block rounded">
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                     <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12">
                                         <div class="mt-3 mt-xl-0">
@@ -234,4 +212,10 @@
         </div>
     </div>
     <!--  Content Area Ends  -->
+
+    <?php
+    
+    $img = $data['img'][0]->product_image_url . '' . $data['img'][0]->product_image_name;
+    
+    ?>
 @endsection
