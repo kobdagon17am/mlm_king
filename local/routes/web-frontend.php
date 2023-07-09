@@ -88,6 +88,8 @@ Route::get('Register', function () {
 
   return view('frontend.register');
 })->name('Register');
+Route::post('Register_member','Frontend\RegisterController@member_register')->name('Register_member');
+
 
 Route::get('ProfileUpload', function () {
 
