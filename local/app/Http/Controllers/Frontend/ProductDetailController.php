@@ -11,7 +11,7 @@ class ProductDetailController extends Controller
 {
     public static function product_detail($type, $id)
     {
-        // dd('111');
+        // dd($id);
         // $business_location_id = Auth::guard('c_user')->user()->business_location_id;
 
         if (empty($id) || empty($type)) {
@@ -37,7 +37,7 @@ class ProductDetailController extends Controller
                     // ->orderby('product_image_orderby', 'DESC')
                     ->get();
             }
-            // dd($img);
+            //  dd($img);
             $data = [
                 'product_data' => $product,
                 'img' => $img,
