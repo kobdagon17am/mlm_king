@@ -24,7 +24,7 @@ class RegisterController extends Controller
             'side' => 'required',
             'number_of_member' => 'required',
             'business_location' => 'required',
-            'Prefix' => 'required',
+            'prefix' => 'required',
             'firstname' => 'required',
             'lastname' => 'required',
             'marital_status' => 'required',
@@ -151,22 +151,56 @@ class RegisterController extends Controller
         //     $message_err['account_name.required'] = 'กรุณากรอกข้อมูล';
         // }
 
-        
+
 
         $validator = Validator::make(
             $request->all(),
             $rule,
             $message
         );
-
+      
         // dd($message);
         //END data validator
 
+        if (!$validator->fails()) {
+            dd('111');
+            $customer = [
+                'user_name' => 'hhhh',
+                // 'expire_date' => date('Y-m-d', $mt_mount_new),
+                'password' => md5('11111'),
+                'upline_id' => $request->upline_id,
+                // 'pv_upgrad' =>$request->pv,
+                'introduce_id' => $request->sponser,
+                'type_upline' => $request->side,
+                'prefix_name' => trim($request->prefixname),
+                'first_name' => trim($request->firstname),
+                'last_name' => trim($request->lastname),
+                'business_name' => trim($request->businessname),
+                'id_card' => trim($request->idcard),
+                'phone' =>  trim($request->phone),
+                'birth_day' =>  trim($request->birthdate),
+                'nation_id' => 'ไทย',
+                // 'business_location_id' => $request->nation_id,
+                // 'qualification_id' => $request->sizebusiness,
+                // 'id_card' => $request->id_card,
+                // 'phone' => $request->phone,
+                'email' => trim($request->email),
+                // 'line_id' => $request->line_id,
+                // 'vvip_register_type' => 'register',
 
+                // 'facebook' => $request->facebook,
+                // 'regis_doc4_status' => 0,
+                // 'regis_doc1_status' => 3,
+            ];
+dd($customer);
+
+        } else {
+            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'กรุณากรอกข้อมูลให้ครบถ้วนก่อนลงทะเบียน');
+        }
         //return  redirect('register')->withError('ลงทะเบียนไม่สำเร็จ');
         // dd($validator->errors());
 
         // return response()->json(['ms' => 'กรุณากรอกข้อมูลให้ครบถ้วนก่อนลงทะเบียน', 'error' => $validator->errors()]);
-        return redirect()->back()->withErrors($validator)->withInput()->with('error', 'กรุณากรอกข้อมูลให้ครบถ้วนก่อนลงทะเบียน');
+        
     }
 }
