@@ -17,7 +17,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="javascript:void(0);">สั่งซื้อสินค้า</a></li>
                                     <li class="breadcrumb-item" aria-current="page"><a
-                                            href="{{ route('CartGeneral') }}">สินค้าทั่วไป</a></li>
+                                            href="{{ route('CartGeneral', ['type' => 'general']) }}">สินค้าทั่วไป</a></li>
                                     <li class="breadcrumb-item active" aria-current="page"><span>รายละเอียดสินค้า</span>
                                     </li>
                                 </ol>
@@ -34,75 +34,66 @@
                 <div class="col-lg-12">
                     <div class="">
                         <div class="widget-content searchable-container grid">
+
                             <div class="card-box product-details">
                                 <div class="row">
                                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12">
                                         <div class="tab-content pt-0">
-                                            <div class="tab-pane active" id="product1">
-                                                <img src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
-                                                style="max-height: 300px; max-width: 300px;" alt="" class="img-fluid mx-auto d-block rounded">
-                                            </div>
-                                            <div class="tab-pane" id="product2">
-                                                <img src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png') }}"
-                                                style="max-height: 300px; max-width: 300px;" alt="" class="img-fluid mx-auto d-block rounded">
-                                            </div>
-                                            <div class="tab-pane" id="product3">
-                                                <img src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png') }}"
-                                                style="max-height: 300px; max-width: 300px;" alt="" class="img-fluid mx-auto d-block rounded">
-                                            </div>
-                                            <div class="tab-pane" id="product4">
-                                                <img src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
-                                                style="max-height: 300px; max-width: 300px;"alt="" class="img-fluid mx-auto d-block rounded">
-                                            </div>
+                                            @foreach ($data['img'] as $value_img)
+                                                <div class="tab-pane @if ($value_img->product_image_orderby == 1) show active @endif"
+                                                    id="product-{{ $value_img->product_image_orderby }}-item">
+                                                    <img src="{{ asset($value_img->product_image_url . '' . $value_img->product_image_name) }}"
+                                                        style="max-height: 300px; max-width: 300px;" alt=""
+                                                        class="img-fluid mx-auto d-block rounded">
+                                                </div>
+                                            @endforeach
                                         </div>
                                         <ul class="nav nav-pills nav-justified">
-                                            <li class="nav-item">
-                                                <a href="#product1" data-toggle="tab" aria-expanded="true"
-                                                    class="nav-link product-thumb active">
-                                                    <img src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png') }}"
-                                                        alt="" class="img-fluid mx-auto d-block rounded">
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#product2" data-toggle="tab" aria-expanded="false"
-                                                    class="nav-link product-thumb">
-                                                    <img src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png') }}"
-                                                        alt="" class="img-fluid mx-auto d-block rounded">
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#product3" data-toggle="tab" aria-expanded="false"
-                                                    class="nav-link product-thumb">
-                                                    <img src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png') }}"
-                                                        alt="" class="img-fluid mx-auto d-block rounded">
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#product4" data-toggle="tab" aria-expanded="false"
-                                                    class="nav-link product-thumb">
-                                                    <img src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png') }}"
-                                                        alt="" class="img-fluid mx-auto d-block rounded">
-                                                </a>
-                                            </li>
+                                            @foreach ($data['img'] as $value_img)
+                                                <li class="nav-item">
+                                                    <a href="#product-{{ $value_img->product_image_orderby }}-item"
+                                                        data-toggle="tab" aria-expanded="false"
+                                                        class="nav-link product-thumb @if ($value_img->product_image_orderby == 1) show active @endif">
+                                                        <img src="{{ asset($value_img->product_image_url . '' . $value_img->product_image_name) }}"
+                                                            alt="" class="img-fluid mx-auto d-block rounded">
+                                                    </a>
+                                                </li>
+                                            @endforeach
+
+                                            @if (count($data['img']) == 3)
+                                                <li class="nav-item">
+                                                </li>
+                                            @endif
+                                            @if (count($data['img']) == 2)
+                                                <li class="nav-item">
+                                                </li>
+                                                <li class="nav-item">
+                                                </li>
+                                            @endif
+                                            @if (count($data['img']) == 1)
+                                                <li class="nav-item">
+                                                </li>
+                                                <li class="nav-item">
+                                                </li>
+                                                <li class="nav-item">
+                                                </li>
+                                            @endif
+
                                         </ul>
                                     </div>
                                     <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12">
                                         <div class="mt-3 mt-xl-0">
-                                            <a href="{{ route('CartGeneral') }}" class="text-primary mb-3 d-block">
+                                            <a href="{{ route('CartGeneral', ['type' => 'general']) }}"
+                                                class="text-primary mb-3 d-block">
                                                 <i class="las la-arrow-left"></i> รายการสินค้า
                                             </a>
-                                            <h2 class="mb-3 text-black strong">Product 1</h2>
+                                            <h2 class="mb-3 text-black strong">{{$data['product_data']->product_name}}</h2>
                                             <h3 class="mb-3">
-                                                <b>฿ 1,000</b>
-                                                <span class="text-success ml-2">(50PV)</span>
+                                                <b>฿ {{$data['product_data']->product_price_member}}</b>
+                                                <span class="text-success ml-2">({{$data['product_data']->product_pv}}PV)</span>
                                             </h3>
                                             <h6>
-                                                <p class="text-muted mb-4"><b>รายละเอียดสินค้า:</b> There are many
-                                                    variations of
-                                                    passages of product
-                                                    available, but the majority have suffered alteration in some form, by
-                                                    injected humour, or randomised words which don't look even slightly
-                                                    believable.</p>
+                                                <p class="text-muted mb-4"><b>รายละเอียดสินค้า:</b> {{$data['product_data']->product_detail}}</p>
                                             </h6>
                                             {{-- <div class="row mb-3">
                                                 <div class="col-md-6">
@@ -128,18 +119,19 @@
                                             </div> --}}
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                                        <label class="my-1 mr-2" for="quantityinput">จำนวนสินค้า</label>
-                                                        <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                        </select>
+                                                    <label class="my-1 mr-2" for="quantityinput">จำนวนสินค้า</label>
+                                                    <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                    </select>
                                                 </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center " id="" style="margin-top:30px">
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center " id=""
+                                                    style="margin-top:30px">
                                                     <a href="{{ route('Cart') }}"><button type="button"
                                                             class="btn btn-success btn-rounded btn-block">
                                                             <i class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
@@ -219,6 +211,6 @@
             </div>
         </div>
     </div>
-    </div>
     <!--  Content Area Ends  -->
+
 @endsection

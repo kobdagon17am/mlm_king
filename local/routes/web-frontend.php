@@ -65,13 +65,14 @@ Route::get('Profile', function () {
 // Route::get('CartGeneral', function () {
 //   return view('frontend.cart_general');
 // })->name('CartGeneral');
-Route::get('CartGeneral','Frontend\CartGeneralController@index')->name('CartGeneral');
+Route::get('CartGeneral/{type}','Frontend\CartGeneralController@index')->name('CartGeneral');
 
 
 
-Route::get('CartGeneralDetail', function () {
-  return view('frontend.cart_general_detail');
-})->name('CartGeneralDetail');
+// Route::get('CartGeneralDetail', function () {
+//   return view('frontend.cart_general_detail');
+// })->name('CartGeneralDetail');
+Route::get('CartGeneralDetail/{type}/{id?}','Frontend\ProductDetailController@product_detail')->name('CartGeneralDetail');
 
 Route::get('Cart', function () {
 
@@ -87,6 +88,8 @@ Route::get('Register', function () {
 
   return view('frontend.register');
 })->name('Register');
+Route::post('Register_member','Frontend\RegisterController@member_register')->name('Register_member');
+
 
 Route::get('ProfileUpload', function () {
 
