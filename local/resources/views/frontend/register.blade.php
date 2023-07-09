@@ -28,7 +28,7 @@
         <!--  Navbar Ends / Breadcrumb Area  -->
         <!-- Main Body Starts -->
 
-        
+
         <div class="layout-px-spacing">
             <div class="row layout-spacing pt-4">
                 {{-- <div class="col-xl-3 col-lg-4 col-md-4  mb-4">
@@ -95,7 +95,7 @@
                                                             @error('upline_id')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
-                                                            
+
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
@@ -109,7 +109,7 @@
                                                             @error('sponsor')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
-                                                            
+
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -182,7 +182,7 @@
                                                                 @error('firstname')
                                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                                 @enderror
-                                                                    
+
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
@@ -197,7 +197,7 @@
                                                                 @error('lastname')
                                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                                 @enderror
-                                                            
+
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -245,13 +245,13 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="idcard">หมายเลขบัตรประชาชน
+                                                            <label for="id_card">หมายเลขบัตรประชาชน
                                                                 <span class="text-danger">*</span></label>
                                                                 <input type="number" minlength="13" unique="customers"
-                                                                class="form-control @error('idcard') is-invalid @enderror"
-                                                                name="idcard" placeholder="หมายเลขบัตรประชาชน"
-                                                                value="{{ old('idcard') }}">
-                                                            @error('idcard')
+                                                                class="form-control @error('id_card') is-invalid @enderror"
+                                                                name="id_card" placeholder="หมายเลขบัตรประชาชน"
+                                                                value="{{ old('id_card') }}">
+                                                            @error('id_card')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
                                                         </div>
