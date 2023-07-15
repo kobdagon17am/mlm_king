@@ -83,6 +83,12 @@
                         <a href="#"> สถานะสินค้าจัดส่ง </a>
                     </li>
                     <li>
+                        <a href="{{route('admin/Stock_in')}}"> รับเข้าสินค้า </a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin/Stock_out')}}"> จ่ายออกสินค้า </a>
+                    </li>
+                    <li>
                         <a href="{{route('admin/Warehouse')}}"> ข้อมูลคลังสินค้า </a>
                     </li>
                 </ul>

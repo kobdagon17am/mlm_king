@@ -71,3 +71,14 @@ Route::get('admin/Blank', function () {
   Route::post('admin/Warehouse_insert','Admin\WarehouseController@insert')->name('admin/Warehouse_insert');
   Route::get('admin/view_warehouse','Admin\WarehouseController@view_warehouse')->name('admin/view_warehouse');
   Route::post('admin/edit_warehouse','Admin\WarehouseController@edit_warehouse')->name('admin/edit_warehouse');
+
+  // Route::get('admin/Stock_in', function () {
+  //   return view('backend.Stock_in');
+  // })->name('admin/Stock_in');
+  Route::get('admin/Stock_in','Admin\StockController@index')->name('admin/Stock_in');
+
+
+
+  Route::get('admin/Stock_out', function () {
+    return view('backend.Stock_out');
+  })->name('admin/Stock_out');
