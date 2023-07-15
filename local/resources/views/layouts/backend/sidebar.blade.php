@@ -68,8 +68,8 @@
             <li class="menu main-single-menu">
                 <a href="#a3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <i class="las la-hand-holding-usd"></i>
-                        <span> ระบบขาย </span>
+                        <i class="las la-warehouse"></i>
+                        <span> ระบบคลังสินค้า </span>
                     </div>
                     <div>
                         <i class="las la-angle-right sidemenu-right-icon"></i>
@@ -81,6 +81,9 @@
                     </li>
                     <li>
                         <a href="#"> สถานะสินค้าจัดส่ง </a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin/Warehouse')}}"> ข้อมูลคลังสินค้า </a>
                     </li>
                 </ul>
             </li>

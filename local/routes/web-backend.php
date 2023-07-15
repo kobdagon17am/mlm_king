@@ -64,4 +64,10 @@ Route::get('admin/Blank', function () {
   Route::get('admin/view_branch','Admin\BranchController@view_branch')->name('admin/view_branch');
   Route::post('admin/edit_branch','Admin\BranchController@edit_branch')->name('admin/edit_branch');
 
-
+  // Route::get('admin/Warehouse', function () {
+  //   return view('backend.Warehouse');
+  // })->name('admin/Warehouse');
+  Route::get('admin/Warehouse','Admin\WarehouseController@index')->name('admin/Warehouse');
+  Route::post('admin/Warehouse_insert','Admin\WarehouseController@insert')->name('admin/Warehouse_insert');
+  Route::get('admin/view_warehouse','Admin\WarehouseController@view_warehouse')->name('admin/view_warehouse');
+  Route::post('admin/edit_warehouse','Admin\WarehouseController@edit_warehouse')->name('admin/edit_warehouse');

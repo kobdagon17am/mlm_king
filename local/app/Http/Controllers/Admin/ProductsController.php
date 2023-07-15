@@ -28,7 +28,7 @@ class ProductsController extends Controller
     $get_unit = DB::table('dataset_product_unit')
       ->get();
 
-    return view('backend/products', compact('get_products', 'get_categories', 'get_unit'));;
+    return view('backend/products', compact('get_products', 'get_categories', 'get_unit'));
   }
   public function insert(Request $rs)
   {
