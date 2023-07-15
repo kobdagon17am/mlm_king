@@ -152,18 +152,18 @@ class RegisterController extends Controller
         // }
 
 
-
+        
         $validator = Validator::make(
             $request->all(),
             $rule,
             $message
         );
-      
-        // dd($message);
+
+        // dd($rule);
         //END data validator
 
         if (!$validator->fails()) {
-            dd('111');
+            // dd('111');
             $customer = [
                 'user_name' => 'hhhh',
                 // 'expire_date' => date('Y-m-d', $mt_mount_new),
@@ -180,27 +180,12 @@ class RegisterController extends Controller
                 'phone' =>  trim($request->phone),
                 'birth_day' =>  trim($request->birthdate),
                 'nation_id' => 'ไทย',
-                // 'business_location_id' => $request->nation_id,
-                // 'qualification_id' => $request->sizebusiness,
-                // 'id_card' => $request->id_card,
-                // 'phone' => $request->phone,
                 'email' => trim($request->email),
-                // 'line_id' => $request->line_id,
-                // 'vvip_register_type' => 'register',
-
-                // 'facebook' => $request->facebook,
-                // 'regis_doc4_status' => 0,
-                // 'regis_doc1_status' => 3,
             ];
-dd($customer);
 
+            dd($customer);
         } else {
             return redirect()->back()->withErrors($validator)->withInput()->with('error', 'กรุณากรอกข้อมูลให้ครบถ้วนก่อนลงทะเบียน');
         }
-        //return  redirect('register')->withError('ลงทะเบียนไม่สำเร็จ');
-        // dd($validator->errors());
-
-        // return response()->json(['ms' => 'กรุณากรอกข้อมูลให้ครบถ้วนก่อนลงทะเบียน', 'error' => $validator->errors()]);
-        
     }
 }
