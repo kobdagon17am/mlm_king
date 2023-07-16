@@ -162,12 +162,11 @@
                                 role="tabpanel" aria-labelledby="tab-{{ $value->category_name }}">
                                 <?php
                                 $product = \App\Http\Controllers\Frontend\CartGeneralController::product_detail($value->id);
-                                
                                 ?>
 
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="widget-content searchable-container grid">
                                                 <div class="searchable-items grid card-box">
                                                     @foreach ($product as $item)
@@ -184,7 +183,8 @@
                                                                     </div>
                                                                     <div class="user-meta-info">
                                                                         <p class="product-name">
-                                                                        <h5 class="text-center"><b>{{ $item->product_name }}</b></h5>
+                                                                        <h5 class="text-center">
+                                                                            <b>{{ $item->product_name }}</b></h5>
                                                                         </p>
                                                                     </div>
                                                                     <div class="product-price">
@@ -220,7 +220,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
     </div>
     <!--  Content Area Ends  -->

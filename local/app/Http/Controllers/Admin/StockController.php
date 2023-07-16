@@ -41,5 +41,23 @@ class StockController extends Controller
     return response()->json($get_warehouse);
   }
 
+  public function get_data_product_unit(Request $request)
+  {
+      $product_id =  $request->product_id;
+
+      $get_warehouse = DB::table('products')
+      (
+          'dataset_product_unit.product_unit',
+          'products_details.product_id_fk',
+          'dataset_product_unit.id',
+      )
+          ->join('products_details', 'products_details.product_id_fk', 'products.id')
+          ->join('dataset_product_unit', 'dataset_product_unit.product_unit_id', 'products.unit_id')
+          ->where('products.id', $product_id)
+          ->first();
+
+      return response()->json($product_unit);
+  }
+
 
 }

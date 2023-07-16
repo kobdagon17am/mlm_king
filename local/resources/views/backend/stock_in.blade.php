@@ -116,16 +116,10 @@
                                                                     <label><b>หน่วยสินค้า:</b></label>
                                                                     <span
                                                                         class="form-label text-danger product_unit_id_fk_err _err"></span>
-                                                                    <select id="product_unit_select" class="form-control"
-                                                                        name="product_unit_id">
+                                                                    <select class="form-control product_unit_select"
+                                                                        name="product_unit_id_fk" disabled>
                                                                         <option selected disabled> เลือกหน่วยสินค้า
                                                                         </option>
-                                                                        @foreach ($get_product_unit as $key => $val)
-                                                                            <option value="{{ $val->id }}">
-                                                                                {{-- {{ $key + 1 }} . --}}
-                                                                                {{ $val->product_unit_th }}
-                                                                            </option>
-                                                                        @endforeach
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-lg-6  mt-2">
