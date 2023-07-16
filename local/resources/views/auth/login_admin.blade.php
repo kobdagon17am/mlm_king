@@ -60,8 +60,10 @@
                     <div class="login-one-start">
                         <form method="POST" action="{{ route('admin_login') }}">
                             @csrf
-                        <h6 class="mt-2 text-primary text-center font-20">Log In</h6>
-                        <p class="text-center text-muted mt-3 mb-3 font-14">Please Log into your account</p>
+
+                            <div class="text-center"> <img src="{{ asset('frontend/assets/img/logo/Kingthong-Baiyok-Logo.png')}}" width="400" class="logo" /> </div>
+                        {{-- <h6 class="mt-2 text-primary text-center font-20">Admin Log In</h6> --}}
+                        <p class="text-center text-muted mt-3 mb-3 font-14">Admin Log In</p>
 
                         <div class="login-one-inputs mt-5">
                             <input type="text"  name="username" value="{{ old('username') }}" placeholder="Username" maxlength="10"/>

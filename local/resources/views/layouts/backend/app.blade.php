@@ -242,7 +242,9 @@
                                         </div>
                                     </a> --}}
                                     <hr class="account-divider">
-                                    <a class="account-item" href="auth_login_3.html">
+
+                                    <a class="account-item"  href="{{ route('logout_admin') }}"  >
+
                                         <div class="media align-center">
                                             <div class="icon-wrap">
                                                 <i class="las la-sign-out-alt font-20"></i>
@@ -252,6 +254,7 @@
                                             </div>
                                         </div>
                                     </a>
+
                                 </div>
                             </div>
                         </div>

@@ -17,6 +17,12 @@ Route::post('admin_login', 'Admin\LoginController@admin_login')->name('admin_log
 
 Route::get('admin/Dashboard','Admin\DashboardController@index')->name('admin/Dashboard');
 
+Route::get('logout_admin', function () {
+    Auth::guard('admin')->logout();
+    //Session::flush();
+    return view('auth.login_admin');
+  })->name('logout_admin');
+
 Route::get('admin/Blank', function () {
     return view('backend.blank');
   })->name('admin/Blank');
