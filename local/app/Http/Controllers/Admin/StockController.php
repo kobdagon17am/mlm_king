@@ -34,7 +34,7 @@ class StockController extends Controller
 
     $get_warehouse = DB::table('db_warehouse')
       ->where('branch_id_fk', $request->id)
-      ->where('status', 1)
+      // ->where('status', 1)
       ->get();
 
 
