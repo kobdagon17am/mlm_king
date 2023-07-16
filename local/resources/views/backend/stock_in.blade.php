@@ -354,7 +354,7 @@
             data.forEach((val, key) => {
 
                 $('.warehouse_select').append(`
-                <option value="${val.id}">${val.w_code}::${val.w_name}</option>
+                <option value="${val.id}">${val.warehouse_name} (${val.warehouse_code})</option>
                 `);
             });
         }

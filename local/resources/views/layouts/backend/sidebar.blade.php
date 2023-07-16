@@ -96,7 +96,7 @@
                 <a href="#a4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-warehouse"></i>
-                        <span> ระบบคลังสินค้า </span>
+                        <span> ระบบคลังบริษัท </span>
                     </div>
                     <div>
                         <i class="las la-angle-right sidemenu-right-icon"></i>
@@ -120,6 +120,31 @@
             <li class="menu main-single-menu">
                 <a href="#a5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
+                        <i class="las la-warehouse"></i>
+                        <span> ระบบคลังบริษัท </span>
+                    </div>
+                    <div>
+                        <i class="las la-angle-right sidemenu-right-icon"></i>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled" id="a3" data-parent="#accordionExample">
+                    <li>
+                        <a href="#"> สินค้ารอจัดส่ง </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin/Stock_in') }}"> รับเข้าสินค้า </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin/Stock_out') }}"> จ่ายออกสินค้า </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin/Warehouse') }}"> ข้อมูลคลังสินค้า </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu main-single-menu">
+                <a href="#a6" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
                         <i class="las la-certificate"></i>
                         <span> ระบบคอมมิสชั่น </span>
                     </div>
@@ -140,7 +165,7 @@
                 </ul>
             </li>
             <li class="menu main-single-menu">
-                <a href="#a6" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#a7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-user-lock"></i>
                         <span> ระบบความปลอดภัย </span>
@@ -159,7 +184,7 @@
                 </ul>
             </li>
             <li class="menu main-single-menu">
-                <a href="#a7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#a8" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-user-cog"></i>
                         <span> การตั้งค่าระบบทั่วไป </span>
