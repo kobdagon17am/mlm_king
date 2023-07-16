@@ -8,8 +8,15 @@ use App\Http\Controllers\Controller;
 
 class UnitController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
   public function index()
   {
+
+
     // dd('111');
 
     $get_unit = DB::table('dataset_product_unit')

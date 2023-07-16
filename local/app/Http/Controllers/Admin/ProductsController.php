@@ -8,6 +8,10 @@ use App\Http\Controllers\Controller;
 
 class ProductsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
   public function index()
   {
     // dd('111');
@@ -73,7 +77,7 @@ class ProductsController extends Controller
       $get_products = DB::table('products')
         ->insertGetId($dataPrepare);
 
-        
+
       if (isset($rs->product_image1)) {
         $file_1 = $rs->product_image1;
         $url = 'local/public/products/';
@@ -84,12 +88,12 @@ class ProductsController extends Controller
             'product_id_fk' => $get_products,
             'product_image_url' => $url,
             'product_image_name' => $f_name,
-            'product_image_orderby' =>'1',   
-            
+            'product_image_orderby' =>'1',
+
           ];
           DB::table('product_images')
           ->insert($dataPrepare);
-           
+
         }
       }
 
@@ -103,12 +107,12 @@ class ProductsController extends Controller
             'product_id_fk' => $get_products,
             'product_image_url' => $url,
             'product_image_name' => $f_name2,
-            'product_image_orderby' =>'2',   
-            
+            'product_image_orderby' =>'2',
+
           ];
           DB::table('product_images')
           ->insert($dataPrepare);
-           
+
         }
       }
 
@@ -122,12 +126,12 @@ class ProductsController extends Controller
             'product_id_fk' => $get_products,
             'product_image_url' => $url,
             'product_image_name' => $f_name3,
-            'product_image_orderby' =>'3',   
-            
+            'product_image_orderby' =>'3',
+
           ];
           DB::table('product_images')
           ->insert($dataPrepare);
-           
+
         }
       }
 
@@ -141,12 +145,12 @@ class ProductsController extends Controller
             'product_id_fk' => $get_products,
             'product_image_url' => $url,
             'product_image_name' => $f_name4,
-            'product_image_orderby' =>'4',   
-            
+            'product_image_orderby' =>'4',
+
           ];
           DB::table('product_images')
           ->insert($dataPrepare);
-           
+
         }
       }
 
@@ -211,90 +215,90 @@ class ProductsController extends Controller
         if (isset($rs->product_image1)) {
           $file_1 = $rs->product_image1;
           $url = 'local/public/products/';
-  
+
           $f_name = date('YmdHis').'_1.'.$file_1->getClientOriginalExtension();
           if ($file_1->move($url, $f_name)) {
             $dataPrepare = [
               'product_id_fk' => $rs->id,
               'product_image_url' => $url,
               'product_image_name' => $f_name,
-              'product_image_orderby' =>'1',   
-              
+              'product_image_orderby' =>'1',
+
             ];
-         
+
             DB::table('product_images')
             ->updateOrInsert(
                 ['product_id_fk' => $rs->id, 'product_image_orderby' =>  1],
                 $dataPrepare
             );
-             
+
           }
         }
-  
+
         if (isset($rs->product_image2)) {
           $file_2 = $rs->product_image2;
           $url = 'local/public/products/';
-  
+
           $f_name = date('YmdHis').'_2.'.$file_2->getClientOriginalExtension();
           if ($file_2->move($url, $f_name)) {
             $dataPrepare = [
               'product_id_fk' => $rs->id,
               'product_image_url' => $url,
               'product_image_name' => $f_name,
-              'product_image_orderby' =>'2',   
-              
+              'product_image_orderby' =>'2',
+
             ];
-         
+
             DB::table('product_images')
             ->updateOrInsert(
                 ['product_id_fk' => $rs->id, 'product_image_orderby' => 2],
                 $dataPrepare
             );
-             
+
           }
         }
-  
+
         if (isset($rs->product_image3)) {
           $file_3 = $rs->product_image3;
           $url = 'local/public/products/';
-  
+
           $f_name3 = date('YmdHis').'_3.'.$file_3->getClientOriginalExtension();
           if ($file_3->move($url, $f_name3)) {
             $dataPrepare = [
               'product_id_fk' => $rs->id,
               'product_image_url' => $url,
               'product_image_name' => $f_name3,
-              'product_image_orderby' =>'3',   
-              
+              'product_image_orderby' =>'3',
+
             ];
             DB::table('product_images')
             ->updateOrInsert(
                 ['product_id_fk' => $rs->id, 'product_image_orderby' => 3],
                 $dataPrepare
             );
-             
+
           }
         }
-  
+
         if (isset($rs->product_image4)) {
           $file_4 = $rs->product_image4;
           $url = 'local/public/products/';
-  
+
           $f_name4 = date('YmdHis').'_4.'.$file_4->getClientOriginalExtension();
           if ($file_4->move($url, $f_name4)) {
             $dataPrepare = [
               'product_id_fk' => $rs->id,
               'product_image_url' => $url,
               'product_image_name' => $f_name4,
-              'product_image_orderby' =>'4',   
-              
+              'product_image_orderby' =>'4',
+
             ];
             DB::table('product_images')
             ->updateOrInsert(
                 ['product_id_fk' => $rs->id, 'product_image_orderby' => 4],
                 $dataPrepare
             );
-             
+
           }
         }
       DB::commit();
