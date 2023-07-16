@@ -9,8 +9,15 @@ use App\Http\Controllers\Controller;
 
 class CartGeneralController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('customer');
+
+    }
   public function index($type)
   {
+
     // dd($type);
 
    //$product =\App\Http\Controllers\Frontend\CartGeneralController::product_detail(9);
@@ -24,7 +31,7 @@ class CartGeneralController extends Controller
       ->get();
 
     return view('frontend.cart_general', compact('get_category','type'));
-   
+
   }
   public static function product_detail($c_id){
 

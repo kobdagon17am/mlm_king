@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 
 class ProductDetailController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('customer');
+
+    }
     public static function product_detail($type, $id)
     {
         // dd($id);
@@ -28,7 +33,7 @@ class ProductDetailController extends Controller
                 ->where('products.id', '=', $id)
                 ->first();
             // dd($product);
-            
+
             if (empty($product)) {
                 return redirect('cart_general/' . $type)->withError('No Product');
             } else {

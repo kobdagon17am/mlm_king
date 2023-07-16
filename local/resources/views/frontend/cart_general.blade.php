@@ -125,7 +125,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-ml-12">
+                        <div class="col-md-12 ">
                             <div class="widget-content widget-content-area tab-horizontal-line">
                                 <ul class="nav nav-tabs" id="category" role="tablist">
 
@@ -143,6 +143,7 @@
                             </div>
                         </div>
                     </div>
+
 
                     <div class="tab-content make-post-tab" id="animateLineContent-4">
                         <?php
@@ -162,12 +163,12 @@
                                 role="tabpanel" aria-labelledby="tab-{{ $value->category_name }}">
                                 <?php
                                 $product = \App\Http\Controllers\Frontend\CartGeneralController::product_detail($value->id);
-                                
+
                                 ?>
 
-                                <div class="container">
+
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="col-12 col-md-12">
                                             <div class="widget-content searchable-container grid">
                                                 <div class="searchable-items grid card-box">
                                                     @foreach ($product as $item)
@@ -211,7 +212,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
                             </div>
                         @endforeach
                     </div>
@@ -220,7 +221,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
     </div>
     <!--  Content Area Ends  -->

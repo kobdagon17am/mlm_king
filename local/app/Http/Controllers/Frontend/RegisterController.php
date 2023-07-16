@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('customer');
+
+    }
     public function member_register(Request $request)
     {
         // dd('1');
@@ -152,7 +157,7 @@ class RegisterController extends Controller
         // }
 
 
-        
+
         $validator = Validator::make(
             $request->all(),
             $rule,
