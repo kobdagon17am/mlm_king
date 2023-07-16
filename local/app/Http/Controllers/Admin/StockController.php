@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 
 class StockController extends Controller
 {
+    {
+        $this->middleware('admin');
+    }
   public function index(Request $request)
   {
 

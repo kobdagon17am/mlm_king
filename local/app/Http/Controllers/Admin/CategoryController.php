@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+    {
+        $this->middleware('admin');
+    }
 
   public function index()
   {

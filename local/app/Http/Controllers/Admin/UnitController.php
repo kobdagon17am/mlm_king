@@ -10,6 +10,10 @@ class UnitController extends Controller
 {
   public function index()
   {
+
+    {
+        $this->middleware('admin');
+    }
     // dd('111');
 
     $get_unit = DB::table('dataset_product_unit')

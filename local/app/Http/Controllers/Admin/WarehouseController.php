@@ -10,8 +10,11 @@ class WarehouseController extends Controller
 {
   public function index()
   {
-    // dd('111');
 
+    {
+        $this->middleware('admin');
+    }
+    // dd('111');
     $get_warehouse = DB::table('db_warehouse')
       // ->where('username','=',Auth::guard('c_user')->user()->username)
       // ->where('password','=',md5($req->password))
@@ -35,7 +38,7 @@ class WarehouseController extends Controller
     ->where('id', '=', $rs->branch_name)
     ->first();
 
-    
+
     $dataPrepare = [
       'branch_id_fk' => $get_branch->id,
       'branch_code' => $get_branch->branch_code,
@@ -57,7 +60,7 @@ class WarehouseController extends Controller
       return redirect('admin/Warehouse')->withError('เพิ่มคลังสินค้าไม่สำเร็จ');
     }
 
-      
+
   }
 
   public function edit_warehouse(Request $rs)
@@ -67,7 +70,7 @@ class WarehouseController extends Controller
     $get_branch = DB::table('branch')
     ->where('id', '=', $rs->branch_name)
     ->first();
-    
+
     $dataPrepare = [
       'branch_id_fk' => $get_branch->id,
       'branch_code' => $get_branch->branch_code,
@@ -77,7 +80,7 @@ class WarehouseController extends Controller
       'warehouse_details' => $rs->warehouse_details,
       'status' => $rs->warehouse_status,
     ];
-    
+
 
         try {
       DB::BeginTransaction();
@@ -94,15 +97,15 @@ class WarehouseController extends Controller
 
   public function view_warehouse(Request $rs)
   {
-    
+
      $warehouse = DB::table('db_warehouse')
      ->where('id','=',$rs->id)
      ->first();
-   
+
 
      $data = ['status' => 'success', 'data' => $warehouse];
 
- 
+
      return $data;
   }
 }

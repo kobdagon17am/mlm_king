@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 
 class BranchController extends Controller
 {
+    {
+        $this->middleware('admin');
+    }
   public function index()
   {
     // dd('111');
@@ -44,7 +47,7 @@ class BranchController extends Controller
     } catch (Exception $e) {
       DB::rollback();
       return redirect('admin/Branch')->withError('เพิ่มหน่วยสินค้าไม่สำเร็จ');
-  
+
     }
 
     // dd('success');
@@ -73,10 +76,10 @@ class BranchController extends Controller
     } catch (Exception $e) {
       DB::rollback();
       return redirect('admin/Branch')->withError('แก้ไขข้อมูลไม่สำเร็จ');
-      
+
     }
 
-    
+
 
   }
 
@@ -88,8 +91,8 @@ class BranchController extends Controller
 
      $data = ['status' => 'success', 'data' => $branch];
 
- 
+
      return $data;
-  
+
   }
 }
