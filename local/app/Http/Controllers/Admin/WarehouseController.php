@@ -8,12 +8,13 @@ use App\Http\Controllers\Controller;
 
 class WarehouseController extends Controller
 {
-  public function index()
-  {
-
+    public function __construct()
     {
         $this->middleware('admin');
     }
+  public function index()
+  {
+
     // dd('111');
     $get_warehouse = DB::table('db_warehouse')
       // ->where('username','=',Auth::guard('c_user')->user()->username)

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 class ProductsController extends Controller
 {
+    public function __construct()
     {
         $this->middleware('admin');
     }
