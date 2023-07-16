@@ -23,6 +23,11 @@
     <link href="{{ asset('backend/plugins/owl-carousel/owl.carousel.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend/plugins/owl-carousel/owl.theme.default.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend/assets/css/authentication/auth_1.css') }}" rel="stylesheet" type="text/css">
+
+    <script src="{{ asset('backend/plugins/sweetalerts/promise-polyfill.js') }}"></script>
+    <link {{ asset('backend/plugins/sweetalerts/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link {{ asset('backend/plugins/sweetalerts/sweetalert.css') }}" rel="stylesheet" type="text/css" />
+    <link {{ asset('backend/assets/css/basic-ui/custom_sweetalert.css') }}" rel="stylesheet" type="text/css" />
     <!-- Page Level Plugin/Style Ends -->
 </head>
 <body class="login-one">
@@ -49,19 +54,24 @@
     <div class="container-fluid login-one-container">
         <div class="p-30 h-100" >
             <div class="row main-login-one h-100">
+
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 p-0">
+
                     <div class="login-one-start">
+                        <form method="POST" action="{{ route('admin_login') }}">
+                            @csrf
                         <h6 class="mt-2 text-primary text-center font-20">Log In</h6>
                         <p class="text-center text-muted mt-3 mb-3 font-14">Please Log into your account</p>
+
                         <div class="login-one-inputs mt-5">
-                            <input type="text" placeholder="Username"/>
+                            <input type="text"  name="username" value="{{ old('username') }}" placeholder="Username" maxlength="10"/>
                             <i class="las la-user-alt"></i>
                         </div>
                         <div class="login-one-inputs mt-3">
-                            <input type="password" placeholder="Password"/>
+                            <input type="password" id="password" name="password"  placeholder="Password" maxlength="10"/>
                             <i class="las la-lock"></i>
                         </div>
-                        <div class="login-one-inputs check mt-4">
+                        {{-- <div class="login-one-inputs check mt-4">
                             <input class="inp-cbx" id="cbx" type="checkbox" style="display: none">
                             <label class="cbx" for="cbx">
                                 <span>
@@ -71,16 +81,18 @@
                                 </span>
                                 <span class="font-13 text-muted">Remember me ?</span>
                             </label>
-                        </div>
+                        </div> --}}
                         <div class="login-one-inputs mt-4">
-                            <a href="{{route('admin/Dashboard')}}" class="ripple-button ripple-button-primary btn-lg btn-login" type="button">
+                            <button type="submit" class="ripple-button ripple-button-primary btn-lg btn-login" type="button">
                                 <div class="ripple-ripple js-ripple">
                                 <span class="ripple-ripple__circle"></span>
                                 </div>
                                 LOG IN
-                            </a>
+                            </button>
                         </div>
-                        <div class="login-one-inputs mt-4 text-center font-12 strong">
+
+                    </form>
+                        {{-- <div class="login-one-inputs mt-4 text-center font-12 strong">
                             <a href="auth_forget_password_1.html" class="text-primary">Forgot your Password ?</a>
                         </div>
                         <div class="login-one-inputs social-logins mt-4">
@@ -89,19 +101,15 @@
                             </a></div>
                             <div class="social-btn"><a href="#" class="google-btn"><i class="lab la-google-plus"></i>
                             </a></div>
-                        </div>
+                        </div> --}}
                     </div>
+
                 </div>
+
                 <div class="col-xl-8 col-lg-6 col-md-6 d-none d-md-block p-0">
                     <div class="slider-half">
                         <div class="slide-content">
-                            {{-- <div class="top-sign-up ">
-                                <div class="about-comp text-white mt-2">XatoWeb</div>
-                                <div class="for-sign-up">
-                                    <p class="text-white font-12 mt-2 font-weight-300">Don't have an account ?</p>
-                                    <a href="auth_signup_1.html">Sign Up</a>
-                                </div>
-                            </div> --}}
+
                             <div class="clearfix"></div>
                             <div class="owl-carousel owl-theme">
                                 <div class="item">
@@ -133,6 +141,7 @@
     <script src="{{ asset('backend/plugins/owl-carousel/owl.carousel.js') }}"></script>
     <script src="{{ asset('backend/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/authentication/auth_1.js') }}"></script>
+    @include('layouts.frontend.flash-message')
     <!-- Page Level Plugin/Script Ends -->
 </body>
 </html>

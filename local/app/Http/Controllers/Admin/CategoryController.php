@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+
   public function index()
   {
     // dd('111');
@@ -42,10 +43,10 @@ class CategoryController extends Controller
     } catch (Exception $e) {
       DB::rollback();
       return redirect('admin/Category')->withError('เพิ่มหมวดสินค้าไม่สำเร็จ');
-      
+
     }
 
-    
+
 
   }
 
@@ -70,24 +71,24 @@ class CategoryController extends Controller
     } catch (Exception $e) {
       DB::rollback();
       return redirect('admin/Category')->withError('แก้ไขข้อมูลไม่สำเร็จ');
-      
+
     }
 
-    
+
 
   }
 
   public function view_category(Request $rs)
   {
-  
+
      $categories = DB::table('categories')
      ->where('id','=',$rs->id)
      ->first();
 
      $data = ['status' => 'success', 'data' => $categories];
 
- 
+
      return $data;
-  
+
   }
 }
