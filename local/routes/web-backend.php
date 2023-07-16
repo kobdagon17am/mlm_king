@@ -95,8 +95,8 @@ Route::get('admin/Blank', function () {
   //   return view('backend.Stock_in');
   // })->name('admin/Stock_in');
   Route::get('admin/Stock_in','Admin\StockController@index')->name('admin/Stock_in');
-  Route::get('receive/get_data_warehouse_select', 'Admin\StockController@get_data_warehouse_select')->name('get_data_warehouse_select');
-  Route::get('receive/get_data_product_unit', 'Admin\StockController@get_data_product_unit')->name('get_data_product_unit');
+  Route::get('admin/get_data_warehouse_select', 'Admin\StockController@get_data_warehouse_select')->name('get_data_warehouse_select');
+  Route::get('admin/get_data_product_unit_select', 'Admin\StockController@get_data_product_unit_select')->name('get_data_product_unit_select');
     // END receive
 
   Route::get('admin/Stock_out', function () {

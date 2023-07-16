@@ -57,7 +57,7 @@
 
                                                                     <label><b>สาขา:</b></label>
                                                                     <span
-                                                                        class="form-label text-danger branch_id_fk_err _err"></span>
+                                                                        class="form-label text-daproduct_id_fk_err _err"></span>
                                                                     <select class="form-control branch_select"
                                                                         name="branch_id_fk">
                                                                         <option selected disabled> เลือกสาขา
@@ -84,12 +84,12 @@
                                                                     <label><b>สินค้า:</b></label>
                                                                     <span
                                                                         class="form-label text-danger product_id_fk_err _err"></span>
-                                                                    <select id="product_select" class="form-control"
+                                                                    <select class="form-control product_select"
                                                                         name=" product_id_fk">
                                                                         <option selected disabled> เลือกสินค้า
                                                                         </option>
                                                                         @foreach ($get_product as $key => $val)
-                                                                            <option value="{{ $val->id }}">
+                                                                            <option value="{{ $val->id }}" data-name_unit="{{ $val->product_unit_name }}">
                                                                                 {{-- {{ $key + 1 }} . --}}
                                                                                 {{ $val->product_name }}
                                                                             </option>
@@ -353,6 +353,36 @@
             });
         }
 
-    
+
+
+
+
+        //
+        $('.product_select').change(function() {
+            $('.product_unit_select').prop('disabled', false);
+
+            const id = $(this).val();
+            const name = $(this).find(':selected').data('name_unit');
+
+            $('.product_unit_select').empty();
+
+            $('.product_unit_select').append(`
+        <option value="${id}">${name}</option>
+    `);
+        });
+
+
+        // function append_product_unit_select(data) {
+        //     $('.product_unit_select').empty();
+        //     $('.product_unit_select').append(`
+    //         <option disabled selected value=""> เลือกหน่วยสินค้า </option>
+    //         `);
+        //     data.forEach((val, key) => {
+
+        //         $('.product_unit_select').append(`
+    //         <option value="${val.id}">${val.product_unit_name}</option>
+    //         `);
+        //     });
+        // }      
     </script>
 @endsection

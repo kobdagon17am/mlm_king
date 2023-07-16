@@ -8,10 +8,10 @@ use App\Http\Controllers\Controller;
 
 class StockController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
+  public function __construct()
+  {
+    $this->middleware('admin');
+  }
   public function index(Request $request)
   {
 
@@ -24,12 +24,8 @@ class StockController extends Controller
     $get_product = DB::table('products')
       ->get();
 
-    // หน่วยสินค้า
-    $get_product_unit = DB::table('dataset_product_unit')
-      ->get();
-
-
-    return view('backend/stock_in', compact('get_branch', 'get_product', 'get_product_unit'));
+    
+    return view('backend/stock_in', compact('get_branch', 'get_product'));
   }
 
 
@@ -45,23 +41,13 @@ class StockController extends Controller
     return response()->json($get_warehouse);
   }
 
-  public function get_data_product_unit(Request $request)
+  public function get_data_product_unit_select(Request $request)
   {
-      $product_id =  $request->product_id;
 
-      $get_warehouse = DB::table('products')
-      (
-          'dataset_product_unit.product_unit',
-          'products_details.product_id_fk',
-          'dataset_product_unit.id',
-      )
-          ->join('products_details', 'products_details.product_id_fk', 'products.id')
-          ->join('dataset_product_unit', 'dataset_product_unit.product_unit_id', 'products.unit_id')
-          ->where('products.id', $product_id)
-          ->first();
+    $get_product_unit = DB::table('products')
+      ->where('product_unit_id_fk', $request->id)
+      ->get();
 
-      return response()->json($product_unit);
+    return response()->json($get_product_unit);
   }
-
-
 }
