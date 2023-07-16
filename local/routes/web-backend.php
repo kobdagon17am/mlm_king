@@ -1,15 +1,28 @@
 <?php
+
+
+Route::get('admin', function () {
+
+    if (Auth::guard('admin')->check()) {
+
+        return redirect('admin/Dashboard');
+    } else {
+        return view('auth.login_admin');
+    }
+
+})->name('admin');
+
+
+Route::post('admin_login', 'Admin\LoginController@admin_login')->name('admin_login');
+
+Route::get('admin/Dashboard','Admin\DashboardController@index')->name('admin/Dashboard');
+
 Route::get('admin/Blank', function () {
     return view('backend.blank');
   })->name('admin/Blank');
 
-  Route::get('admin/Login', function () {
-    return view('auth.login_admin');
-  })->name('admin/Login');
 
-  Route::get('admin/Dashboard', function () {
-    return view('backend.dashboard');
-  })->name('admin/Dashboard');
+
 
   Route::get('admin/MemberRegister', function () {
     return view('backend.member_regis');
