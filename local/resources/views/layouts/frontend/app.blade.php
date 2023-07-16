@@ -252,7 +252,7 @@
                                     <a class="account-item" href="{{ asset('ChangeAccount')}}">
                                         <div class="media align-center">
                                             <div class="icon-wrap">
-                                                <i class="las la-exchange-alt font-20"></i>
+                                                <i class="las la-clone font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
                                                 <h6 class="font-12 mb-0">สลับบัญชี</h6>
