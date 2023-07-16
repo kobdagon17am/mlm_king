@@ -76,8 +76,8 @@ Route::get('admin/Blank', function () {
   //   return view('backend.Stock_in');
   // })->name('admin/Stock_in');
   Route::get('admin/Stock_in','Admin\StockController@index')->name('admin/Stock_in');
-
-
+  Route::get('receive/get_data_warehouse_select', 'Admin\StockController@get_data_warehouse_select')->name('get_data_warehouse_select');
+    // END receive
 
   Route::get('admin/Stock_out', function () {
     return view('backend.Stock_out');

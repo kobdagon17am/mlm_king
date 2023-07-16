@@ -56,88 +56,124 @@
                                                                 <div class="col-lg-6  mt-2">
 
                                                                     <label><b>สาขา:</b></label>
-                                                                    <select class="form-control" name="branch_name">
-                                                                        <option value>1</option>
-                                                                        <option value>2</option>
+                                                                    <span
+                                                                        class="form-label text-danger branch_id_fk_err _err"></span>
+                                                                    <select class="form-control branch_select"
+                                                                        name="branch_id_fk">
+                                                                        <option selected disabled> เลือกสาขา
+                                                                        </option>
+                                                                        @foreach ($get_branch as $val)
+                                                                            <option value="{{ $val->id }}">
+                                                                                {{ $val->branch_name }}
+                                                                                ({{ $val->branch_code }})
+                                                                            </option>
+                                                                        @endforeach
                                                                     </select>
-                                                                    {{-- <select class="form-control" name="branch_name">
-                                                                            @foreach ($get_branch as $item)
-                                                                                <option value="{{ $item->id }}">
-                                                                                    {{ $item->branch_name }}</option>
-                                                                            @endforeach
-
-                                                                        </select> --}}
                                                                 </div>
                                                                 <div class="col-lg-6  mt-2">
                                                                     <label><b>คลังสินค้า:</b></label>
-                                                                    <select class="form-control" name="warehouse_name">
-                                                                        <option value>1</option>
-                                                                        <option value>2</option>
+                                                                    <span
+                                                                        class="form-label text-danger warehouse_id_fk_err _err"></span>
+                                                                    <select class="form-control warehouse_select"
+                                                                        name="warehouse_id_fk" disabled>
+                                                                        <option selected disabled> เลือกคลัง
+                                                                        </option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-lg-6  mt-2">
                                                                     <label><b>สินค้า:</b></label>
-                                                                    <select class="form-control" name="product_name">
-                                                                        <option value>1</option>
-                                                                        <option value>2</option>
+                                                                    <span
+                                                                        class="form-label text-danger product_id_fk_err _err"></span>
+                                                                    <select id="product_select" class="form-control"
+                                                                        name=" product_id_fk">
+                                                                        <option selected disabled> เลือกสินค้า
+                                                                        </option>
+                                                                        @foreach ($get_product as $key => $val)
+                                                                            <option value="{{ $val->id }}">
+                                                                                {{-- {{ $key + 1 }} . --}}
+                                                                                {{ $val->product_name }}
+                                                                            </option>
+                                                                        @endforeach
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-lg-6  mt-2">
                                                                     <label><b>หมายเลขล๊อตสินค้า:</b></label>
-                                                                    <input type="text" name="lot_number"
+                                                                    <span
+                                                                        class="form-label text-danger lot_number_err _err"></span>
+                                                                    <input type="text" id="lot_number" name="lot_number"
                                                                         class="form-control"
                                                                         placeholder="หมายเลขล๊อตสินค้า">
                                                                 </div>
                                                                 <div class="col-lg-6  mt-2">
                                                                     <label><b>จำนวนสินค้า:</b></label>
-                                                                    <input type="text" name="product_amouny"
+                                                                    <span
+                                                                        class="form-label text-danger product_amount_err _err"></span>
+                                                                    <input type="number" id="product_amount"
+                                                                        min="1" name="product_amount"
                                                                         class="form-control" placeholder="จำนวนสินค้า">
                                                                 </div>
                                                                 <div class="col-lg-6  mt-2">
                                                                     <label><b>หน่วยสินค้า:</b></label>
-                                                                    <select class="form-control" name="product_unit">
-                                                                        <option value>1</option>
-                                                                        <option value>2</option>
+                                                                    <span
+                                                                        class="form-label text-danger product_unit_id_fk_err _err"></span>
+                                                                    <select id="product_unit_select" class="form-control"
+                                                                        name="product_unit_id">
+                                                                        <option selected disabled> เลือกหน่วยสินค้า
+                                                                        </option>
+                                                                        @foreach ($get_product_unit as $key => $val)
+                                                                            <option value="{{ $val->id }}">
+                                                                                {{-- {{ $key + 1 }} . --}}
+                                                                                {{ $val->product_unit_th }}
+                                                                            </option>
+                                                                        @endforeach
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-lg-6  mt-2">
                                                                     <label><b>เลขที่เอกสาร:</b></label>
-                                                                    <input type="text" name="document_no"
+                                                                    <span
+                                                                        class="form-label text-danger doc_no_err _err"></span>
+                                                                    <input type="text" id="doc_no" name="doc_no"
                                                                         class="form-control" placeholder="เลขที่เอกสาร">
                                                                 </div>
                                                                 <div class="col-lg-6  mt-2">
                                                                     <label><b>วันที่รับเข้าสินค้า:</b></label>
-                                                                    <input class="form-control" type="date"
-                                                                        value="yyyy-mm-dd" name="date_stock-in">
+                                                                    <span
+                                                                        class="form-label text-danger date_stock-in_err _err"></span>
+                                                                    <input class="form-control" id="date_stock-in"
+                                                                        type="date" value="yyyy-mm-dd"
+                                                                        name="date_stock-in">
                                                                 </div>
                                                                 <div class="col-lg-6  mt-2">
                                                                     <label><b>วันที่หมดอายุ:</b></label>
-                                                                    <input class="form-control" type="date"
-                                                                        value="yyyy-mm-dd" name="expire_stock-in">
+                                                                    <span
+                                                                        class="form-label text-danger expire_stock-in_err _err"></span>
+                                                                    <input class="form-control" id="expire_stock-in"
+                                                                        type="date" value="yyyy-mm-dd"
+                                                                        name="expire_stock-in">
                                                                 </div>
                                                                 <div class="col-lg-6  mt-2">
                                                                     <label><b>ไฟล์เอกสารแนบ:</b></label>
                                                                     {{-- <input type="file" name="document_no"
                                                                         class="form-control" placeholder="ไฟล์เอกสารแนบ"> --}}
-                                                                        <div id="dropzone">
-                                                                            <form action="/upload" class="dropzone needsclick dz-clickable" name="file_stock_in" id="demo-upload">
-                                                                                <div class="dz-message needsclick">
-                                                                                <button type="button" class="dz-button">คลิกเพื่อเลือกไฟล์แนบ</button>
-                                                                                
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                        
-                                                                        
+                                                                    <div id="dropzone">
+                                                                        <form action="/upload"
+                                                                            class="dropzone needsclick dz-clickable"
+                                                                            name="file_stock_in" id="file_stock_in">
+                                                                            <div class="dz-message needsclick">
+                                                                                <button type="button"
+                                                                                    class="dz-button">คลิกเพื่อเลือกไฟล์แนบ</button>
 
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
 
                                                         </div>
                                                     </div>
                                                     <div class="info-area col-md-12 text-center mt-4 ">
-                                                        <button type="submit" class="btn btn-info btn-rounded">
-                                                            <i class="las la-save"></i> รับเข้าสินค้า</button>
+                                                        <button type="submit" class="btn btn-warning btn-rounded">
+                                                            <i class="las la-plus-circle"></i> รับเข้าสินค้า</button>
                                                     </div>
 
                                                 </div>
@@ -243,14 +279,14 @@
                 <thead>
                     <tr>
                         <th>ลำดับ</th>
-                        <th>ชื่อสาขา</th>
-                        <th>ชื่อคลังสินค้า</th>
-                        <th>ชื่อสินค้า</th>
+                        <th>สาขา</th>
+                        <th>คลังสินค้า</th>
+                        <th>สินค้า</th>
                         <th>จำนวน</th>
-                        <th>หน่วยสินค้า</th>
-                        <th>หมายเลขล๊อตสินค้า</th>
-                        <th>วันที่รับเข้าสินค้า</th>
-                        <th>วันที่หมดอายุ</th>
+                        <th>หน่วย</th>
+                        <th>หมายเลขล๊อต</th>
+                        <th>วันที่รับเข้า</th>
+                        <th>วันหมดอายุ</th>
                         <th>แก้ไข</th>
                     </tr>
                 </thead>
@@ -286,38 +322,43 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('backend/plugins/select2/select2.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/forms/custom-select2.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/forms/multiple-step.js') }}"></script>
     <script src="{{ asset('backend/plugins/dropify/dropify.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/pages/profile_edit.js') }}"></script>
     <script src="{{ asset('backend/assets/js/forms/file-upload.js') }}"></script>
     <script src="{{ asset('backend/plugins/dropzone/dropzone.min.js') }}"></script>
-    {{-- <script>
-        function edit(id) {
+
+    <script>
+        $('.branch_select').change(function() {
+            $('.warehouse_select').prop('disabled', false);
+
+            const id = $(this).val();
             $.ajax({
-                    url: '{{ route('admin/view_warehouse') }}',
-                    type: 'GET',
-                    data: {
-                        id
-                    }
-                })
-                .done(function(data) {
-                    //console.log(data['data']['status']);
-                    $("#edit").modal();
-                    $("#id").val(data['data']['id']);
+                url: '{{ route('get_data_warehouse_select') }}',
+                type: 'GET',
+                dataType: 'json',
+                async: false,
+                data: {
+                    id: id,
+                },
+                success: function(data) {
+                    append_warehouse_select(data);
+                },
+            });
+        });
 
-                    $("#branch_name").val(data['data']['branch_id_fk']);
-                    $("#warehouse_code").val(data['data']['warehouse_code']);
-                    $("#warehouse_name").val(data['data']['warehouse_name']);
-                    $("#warehouse_details").val(data['data']['warehouse_details']);
-                    $("#warehouse_status").val(data['data']['status']);
+        function append_warehouse_select(data) {
+            $('.warehouse_select').empty();
+            $('.warehouse_select').append(`
+                <option disabled selected value=""> เลือกสาขา </option>
+                `);
+            data.forEach((val, key) => {
 
-                })
-                .fail(function() {
-                    console.log("error");
-                })
+                $('.warehouse_select').append(`
+                <option value="${val.id}">${val.w_code}::${val.w_name}</option>
+                `);
+            });
         }
-    </script> --}}
+
+    
+    </script>
 @endsection
