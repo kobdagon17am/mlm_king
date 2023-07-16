@@ -194,15 +194,14 @@
                                                 </div>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-13 mb-0 strong">Sara</h6>
-                                                <small>Britannia</small>
+                                                <h6 class="font-13 mb-0 strong">กิ่งทองใบหยก</h6>
                                             </div>
                                             <div class="media-right">
                                                 <i data-feather="check"></i>
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="account-item" href="pages_profile.html">
+                                    {{-- <a class="account-item" href="pages_profile.html">
                                       <div class="media align-center">
                                           <div class="icon-wrap">
                                             <i class="las la-user font-20"></i>
@@ -241,7 +240,7 @@
                                                 <h6 class="font-13 mb-0 strong">Lock Screen</h6>
                                             </div>
                                         </div>
-                                    </a>
+                                    </a> --}}
                                     <hr class="account-divider">
                                     <a class="account-item" href="auth_login_3.html">
                                         <div class="media align-center">
