@@ -46,139 +46,126 @@
                                 <div class="form-group row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="card multiple-form-one px-0 pb-0 mb-3">
-                                            {{-- <form method="post" action="{{ route('admin/Warehouse_insert') }}">
-                                                @csrf --}}
-                                            <div class="row">
-                                                <div class="col-md-12 mx-0">
-                                                    <div class="form-card">
-                                                        <div class="w-100">
-                                                            <div class="form-group row">
-                                                                <div class="col-lg-6  mt-2">
-
-                                                                    <label><b>สาขา:</b></label>
-                                                                    <span
-                                                                        class="form-label text-danger branch_id_fk_err _err"></span>
-                                                                    <select class="form-control branch_select"
-                                                                        name="branch_id_fk">
-                                                                        <option selected disabled> เลือกสาขา
-                                                                        </option>
-                                                                        @foreach ($get_branch as $val)
-                                                                            <option value="{{ $val->id }}">
-                                                                                {{ $val->branch_name }}
-                                                                                ({{ $val->branch_code }})
+                                            <form method="post" action="{{ route('admin/Stockin_insert') }}"
+                                                enctype="multipart/form-data" id="msform">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-md-12 mx-0">
+                                                        <div class="form-card">
+                                                            <div class="w-100">
+                                                                <div class="form-group row">
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>สาขา:</b></label>
+                                                                        <span
+                                                                            class="form-label text-daproduct_id_fk_err _err"></span>
+                                                                        <select class="form-control branch_select"
+                                                                            name="branch_id_fk">
+                                                                            <option selected disabled> เลือกสาขา
                                                                             </option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-lg-6  mt-2">
-                                                                    <label><b>คลังสินค้า:</b></label>
-                                                                    <span
-                                                                        class="form-label text-danger warehouse_id_fk_err _err"></span>
-                                                                    <select class="form-control warehouse_select"
-                                                                        name="warehouse_id_fk" disabled>
-                                                                        <option selected disabled> เลือกคลัง
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-lg-6  mt-2">
-                                                                    <label><b>สินค้า:</b></label>
-                                                                    <span
-                                                                        class="form-label text-danger product_id_fk_err _err"></span>
-                                                                    <select id="product_select" class="form-control"
-                                                                        name=" product_id_fk">
-                                                                        <option selected disabled> เลือกสินค้า
-                                                                        </option>
-                                                                        @foreach ($get_product as $key => $val)
-                                                                            <option value="{{ $val->id }}">
-                                                                                {{-- {{ $key + 1 }} . --}}
-                                                                                {{ $val->product_name }}
+                                                                            @foreach ($get_branch as $val)
+                                                                                <option value="{{ $val->id }}">
+                                                                                    {{ $val->branch_name }}
+                                                                                    ({{ $val->branch_code }})
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>คลังสินค้า:</b></label>
+                                                                        <span
+                                                                            class="form-label text-danger warehouse_id_fk_err _err"></span>
+                                                                        <select class="form-control warehouse_select"
+                                                                            name="warehouse_id_fk" disabled>
+                                                                            <option selected disabled> เลือกคลัง
                                                                             </option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-lg-6  mt-2">
-                                                                    <label><b>หมายเลขล๊อตสินค้า:</b></label>
-                                                                    <span
-                                                                        class="form-label text-danger lot_number_err _err"></span>
-                                                                    <input type="text" id="lot_number" name="lot_number"
-                                                                        class="form-control"
-                                                                        placeholder="หมายเลขล๊อตสินค้า">
-                                                                </div>
-                                                                <div class="col-lg-6  mt-2">
-                                                                    <label><b>จำนวนสินค้า:</b></label>
-                                                                    <span
-                                                                        class="form-label text-danger product_amount_err _err"></span>
-                                                                    <input type="number" id="product_amount"
-                                                                        min="1" name="product_amount"
-                                                                        class="form-control" placeholder="จำนวนสินค้า">
-                                                                </div>
-                                                                <div class="col-lg-6  mt-2">
-                                                                    <label><b>หน่วยสินค้า:</b></label>
-                                                                    <span
-                                                                        class="form-label text-danger product_unit_id_fk_err _err"></span>
-                                                                    <select id="product_unit_select" class="form-control"
-                                                                        name="product_unit_id">
-                                                                        <option selected disabled> เลือกหน่วยสินค้า
-                                                                        </option>
-                                                                        @foreach ($get_product_unit as $key => $val)
-                                                                            <option value="{{ $val->id }}">
-                                                                                {{-- {{ $key + 1 }} . --}}
-                                                                                {{ $val->product_unit_th }}
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>สินค้า:</b></label>
+                                                                        <span
+                                                                            class="form-label text-danger product_id_fk_err _err"></span>
+                                                                        <select class="form-control product_select"
+                                                                            name="product_id_fk">
+                                                                            <option selected disabled> เลือกสินค้า
                                                                             </option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-lg-6  mt-2">
-                                                                    <label><b>เลขที่เอกสาร:</b></label>
-                                                                    <span
-                                                                        class="form-label text-danger doc_no_err _err"></span>
-                                                                    <input type="text" id="doc_no" name="doc_no"
-                                                                        class="form-control" placeholder="เลขที่เอกสาร">
-                                                                </div>
-                                                                <div class="col-lg-6  mt-2">
-                                                                    <label><b>วันที่รับเข้าสินค้า:</b></label>
-                                                                    <span
-                                                                        class="form-label text-danger date_stock-in_err _err"></span>
-                                                                    <input class="form-control" id="date_stock-in"
-                                                                        type="date" value="yyyy-mm-dd"
-                                                                        name="date_stock-in">
-                                                                </div>
-                                                                <div class="col-lg-6  mt-2">
-                                                                    <label><b>วันที่หมดอายุ:</b></label>
-                                                                    <span
-                                                                        class="form-label text-danger expire_stock-in_err _err"></span>
-                                                                    <input class="form-control" id="expire_stock-in"
-                                                                        type="date" value="yyyy-mm-dd"
-                                                                        name="expire_stock-in">
-                                                                </div>
-                                                                <div class="col-lg-6  mt-2">
-                                                                    <label><b>ไฟล์เอกสารแนบ:</b></label>
-                                                                    {{-- <input type="file" name="document_no"
-                                                                        class="form-control" placeholder="ไฟล์เอกสารแนบ"> --}}
-                                                                    <div id="dropzone">
-                                                                        <form action="/upload"
-                                                                            class="dropzone needsclick dz-clickable"
-                                                                            name="file_stock_in" id="file_stock_in">
-                                                                            <div class="dz-message needsclick">
-                                                                                <button type="button"
-                                                                                    class="dz-button">คลิกเพื่อเลือกไฟล์แนบ</button>
-
-                                                                            </div>
-                                                                        </form>
+                                                                            @foreach ($get_product as $key => $val)
+                                                                                <option value="{{ $val->id }}"
+                                                                                    data-name_unit="{{ $val->product_unit_name }}">
+                                                                                    {{-- {{ $key + 1 }} . --}}
+                                                                                    {{ $val->product_name }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>หมายเลขล๊อตสินค้า:</b></label>
+                                                                        <span
+                                                                            class="form-label text-danger lot_number_err _err"></span>
+                                                                        <input type="text" 
+                                                                            name="lot_number" class="form-control"
+                                                                            placeholder="หมายเลขล๊อตสินค้า">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>จำนวนสินค้า:</b></label>
+                                                                        <span
+                                                                            class="form-label text-danger product_amount_err _err"></span>
+                                                                        <input type="number"
+                                                                            min="1" name="product_amount"
+                                                                            class="form-control"
+                                                                            placeholder="จำนวนสินค้า">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>หน่วยสินค้า:</b></label>
+                                                                        <span
+                                                                            class="form-label text-danger product_unit_id_fk_err _err"></span>
+                                                                        <select class="form-control product_unit_select"
+                                                                            name="product_unit_id_fk" disabled>
+                                                                            <option selected disabled> เลือกหน่วยสินค้า
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>เลขที่เอกสาร:</b></label>
+                                                                        <span
+                                                                            class="form-label text-danger doc_no_err _err"></span>
+                                                                        <input type="text"
+                                                                            name="doc_no" class="form-control"
+                                                                            placeholder="เลขที่เอกสาร">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>วันที่รับเข้าสินค้า:</b></label>
+                                                                        <span
+                                                                            class="form-label text-danger date_stock-in_err _err"></span>
+                                                                        <input class="form-control" 
+                                                                            type="date" value="yyyy-mm-dd"
+                                                                            name="date_stock_in">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>วันที่หมดอายุ:</b></label>
+                                                                        <span
+                                                                            class="form-label text-danger expire_stock-in_err _err"></span>
+                                                                        <input class="form-control"
+                                                                            type="date" value="yyyy-mm-dd"
+                                                                            name="expire_stock_in">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>ไฟล์เอกสารแนบ:</b></label>
+                                                                        <div class="upload text-center img-thumbnail">
+                                                                            <input type="file" name="file_stock_in" class="dropify">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
-
                                                         </div>
-                                                    </div>
-                                                    <div class="info-area col-md-12 text-center mt-4 ">
-                                                        <button type="submit" class="btn btn-warning btn-rounded">
-                                                            <i class="las la-plus-circle"></i> รับเข้าสินค้า</button>
-                                                    </div>
+                                                        <div class="info-area col-md-12 text-center mt-4 ">
+                                                            <button type="submit" class="btn btn-warning btn-rounded">
+                                                                <i class="las la-plus-circle"></i> รับเข้าสินค้า</button>
+                                                        </div>
 
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            {{-- </form> --}}
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -206,61 +193,112 @@
                                 <div class="form-group row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="card multiple-form-one px-0 pb-0 mb-3">
-                                            {{-- <form method="post" action="{{ route('admin/edit_warehouse') }}">
-                                                @csrf --}}
-                                            <div class="row">
-                                                <div class="col-md-12 mx-0">
-                                                    <div class="form-card">
-                                                        <div class="w-100">
-                                                            <div class="form-group row">
-                                                                <div class="col-lg-6  mt-2">
-                                                                    <input type="hidden" name="id" id="id">
-                                                                    <label><b>ชื่อสาขา:</b></label>
-                                                                    {{-- <select class="form-control" name="branch_name" id="branch_name">
-                                                                            @foreach ($get_branch as $item)
-                                                                                <option value="{{ $item->id }}">
-                                                                                    {{ $item->branch_name }}</option>
-                                                                            @endforeach
+                                            <form method="post" action="{{ route('admin/edit_stock_in') }}"
+                                                enctype="multipart/form-data" id="msform">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-md-12 mx-0">
+                                                        <div class="form-card">
+                                                            <div class="w-100">
+                                                                <div class="form-group row">
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <input type="hidden" name="id"
+                                                                            id="id">
+                                                                        <label><b>สาขา:</b></label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="branch_id_fk" name="branch_id_fk"
+                                                                            placeholder="สาขา" disabled>
 
-                                                                        </select> --}}
-                                                                </div>
-                                                                <div class="col-lg-6  mt-2">
-                                                                    <label><b>รหัสคลังสินค้า:</b></label>
-                                                                    <input type="text" name="warehouse_code"
-                                                                        id="warehouse_code" class="form-control"
-                                                                        placeholder="รหัสคลังสินค้า">
-                                                                </div>
-                                                                <div class="col-lg-6  mt-2">
-                                                                    <label><b>ชื่อคลังสินค้า:</b></label>
-                                                                    <input type="text" name="warehouse_name"
-                                                                        id="warehouse_name" class="form-control"
-                                                                        placeholder="ชื่อคลังสินค้า">
-                                                                </div>
-                                                                <div class="col-lg-6  mt-2">
-                                                                    <label><b>รายละเอียดคลังสินค้า:</b></label>
-                                                                    <textarea class="form-control" id="warehouse_details" name="warehouse_details" id="warehouse_details"
-                                                                        placeholder="รายละเอียดคลังสินค้า"></textarea>
-                                                                </div>
-                                                                <div class="col-lg-6 mt-2">
-                                                                    <label><b>สถานะ:</b></label>
-                                                                    <select class="form-control" name="warehouse_status"
-                                                                        id="warehouse_status">
-                                                                        <option value="1">เปิดใช้งาน</option>
-                                                                        <option value="0">ปิดใช้งาน</option>
-                                                                    </select>
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>คลังสินค้า:</b></label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="warehouse_id_fk" name="warehouse_id_fk"
+                                                                            placeholder="คลังสินค้า" disabled>
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>สินค้า:</b></label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="product_id_fk" name="product_id_fk"
+                                                                            placeholder="สินค้า" disabled>
+                                                                        
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>หมายเลขล๊อตสินค้า:</b></label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="lot_number" name="lot_number"
+                                                                            placeholder="หมายเลขล๊อตสินค้า" disabled>
+                                                                        
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>จำนวนสินค้า:</b></label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="product_amount" name="product_amount"
+                                                                            placeholder="จำนวนสินค้า" disabled>
+                                                                        
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>หน่วยสินค้า:</b></label>
+                                                                        <input type="text" class="form-control"
+                                                                        id="product_unit_id_fk" name="product_unit_id_fk"
+                                                                        placeholder="หน่วยสินค้า" disabled>
+                                                                        
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>เลขที่เอกสาร:</b></label>
+                                                                        <input type="text" class="form-control"
+                                                                        id="doc_no" name="doc_no"
+                                                                        placeholder="เลขที่เอกสาร" disabled>
+                                                                        
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>วันที่รับเข้าสินค้า:</b></label>
+                                                                        <input type="date" class="form-control"
+                                                                        id="date_stock_in" name="date_stock_in"
+                                                                        placeholder="วันที่รับเข้าสินค้า" disabled>
+{{--                                                                         
+                                                                        <span
+                                                                            class="form-label text-danger date_stock-in_err _err"></span>
+                                                                        <input class="form-control" id="date_stock_in"
+                                                                            type="date" value="yyyy-mm-dd"
+                                                                            name="date_stock_in"> --}}
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>วันที่หมดอายุ:</b></label>
+                                                                        <input type="date" class="form-control"
+                                                                        id="expire_stock_in" name="expire_stock_in"
+                                                                        placeholder="วันที่หมดอายุ" disabled>
+                                                                        {{-- <span
+                                                                            class="form-label text-danger expire_stock-in_err _err"></span>
+                                                                        <input class="form-control" id="expire_stock_in"
+                                                                            type="date" value="yyyy-mm-dd"
+                                                                            name="expire_stock_in"> --}}
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <label><b>ไฟล์เอกสารแนบ:</b></label>
+                                                                        <input type="image" class="form-control"
+                                                                        id="file_stock_in" name="file_stock_in"
+                                                                        placeholder="ไฟล์เอกสารแนบ" disabled>
+                                                                        {{-- <div class="upload text-center img-thumbnail">
+                                                                            <input type="file" name="file_stock_in"
+                                                                                id="file_stock_in" class="dropify">
+                                                                        </div> --}}
+                                                                    </div>
                                                                 </div>
                                                             </div>
-
                                                         </div>
-                                                    </div>
-                                                    <div class="info-area col-md-12 text-center mt-4 ">
-                                                        <button type="submit" class="btn btn-info btn-rounded">
-                                                            <i class="las la-save"></i> รับเข้าสินค้า</button>
-                                                    </div>
+                                                        <div class="info-area col-md-12 text-center mt-4 ">
+                                                            <button type="submit" class="btn btn-success btn-rounded">
+                                                                <i class="las la-check-circle"></i>
+                                                                ยืนยันการรับเข้าสินค้า</button>
+                                                            <button type="submit" class="btn btn-danger btn-rounded">
+                                                                <i class="las la-times-circle"></i>
+                                                                ยกเลิกการรับเข้าสินค้า</button>
+                                                        </div>
 
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            {{-- </form> --}}
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -287,30 +325,28 @@
                         <th>หมายเลขล๊อต</th>
                         <th>วันที่รับเข้า</th>
                         <th>วันหมดอายุ</th>
-                        <th>แก้ไข</th>
+                        <th>รายละเอียด</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
-                    {{-- @foreach ($get_warehouse as $value) --}}
-                    {{-- <tr>
+                    @foreach ($get_stock_in as $value)
+                        <tr>
+                            <td>{{ $i++ }}</td>
                             <td>{{ $value->branch_name }}</td>
-                            <td>{{ $value->warehouse_code }}</td>
                             <td>{{ $value->warehouse_name }}</td>
-                            <td>{{ $value->warehouse_details }}</td>
-                            <td>
-                                @if ($value->status == '1')
-                                    <span class="badge badge-pill badge-success light">เปิดใช้งาน</span>
-                                @endif
-                                @if ($value->status == '0')
-                                    <span class="badge badge-pill badge-danger light">ปิดใช้งาน</span>
-                                @endif
+                            <td>{{ $value->product_name }}</td>
+                            <td>{{ $value->amt }}</td>
+                            <td>{{ $value->product_unit_name }}</td>
+                            <td>{{ $value->lot_number }}</td>
+                            <td>{{ $value->date_in_stock }}</td>
+                            <td>{{ $value->lot_expired_date }}</td>
                             <td>
                                 <a href="#!" onclick="edit({{ $value->id }})" class="p-2">
                                     <i class="lab la-whmcs font-25 text-warning"></i></a>
                             </td>
                         </tr>
-                    @endforeach --}}
+                    @endforeach
 
                 </tbody>
             </table>
@@ -359,6 +395,50 @@
             });
         }
 
-    
+
+
+        $('.product_select').change(function() {
+            $('.product_unit_select').prop('disabled', false);
+
+            const id = $(this).val();
+            const name = $(this).find(':selected').data('name_unit');
+
+            $('.product_unit_select').empty();
+
+            $('.product_unit_select').append(`
+        <option value="${id}">${name}</option>
+    `);
+        });
+
+
+        //
+        function edit(id) {
+            $.ajax({
+                    url: '{{ route('admin/view_stock_in') }}',
+                    type: 'GET',
+                    data: {
+                        id
+                    }
+                })
+                .done(function(data) {
+                    // console.log(data);
+                    $("#edit").modal();
+                    $("#id").val(data['data']['id']);
+                    $("#branch_id_fk").val(data['data']['branch_name']);
+                    $("#warehouse_id_fk").val(data['data']['warehouse_name']);
+                    $("#product_id_fk").val(data['data']['product_name']);
+                    $("#lot_number").val(data['data']['lot_number']);
+                    $("#product_amount").val(data['data']['amt']);
+                    $("#product_unit_id_fk").val(data['data']['product_unit_name']);
+                    $("#doc_no").val(data['data']['doc_no']);
+                    $("#date_stock_in").val(data['data']['date_in_stock']);
+                    $("#expire_stock_in").val(data['data']['lot_expired_date']);
+
+
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+        }
     </script>
 @endsection

@@ -120,8 +120,8 @@
             <li class="menu main-single-menu">
                 <a href="#a5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <i class="las la-warehouse"></i>
-                        <span> ระบบคลังบริษัท </span>
+                        <i class="las la-boxes"></i>
+                        <span> ระบบคลังปุ๋ย </span>
                     </div>
                     <div>
                         <i class="las la-angle-right sidemenu-right-icon"></i>
