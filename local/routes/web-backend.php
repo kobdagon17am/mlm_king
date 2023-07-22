@@ -99,7 +99,7 @@ Route::get('admin/Blank', function () {
   Route::get('admin/get_data_product_unit_select', 'Admin\StockController@get_data_product_unit_select')->name('get_data_product_unit_select');
   Route::post('admin/Stockin_insert','Admin\StockController@insert')->name('admin/Stockin_insert');
   Route::get('admin/view_stock_in','Admin\StockController@view_stock_in')->name('admin/view_stock_in');
-  Route::post('admin/edit_stock_in','Admin\StockController@edit_stock_in')->name('admin/edit_stock_in');
+  Route::post('admin/update_stock_in','Admin\StockController@update_stock_in')->name('admin/update_stock_in');
     // END receive
 
   Route::get('admin/Stock_out', function () {

@@ -101,17 +101,16 @@
                                                                         <label><b>หมายเลขล๊อตสินค้า:</b></label>
                                                                         <span
                                                                             class="form-label text-danger lot_number_err _err"></span>
-                                                                        <input type="text" 
-                                                                            name="lot_number" class="form-control"
+                                                                        <input type="text" name="lot_number"
+                                                                            class="form-control"
                                                                             placeholder="หมายเลขล๊อตสินค้า">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>จำนวนสินค้า:</b></label>
                                                                         <span
                                                                             class="form-label text-danger product_amount_err _err"></span>
-                                                                        <input type="number"
-                                                                            min="1" name="product_amount"
-                                                                            class="form-control"
+                                                                        <input type="number" min="1"
+                                                                            name="product_amount" class="form-control"
                                                                             placeholder="จำนวนสินค้า">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
@@ -128,39 +127,43 @@
                                                                         <label><b>เลขที่เอกสาร:</b></label>
                                                                         <span
                                                                             class="form-label text-danger doc_no_err _err"></span>
-                                                                        <input type="text"
-                                                                            name="doc_no" class="form-control"
+                                                                        <input type="text" name="doc_no"
+                                                                            class="form-control"
                                                                             placeholder="เลขที่เอกสาร">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>วันที่รับเข้าสินค้า:</b></label>
                                                                         <span
                                                                             class="form-label text-danger date_stock-in_err _err"></span>
-                                                                        <input class="form-control" 
-                                                                            type="date" value="yyyy-mm-dd"
-                                                                            name="date_stock_in">
+                                                                        <input class="form-control" type="date"
+                                                                            value="yyyy-mm-dd" name="date_stock_in">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>วันที่หมดอายุ:</b></label>
                                                                         <span
                                                                             class="form-label text-danger expire_stock-in_err _err"></span>
-                                                                        <input class="form-control"
-                                                                            type="date" value="yyyy-mm-dd"
-                                                                            name="expire_stock_in">
+                                                                        <input class="form-control" type="date"
+                                                                            value="yyyy-mm-dd" name="expire_stock_in">
                                                                     </div>
-                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                    <div class="col-lg-6 mt-2 text-left">
                                                                         <label><b>ไฟล์เอกสารแนบ:</b></label>
                                                                         <div class="upload text-center img-thumbnail">
-                                                                            <input type="file" name="file_stock_in" class="dropify">
+                                                                            <input type="file" name="doc_name"
+                                                                                class="dropify">
                                                                         </div>
                                                                     </div>
+                                                                    <div class="col-lg-12 text-left">
+                                                                        <label><b>หมายเหตุ:</b></label>
+                                                                        <textarea class="form-control" name="stock_remark" placeholder="รายละเอียดการรับเข้าสินค้า"></textarea>
+                                                                    </div>
                                                                 </div>
-
                                                             </div>
                                                         </div>
                                                         <div class="info-area col-md-12 text-center mt-4 ">
-                                                            <button type="submit" class="btn btn-warning btn-rounded">
+                                                            <button type="submit" class="btn btn-info btn-rounded"
+                                                                name="stock_in_add" value="success">
                                                                 <i class="las la-plus-circle"></i> รับเข้าสินค้า</button>
+
                                                         </div>
 
                                                     </div>
@@ -193,7 +196,7 @@
                                 <div class="form-group row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="card multiple-form-one px-0 pb-0 mb-3">
-                                            <form method="post" action="{{ route('admin/edit_stock_in') }}"
+                                            <form method="post" action="{{ route('admin/update_stock_in') }}"
                                                 enctype="multipart/form-data" id="msform">
                                                 @csrf
                                                 <div class="row">
@@ -221,42 +224,43 @@
                                                                         <input type="text" class="form-control"
                                                                             id="product_id_fk" name="product_id_fk"
                                                                             placeholder="สินค้า" disabled>
-                                                                        
+
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>หมายเลขล๊อตสินค้า:</b></label>
                                                                         <input type="text" class="form-control"
                                                                             id="lot_number" name="lot_number"
                                                                             placeholder="หมายเลขล๊อตสินค้า" disabled>
-                                                                        
+
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>จำนวนสินค้า:</b></label>
                                                                         <input type="text" class="form-control"
                                                                             id="product_amount" name="product_amount"
                                                                             placeholder="จำนวนสินค้า" disabled>
-                                                                        
+
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>หน่วยสินค้า:</b></label>
                                                                         <input type="text" class="form-control"
-                                                                        id="product_unit_id_fk" name="product_unit_id_fk"
-                                                                        placeholder="หน่วยสินค้า" disabled>
-                                                                        
+                                                                            id="product_unit_id_fk"
+                                                                            name="product_unit_id_fk"
+                                                                            placeholder="หน่วยสินค้า" disabled>
+
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>เลขที่เอกสาร:</b></label>
                                                                         <input type="text" class="form-control"
-                                                                        id="doc_no" name="doc_no"
-                                                                        placeholder="เลขที่เอกสาร" disabled>
-                                                                        
+                                                                            id="doc_no" name="doc_no"
+                                                                            placeholder="เลขที่เอกสาร" disabled>
+
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>วันที่รับเข้าสินค้า:</b></label>
                                                                         <input type="date" class="form-control"
-                                                                        id="date_stock_in" name="date_stock_in"
-                                                                        placeholder="วันที่รับเข้าสินค้า" disabled>
-{{--                                                                         
+                                                                            id="date_stock_in" name="date_stock_in"
+                                                                            placeholder="วันที่รับเข้าสินค้า" disabled>
+                                                                        {{--                                                                         
                                                                         <span
                                                                             class="form-label text-danger date_stock-in_err _err"></span>
                                                                         <input class="form-control" id="date_stock_in"
@@ -266,35 +270,55 @@
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>วันที่หมดอายุ:</b></label>
                                                                         <input type="date" class="form-control"
-                                                                        id="expire_stock_in" name="expire_stock_in"
-                                                                        placeholder="วันที่หมดอายุ" disabled>
+                                                                            id="expire_stock_in" name="expire_stock_in"
+                                                                            placeholder="วันที่หมดอายุ" disabled>
                                                                         {{-- <span
                                                                             class="form-label text-danger expire_stock-in_err _err"></span>
                                                                         <input class="form-control" id="expire_stock_in"
                                                                             type="date" value="yyyy-mm-dd"
                                                                             name="expire_stock_in"> --}}
                                                                     </div>
-                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                    {{-- <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>ไฟล์เอกสารแนบ:</b></label>
                                                                         <input type="image" class="form-control"
-                                                                        id="file_stock_in" name="file_stock_in"
-                                                                        placeholder="ไฟล์เอกสารแนบ" disabled>
-                                                                        {{-- <div class="upload text-center img-thumbnail">
-                                                                            <input type="file" name="file_stock_in"
-                                                                                id="file_stock_in" class="dropify">
-                                                                        </div> --}}
+                                                                            id="doc_name" name="doc_name"
+                                                                            placeholder="ไฟล์เอกสารแนบ" disabled>
+
+                                                                    </div> --}}
+                                                                   
+                                                                        <div class="col-lg-6 mt-2 text-left">
+                                                                            <label><b>ไฟล์เอกสารแนบ:</b></label>
+                                                                            <div id="img"></div>
+                                                                           
+                                                                        </div>
+                                                               
+
+
+                                                                    <div class="col-lg-12 mt-2 text-left">
+                                                                        <label><b>หมายเหตุ:</b></label>
+                                                                        <textarea class="form-control" id="stock_remark" name="stock_remark" placeholder="รายละเอียดการรับเข้าสินค้า"
+                                                                            disabled></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="info-area col-md-12 text-center mt-4 ">
-                                                            <button type="submit" class="btn btn-success btn-rounded">
-                                                                <i class="las la-check-circle"></i>
-                                                                ยืนยันการรับเข้าสินค้า</button>
-                                                            <button type="submit" class="btn btn-danger btn-rounded">
-                                                                <i class="las la-times-circle"></i>
-                                                                ยกเลิกการรับเข้าสินค้า</button>
+
+                                                        <div class="info-area col-md-12 text-center mt-4">
+                                                            <div id="stock_button">
+                                                                <button type="submit" class="btn btn-success btn-rounded"
+                                                                    name="stock_status" value="confirm">
+                                                                    <i class="las la-check-circle"></i>
+                                                                    ยืนยัน
+                                                                </button>
+
+                                                                <button type="submit" class="btn btn-danger btn-rounded"
+                                                                    name="stock_status" value="cancel">
+                                                                    <i class="las la-times-circle"></i>
+                                                                    ยกเลิก
+                                                                </button>
+                                                            </div>
                                                         </div>
+
 
                                                     </div>
                                                 </div>
@@ -318,14 +342,18 @@
                     <tr>
                         <th>ลำดับ</th>
                         <th>สาขา</th>
-                        <th>คลังสินค้า</th>
+                        <th>คลัง</th>
                         <th>สินค้า</th>
                         <th>จำนวน</th>
                         <th>หน่วย</th>
                         <th>หมายเลขล๊อต</th>
                         <th>วันที่รับเข้า</th>
-                        <th>วันหมดอายุ</th>
-                        <th>รายละเอียด</th>
+                        <th>วันที่หมดอายุ</th>
+                        <th>ผู้ทำรายการ</th>
+                        <th>ผู้อนุมัติ</th>
+                        <th>วันที่อนุมัติ</th>
+                        <th>สถานะ</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -341,6 +369,20 @@
                             <td>{{ $value->lot_number }}</td>
                             <td>{{ $value->date_in_stock }}</td>
                             <td>{{ $value->lot_expired_date }}</td>
+                            <td>{{ $value->create_name }}</td>
+                            <td>{{ $value->approve_name }}</td>
+                            <td>{{ $value->approve_date }}</td>
+                            <td>
+                                @if ($value->stock_status == 'pending')
+                                    <span class="badge badge-pill badge-info light">รอดำเนินการ</span>
+                                @endif
+                                @if ($value->stock_status == 'confirm')
+                                    <span class="badge badge-pill badge-success light">สำเร็จ</span>
+                                @endif
+                                @if ($value->stock_status == 'cancel')
+                                    <span class="badge badge-pill badge-danger light">ยกเลิก</span>
+                                @endif
+                            </td>
                             <td>
                                 <a href="#!" onclick="edit({{ $value->id }})" class="p-2">
                                     <i class="lab la-whmcs font-25 text-warning"></i></a>
@@ -433,6 +475,26 @@
                     $("#doc_no").val(data['data']['doc_no']);
                     $("#date_stock_in").val(data['data']['date_in_stock']);
                     $("#expire_stock_in").val(data['data']['lot_expired_date']);
+                    $("#stock_remark").val(data['data']['stock_remark']);
+
+
+                    var img = '{{ asset("") }}';
+                    var img_url = img+data['data']['url']+'/'+data['data']['doc_name'];
+
+                    var htmlContent = '<img src="'+img_url+'"class="img-fluid" id="doc_name" name="doc_name" alt="Document Image">';
+                    $("#img").html(htmlContent);
+                   
+ 
+
+                    if (data['data']['stock_status'] == 'cancel' || data['data']['stock_status'] == 'confirm') {
+                        stock_button.style.display = "none";
+
+                        // console.log('ปิด');
+
+                    } else {
+                        stock_button.style.display = "block";
+                        // console.log(data['data']['stock_status']);
+                    }
 
 
                 })
