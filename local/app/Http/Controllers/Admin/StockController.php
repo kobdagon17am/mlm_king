@@ -98,7 +98,6 @@ class StockController extends Controller
       try {
         DB::beginTransaction();
         $get_stock_in = DB::table('db_stocks')
-          ->where('id', $rs->id)
           ->insertGetId($dataPrepare);
 
 
@@ -147,26 +146,81 @@ class StockController extends Controller
         'approve_id_fk' => Auth::guard('admin')->user()->id,
         'approve_name' => Auth::guard('admin')->user()->name,
         'approve_date' => now(),
-
       ];
-
 
       DB::table('db_stocks')
         ->where('id', $rs->id)
         ->update($updateData);
+
+
+
+      // Retrieve updated data from db_stocks table
+      $get_stock_data = DB::table('db_stocks')
+        ->where('id', '=', $rs->id)
+        ->first();
+
+      $query = DB::table('db_stock_movement')
+        ->where('branch_id_fk', $get_stock_data->branch_id_fk)
+        ->where('product_id_fk', $get_stock_data->product_id_fk)
+        ->where('warehouse_id_fk', $get_stock_data->warehouse_id_fk)
+        ->orderByDesc('id')
+        ->first();
+
+      if ($query === null) {
+        // กรณี $query เป็น null
+        $amt_balance = $get_stock_data->amt;
+      } else {
+        // กรณี $query ไม่เป็น null
+        $amt_balance = $query->amt + $get_stock_data->amt;
+      }
+
+
+      //   $data_amt = [
+      //     'amt_balance' => $amt_balance
+      // ];
+
+
+      $updateMovement = [
+        'stock_id_fk' => $get_stock_data->id,
+        'branch_id_fk' => $get_stock_data->branch_id_fk,
+        'warehouse_id_fk' => $get_stock_data->warehouse_id_fk,
+        'product_id_fk' => $get_stock_data->product_id_fk,
+        'lot_number' => $get_stock_data->lot_number,
+        'amt_balance' => $amt_balance,
+        'amt' => $get_stock_data->amt,
+        'in_out' => 1,
+        'product_unit_id_fk' => $get_stock_data->product_unit_id_fk,
+        'stock_status' => $get_stock_data->stock_status,
+        'create_id_fk' => Auth::guard('admin')->user()->id,
+        'create_name' => Auth::guard('admin')->user()->name,
+        'approve_id_fk' => Auth::guard('admin')->user()->id,
+        'approve_name' => Auth::guard('admin')->user()->name,
+        'approve_date' => $get_stock_data->approve_date,
+      ];
+
+      DB::table('db_stock_movement')
+        ->insert($updateMovement);
+
+
+
       return redirect('admin/Stock_in')->withSuccess('รับเข้าสินค้าสำเร็จ');
     } elseif ($rs->stock_status == "cancel") {
       // อัปเดตเมื่อ stock_status เป็น "cancel"
       $updateData = [
-        'stock_status' => 'cancel',
-
+        'stock_status' => 'cancel'
       ];
+
       DB::table('db_stocks')
         ->where('id', $rs->id) // แนะนำให้ใช้ id หรือ primary key เพื่ออัปเดตแถวที่ต้องการ
         ->update($updateData);
       return redirect('admin/Stock_in')->withError('ยกเลิกการรับเข้าสินค้า');
     }
   }
+
+
+
+
+
 
   public function view_stock_in(Request $rs)
   {
@@ -185,7 +239,6 @@ class StockController extends Controller
 
 
     $data = ['status' => 'success', 'data' => $get_stock_in];
-
 
     return $data;
 
