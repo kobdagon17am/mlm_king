@@ -27,9 +27,11 @@ class ProductsController extends Controller
 // dd($get_products);
 
     $get_categories = DB::table('categories')
+    ->where('status', 1)
       ->get();
 
     $get_unit = DB::table('dataset_product_unit')
+    ->where('status', 1)
       ->get();
 
     return view('backend/products', compact('get_products', 'get_categories', 'get_unit'));
@@ -155,10 +157,10 @@ class ProductsController extends Controller
       }
 
       DB::commit();
-      return redirect('admin/Products')->withSuccess('เพิ่มหน่วยสินค้าสำเร็จ');
+      return redirect('admin/Products')->withSuccess('เพิ่มสินค้าสำเร็จ');
     } catch (Exception $e) {
       DB::rollback();
-      return redirect('admin/Products')->withError('เพิ่มหน่วยสินค้าไม่สำเร็จ');
+      return redirect('admin/Products')->withError('เพิ่มสินค้าไม่สำเร็จ');
     }
 
     //dd('success');
@@ -302,10 +304,10 @@ class ProductsController extends Controller
           }
         }
       DB::commit();
-      return redirect('admin/Products')->withSuccess('แก้ไขข้อมูลสำเร็จ');
+      return redirect('admin/Products')->withSuccess('แก้ไขข้อมูลสินค้าสำเร็จ');
     } catch (Exception $e) {
       DB::rollback();
-      return redirect('admin/Products')->withError('แก้ไขข้อมูลไม่สำเร็จ');
+      return redirect('admin/Products')->withError('แก้ไขข้อมูลสินค้าไม่สำเร็จ');
     }
   }
 

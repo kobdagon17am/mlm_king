@@ -44,10 +44,10 @@ class BranchController extends Controller
       $get_branch = DB::table('branch')
         ->insert($dataPrepare);
       DB::commit();
-      return redirect('admin/Branch')->withSuccess('เพิ่มหน่วยสินค้าสำเร็จ');
+      return redirect('admin/Branch')->withSuccess('เพิ่มสาขาบริษัทสำเร็จ');
     } catch (Exception $e) {
       DB::rollback();
-      return redirect('admin/Branch')->withError('เพิ่มหน่วยสินค้าไม่สำเร็จ');
+      return redirect('admin/Branch')->withError('เพิ่มสาขาบริษัทไม่สำเร็จ');
 
     }
 
@@ -73,10 +73,10 @@ class BranchController extends Controller
       ->where('id','=',$rs->id)
         ->update($dataPrepare);
       DB::commit();
-      return redirect('admin/Branch')->withSuccess('แก้ไขข้อมูลสำเร็จ');
+      return redirect('admin/Branch')->withSuccess('แก้ไขสาขาบริษัทสำเร็จ');
     } catch (Exception $e) {
       DB::rollback();
-      return redirect('admin/Branch')->withError('แก้ไขข้อมูลไม่สำเร็จ');
+      return redirect('admin/Branch')->withError('แก้ไขสาขาบริษัทไม่สำเร็จ');
 
     }
 

@@ -27,6 +27,7 @@ class StockController extends Controller
     // dd($get_stock_in->all());
 
     $get_branch = DB::table('branch')
+      ->where('status', 1)
       ->get();
 
 
@@ -44,6 +45,7 @@ class StockController extends Controller
 
     $get_warehouse = DB::table('db_warehouse')
       ->where('branch_id_fk', $request->id)
+      ->where('status', 1)
       ->get();
 
 
@@ -174,12 +176,6 @@ class StockController extends Controller
         $amt_balance = $query->amt + $get_stock_data->amt;
       }
 
-
-      //   $data_amt = [
-      //     'amt_balance' => $amt_balance
-      // ];
-
-
       $updateMovement = [
         'stock_id_fk' => $get_stock_data->id,
         'branch_id_fk' => $get_stock_data->branch_id_fk,
@@ -216,10 +212,6 @@ class StockController extends Controller
       return redirect('admin/Stock_in')->withError('ยกเลิกการรับเข้าสินค้า');
     }
   }
-
-
-
-
 
 
   public function view_stock_in(Request $rs)

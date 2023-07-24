@@ -429,7 +429,7 @@
                                                                 class="previous action-button-previous btn btn-info btn-rounded"
                                                                 value="ย้อนกลับ">
                                                             <button type="submit" class="btn btn-info btn-rounded">
-                                                                <i class="las la-save"></i> เพิ่มสินค้า</button>
+                                                                <i class="las la-save"></i> แก้ไขข้อมูลสินค้า</button>
                                                         </fieldset>
                                                     </form>
                                                 </div>

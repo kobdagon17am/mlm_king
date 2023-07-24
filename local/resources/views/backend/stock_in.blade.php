@@ -260,40 +260,17 @@
                                                                         <input type="date" class="form-control"
                                                                             id="date_stock_in" name="date_stock_in"
                                                                             placeholder="วันที่รับเข้าสินค้า" disabled>
-                                                                        {{--                                                                         
-                                                                        <span
-                                                                            class="form-label text-danger date_stock-in_err _err"></span>
-                                                                        <input class="form-control" id="date_stock_in"
-                                                                            type="date" value="yyyy-mm-dd"
-                                                                            name="date_stock_in"> --}}
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>วันที่หมดอายุ:</b></label>
                                                                         <input type="date" class="form-control"
                                                                             id="expire_stock_in" name="expire_stock_in"
                                                                             placeholder="วันที่หมดอายุ" disabled>
-                                                                        {{-- <span
-                                                                            class="form-label text-danger expire_stock-in_err _err"></span>
-                                                                        <input class="form-control" id="expire_stock_in"
-                                                                            type="date" value="yyyy-mm-dd"
-                                                                            name="expire_stock_in"> --}}
                                                                     </div>
-                                                                    {{-- <div class="col-lg-6  mt-2 text-left">
+                                                                    <div class="col-lg-6 mt-2 text-left">
                                                                         <label><b>ไฟล์เอกสารแนบ:</b></label>
-                                                                        <input type="image" class="form-control"
-                                                                            id="doc_name" name="doc_name"
-                                                                            placeholder="ไฟล์เอกสารแนบ" disabled>
-
-                                                                    </div> --}}
-                                                                   
-                                                                        <div class="col-lg-6 mt-2 text-left">
-                                                                            <label><b>ไฟล์เอกสารแนบ:</b></label>
-                                                                            <div id="img"></div>
-                                                                           
-                                                                        </div>
-                                                               
-
-
+                                                                        <div id="img"></div>
+                                                                    </div>
                                                                     <div class="col-lg-12 mt-2 text-left">
                                                                         <label><b>หมายเหตุ:</b></label>
                                                                         <textarea class="form-control" id="stock_remark" name="stock_remark" placeholder="รายละเอียดการรับเข้าสินค้า"
@@ -353,6 +330,7 @@
                         <th>ผู้อนุมัติ</th>
                         <th>วันที่อนุมัติ</th>
                         <th>สถานะ</th>
+                        <th>รายละเอียด</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -383,6 +361,7 @@
                                     <span class="badge badge-pill badge-danger light">ยกเลิก</span>
                                 @endif
                             </td>
+                            <td>{{ $value->stock_remark }}</td>
                             <td>
                                 <a href="#!" onclick="edit({{ $value->id }})" class="p-2">
                                     <i class="lab la-whmcs font-25 text-warning"></i></a>
@@ -478,13 +457,14 @@
                     $("#stock_remark").val(data['data']['stock_remark']);
 
 
-                    var img = '{{ asset("") }}';
-                    var img_url = img+data['data']['url']+'/'+data['data']['doc_name'];
+                    var img = '{{ asset('') }}';
+                    var img_url = img + data['data']['url'] + '/' + data['data']['doc_name'];
 
-                    var htmlContent = '<img src="'+img_url+'"class="img-fluid" id="doc_name" name="doc_name" alt="Document Image">';
+                    var htmlContent = '<img src="' + img_url +
+                        '"class="img-fluid" id="doc_name" name="doc_name" alt="Document Image">';
                     $("#img").html(htmlContent);
-                   
- 
+
+
 
                     if (data['data']['stock_status'] == 'cancel' || data['data']['stock_status'] == 'confirm') {
                         stock_button.style.display = "none";
