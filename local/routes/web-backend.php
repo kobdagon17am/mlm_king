@@ -55,6 +55,17 @@ Route::get('admin/Blank', function () {
     return view('backend.admin_edit_member');
   })->name('admin/EditProfile');
 
+
+  // Route::get('admin/AdminData', function () {
+  //   return view('backend.admin_data');
+  // })->name('admin/AdminData');
+  Route::get('admin/AdminData','Admin\AdminDataController@index')->name('admin/AdminData');
+  Route::post('admin/AdminData_insert','Admin\AdminDataController@insert')->name('admin/AdminData_insert');
+  Route::get('admin/view_admin_data','Admin\AdminDataController@view_admin_data')->name('admin/view_admin_data');
+  Route::post('admin/edit_admin_data','Admin\AdminDataController@edit_admin_data')->name('admin/edit_admin_data');
+
+
+
   // Route::get('admin/Category', function () {
   //   return view('backend.category');
   // })->name('admin/Category');
@@ -62,7 +73,6 @@ Route::get('admin/Blank', function () {
   Route::post('admin/Category_insert','Admin\CategoryController@insert')->name('admin/Category_insert');
   Route::get('admin/view_category','Admin\CategoryController@view_category')->name('admin/view_category');
   Route::post('admin/edit_category','Admin\CategoryController@edit_category')->name('admin/edit_category');
-
 
 
 
@@ -99,7 +109,7 @@ Route::get('admin/Blank', function () {
   Route::get('admin/get_data_product_unit_select', 'Admin\StockController@get_data_product_unit_select')->name('get_data_product_unit_select');
   Route::post('admin/Stockin_insert','Admin\StockController@insert')->name('admin/Stockin_insert');
   Route::get('admin/view_stock_in','Admin\StockController@view_stock_in')->name('admin/view_stock_in');
-  Route::post('admin/edit_stock_in','Admin\StockController@edit_stock_in')->name('admin/edit_stock_in');
+  Route::post('admin/update_stock_in','Admin\StockController@update_stock_in')->name('admin/update_stock_in');
     // END receive
 
   Route::get('admin/Stock_out', function () {

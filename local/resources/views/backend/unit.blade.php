@@ -147,7 +147,7 @@
                                                     </div>
                                                     <div class="info-area col-md-12 text-center mt-4 ">
                                                         <button type="submit" class="btn btn-info btn-rounded">
-                                                            <i class="las la-save"></i> เพิ่มหน่วยสินค้า</button>
+                                                            <i class="las la-save"></i> แก้ไขหน่วยสินค้า</button>
                                                     </div>
 
                                                 </div>

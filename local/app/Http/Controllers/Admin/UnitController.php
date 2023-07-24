@@ -25,9 +25,6 @@ class UnitController extends Controller
       // ->first();
       ->get();
     return view('backend/unit', compact('get_unit'));
-
-
-        ;
   }
   public function insert(Request $rs)
   {
@@ -71,10 +68,10 @@ class UnitController extends Controller
         ->update($dataPrepare);
 
       DB::commit();
-      return redirect('admin/Unit')->withSuccess('แก้ไขข้อมูลสำเร็จ');
+      return redirect('admin/Unit')->withSuccess('แก้ไขข้อมูลหน่วยสินค้าสำเร็จ');
     } catch (Exception $e) {
       DB::rollback();
-      return redirect('admin/Unit')->withError('แก้ไขข้อมูลไม่สำเร็จ');
+      return redirect('admin/Unit')->withError('แก้ไขข้อมูลหน่วยสินค้าไม่สำเร็จ');
 
     }
 

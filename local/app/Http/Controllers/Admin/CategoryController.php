@@ -24,9 +24,6 @@ class CategoryController extends Controller
       // ->first();
       ->get();
     return view('backend/category', compact('get_category'));
-
-
-    //     ;
   }
   public function insert(Request $rs)
   {
@@ -71,10 +68,10 @@ class CategoryController extends Controller
       ->where('id','=',$rs->id)
         ->update($dataPrepare);
       DB::commit();
-      return redirect('admin/Category')->withSuccess('แก้ไขข้อมูลสำเร็จ');
+      return redirect('admin/Category')->withSuccess('แก้ไขข้อมูลหมวดสินค้าสำเร็จ');
     } catch (Exception $e) {
       DB::rollback();
-      return redirect('admin/Category')->withError('แก้ไขข้อมูลไม่สำเร็จ');
+      return redirect('admin/Category')->withError('แก้ไขข้อมูลหมวดสินค้าไม่สำเร็จ');
 
     }
 

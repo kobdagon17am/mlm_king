@@ -8,10 +8,10 @@ use App\Http\Controllers\Controller;
 
 class WarehouseController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
+  public function __construct()
+  {
+    $this->middleware('admin');
+  }
   public function index()
   {
 
@@ -23,9 +23,10 @@ class WarehouseController extends Controller
       ->get();
 
     $get_branch = DB::table('branch')
+      ->where('status', 1)
       ->get();
 
-      // dd($get_branch);
+    // dd($get_branch);
 
     return view('backend/warehouse', compact('get_warehouse', 'get_branch'));
   }
@@ -36,8 +37,8 @@ class WarehouseController extends Controller
     // dd($rs->all());
 
     $get_branch = DB::table('branch')
-    ->where('id', '=', $rs->branch_name)
-    ->first();
+      ->where('id', '=', $rs->branch_name)
+      ->first();
 
 
     $dataPrepare = [
@@ -60,8 +61,6 @@ class WarehouseController extends Controller
       DB::rollback();
       return redirect('admin/Warehouse')->withError('เพิ่มคลังสินค้าไม่สำเร็จ');
     }
-
-
   }
 
   public function edit_warehouse(Request $rs)
@@ -69,8 +68,8 @@ class WarehouseController extends Controller
     // dd($rs->all());
 
     $get_branch = DB::table('branch')
-    ->where('id', '=', $rs->branch_name)
-    ->first();
+      ->where('id', '=', $rs->branch_name)
+      ->first();
 
     $dataPrepare = [
       'branch_id_fk' => $get_branch->id,
@@ -83,7 +82,7 @@ class WarehouseController extends Controller
     ];
 
 
-        try {
+    try {
       DB::BeginTransaction();
       $get_warehouse = DB::table('db_warehouse')
         ->where('id', '=', $rs->id)
@@ -99,14 +98,14 @@ class WarehouseController extends Controller
   public function view_warehouse(Request $rs)
   {
 
-     $warehouse = DB::table('db_warehouse')
-     ->where('id','=',$rs->id)
-     ->first();
+    $warehouse = DB::table('db_warehouse')
+      ->where('id', '=', $rs->id)
+      ->first();
 
 
-     $data = ['status' => 'success', 'data' => $warehouse];
+    $data = ['status' => 'success', 'data' => $warehouse];
 
 
-     return $data;
+    return $data;
   }
 }
