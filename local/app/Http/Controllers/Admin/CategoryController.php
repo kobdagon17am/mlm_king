@@ -24,9 +24,6 @@ class CategoryController extends Controller
       // ->first();
       ->get();
     return view('backend/category', compact('get_category'));
-
-
-    //     ;
   }
   public function insert(Request $rs)
   {

@@ -25,9 +25,6 @@ class UnitController extends Controller
       // ->first();
       ->get();
     return view('backend/unit', compact('get_unit'));
-
-
-        ;
   }
   public function insert(Request $rs)
   {

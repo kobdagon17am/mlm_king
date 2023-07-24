@@ -22,9 +22,6 @@ class BranchController extends Controller
       // ->first();
       ->get();
     return view('backend/branch', compact('get_branch'));
-
-
-        ;
   }
   public function insert(Request $rs)
   {
