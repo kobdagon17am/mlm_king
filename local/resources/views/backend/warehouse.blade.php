@@ -12,7 +12,7 @@
 @section('page-header')
     <nav class="breadcrumb-one" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">ระบบคลัง</li>
+            <li class="breadcrumb-item">ระบบคลังบริษัท</li>
             <li class="breadcrumb-item active" aria-current="page"><span>ข้อมูลคลังสินค้า</span></li>
         </ol>
     </nav>

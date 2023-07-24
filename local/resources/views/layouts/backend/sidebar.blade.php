@@ -107,6 +107,9 @@
                         <a href="#"> สินค้ารอจัดส่ง </a>
                     </li>
                     <li>
+                        <a href="#"> สถานะสินค้ารอจัดส่ง </a>
+                    </li>
+                    <li>
                         <a href="{{ route('admin/Stock_in') }}"> รับเข้าสินค้า </a>
                     </li>
                     <li>
@@ -130,6 +133,9 @@
                 <ul class="collapse submenu list-unstyled" id="a3" data-parent="#accordionExample">
                     <li>
                         <a href="#"> สินค้ารอจัดส่ง </a>
+                    </li>
+                    <li>
+                        <a href="#"> สถานะสินค้ารอจัดส่ง </a>
                     </li>
                     <li>
                         <a href="{{ route('admin/Stock_in') }}"> รับเข้าสินค้า </a>
@@ -165,25 +171,6 @@
                 </ul>
             </li>
             <li class="menu main-single-menu">
-                <a href="#a7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <i class="las la-user-lock"></i>
-                        <span> ระบบความปลอดภัย </span>
-                    </div>
-                    <div>
-                        <i class="las la-angle-right sidemenu-right-icon"></i>
-                    </div>
-                </a>
-                <ul class="collapse submenu list-unstyled" id="a5" data-parent="#accordionExample">
-                    <li>
-                        <a href="#"> เปลี่ยนแปลงรหัสผ่าน </a>
-                    </li>
-                    <li>
-                        <a href="#"> ยกเลิกรหัส </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="menu main-single-menu">
                 <a href="#a8" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-user-cog"></i>
@@ -201,7 +188,16 @@
                         <a href="{{ route('admin/AdminData') }}"> ข้อมูลผู้ใช้งาน </a>
                     </li>
                     <li>
+                        <a href="#"> ข้อมูลบัญชีธนาคาร </a>
+                    </li>
+                    <li>
                         <a href="#"> กำหนดสิทธิ์ผู้ใช้งาน </a>
+                    </li>
+                    <li>
+                        <a href="#"> เปลี่ยนแปลงรหัสผ่าน </a>
+                    </li>
+                    <li>
+                        <a href="#"> ยกเลิกรหัส </a>
                     </li>
                 </ul>
             </li>

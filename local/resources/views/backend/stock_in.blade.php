@@ -15,7 +15,7 @@
 @section('page-header')
     <nav class="breadcrumb-one" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">ระบบคลัง</li>
+            <li class="breadcrumb-item">ระบบคลังบริษัท</li>
             <li class="breadcrumb-item active" aria-current="page"><span>รับเข้าสินค้า</span></li>
         </ol>
     </nav>
@@ -330,7 +330,7 @@
                         <th>ผู้อนุมัติ</th>
                         <th>วันที่อนุมัติ</th>
                         <th>สถานะ</th>
-                        <th>รายละเอียด</th>
+                        <th>หมายเหตุ</th>
                         <th></th>
                     </tr>
                 </thead>

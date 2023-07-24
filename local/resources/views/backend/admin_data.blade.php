@@ -259,14 +259,14 @@
                     <tr>
                         <th>ลำดับ</th>
                         <th>Username</th>
-                        <th>Password</th>
+                        {{-- <th>Password</th> --}}
                         <th>ชื่อ</th>
                         <th>นามสกุล</th>
                         <th>เบอร์ติดต่อ</th>
-                        <th>ตำแหน่ง</th>
-                        <th>สถานะสมาชิก</th>
+                        <th>ตำแหน่งงาน</th>
+                        <th>ตำแหน่งสมาชิก</th>
                         <th>แผนก</th>
-                        <th>สาขา</th>
+                        <th>สาขาประจำ</th>
                         <th>สถานะ</th>
                         <th>แก้ไข</th>
                     </tr>
@@ -277,7 +277,7 @@
                         <tr>
                             <td>{{ $i++ }}</td>
                             <td>{{ $value->username }}</td>
-                            <td>{{ $value->password }}</td>
+                            {{-- <td>{{ $value->password }}</td> --}}
                             <td>{{ $value->first_name }}</td>
                             <td>{{ $value->last_name }}</td>
                             <td>{{ $value->phone }}</td>
