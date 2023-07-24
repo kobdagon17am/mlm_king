@@ -42,7 +42,7 @@ class WarehouseController extends Controller
 
 
     $dataPrepare = [
-      'branch_id_fk' => $get_branch->id,
+      'branch_id_fk' => $rs->branch_name,
       'branch_code' => $get_branch->branch_code,
       'branch_name' => $get_branch->branch_name,
       'warehouse_code' => $rs->warehouse_code,
