@@ -57,7 +57,7 @@
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>สาขา:</b></label>
                                                                         <span
-                                                                            class="form-label text-daproduct_id_fk_err _err"></span>
+                                                                            class="form-label text-danger branch_id_fk_err _err"></span>
                                                                         <select class="form-control branch_select"
                                                                             name="branch_id_fk">
                                                                             <option selected disabled> เลือกสาขา
@@ -155,6 +155,10 @@
                                                                     <div class="col-lg-12 text-left">
                                                                         <label><b>หมายเหตุ:</b></label>
                                                                         <textarea class="form-control" name="stock_remark" placeholder="รายละเอียดการรับเข้าสินค้า"></textarea>
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                        <input type="hidden" name="stock_type"
+                                                                            value="in">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -406,7 +410,7 @@
         function append_warehouse_select(data) {
             $('.warehouse_select').empty();
             $('.warehouse_select').append(`
-                <option disabled selected value=""> เลือกสาขา </option>
+                <option disabled selected value=""> เลือกคลัง </option>
                 `);
             data.forEach((val, key) => {
 

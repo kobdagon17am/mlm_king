@@ -13,26 +13,25 @@ class StockController extends Controller
   {
     $this->middleware('admin');
   }
+
+
   public function index(Request $request)
   {
-
     // dd(Auth::guard('admin')->user()->id);
-
     $get_stock_in = DB::table('db_stocks')
       ->select('db_stocks.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
       ->leftJoin('products', 'products.id', '=', 'db_stocks.product_id_fk')
       ->leftJoin('db_warehouse', 'db_warehouse.id', '=', 'db_stocks.warehouse_id_fk')
       ->get();
-
-  //  dd($get_stock_in->all());
+    //  dd($get_stock_in->all());
 
     $get_branch = DB::table('branch')
       ->where('status', 1)
       ->get();
 
-
     // สินค้า
     $get_product = DB::table('products')
+      ->where('status', 1)
       ->get();
 
 
@@ -47,7 +46,6 @@ class StockController extends Controller
       ->where('branch_id_fk', $request->id)
       ->where('status', 1)
       ->get();
-
 
     return response()->json($get_warehouse);
   }
@@ -93,6 +91,7 @@ class StockController extends Controller
         'lot_expired_date' => $rs->expire_stock_in,
         'create_id_fk' => Auth::guard('admin')->user()->id,
         'create_name' => Auth::guard('admin')->user()->first_name,
+        'stock_type' => $rs->stock_type,
       ];
 
       // dd($dataPrepare);
@@ -125,8 +124,6 @@ class StockController extends Controller
             ]);
           }
         }
-
-
 
         DB::commit();
         return redirect('admin/Stock_in')->withSuccess('รับเข้าสินค้าสำเร็จ');
