@@ -21,10 +21,10 @@ class StockController extends Controller
     $get_stock_in = DB::table('db_stocks')
       ->select('db_stocks.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
       ->leftJoin('products', 'products.id', '=', 'db_stocks.product_id_fk')
-      ->leftJoin('db_warehouse', 'db_warehouse.branch_id_fk', '=', 'db_stocks.branch_id_fk')
+      ->leftJoin('db_warehouse', 'db_warehouse.id', '=', 'db_stocks.warehouse_id_fk')
       ->get();
 
-    // dd($get_stock_in->all());
+  //  dd($get_stock_in->all());
 
     $get_branch = DB::table('branch')
       ->where('status', 1)
@@ -92,7 +92,7 @@ class StockController extends Controller
         'stock_remark' => $rs->stock_remark,
         'lot_expired_date' => $rs->expire_stock_in,
         'create_id_fk' => Auth::guard('admin')->user()->id,
-        'create_name' => Auth::guard('admin')->user()->name,
+        'create_name' => Auth::guard('admin')->user()->first_name,
       ];
 
       // dd($dataPrepare);
@@ -146,7 +146,7 @@ class StockController extends Controller
       $updateData = [
         'stock_status' => 'confirm',
         'approve_id_fk' => Auth::guard('admin')->user()->id,
-        'approve_name' => Auth::guard('admin')->user()->name,
+        'approve_name' => Auth::guard('admin')->user()->first_name,
         'approve_date' => now(),
       ];
 
@@ -188,9 +188,9 @@ class StockController extends Controller
         'product_unit_id_fk' => $get_stock_data->product_unit_id_fk,
         'stock_status' => $get_stock_data->stock_status,
         'create_id_fk' => Auth::guard('admin')->user()->id,
-        'create_name' => Auth::guard('admin')->user()->name,
+        'create_name' => Auth::guard('admin')->user()->first_name,
         'approve_id_fk' => Auth::guard('admin')->user()->id,
-        'approve_name' => Auth::guard('admin')->user()->name,
+        'approve_name' => Auth::guard('admin')->user()->first_name,
         'approve_date' => $get_stock_data->approve_date,
       ];
 
@@ -228,12 +228,10 @@ class StockController extends Controller
 
     // dd($get_stock_in);
 
-
-
     $data = ['status' => 'success', 'data' => $get_stock_in];
 
     return $data;
 
-    dd($data);
+    // dd($data);
   }
 }

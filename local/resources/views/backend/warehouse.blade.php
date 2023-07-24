@@ -195,6 +195,7 @@
             <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
                     <tr>
+                        <th>ลำดับ</th>
                         <th>ชื่อสาขา</th>
                         <th>รหัสคลังสินค้า</th>
                         <th>ชื่อคลังสินค้า</th>
@@ -207,6 +208,7 @@
                     <?php $i = 1; ?>
                     @foreach ($get_warehouse as $value)
                         <tr>
+                            <td>{{ $i++ }}</td>
                             <td>{{ $value->branch_name }}</td>
                             <td>{{ $value->warehouse_code }}</td>
                             <td>{{ $value->warehouse_name }}</td>

@@ -451,6 +451,7 @@
             <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
                     <tr>
+                        <th>ลำดับ</th>
                         <th>รหัสสินค้า</th>
                         <th>รูปภาพสินค้า</th>
                         <th>ชื่อสินค้า</th>
@@ -467,6 +468,7 @@
                     <?php $i = 1; ?>
                     @foreach ($get_products as $value)
                         <tr>
+                            <td>{{ $i++ }}</td>
                             <td>{{ $value->product_code }}</td>
 
                             <td> <img src="{{ asset($value->product_image_url . '' . $value->product_image_name) }}"
