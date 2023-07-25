@@ -75,6 +75,11 @@ Route::get('admin/Blank', function () {
   Route::post('admin/edit_category','Admin\CategoryController@edit_category')->name('admin/edit_category');
 
 
+  Route::get('admin/EditProfile', function () {
+    return view('backend.admin_edit_member');
+  })->name('admin/EditProfile');
+
+
 
   // Route::get('admin/Unit', function () {
   //   return view('backend.unit');
