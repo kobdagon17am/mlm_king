@@ -75,10 +75,13 @@ Route::get('admin/Blank', function () {
   Route::post('admin/edit_category','Admin\CategoryController@edit_category')->name('admin/edit_category');
 
 
-  Route::get('admin/EditProfile', function () {
-    return view('backend.admin_edit_member');
-  })->name('admin/EditProfile');
-
+  // Route::get('admin/Bank', function () {
+  //   return view('backend.bank');
+  // })->name('admin/Bank');
+  Route::get('admin/Bank','Admin\BankController@index')->name('admin/Bank');
+  Route::post('admin/Bank_insert','Admin\BankController@insert')->name('admin/Bank_insert');
+  Route::get('admin/view_bank','Admin\BankController@view_bank')->name('admin/view_bank');
+  Route::post('admin/edit_bank','Admin\BankController@edit_bank')->name('admin/edit_bank');
 
 
   // Route::get('admin/Unit', function () {
