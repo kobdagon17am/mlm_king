@@ -190,7 +190,7 @@
                         <a href="{{ route('admin/AdminData') }}"> ข้อมูลผู้ใช้งาน </a>
                     </li>
                     <li>
-                        <a href="#"> ข้อมูลบัญชีธนาคาร </a>
+                        <a href="{{ route('admin/Bank') }}"> ข้อมูลบัญชีธนาคาร </a>
                     </li>
                     <li>
                         <a href="#"> กำหนดสิทธิ์ผู้ใช้งาน </a>
