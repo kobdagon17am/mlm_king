@@ -128,6 +128,7 @@ Route::get('admin/Blank', function () {
   Route::get('admin/get_data_warehouse_out_select', 'Admin\StockOutController@get_data_warehouse_out_select')->name('get_data_warehouse_out_select');
   Route::get('admin/get_data_product_select', 'Admin\StockOutController@get_data_product_select')->name('get_data_product_select');
   Route::get('admin/get_data_product_unit_select', 'Admin\StockOutController@get_data_product_unit_select')->name('get_data_product_unit_select');
+  Route::get('admin/get_lot_number', 'Admin\StockOutController@get_lot_number')->name('get_lot_number');
   Route::post('admin/Stockout_insert','Admin\StockOutController@insert_stock_out')->name('admin/Stockout_insert');
   // Route::get('admin/view_stock_out','Admin\StockOutController@view_stock_out')->name('admin/view_stock_out');
   // Route::post('admin/update_stock_out','Admin\StockOutController@update_stock_out')->name('admin/update_stock_out');

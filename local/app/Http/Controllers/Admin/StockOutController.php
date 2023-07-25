@@ -82,16 +82,19 @@ class StockOutController extends Controller
     return response()->json($get_product_unit);
   }
 
-  // public function get_lot_number(Request $request)
-  // {
-  //   dd($request->all());
-  //   $get_lot_number = DB::table('db_stocks')
-  //     ->select('lot_number')
-  //     ->where('products_id_fk', $request->id)
-  //     ->get();
+  public function get_lot_number(Request $request)
+  {
+    
+    
+    $get_lot_number = DB::table('db_stocks')
+      ->select('lot_number')
+      ->where('product_id_fk', $request->id)
+      ->get();
 
-  //   return response()->json($get_lot_number);
-  // }
+      // dd($get_lot_number);
+
+    return response()->json($get_lot_number);
+  }
 
 
 

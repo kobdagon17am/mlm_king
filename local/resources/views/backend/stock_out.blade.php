@@ -121,9 +121,11 @@
                                                                         <label><b>หมายเลขล๊อตสินค้า:</b></label>
                                                                         <span
                                                                             class="form-label text-danger lot_number_err _err"></span>
-                                                                        <input type="text" name="lot_number"
-                                                                            class="form-control"
-                                                                            placeholder="หมายเลขล๊อตสินค้า">
+                                                                        <select class="form-control lot_number_select"
+                                                                            name="lot_number" disabled>
+                                                                            <option selected disabled> เลือกล๊อตสินค้า
+                                                                            </option>
+                                                                        </select>
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>จำนวนสินค้า:</b></label>
@@ -545,7 +547,39 @@
         }
 
 
-               //จ่ายออก
+     // เมื่อคลิก Product เพื่อเปิดรายการของ lot number
+     $('.product_select').change(function() {
+            $('.lot_number_select').prop('disabled', false);
+
+            const productId = $(this).val(); // รหัสสินค้าที่เลือก
+            $.ajax({
+                url: '{{ route('get_lot_number') }}',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    id: productId, // ส่งรหัสสินค้าไปยังเส้นทาง URL
+                },
+                success: function(data) {
+                    append_get_lot_number(data);
+                },
+            });
+        });
+
+        function append_get_lot_number(data) {
+            $('.lot_number_select').empty();
+            $('.lot_number_select').append(`
+        <option disabled selected value=""> เลือกล๊อตสินค้า </option>
+    `);
+            data.forEach((val, key) => {
+                $('.lot_number_select').append(`
+            <option value="${val.lot_number}">${val.lot_number}</option>
+        `);
+            });
+        }
+
+
+
+        //จ่ายออก
         $('.branch_out_select').change(function() {
             $('.warehouse_out_select').prop('disabled', false);
 
