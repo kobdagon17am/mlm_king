@@ -15,10 +15,61 @@ class RegisterController extends Controller
         $this->middleware('customer');
 
     }
+
+    public function index($user_name,$line_type){
+
+
+        if(empty($user_name) || empty($line_type)){
+          return redirect('tree')->withError('กรุณาเลือกตำแหน่งที่ต้องการ Add User');
+
+        }else{
+         $resule = DB::table('customers')
+         ->select('*')
+         ->where('username','=',$user_name)
+         ->first();
+
+
+         $provinces = DB::table('dataset_provinces')
+         ->select('*')
+         ->get();
+
+        //  $nation_id = DB::table('db_country')
+        //  ->select('*')
+        //  ->get();
+
+         if(Auth::guard('c_user')->user()->business_location_id  == '1' || Auth::guard('c_user')->user()->business_location_id  == null ){
+          $business_location_id = 1;
+         }else{
+          $business_location_id = 3;
+
+         }
+         $business_location = DB::table('dataset_business_location')
+         ->select('*')
+         ->where('lang_id','=',1)
+         ->where('status','=',1)
+         ->orderby('id')
+         ->get();
+
+
+         $country = DB::table('dataset_business_location')
+         ->select('*')
+         ->where('lang_id','=',1)
+         ->orderby('id')
+         ->get();
+
+         $data = ['data'=>$resule,'line_type_back'=>$line_type,'provinces'=>$provinces,'business_location'=>$business_location,'country'=>$country];
+
+         return view('frontend/register',compact('data'));
+
+       }
+
+     }
+
+
     public function member_register(Request $request)
     {
         // dd('1');
-        // dd($request->all());
+         dd($request->all());
         //return response()->json(['status' => 'fail', 'ms' => 'ลงทะเบียนไม่สำเร็จกรุณาลงทะเบียนไหม่sss']);
 
         //BEGIN data validator

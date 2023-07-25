@@ -83,29 +83,29 @@
                                                 <hr>
                                                 {{-- <h6 class="font-16 mb-3"><b>ข้อมูลสายงาน (SPONSOR/UPLINE)</b></h6> --}}
                                                 <div class="row">
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="upline_id">ภายใต้
                                                                 <span class="text-danger">*</span>
                                                             </label>
-                                                            <input type="text"
-                                                                class="form-control @error('upline_id') is-invalid @enderror"
-                                                                name="upline_id" placeholder="ภายใต้"
-                                                                value="{{ old('upline_id') }}">
+
+                                                            <input type="text" class="form-control @error('upline_id') is-invalid @enderror"
+                                                                    placeholder="ภายใต้" value="{{ @$data['data']->business_name }} ( {{ $data['data']->username }} )" disabled>
                                                             @error('upline_id')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
+                                                            <input type="hidden" name="upline_id" value="{{ $data['data']->username }}">
 
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="sponsor">ผู้แนะนำ
                                                                 <span class="text-danger">* </span></label>
                                                                 <input type="text"
                                                                 class="form-control @error('sponsor') is-invalid @enderror"
                                                                 name="sponsor" placeholder="ผู้แนะนำ"
-                                                                value="{{ old('sponsor') }}">
+                                                                value="{{Auth::guard('c_user')->user()->first_name}} {{Auth::guard('c_user')->user()->last_name}} ( {{ Auth::guard('c_user')->user()->username }} )" disabled>
                                                             @error('sponsor')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
