@@ -84,10 +84,11 @@ Route::get('Order', function () {
   return view('frontend.order');
 })->name('Order');
 
-Route::get('Register', function () {
 
-  return view('frontend.register');
-})->name('Register');
+
+Route::get('Register/{username?}/{line_type?}','Frontend\RegisterController@index')->name('Register');
+
+
 Route::post('Register_member','Frontend\RegisterController@member_register')->name('Register_member');
 
 
