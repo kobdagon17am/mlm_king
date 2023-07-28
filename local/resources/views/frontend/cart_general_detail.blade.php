@@ -98,12 +98,7 @@
                                                 <p class="text-muted mb-4"><b>รายละเอียดสินค้า:</b>
                                                     {{ $data['product_data']->product_detail }}</p>
                                             </h6>
-                                            <h6>
-                                                <p class="text-muted mb-4"><b>วิดีโอสินค้า:</b>
-                                                    <a href="{{ $data['product_data']->product_url }}"
-                                                        target="_blank">{{ $data['product_data']->product_url }}</a>
-                                                </p>
-                                            </h6>
+
                                             {{-- <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <p class="text-muted strong font-13">Highlights</p>
@@ -149,7 +144,29 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
+
+                                <div class="row mt-5">
+                                    <div class="col-lg-12">
+                                        <h6>
+                                            <p class="text-muted mb-4 text-center"><b>วิดีโอสินค้า</b>
+                                        </h6>
+                                    </div>
+                                    <div class="col-lg-6 mt-2 text-center">
+                                        <iframe width="500" height="300"
+                                            src="{{ $data['product_data']->product_url1 }}" title="YouTube video player"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                    <div class="col-lg-6 mt-2 text-center">
+                                        <iframe width="500" height="300"
+                                            src="{{ $data['product_data']->product_url2 }}" title="YouTube video player"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                    </div>
                                 </div>
                                 <!-- end row -->
                                 {{-- <div class="w-100 animated-underline-content mt-2 details-tab-area"> --}}

@@ -167,14 +167,19 @@
                                                                                 </option>
                                                                             </select>
                                                                         </div>
+                                                                        <div class="col-lg-6 mt-2">
+                                                                            <label><b>YOUTUBE Link 1:</b></label>
+                                                                            <input type="text" class="form-control" name="product_url1" placeholder="ใส่ URL ของวิดีโอจาก YouTube">
+                                                                        </div>
+                                                                        <div class="col-lg-6 mt-2">
+                                                                            <label><b>YOUTUBE Link 2:</b></label>
+                                                                            <input type="text" class="form-control" name="product_url2" placeholder="ใส่ URL ของวิดีโอจาก YouTube">
+                                                                        </div>
                                                                         <div class="col-lg-12  mt-2">
                                                                             <label><b>รายละเอียดสินค้า:</b></label>
                                                                             <textarea class="form-control" name="product_detail" placeholder="รายละเอียดสินค้า"></textarea>
                                                                         </div>
-                                                                        <div class="col-lg-12 mt-2">
-                                                                            <label><b>YOUTUBE Link:</b></label>
-                                                                            <input type="text" class="form-control" name="product_url" placeholder="ใส่ URL ของวิดีโอจาก YouTube">
-                                                                        </div>
+                                                                      
                                                                         
                                                                     </div>
                                                                 </div>
@@ -385,13 +390,17 @@
                                                                                 </option>
                                                                             </select>
                                                                         </div>
+                                                                        <div class="col-lg-6 mt-2">
+                                                                            <label><b>YOUTUBE Link 1:</b></label>
+                                                                            <input type="text" class="form-control" name="product_url1" id="product_url1" placeholder="ใส่ URL ของวิดีโอจาก YouTube">
+                                                                        </div>
+                                                                        <div class="col-lg-6 mt-2">
+                                                                            <label><b>YOUTUBE Link 2:</b></label>
+                                                                            <input type="text" class="form-control" name="product_url2" id="product_url2" placeholder="ใส่ URL ของวิดีโอจาก YouTube">
+                                                                        </div>
                                                                         <div class="col-lg-12  mt-2">
                                                                             <label><b>รายละเอียดสินค้า:</b></label>
                                                                             <textarea class="form-control" id="product_detail" name="product_detail" placeholder="รายละเอียดสินค้า"></textarea>
-                                                                        </div>
-                                                                        <div class="col-lg-12 mt-2">
-                                                                            <label><b>YOUTUBE Link:</b></label>
-                                                                            <input type="text" class="form-control" name="product_url" placeholder="ใส่ URL ของวิดีโอจาก YouTube">
                                                                         </div>
                                                                     </div>
                                                                 </div>
