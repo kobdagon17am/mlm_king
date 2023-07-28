@@ -87,13 +87,22 @@
                                                 class="text-primary mb-3 d-block">
                                                 <i class="las la-arrow-left"></i> รายการสินค้า
                                             </a>
-                                            <h2 class="mb-3 text-black strong">{{$data['product_data']->product_name}}</h2>
+                                            <h2 class="mb-3 text-black strong">{{ $data['product_data']->product_name }}
+                                            </h2>
                                             <h3 class="mb-3">
-                                                <b>฿ {{$data['product_data']->product_price_member}}</b>
-                                                <span class="text-success ml-2">({{$data['product_data']->product_pv}}PV)</span>
+                                                <b>฿ {{ $data['product_data']->product_price_member }}</b>
+                                                <span
+                                                    class="text-success ml-2">({{ $data['product_data']->product_pv }}PV)</span>
                                             </h3>
                                             <h6>
-                                                <p class="text-muted mb-4"><b>รายละเอียดสินค้า:</b> {{$data['product_data']->product_detail}}</p>
+                                                <p class="text-muted mb-4"><b>รายละเอียดสินค้า:</b>
+                                                    {{ $data['product_data']->product_detail }}</p>
+                                            </h6>
+                                            <h6>
+                                                <p class="text-muted mb-4"><b>วิดีโอสินค้า:</b>
+                                                    <a href="{{ $data['product_data']->product_url }}"
+                                                        target="_blank">{{ $data['product_data']->product_url }}</a>
+                                                </p>
                                             </h6>
                                             {{-- <div class="row mb-3">
                                                 <div class="col-md-6">
@@ -212,5 +221,4 @@
         </div>
     </div>
     <!--  Content Area Ends  -->
-
 @endsection

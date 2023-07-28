@@ -58,8 +58,7 @@ class ProductsController extends Controller
       'product_category_id_fk' => $get_categories->id,
       'product_category_en_name' => $get_categories->category_en_name,
 
-      'product_detail' => $rs->product_detail,
-      'product_amount' => $rs->product_amount,
+      'product_vat' => $rs->product_vat,
 
       'product_unit_name' => $get_unit->product_unit_th,
       'product_unit_id_fk' => $get_unit->id,
@@ -67,11 +66,14 @@ class ProductsController extends Controller
 
 
       'product_cost' => $rs->product_cost,
+      'product_price_retail' => $rs->product_price_retail,
       'product_price_member' => $rs->product_price_member,
       'product_discount_percent' => $rs->product_discount_percent,
       'product_discount' => $rs->product_discount_percent,
       'product_pv' => $rs->product_pv,
       'status' => $rs->product_status,
+      'product_detail' => $rs->product_detail,
+      'product_url' => $rs->product_url,
     ];
 
     try {
@@ -189,20 +191,21 @@ class ProductsController extends Controller
       'product_category_id_fk' => $get_categories->id,
       'product_category_en_name' => $get_categories->category_en_name,
 
-      'product_detail' => $rs->product_detail,
-      'product_amount' => $rs->product_amount,
+      'product_vat' => $rs->product_vat,
 
       'product_unit_name' => $get_unit->product_unit_th,
       'product_unit_id_fk' => $get_unit->id,
       'product_unit_en_name' => $get_unit->product_unit_en,
 
       'product_cost' => $rs->product_cost,
+      'product_price_retail' => $rs->product_price_retail,
       'product_price_member' => $rs->product_price_member,
       'product_discount_percent' => $rs->product_discount_percent,
       'product_discount' => $rs->product_discount_percent,
       'product_pv' => $rs->product_pv,
       'status' => $rs->product_status,
-
+      'product_detail' => $rs->product_detail,
+      'product_url' => $rs->product_url,
     ];
 
 
