@@ -73,7 +73,6 @@ class ProductsController extends Controller
       'product_pv' => $rs->product_pv,
       'status' => $rs->product_status,
       'product_detail' => $rs->product_detail,
-      'product_url' => $rs->product_url,
       'product_url1' => $rs->product_url1,
       'product_url2' => $rs->product_url2,
     ];

@@ -589,6 +589,8 @@
                     $("#product_pv").val(data['data']['product_pv']);
                     $("#product_status").val(data['data']['status']);
                     $("#product_detail").val(data['data']['product_detail']);
+                    $("#product_url1").val(data['data']['product_url1']);
+                    $("#product_url2").val(data['data']['product_url2']);
 
                     $.each(data['img'], function(index, value) {
                         if (value['product_image_orderby'] == 1) {

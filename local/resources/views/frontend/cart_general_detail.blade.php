@@ -122,7 +122,7 @@
                                                 </div>
                                             </div> --}}
                                             <div class="row">
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                                                     <label class="my-1 mr-2" for="quantityinput">จำนวนสินค้า</label>
                                                     <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput">
                                                         <option value="1">1</option>
@@ -134,7 +134,7 @@
                                                         <option value="7">7</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center " id=""
+                                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 text-center " id=""
                                                     style="margin-top:30px">
                                                     <a href="{{ route('Cart') }}"><button type="button"
                                                             class="btn btn-success btn-rounded btn-block">

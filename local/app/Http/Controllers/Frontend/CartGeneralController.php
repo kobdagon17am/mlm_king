@@ -42,6 +42,7 @@ class CartGeneralController extends Controller
       //->where('products.product_category_name', '=', 'คลังเกษตร')
       ->where('product_images.product_image_orderby', '=', '1')
       ->where('products.product_category_id_fk', '=',$c_id)
+      ->where('products.status', '=', '1')
       ->get();
 
       return $get_product;
