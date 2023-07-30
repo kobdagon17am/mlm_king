@@ -123,14 +123,14 @@
                                                                             </option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                    {{-- <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>เลขที่เอกสาร:</b></label>
                                                                         <span
                                                                             class="form-label text-danger doc_no_err _err"></span>
                                                                         <input type="text" name="doc_no"
                                                                             class="form-control"
                                                                             placeholder="เลขที่เอกสาร">
-                                                                    </div>
+                                                                    </div> --}}
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>วันที่รับเข้าสินค้า:</b></label>
                                                                         <span
@@ -151,6 +151,15 @@
                                                                             <input type="file" name="doc_name"
                                                                                 class="dropify">
                                                                         </div>
+                                                                        {{-- <div id="dropzone">
+                                                                            <form action="/upload" class="dropzone needsclick dz-clickable" id="demo-upload">
+                                                                                <div class="dz-message needsclick">
+                                                                                <button type="button" class="dz-button" name="doc_name">Drop files here or click to upload.</button>
+                                                                                <br>
+                                                                                <span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div> --}}
                                                                     </div>
                                                                     <div class="col-lg-12 text-left">
                                                                         <label><b>หมายเหตุ:</b></label>
@@ -252,13 +261,13 @@
                                                                             placeholder="หน่วยสินค้า" disabled>
 
                                                                     </div>
-                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                    {{-- <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>เลขที่เอกสาร:</b></label>
                                                                         <input type="text" class="form-control"
                                                                             id="doc_no" name="doc_no"
                                                                             placeholder="เลขที่เอกสาร" disabled>
 
-                                                                    </div>
+                                                                    </div> --}}
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>วันที่รับเข้าสินค้า:</b></label>
                                                                         <input type="date" class="form-control"
@@ -317,6 +326,9 @@
 
         </div>
         <br>
+        
+
+        <h6>รายการรับเข้าสินค้าที่รออนุมัติและยกเลิก</h6>
         <div class="table-responsive mb-4">
             <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
@@ -341,43 +353,106 @@
                 <tbody>
                     <?php $i = 1; ?>
                     @foreach ($get_stock_in as $value)
-                        <tr>
-                            <td>{{ $i++ }}</td>
-                            <td>{{ $value->branch_name }}</td>
-                            <td>{{ $value->warehouse_name }}</td>
-                            <td>{{ $value->product_name }}</td>
-                            <td>{{ $value->amt }}</td>
-                            <td>{{ $value->product_unit_name }}</td>
-                            <td>{{ $value->lot_number }}</td>
-                            <td>{{ $value->date_in_stock }}</td>
-                            <td>{{ $value->lot_expired_date }}</td>
-                            <td>{{ $value->create_name }}</td>
-                            <td>{{ $value->approve_name }}</td>
-                            <td>{{ $value->approve_date }}</td>
-                            <td>
-                                @if ($value->stock_status == 'pending')
-                                    <span class="badge badge-pill badge-info light">รอดำเนินการ</span>
-                                @endif
-                                @if ($value->stock_status == 'confirm')
-                                    <span class="badge badge-pill badge-success light">สำเร็จ</span>
-                                @endif
-                                @if ($value->stock_status == 'cancel')
-                                    <span class="badge badge-pill badge-danger light">ยกเลิก</span>
-                                @endif
-                            </td>
-                            <td>{{ $value->stock_remark }}</td>
-                            <td>
-                                <a href="#!" onclick="edit({{ $value->id }})" class="p-2">
-                                    <i class="lab la-whmcs font-25 text-warning"></i></a>
-                            </td>
-                        </tr>
+                        @if ($value->stock_status != 'confirm')
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $value->branch_name }}</td>
+                                <td>{{ $value->warehouse_name }}</td>
+                                <td>{{ $value->product_name }}</td>
+                                <td>{{ $value->amt }}</td>
+                                <td>{{ $value->product_unit_name }}</td>
+                                <td>{{ $value->lot_number }}</td>
+                                <td>{{ $value->date_in_stock }}</td>
+                                <td>{{ $value->lot_expired_date }}</td>
+                                <td>{{ $value->create_name }}</td>
+                                <td>{{ $value->approve_name }}</td>
+                                <td>{{ $value->approve_date }}</td>
+                                <td>
+                                    @if ($value->stock_status == 'pending')
+                                        <span class="badge badge-pill badge-info light">รอดำเนินการ</span>
+                                    @endif
+                                    @if ($value->stock_status == 'confirm')
+                                        <span class="badge badge-pill badge-success light">สำเร็จ</span>
+                                    @endif
+                                    @if ($value->stock_status == 'cancel')
+                                        <span class="badge badge-pill badge-danger light">ยกเลิก</span>
+                                    @endif
+                                </td>
+                                <td>{{ $value->stock_remark }}</td>
+                                <td>
+                                    <a href="#!" onclick="edit({{ $value->id }})" class="p-2">
+                                        <i class="lab la-whmcs font-25 text-warning"></i></a>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
 
                 </tbody>
             </table>
         </div>
 
+        <h6>รายการรับเข้าสินค้าที่อนุมัติแล้ว</h6>
+        <div class="table-responsive mb-4">
+            <table id="ordertable" class="table table-hover table-sm" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ลำดับ</th>
+                        <th>สาขา</th>
+                        <th>คลัง</th>
+                        <th>สินค้า</th>
+                        <th>จำนวน</th>
+                        <th>หน่วย</th>
+                        <th>หมายเลขล๊อต</th>
+                        <th>วันที่รับเข้า</th>
+                        <th>วันที่หมดอายุ</th>
+                        <th>ผู้ทำรายการ</th>
+                        <th>ผู้อนุมัติ</th>
+                        <th>วันที่อนุมัติ</th>
+                        <th>สถานะ</th>
+                        <th>หมายเหตุ</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i = 1; ?>
+                    @foreach ($get_stock_in as $value)
+                        @if ($value->stock_status == 'confirm')
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $value->branch_name }}</td>
+                                <td>{{ $value->warehouse_name }}</td>
+                                <td>{{ $value->product_name }}</td>
+                                <td>{{ $value->amt }}</td>
+                                <td>{{ $value->product_unit_name }}</td>
+                                <td>{{ $value->lot_number }}</td>
+                                <td>{{ $value->date_in_stock }}</td>
+                                <td>{{ $value->lot_expired_date }}</td>
+                                <td>{{ $value->create_name }}</td>
+                                <td>{{ $value->approve_name }}</td>
+                                <td>{{ $value->approve_date }}</td>
+                                <td>
+                                    @if ($value->stock_status == 'pending')
+                                        <span class="badge badge-pill badge-info light">รอดำเนินการ</span>
+                                    @endif
+                                    @if ($value->stock_status == 'confirm')
+                                        <span class="badge badge-pill badge-success light">สำเร็จ</span>
+                                    @endif
+                                    @if ($value->stock_status == 'cancel')
+                                        <span class="badge badge-pill badge-danger light">ยกเลิก</span>
+                                    @endif
+                                </td>
+                                <td>{{ $value->stock_remark }}</td>
+                                <td>
+                                    <a href="#!" onclick="edit({{ $value->id }})" class="p-2">
+                                        <i class="lab la-whmcs font-25 text-warning"></i></a>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
 
+                </tbody>
+            </table>
+        </div>
 
 
     </div>
@@ -455,7 +530,7 @@
                     $("#lot_number").val(data['data']['lot_number']);
                     $("#product_amount").val(data['data']['amt']);
                     $("#product_unit_id_fk").val(data['data']['product_unit_name']);
-                    $("#doc_no").val(data['data']['doc_no']);
+                    // $("#doc_no").val(data['data']['doc_no']);
                     $("#date_stock_in").val(data['data']['date_in_stock']);
                     $("#expire_stock_in").val(data['data']['lot_expired_date']);
                     $("#stock_remark").val(data['data']['stock_remark']);
