@@ -160,10 +160,11 @@ class StockController extends Controller
         ->where('id', '=', $rs->id)
         ->first();
 
+      //amt balance
       $query = DB::table('db_stock_movement')
         ->where('branch_id_fk', $get_stock_data->branch_id_fk)
-        ->where('product_id_fk', $get_stock_data->product_id_fk)
         ->where('warehouse_id_fk', $get_stock_data->warehouse_id_fk)
+        ->where('product_id_fk', $get_stock_data->product_id_fk)
         ->orderByDesc('id')
         ->first();
 
@@ -172,7 +173,24 @@ class StockController extends Controller
         $amt_balance = $get_stock_data->amt;
       } else {
         // กรณี $query ไม่เป็น null
-        $amt_balance = $query->amt + $get_stock_data->amt;
+        $amt_balance = $query->amt_balance + $get_stock_data->amt;
+      }
+
+      //lot_balance
+      $query1 = DB::table('db_stock_movement')
+        ->where('branch_id_fk', $get_stock_data->branch_id_fk)
+        ->where('product_id_fk', $get_stock_data->product_id_fk)
+        ->where('warehouse_id_fk', $get_stock_data->warehouse_id_fk)
+        ->where('lot_number', $get_stock_data->lot_number)
+        ->orderByDesc('id')
+        ->first();
+
+      if ($query1 === null) {
+        // กรณี $query เป็น null
+        $lot_balance = $get_stock_data->amt;
+      } else {
+        // กรณี $query ไม่เป็น null
+        $lot_balance = $query1->amt + $get_stock_data->amt;
       }
 
       $updateMovement = [
@@ -181,6 +199,7 @@ class StockController extends Controller
         'warehouse_id_fk' => $get_stock_data->warehouse_id_fk,
         'product_id_fk' => $get_stock_data->product_id_fk,
         'lot_number' => $get_stock_data->lot_number,
+        'lot_balance' => $lot_balance,
         'amt_balance' => $amt_balance,
         'amt' => $get_stock_data->amt,
         'in_out' => 1,
@@ -196,12 +215,19 @@ class StockController extends Controller
       DB::table('db_stock_movement')
         ->insert($updateMovement);
 
+      // update lot balance in db_stock_lot
+      DB::table('db_stock_lot')
+        ->where('branch_id_fk', $get_stock_data->branch_id_fk)
+        ->where('product_id_fk', $get_stock_data->product_id_fk)
+        ->where('warehouse_id_fk', $get_stock_data->warehouse_id_fk)
+        ->where('lot_number', $get_stock_data->lot_number)
+        ->update(['lot_balance' => $lot_balance]);
+
 
       // update stock balance
       $get_stock_lot_data = DB::table('db_stock_lot')
-      ->where('id', '=', $rs->id)
+        ->where('id', '=', $rs->id)
         ->first();
-
 
       $get_stock_balance = DB::table('db_stocks')
         ->where('branch_id_fk', $get_stock_lot_data->branch_id_fk)
@@ -210,7 +236,7 @@ class StockController extends Controller
         ->where('product_unit_id_fk', $get_stock_lot_data->product_unit_id_fk)
         // ->orderByDesc('id')
         ->first();
-        
+
 
       if ($get_stock_balance === null) {
         // กรณี $get_stock_balance เป็น null
@@ -225,12 +251,11 @@ class StockController extends Controller
           'stock_balance' => $get_stock_balance,
         ];
         DB::table('db_stocks')
-        ->insert($updateStock);
-
+          ->insert($updateStock);
       } else {
         // กรณี $get_stock_balance ไม่เป็น null
         $get_stock_balance = $get_stock_balance->stock_balance + $get_stock_lot_data->amt;
-      
+
         $updateStock = [
           // 'stock_id_fk' => $get_stock_lot_data->id,
           'branch_id_fk' => $get_stock_lot_data->branch_id_fk,
@@ -241,12 +266,12 @@ class StockController extends Controller
         ];
 
         DB::table('db_stocks')
-        ->update($updateStock);
+          ->update($updateStock);
       }
 
-      
 
-      
+
+
 
 
 

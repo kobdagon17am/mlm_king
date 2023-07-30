@@ -15,88 +15,64 @@ class StockOutController extends Controller
   }
 
 
-  public function index(Request $request)
+  public function index()
   {
     // dd(Auth::guard('admin')->user()->id);
-    $get_stock_in = DB::table('db_stocks')
+    $get_stock = DB::table('db_stocks')
       ->select('db_stocks.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
       ->leftJoin('products', 'products.id', '=', 'db_stocks.product_id_fk')
       ->leftJoin('db_warehouse', 'db_warehouse.id', '=', 'db_stocks.warehouse_id_fk')
       ->get();
 
-    //  dd($get_stock_in->all());
+
+
+    // dd($get_stock);
+
+    // $get_branch = DB::table('branch')
+    //   ->where('status', 1)
+    //   ->get();
+
+
+    // dd($get_stock_lot);
+
+    return view('backend/stock_out', compact('get_stock'));
+  }
+
+  public function view_modal($id)
+  {
 
     $get_branch = DB::table('branch')
       ->where('status', 1)
       ->get();
 
-    return view('backend/stock_out', compact('get_stock_in', 'get_branch'));
-  }
-
-
-  public function get_data_warehouse_select(Request $request)
-  {
-
     $get_warehouse = DB::table('db_warehouse')
-      ->where('branch_id_fk', $request->id)
       ->where('status', 1)
       ->get();
 
-    return response()->json($get_warehouse);
-  }
-
-  public function get_data_warehouse_out_select(Request $request)
-  {
-
-    $get_warehouse_out = DB::table('db_warehouse')
-      ->where('branch_id_fk', $request->id)
+    $get_product = DB::table('products')
       ->where('status', 1)
       ->get();
 
-    return response()->json($get_warehouse_out);
-  }
+    $get_stock = DB::table('db_stocks')
+      ->select('db_stocks.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
+      ->leftJoin('products', 'products.id', '=', 'db_stocks.product_id_fk')
+      ->leftJoin('db_warehouse', 'db_warehouse.id', '=', 'db_stocks.warehouse_id_fk')
+      ->where('db_stocks.id', $id)
+      ->first();
 
 
-  public function get_data_product_select(Request $request)
-  {
-    // dd($request->all());
-    $get_product_data = DB::table('db_stocks')
-      ->select('products.id', 'products.product_name')
-      ->join('products', 'products.id', 'db_stocks.product_id_fk')
-      ->where('warehouse_id_fk', $request->id)
+
+    $get_stock_lot = DB::table('db_stock_lot')
+      ->where('branch_id_fk', $get_stock->branch_id_fk)
+      ->where('warehouse_id_fk', $get_stock->warehouse_id_fk)
+      ->where('product_id_fk', $get_stock->product_id_fk)
       ->get();
 
-    return response()->json($get_product_data);
+
+
+
+    return view('backend/stock_out_detail', compact('get_branch', 'get_warehouse', 'get_product', 'get_stock', 'get_stock_lot'));
   }
-
-  public function get_data_product_unit_select(Request $request)
-  {
-
-    // dd($request->all());
-    $get_product_unit = DB::table('db_stocks')
-      ->select('dataset_product_unit.id', 'dataset_product_unit.product_unit_th')
-      ->join('dataset_product_unit', 'dataset_product_unit.id', 'db_stocks.product_unit_id_fk')
-      ->where('product_id_fk', $request->id)
-      ->get();
-
-    return response()->json($get_product_unit);
-  }
-
-  public function get_lot_number(Request $request)
-  {
-    
-    
-    $get_lot_number = DB::table('db_stocks')
-      ->select('lot_number')
-      ->where('product_id_fk', $request->id)
-      ->get();
-
-      // dd($get_lot_number);
-
-    return response()->json($get_lot_number);
-  }
-
-
 
   public function insert_stock_out(Request $rs)
   {
@@ -140,7 +116,7 @@ class StockOutController extends Controller
 
       try {
         DB::beginTransaction();
-        $get_stock_out = DB::table('db_stocks')
+        $get_stock_out = DB::table('db_stock_lot')
           ->insertGetId($dataPrepare);
 
 
@@ -175,102 +151,4 @@ class StockOutController extends Controller
       }
     }
   }
-
-  // public function update_stock_out(Request $rs)
-  // {
-  //   // dd($rs->all());
-
-  //   if ($rs->stock_status == "confirm") {
-  //     // อัปเดตเมื่อ stock_status เป็น "confirm"
-  //     $updateData = [
-  //       'stock_status' => 'confirm',
-  //       'approve_id_fk' => Auth::guard('admin')->user()->id,
-  //       'approve_name' => Auth::guard('admin')->user()->first_name,
-  //       'approve_date' => now(),
-  //     ];
-
-  //     DB::table('db_stocks')
-  //       ->where('id', $rs->id)
-  //       ->update($updateData);
-
-
-
-  //     // Retrieve updated data from db_stocks table
-  //     $get_stock_data = DB::table('db_stocks')
-  //       ->where('id', '=', $rs->id)
-  //       ->first();
-
-  //     $query = DB::table('db_stock_movement')
-  //       ->where('branch_id_fk', $get_stock_data->branch_id_fk)
-  //       ->where('product_id_fk', $get_stock_data->product_id_fk)
-  //       ->where('warehouse_id_fk', $get_stock_data->warehouse_id_fk)
-  //       ->orderByDesc('id')
-  //       ->first();
-
-  //     if ($query === null) {
-  //       // กรณี $query เป็น null
-  //       $amt_balance = $get_stock_data->amt;
-  //     } else {
-  //       // กรณี $query ไม่เป็น null
-  //       $amt_balance = $query->amt + $get_stock_data->amt;
-  //     }
-
-  //     $updateMovement = [
-  //       'stock_id_fk' => $get_stock_data->id,
-  //       'branch_id_fk' => $get_stock_data->branch_id_fk,
-  //       'warehouse_id_fk' => $get_stock_data->warehouse_id_fk,
-  //       'product_id_fk' => $get_stock_data->product_id_fk,
-  //       'lot_number' => $get_stock_data->lot_number,
-  //       'amt_balance' => $amt_balance,
-  //       'amt' => $get_stock_data->amt,
-  //       'in_out' => 1,
-  //       'product_unit_id_fk' => $get_stock_data->product_unit_id_fk,
-  //       'stock_status' => $get_stock_data->stock_status,
-  //       'create_id_fk' => Auth::guard('admin')->user()->id,
-  //       'create_name' => Auth::guard('admin')->user()->first_name,
-  //       'approve_id_fk' => Auth::guard('admin')->user()->id,
-  //       'approve_name' => Auth::guard('admin')->user()->first_name,
-  //       'approve_date' => $get_stock_data->approve_date,
-  //     ];
-
-  //     DB::table('db_stock_movement')
-  //       ->insert($updateMovement);
-
-
-
-  //     return redirect('admin/Stock_in')->withSuccess('รับเข้าสินค้าสำเร็จ');
-  //   } elseif ($rs->stock_status == "cancel") {
-  //     // อัปเดตเมื่อ stock_status เป็น "cancel"
-  //     $updateData = [
-  //       'stock_status' => 'cancel'
-  //     ];
-
-  //     DB::table('db_stocks')
-  //       ->where('id', $rs->id) // แนะนำให้ใช้ id หรือ primary key เพื่ออัปเดตแถวที่ต้องการ
-  //       ->update($updateData);
-  //     return redirect('admin/Stock_in')->withError('ยกเลิกการรับเข้าสินค้า');
-  //   }
-  // }
-
-  // public function view_stock_out(Request $rs)
-  // {
-  //   // dd($rs->all());
-
-  //   $get_stock_in = DB::table('db_stocks')
-  //     ->select('db_stocks.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name', 'db_stock_doc.url', 'db_stock_doc.doc_name')
-  //     ->leftJoin('products', 'products.id', '=', 'db_stocks.product_id_fk')
-  //     ->leftJoin('db_warehouse', 'db_warehouse.branch_id_fk', '=', 'db_stocks.branch_id_fk')
-  //     ->leftJoin('db_stock_doc', 'db_stock_doc.stock_id_fk', '=', 'db_stocks.id')
-  //     ->where('db_stocks.id', '=', $rs->id)
-  //     ->first();
-
-  //   // dd($get_stock_in);
-
-  //   $data = ['status' => 'success', 'data' => $get_stock_in];
-
-  //   return $data;
-
-  //   // dd($data);
-  // }
-
 }
