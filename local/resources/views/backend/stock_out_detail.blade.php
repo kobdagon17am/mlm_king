@@ -16,8 +16,7 @@
     <nav class="breadcrumb-one" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">ระบบคลัง</li>
-            <li class="breadcrumb-item" aria-current="page"><a
-                href="{{ route('admin/Stock_out')}}">สินค้าในคลัง</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin/Stock_out') }}">สินค้าในคลัง</a></li>
             <li class="breadcrumb-item active" aria-current="page"><span>จ่ายออกสินค้า</span></li>
         </ol>
     </nav>
@@ -29,28 +28,30 @@
                 <div class="form-card">
                     <div class="w-100">
                         <div class="form-group row">
+
                             <div class="col-lg-4  mt-2 text-left">
                                 <label><b>สาขาต้นทาง:</b></label>
                                 <span class="form-label text-danger branch_id_fk_err _err"></span>
-                                <input type="text" name="branch_id_fk" class="form-control" value="{{ $get_stock->branch_name }}" disabled>
+                                <input type="text" name="branch_id_fk" class="form-control"
+                                    value="{{ $get_stock->branch_name }}" disabled>
                             </div>
                             <div class="col-lg-4  mt-2 text-left">
                                 <label><b>คลังสินค้าต้นทาง:</b></label>
                                 <span class="form-label text-danger warehouse_id_fk_err _err"></span>
-                                <input type="text" name="warehouse_id_fk" class="form-control" value="{{ $get_stock->warehouse_name }}" disabled>
+                                <input type="text" name="warehouse_id_fk" class="form-control"
+                                    value="{{ $get_stock->warehouse_name }}" disabled>
                             </div>
                             <div class="col-lg-4  mt-2 text-left">
                                 <label><b>สินค้าต้นทาง:</b></label>
                                 <span class="form-label text-danger product_id_fk_err _err"></span>
-                                <input type="text" name="product_id_fk" class="form-control" value="{{ $get_stock->product_name }}" disabled>
+                                <input type="text" name="product_id_fk" class="form-control"
+                                    value="{{ $get_stock->product_name }}" disabled>
                             </div>
                             <div class="col-lg-4  mt-2 text-left">
                                 <label><b>สาขาปลายทาง:</b></label>
-                                <span
-                                    class="form-label text-danger branch_id_fk_err _err"></span>
-                                <select class="form-control branch_select"
-                                    name="branch_id_fk">
-                                    <option selected disabled> เลือกสาขา
+                                <span class="form-label text-danger branch_id_fk_err _err"></span>
+                                <select class="form-control branch_select" name="branch_id_fk">
+                                    <option selected disabled> เลือกสาขาปลายทาง
                                     </option>
                                     @foreach ($get_branch as $val)
                                         <option value="{{ $val->id }}">
@@ -62,39 +63,43 @@
                             </div>
                             <div class="col-lg-4  mt-2 text-left">
                                 <label><b>คลังสินค้าปลายทาง:</b></label>
-                                <span
-                                    class="form-label text-danger branch_id_fk_err _err"></span>
-                                <select class="form-control branch_select"
-                                    name="branch_id_fk">
-                                    <option selected disabled> เลือกสาขา
+                                <span class="form-label text-danger warehouse_id_fk_err _err"></span>
+                                <select class="form-control warehouse_select" name="warehouse_id_fk">
+                                    <option selected disabled> เลือกคลังปลายทาง
                                     </option>
                                     @foreach ($get_warehouse as $val)
                                         <option value="{{ $val->id }}">
-                                            {{ $val->branch_name }}
-                                            ({{ $val->branch_code }})
+                                            {{ $val->warehouse_name }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="col-lg-4  mt-2 text-left">
-                                <input type="hidden" name="stock_type" value="in">
+                                <label><b>หมายเหตุ:</b></label>
+                                <textarea class="form-control" name="stock_remark" placeholder="รายละเอียดการจ่ายออกสินค้า"></textarea>
                             </div>
-                           
+                            <div class="col-lg-4  mt-2 text-left">
+                                <input type="hidden" name="stock_type" value="out">
+                            </div>
+
                         </div>
                     </div>
                 </div>
-               
+
 
             </div>
         </div>
-        <div class="table-responsive mb-4">
+        <div class="table-responsive mb-2">
+            <h6><b>รายการล๊อตสินค้าจากสาขาต้นทาง</b></h6>
             <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
                     <tr>
                         <th>ลำดับ</th>
                         <th>หมายเลขล๊อต</th>
-                        <th>จำนวนคงเหลือ</th>
-                        <th>จ่ายออกสินค้า</th>
+                        <th>วันที่รับเข้า</th>
+                        <th>วันที่หมดอายุ</th>
+                        <th>จำนวนสินค้าคงเหลือ</th>
+                        <th>จำนวนสินค้าจ่ายออก</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -103,18 +108,33 @@
                         <tr>
                             <td>{{ $i++ }}</td>
                             <td>{{ $value->lot_number }}</td>
-                            <td>{{ $value->amt }}</td>
+                            <td>{{ $value->date_in_stock }}</td>
+                            <td>{{ $value->lot_expired_date }}</td>
+                            <td>{{ $value->lot_balance }}</td>
                             <td>
-                                <a href="#!" onclick="add({{ $value->id }})" class="p-2">
-                                    <i class="lab la-whmcs font-25 text-warning"></i></a>
+                                <input type="text" name="amt_out[]" class="amt_out_input form-control"
+                                    style="max-width: 100px; border-radius: 5px;">
                             </td>
+
+
                         </tr>
                     @endforeach
 
+                    <!-- เพิ่มแถวสุดท้ายเพื่อแสดงผลรวมจำนวนสินค้าจำนวนที่จ่ายออก -->
+                    <tr>
+                        <td colspan="4"></td>
+                        <td class="text-left"><b>รวมจำนวนสินค้าจ่ายออกทั้งหมด</b></td>
+                        <td><b><span class="total_amt_out"></span></b></td>
+                    </tr>
                 </tbody>
             </table>
-        </div>
 
+        </div>
+        <div class="info-area col-md-12 text-center mt-2">
+            <button type="submit" class="btn btn-info btn-rounded" name="stock_out_add" value="success">
+                <i class="las la-plus-circle"></i> จ่ายออกสินค้า</button>
+
+        </div>
 
 
     </div>
@@ -178,5 +198,33 @@
                     console.log("error");
                 })
         }
+
+
+        //คำนวนจันสินค้าจ่ายออก
+        $(document).ready(function() {
+            // สร้างตัวแปรสำหรับเก็บรวมจำนวนสินค้าจำนวนที่จ่ายออก
+            let totalAmtOut = 0;
+
+            // คำนวณและแสดงผลรวมจำนวนสินค้าจำนวนที่จ่ายออก
+            function calculateTotalAmtOut() {
+                totalAmtOut = 0;
+                $('.amt_out_input').each(function() {
+                    const val = parseFloat($(this).val());
+                    if (!isNaN(val)) {
+                        totalAmtOut += val;
+                    }
+                });
+                $('.amt_out_total').text(totalAmtOut.toFixed(2));
+                $('.total_amt_out').text(totalAmtOut.toFixed(2));
+            }
+
+            // เมื่อมีการเปลี่ยนแปลงข้อมูลในช่อง input จำนวนสินค้าจำนวนที่จ่ายออก
+            $('.amt_out_input').on('keyup', function() {
+                calculateTotalAmtOut();
+            });
+
+            // เมื่อโหลดหน้าใหม่ให้คำนวณแสดงผลรวมตั้งแต่เริ่มต้น
+            calculateTotalAmtOut();
+        });
     </script>
 @endsection
