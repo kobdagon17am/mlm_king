@@ -124,8 +124,7 @@ Route::get('admin/Blank', function () {
   //   return view('backend.Stock_out');
   // })->name('admin/Stock_out');
   Route::get('admin/Stock_out','Admin\StockOutController@index')->name('admin/Stock_out');
-
   Route::get('admin/Stock_out_detail/{id}','Admin\StockOutController@view_modal')->name('admin/Stock_out_detail');
-
-  Route::post('admin/Stockout_insert','Admin\StockOutController@insert_stock_out')->name('admin/Stockout_insert');
+  Route::get('admin/get_data_warehouse_out_select', 'Admin\StockOutController@get_data_warehouse_out_select')->name('get_data_warehouse_out_select');
+  // Route::post('admin/Stockout_insert','Admin\StockOutController@insert_stock_out')->name('admin/Stockout_insert');
 

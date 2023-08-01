@@ -74,81 +74,92 @@ class StockOutController extends Controller
     return view('backend/stock_out_detail', compact('get_branch', 'get_warehouse', 'get_product', 'get_stock', 'get_stock_lot'));
   }
 
-  public function insert_stock_out(Request $rs)
+  public function get_data_warehouse_out_select(Request $request)
   {
-    // dd($rs->all());
 
-    $get_branch = DB::table('branch')
-      ->where('id', '=', $rs->branch_id_fk)
-      ->first();
+    $get_warehouse_out = DB::table('db_warehouse')
+      ->where('branch_id_fk', $request->id)
+      ->where('status', 1)
+      ->get();
 
-    $get_warehouse = DB::table('db_warehouse')
-      ->where('id', '=', $rs->warehouse_id_fk)
-      ->first();
-
-    $get_product = DB::table('products')
-      ->where('id', '=', $rs->product_id_fk)
-      ->first();
-
-
-    if ($rs->stock_out_add == "success") {
-      // Insert new stock record
-      $dataPrepare = [
-        'branch_id_fk' => $get_branch->id,
-        'branch_out_id_fk' => $rs->branch_out_id_fk,
-        'warehouse_id_fk' => $get_warehouse->id,
-        'warehouse_out_id_fk' => $rs->warehouse_out_id_fk,
-        'product_id_fk' => $get_product->id,
-        'lot_number' => $rs->lot_number,
-        'amt_out' => $rs->product_amount_out,
-        // 'product_unit_id_fk' => $get_product->product_unit_id_fk,
-        'doc_no' => $rs->doc_no,
-        'date_in_stock' => $get_stock_in->date_stock_in,
-        'date_out_stock' => $rs->date_stock_out,
-        'stock_remark' => $rs->stock_remark,
-        // 'lot_expired_date' => $rs->expire_stock_in,
-        'create_id_fk' => Auth::guard('admin')->user()->id,
-        'create_name' => Auth::guard('admin')->user()->first_name,
-        'stock_type' => $rs->stock_type,
-      ];
-
-      dd($dataPrepare);
-
-      try {
-        DB::beginTransaction();
-        $get_stock_out = DB::table('db_stock_lot')
-          ->insertGetId($dataPrepare);
-
-
-
-        $file = $rs->doc_name;
-        if (isset($file)) {
-
-          $url = 'local/public/stock/out/' . date('Ym');
-          $f_name = date('YmdHis') . '.' . $file->getClientOriginalExtension();
-          if ($file->getClientOriginalExtension() == 'pdf') {
-            $type = 'pdf';
-          } else {
-            $type = 'img';
-          }
-
-
-          if ($file->move($url, $f_name)) {
-            DB::table('db_stock_doc')->insert([
-              'stock_id_fk' => $get_stock_out,
-              'url' => $url,
-              'doc_name' => $f_name,
-              'type' => $type,
-            ]);
-          }
-        }
-
-        DB::commit();
-        return redirect('admin/Stock_out')->withSuccess('นำออกสินค้าสำเร็จ');
-      } catch (Exception $e) {
-        DB::rollback();
-        return redirect('admin/Stock_out')->withError('นำออกสินค้าไม่สำเร็จ');
-      }
-    }
+    return response()->json($get_warehouse_out);
   }
+
+  // public function insert_stock_out(Request $rs)
+  // {
+  //   // dd($rs->all());
+
+  //   $get_branch = DB::table('branch')
+  //     ->where('id', '=', $rs->branch_id_fk)
+  //     ->first();
+
+  //   $get_warehouse = DB::table('db_warehouse')
+  //     ->where('id', '=', $rs->warehouse_id_fk)
+  //     ->first();
+
+  //   $get_product = DB::table('products')
+  //     ->where('id', '=', $rs->product_id_fk)
+  //     ->first();
+
+
+  //   if ($rs->stock_out_add == "success") {
+  //     // Insert new stock record
+  //     $dataPrepare = [
+  //       'branch_id_fk' => $get_branch->id,
+  //       'branch_out_id_fk' => $rs->branch_out_id_fk,
+  //       'warehouse_id_fk' => $get_warehouse->id,
+  //       'warehouse_out_id_fk' => $rs->warehouse_out_id_fk,
+  //       'product_id_fk' => $get_product->id,
+  //       'lot_number' => $rs->lot_number,
+  //       'amt_out' => $rs->product_amount_out,
+  //       // 'product_unit_id_fk' => $get_product->product_unit_id_fk,
+  //       'doc_no' => $rs->doc_no,
+  //       'date_in_stock' => $get_stock_in->date_stock_in,
+  //       'date_out_stock' => $rs->date_stock_out,
+  //       'stock_remark' => $rs->stock_remark,
+  //       // 'lot_expired_date' => $rs->expire_stock_in,
+  //       'create_id_fk' => Auth::guard('admin')->user()->id,
+  //       'create_name' => Auth::guard('admin')->user()->first_name,
+  //       'stock_type' => $rs->stock_type,
+  //     ];
+
+  //     dd($dataPrepare);
+
+  //     try {
+  //       DB::beginTransaction();
+  //       $get_stock_out = DB::table('db_stock_lot')
+  //         ->insertGetId($dataPrepare);
+
+
+
+  //       $file = $rs->doc_name;
+  //       if (isset($file)) {
+
+  //         $url = 'local/public/stock/out/' . date('Ym');
+  //         $f_name = date('YmdHis') . '.' . $file->getClientOriginalExtension();
+  //         if ($file->getClientOriginalExtension() == 'pdf') {
+  //           $type = 'pdf';
+  //         } else {
+  //           $type = 'img';
+  //         }
+
+
+  //         if ($file->move($url, $f_name)) {
+  //           DB::table('db_stock_doc')->insert([
+  //             'stock_id_fk' => $get_stock_out,
+  //             'url' => $url,
+  //             'doc_name' => $f_name,
+  //             'type' => $type,
+  //           ]);
+  //         }
+  //       }
+
+  //       DB::commit();
+  //       return redirect('admin/Stock_out')->withSuccess('นำออกสินค้าสำเร็จ');
+  //     } catch (Exception $e) {
+  //       DB::rollback();
+  //       return redirect('admin/Stock_out')->withError('นำออกสินค้าไม่สำเร็จ');
+  //     }
+  //   }
+  // }
 }

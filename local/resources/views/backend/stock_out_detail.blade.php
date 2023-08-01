@@ -49,8 +49,8 @@
                             </div>
                             <div class="col-lg-4  mt-2 text-left">
                                 <label><b>สาขาปลายทาง:</b></label>
-                                <span class="form-label text-danger branch_id_fk_err _err"></span>
-                                <select class="form-control branch_select" name="branch_id_fk">
+                                <span class="form-label text-danger branch_out_id_fk_err _err"></span>
+                                <select class="form-control branch_out_select" name="branch_out_id_fk">
                                     <option selected disabled> เลือกสาขาปลายทาง
                                     </option>
                                     @foreach ($get_branch as $val)
@@ -63,20 +63,15 @@
                             </div>
                             <div class="col-lg-4  mt-2 text-left">
                                 <label><b>คลังสินค้าปลายทาง:</b></label>
-                                <span class="form-label text-danger warehouse_id_fk_err _err"></span>
-                                <select class="form-control warehouse_select" name="warehouse_id_fk">
+                                <span class="form-label text-danger warehouse_out_id_fk_err _err"></span>
+                                <select class="form-control warehouse_out_select" name="warehouse_out_id_fk" disabled>
                                     <option selected disabled> เลือกคลังปลายทาง
-                                    </option>
-                                    @foreach ($get_warehouse as $val)
-                                        <option value="{{ $val->id }}">
-                                            {{ $val->warehouse_name }}
                                         </option>
-                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-lg-4  mt-2 text-left">
                                 <label><b>หมายเหตุ:</b></label>
-                                <textarea class="form-control" name="stock_remark" placeholder="รายละเอียดการจ่ายออกสินค้า"></textarea>
+                                <textarea class="form-control" name="stock_out_remark" placeholder="รายละเอียดการจ่ายออกสินค้า"></textarea>
                             </div>
                             <div class="col-lg-4  mt-2 text-left">
                                 <input type="hidden" name="stock_type" value="out">
@@ -112,11 +107,9 @@
                             <td>{{ $value->lot_expired_date }}</td>
                             <td>{{ $value->lot_balance }}</td>
                             <td>
-                                <input type="text" name="amt_out[]" class="amt_out_input form-control"
-                                    style="max-width: 100px; border-radius: 5px;">
+                                <input type="number" name="amt_out[]" class="amt_out_input form-control"
+                                    style="max-width: 100px; max-height: 40px; border-radius: 5px;" value="0">
                             </td>
-
-
                         </tr>
                     @endforeach
 
@@ -124,7 +117,7 @@
                     <tr>
                         <td colspan="4"></td>
                         <td class="text-left"><b>รวมจำนวนสินค้าจ่ายออกทั้งหมด</b></td>
-                        <td><b><span class="total_amt_out"></span></b></td>
+                        <td><h6><b><span class="total_amt_out"></span></b></h6></td>
                     </tr>
                 </tbody>
             </table>
@@ -199,6 +192,38 @@
                 })
         }
 
+        //เลือกสาขาปลายทางแล้วเปิดคลังปลายทาง
+        $('.branch_out_select').change(function() {
+            $('.warehouse_out_select').prop('disabled', false);
+
+            const id = $(this).val();
+            $.ajax({
+                url: '{{ route('get_data_warehouse_out_select') }}',
+                type: 'GET',
+                dataType: 'json',
+                async: false,
+                data: {
+                    id: id,
+                },
+                success: function(data) {
+                    append_warehouse_out_select(data);
+                },
+            });
+        });
+
+        function append_warehouse_out_select(data) {
+            $('.warehouse_out_select').empty();
+            $('.warehouse_out_select').append(`
+                <option disabled selected value=""> เลือกคลัง </option>
+                `);
+            data.forEach((val, key) => {
+
+                $('.warehouse_out_select').append(`
+                <option value="${val.id}">${val.warehouse_name} (${val.warehouse_code})</option>
+                `);
+            });
+        }
+
 
         //คำนวนจันสินค้าจ่ายออก
         $(document).ready(function() {
@@ -214,8 +239,8 @@
                         totalAmtOut += val;
                     }
                 });
-                $('.amt_out_total').text(totalAmtOut.toFixed(2));
-                $('.total_amt_out').text(totalAmtOut.toFixed(2));
+                $('.amt_out_total').text(totalAmtOut.toFixed(0));
+                $('.total_amt_out').text(totalAmtOut.toFixed(0));
             }
 
             // เมื่อมีการเปลี่ยนแปลงข้อมูลในช่อง input จำนวนสินค้าจำนวนที่จ่ายออก
