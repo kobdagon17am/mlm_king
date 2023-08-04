@@ -202,7 +202,7 @@ class StockController extends Controller
         'lot_balance' => $lot_balance,
         'amt_balance' => $amt_balance,
         'amt' => $get_stock_data->amt,
-        'in_out' => 1,
+        'in_out' => 'in',
         'product_unit_id_fk' => $get_stock_data->product_unit_id_fk,
         'stock_status' => $get_stock_data->stock_status,
         'create_id_fk' => Auth::guard('admin')->user()->id,
@@ -269,12 +269,6 @@ class StockController extends Controller
           ->update($updateStock);
       }
 
-
-
-
-
-
-
       return redirect('admin/Stock_in')->withSuccess('รับเข้าสินค้าสำเร็จ');
     } elseif ($rs->stock_status == "cancel") {
       // อัปเดตเมื่อ stock_status เป็น "cancel"
@@ -288,7 +282,6 @@ class StockController extends Controller
       return redirect('admin/Stock_in')->withError('ยกเลิกการรับเข้าสินค้า');
     }
   }
-
 
   public function view_stock_in(Request $rs)
   {
@@ -310,4 +303,6 @@ class StockController extends Controller
 
     // dd($data);
   }
+
+  
 }

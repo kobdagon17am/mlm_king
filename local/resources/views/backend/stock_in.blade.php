@@ -328,7 +328,7 @@
         <br>
         
 
-        <h6>รายการรับเข้าสินค้าที่รออนุมัติและยกเลิก</h6>
+        <h6>รายการรับเข้าสินค้ารออนุมัติและยกเลิก</h6>
         <div class="table-responsive mb-4">
             <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
@@ -353,7 +353,7 @@
                 <tbody>
                     <?php $i = 1; ?>
                     @foreach ($get_stock_in as $value)
-                        @if ($value->stock_status != 'confirm')
+                    @if (($value->stock_type == 'in' && $value->stock_status != 'confirm') || ($value->stock_type == 'out' && $value->stock_status == 'confirm'))
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $value->branch_name }}</td>
@@ -391,7 +391,7 @@
             </table>
         </div>
 
-        <h6>รายการรับเข้าสินค้าที่อนุมัติแล้ว</h6>
+        <h6>รายการรับเข้าสินค้าอนุมัติแล้ว</h6>
         <div class="table-responsive mb-4">
             <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
