@@ -353,7 +353,7 @@
                 <tbody>
                     <?php $i = 1; ?>
                     @foreach ($get_stock_in as $value)
-                    @if (($value->stock_type == 'in' && $value->stock_status != 'confirm') || ($value->stock_type == 'out' && $value->stock_status == 'confirm'))
+                    @if (($value->stock_type == 'in' && $value->stock_status != 'confirm') || ($value->stock_type == 'in_transfer' && $value->stock_status != 'confirm'))
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $value->branch_name }}</td>
@@ -416,7 +416,7 @@
                 <tbody>
                     <?php $i = 1; ?>
                     @foreach ($get_stock_in as $value)
-                        @if ($value->stock_status == 'confirm')
+                        @if (($value->stock_type == 'in' && $value->stock_status == 'confirm') || ($value->stock_type == 'in_transfer' && $value->stock_status == 'confirm'))
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $value->branch_name }}</td>

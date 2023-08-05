@@ -240,7 +240,7 @@ class StockOutController extends Controller
         $lot_balance = $get_stock_data->amt;
       } else {
         // กรณี $query ไม่เป็น null
-        
+
         $lot_balance = $query1->amt_balance - $get_stock_data->amt;
         // dd($query1->amt, $get_stock_data->amt);
       }
@@ -272,7 +272,7 @@ class StockOutController extends Controller
         ->insert($updateMovement);
 
       // update lot balance in db_stock_lot
-      $xxx=DB::table('db_stock_lot')
+      $xxx = DB::table('db_stock_lot')
         ->where('branch_id_fk', $get_stock_data->branch_id_fk)
         ->where('warehouse_id_fk', $get_stock_data->warehouse_id_fk)
         ->where('product_id_fk', $get_stock_data->product_id_fk)
@@ -280,7 +280,7 @@ class StockOutController extends Controller
 
         // dd($lot_balance);
         ->update(['lot_balance' => $lot_balance]);
-        
+
 
       // update stock balance
       $get_stock_lot_data = DB::table('db_stock_lot')
@@ -295,7 +295,6 @@ class StockOutController extends Controller
         ->where('product_unit_id_fk', $get_stock_lot_data->product_unit_id_fk)
         ->orderByDesc('id')
         ->first();
-
 
       if ($get_stock_balance === null) {
         // กรณี $get_stock_balance เป็น null
@@ -328,6 +327,24 @@ class StockOutController extends Controller
           ->update($updateStock);
       }
 
+      //add row stock in db_stock lot
+      $dataNewRow_in = [
+        'branch_id_fk' => $get_stock_data->branch_out_id_fk,
+        'warehouse_id_fk' => $get_stock_data->warehouse_out_id_fk,
+        'product_id_fk' => $get_stock_data->product_id_fk,
+        'lot_number' => $get_stock_data->lot_number,
+        'amt' => $get_stock_data->amt,
+        'product_unit_id_fk' => $get_stock_data->product_unit_id_fk,
+        'date_in_stock' => $get_stock_data->date_in_stock,
+        'stock_remark' => $get_stock_data->stock_remark,
+        'lot_expired_date' => $get_stock_data->	lot_expired_date,
+        'create_id_fk' => Auth::guard('admin')->user()->id,
+        'create_name' => Auth::guard('admin')->user()->first_name,
+        'stock_type' => 'in_transfer',
+      ];
+
+      DB::table('db_stock_lot')
+        ->insert($dataNewRow_in);
 
       return redirect('admin/Stock_out')->withSuccess('จ่ายออกสินค้าสำเร็จ');
     } elseif ($rs->stock_status == "cancel") {
