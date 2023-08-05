@@ -16,8 +16,8 @@
     <nav class="breadcrumb-one" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">ระบบคลัง</li>
-            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin/Stock_out') }}">สินค้าในคลัง</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><span>จ่ายออกสินค้า</span></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin/Stock_out') }}">คลังสินค้า</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><span>โอนย้ายสินค้า</span></li>
         </ol>
     </nav>
 @endsection
@@ -30,6 +30,7 @@
                     <div class="form-card">
                         <div class="w-100">
                             <div class="form-group row">
+                                <input type="hidden" name="transaction_stock" value="{{ $code }}">
                                 <div class="col-lg-4  mt-2 text-left">
                                     <label><b>สาขาต้นทาง:</b></label>
                                     <span class="form-label text-danger branch_id_fk_err _err"></span>
@@ -51,8 +52,7 @@
                                         value="{{ $get_stock->product_name }}" disabled>
                                     <input type="hidden" name="product_id_fk" value="{{ $get_stock->product_id_fk }}">
                                 </div>
-                                <input type="hidden" name="transaction_stock" id="transaction_stock" value="1111">
-                                <div class="col-lg-4  mt-2 text-left">
+                                                                <div class="col-lg-4  mt-2 text-left">
                                     <label><b>สาขาปลายทาง:</b></label>
                                     <span class="form-label text-danger branch_out_id_fk_err _err"></span>
                                     <select class="form-control branch_out_select" name="branch_out_id_fk">
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="col-lg-4  mt-2 text-left">
                                     <label><b>หมายเหตุ:</b></label>
-                                    <textarea class="form-control" name="stock_out_remark" placeholder="รายละเอียดการจ่ายออกสินค้า"></textarea>
+                                    <textarea class="form-control" name="stock_out_remark" placeholder="รายละเอียดการโอนย้ายสินค้า"></textarea>
                                 </div>
                                 <div class="col-lg-4  mt-2 text-left">
                                     <input type="hidden" name="stock_type" value="transfer">
@@ -95,7 +95,7 @@
                                     <th>วันที่รับเข้า</th>
                                     <th>วันที่หมดอายุ</th>
                                     <th>จำนวนสินค้าคงเหลือ</th>
-                                    <th>จำนวนสินค้าจ่ายออก</th>
+                                    <th>จำนวนสินค้าโอนย้าย</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -119,10 +119,10 @@
                                     </tr>
                                 @endforeach
 
-                                <!-- เพิ่มแถวสุดท้ายเพื่อแสดงผลรวมจำนวนสินค้าจำนวนที่จ่ายออก -->
+                                <!-- เพิ่มแถวสุดท้ายเพื่อแสดงผลรวมจำนวนสินค้าจำนวนที่โอนย้ายสินค้า -->
                                 <tr>
                                     <td colspan="4"></td>
-                                    <td class="text-left"><b>รวมจำนวนสินค้าจ่ายออกทั้งหมด</b></td>
+                                    <td class="text-left"><b>รวมจำนวนสินค้าโอนย้ายทั้งหมด</b></td>
                                     <td>
                                         <h6><b><span class="total_amt_out"></span></b></h6>
                                     </td>
@@ -132,7 +132,7 @@
                     </div>
                     <div class="info-area col-md-12 text-center mt-2 mb-4">
                         <button type="submit" class="btn btn-info btn-rounded" name="stock_out_add" value="success">
-                            <i class="las la-plus-circle"></i> จ่ายออกสินค้า</button>
+                            <i class="las la-plus-circle"></i> โอนย้ายสินค้า</button>
                     </div>
                 </div>
             </div>
@@ -142,7 +142,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header ml-4">
-                        <h5 class="modal-title" id="myLargeModalLabel"><b>จ่ายออกสินค้า</b></h5>
+                        <h5 class="modal-title" id="myLargeModalLabel"><b>โอนย้ายสินค้า</b></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <i class="las la-times"></i>
                         </button>
@@ -162,7 +162,8 @@
                                                         <div class="w-100">
                                                             <div class="form-group row">
                                                                 <input type="hidden" name="id" id="id">
-                                                                <input type="hidden" name="transaction_stock" id="transaction_stock" value="1111">
+                                                                <input type="hidden" name="transaction_stock" id="transaction_stock"
+                                                                value="{{ $code }}">
                                                                 <div class="col-lg-4  mt-2 text-left">
                                                                     <label><b>สาขาต้นทาง:</b></label>
                                                                     <input type="text" class="form-control"
@@ -196,15 +197,15 @@
                                                                         placeholder="คลังสินค้าปลายทาง" disabled>
                                                                 </div>
                                                                 <div class="col-lg-4  mt-2 text-left">
-                                                                    <label><b>จำนวนสินค้าจ่ายออก:</b></label>
+                                                                    <label><b>จำนวนสินค้าโอนย้าย:</b></label>
                                                                     <input type="text" class="form-control"
                                                                         id="total_amt_out" name="total_amt_out"
-                                                                        placeholder="จำนวนสินค้าจ่ายออก" disabled>
+                                                                        placeholder="จำนวนสินค้าโอนย้าย" disabled>
                                                                 </div>
                                                                 <div class="col-lg-12  mt-2 text-left">
                                                                     <label><b>หมายเหตุ:</b></label>
                                                                     <textarea class="form-control" id="stock_out_remark" name="stock_out_remark"
-                                                                        placeholder="รายละเอียดการจ่ายออกสินค้า" disabled></textarea>
+                                                                        placeholder="รายละเอียดการโอนย้ายสินค้า" disabled></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -235,7 +236,7 @@
                 </div>
             </div>
         </div>
-        <h6>รายการจ่ายออกสินค้ารออนุมัติและยกเลิก</h6>
+        <h6>รายการโอนย้ายสินค้ารออนุมัติและยกเลิก</h6>
         <div class="table-responsive mb-4">
             <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
@@ -246,8 +247,8 @@
                         <th>สาขาปลายทาง</th>
                         <th>คลังปลายทาง</th>
                         <th>สินค้า</th>
+                        <th>จำนวนโอนย้ายสินค้า</th>
                         <th>หน่วย</th>
-                        <th>จำนวนจ่ายออก</th>
                         <th>ผู้ทำรายการ</th>
                         <th>ผู้อนุมัติ</th>
                         <th>วันที่อนุมัติ</th>
@@ -267,14 +268,14 @@
                                 <td>{{ $value->branch_out_id_fk }}</td>
                                 <td>{{ $value->warehouse_out_id_fk }}</td>
                                 <td>{{ $value->product_name }}</td>
-                                <td>{{ $value->product_unit_name }}</td>
                                 <td>{{ $value->total_amt_out }}</td>
+                                <td>{{ $value->product_unit_name }}</td>
                                 <td>{{ $value->create_name }}</td>
                                 <td>{{ $value->approve_name }}</td>
                                 <td>{{ $value->approve_date }}</td>
                                 <td>
                                     @if ($value->stock_status == 'pending')
-                                        <span class="badge badge-pill badge-info light">รอดำเนินการ</span>
+                                        <span class="badge badge-pill badge-warning light">รออนุมัติ</span>
                                     @endif
                                     @if ($value->stock_status == 'confirm')
                                         <span class="badge badge-pill badge-success light">สำเร็จ</span>
@@ -297,7 +298,7 @@
             </table>
         </div>
 
-        <h6>รายการจ่ายออกสินค้าอนุมัติแล้ว</h6>
+        <h6>รายการโอนย้ายสินค้าอนุมัติแล้ว</h6>
         <div class="table-responsive mb-4">
             <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
@@ -308,8 +309,8 @@
                         <th>สาขาปลายทาง</th>
                         <th>คลังปลายทาง</th>
                         <th>สินค้า</th>
+                        <th>จำนวนโอนย้ายสินค้า</th>
                         <th>หน่วย</th>
-                        <th>จำนวนจ่ายออก</th>
                         <th>ผู้ทำรายการ</th>
                         <th>ผู้อนุมัติ</th>
                         <th>วันที่อนุมัติ</th>
@@ -329,14 +330,14 @@
                                 <td>{{ $value->branch_out_id_fk }}</td>
                                 <td>{{ $value->warehouse_out_id_fk }}</td>
                                 <td>{{ $value->product_name }}</td>
-                                <td>{{ $value->product_unit_name }}</td>
                                 <td>{{ $value->total_amt_out }}</td>
+                                <td>{{ $value->product_unit_name }}</td>
                                 <td>{{ $value->create_name }}</td>
                                 <td>{{ $value->approve_name }}</td>
                                 <td>{{ $value->approve_date }}</td>
                                 <td>
                                     @if ($value->stock_status == 'pending')
-                                        <span class="badge badge-pill badge-info light">รอดำเนินการ</span>
+                                        <span class="badge badge-pill badge-warning light">รออนุมัติ</span>
                                     @endif
                                     @if ($value->stock_status == 'confirm')
                                         <span class="badge badge-pill badge-success light">สำเร็จ</span>
@@ -443,12 +444,12 @@
         }
 
 
-        //คำนวนจันสินค้าจ่ายออก
+        //คำนวนจันสินค้าโอนย้ายสินค้า
         $(document).ready(function() {
-            // สร้างตัวแปรสำหรับเก็บรวมจำนวนสินค้าจำนวนที่จ่ายออก
+            // สร้างตัวแปรสำหรับเก็บรวมจำนวนสินค้าจำนวนที่โอนย้ายสินค้า
             let totalAmtOut = 0;
 
-            // คำนวณและแสดงผลรวมจำนวนสินค้าจำนวนที่จ่ายออก
+            // คำนวณและแสดงผลรวมจำนวนสินค้าจำนวนที่โอนย้ายสินค้า
             function calculateTotalAmtOut() {
                 totalAmtOut = 0;
                 $('.amt_input').each(function() {
@@ -461,7 +462,7 @@
                 $('.total_amt_out').text(totalAmtOut.toFixed(0));
             }
 
-            // เมื่อมีการเปลี่ยนแปลงข้อมูลในช่อง input จำนวนสินค้าจำนวนที่จ่ายออก
+            // เมื่อมีการเปลี่ยนแปลงข้อมูลในช่อง input จำนวนสินค้าจำนวนที่โอนย้ายสินค้า
             $('.amt_input').on('keyup', function() {
                 calculateTotalAmtOut();
             });

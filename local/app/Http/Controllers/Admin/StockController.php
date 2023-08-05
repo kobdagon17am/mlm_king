@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Auth;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class StockController extends Controller
 {
@@ -17,6 +18,20 @@ class StockController extends Controller
 
   public function index(Request $request)
   {
+
+
+    $y = date('Y');
+    $y = substr($y, -2);
+    $code =  IdGenerator::generate([
+        'table' => 'db_stock_lot',
+        'field' => 'lot_number',
+        'length' => 15,
+        'prefix' => 'LOTIN'.$y.''.date("m").date("d"),
+        'reset_on_prefix_change' => true
+    ]);
+
+    // dd($code);
+
     // dd(Auth::guard('admin')->user()->id);
     $get_stock_in = DB::table('db_stock_lot')
       ->select('db_stock_lot.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
@@ -35,7 +50,7 @@ class StockController extends Controller
       ->get();
 
 
-    return view('backend/stock_in', compact('get_stock_in', 'get_branch', 'get_product'));
+    return view('backend/stock_in', compact('get_stock_in', 'get_branch', 'get_product','code'));
   }
 
 
@@ -168,7 +183,7 @@ class StockController extends Controller
         ->orderByDesc('id')
         ->first();
 
-      if ($query === null) {
+      if (empty($query)) {
         // กรณี $query เป็น null
         $amt_balance = $get_stock_data->amt;
       } else {
@@ -202,7 +217,7 @@ class StockController extends Controller
         'lot_balance' => $lot_balance,
         'amt_balance' => $amt_balance,
         'amt' => $get_stock_data->amt,
-        'in_out' => 'in',
+        'in_out' => $get_stock_data->stock_type,
         'product_unit_id_fk' => $get_stock_data->product_unit_id_fk,
         'stock_status' => $get_stock_data->stock_status,
         'create_id_fk' => Auth::guard('admin')->user()->id,
@@ -229,16 +244,17 @@ class StockController extends Controller
         ->where('id', '=', $rs->id)
         ->first();
 
-      $get_stock_balance = DB::table('db_stocks')
+      $db_get_stock_balance = DB::table('db_stocks')
         ->where('branch_id_fk', $get_stock_lot_data->branch_id_fk)
         ->where('warehouse_id_fk', $get_stock_lot_data->warehouse_id_fk)
         ->where('product_id_fk', $get_stock_lot_data->product_id_fk)
         ->where('product_unit_id_fk', $get_stock_lot_data->product_unit_id_fk)
         // ->orderByDesc('id')
         ->first();
+       
 
 
-      if ($get_stock_balance === null) {
+      if (empty($db_get_stock_balance)) {
         // กรณี $get_stock_balance เป็น null
         $get_stock_balance = $get_stock_lot_data->amt;
 
@@ -254,7 +270,7 @@ class StockController extends Controller
           ->insert($updateStock);
       } else {
         // กรณี $get_stock_balance ไม่เป็น null
-        $get_stock_balance = $get_stock_balance->stock_balance + $get_stock_lot_data->amt;
+        $get_stock_balance = $db_get_stock_balance->stock_balance + $get_stock_lot_data->amt;
 
         $updateStock = [
           // 'stock_id_fk' => $get_stock_lot_data->id,
@@ -266,7 +282,8 @@ class StockController extends Controller
         ];
 
         DB::table('db_stocks')
-          ->update($updateStock);
+        ->where('id',$db_get_stock_balance->id)
+        ->update($updateStock);
       }
 
       return redirect('admin/Stock_in')->withSuccess('รับเข้าสินค้าสำเร็จ');

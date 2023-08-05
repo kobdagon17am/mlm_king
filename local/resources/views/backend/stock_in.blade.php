@@ -99,11 +99,16 @@
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>หมายเลขล๊อตสินค้า:</b></label>
+                                                                        <input type="hidden" name="lot_number"
+                                                                            id="lot_number" value="{{ $code }}">
                                                                         <span
                                                                             class="form-label text-danger lot_number_err _err"></span>
                                                                         <input type="text" name="lot_number"
                                                                             class="form-control"
-                                                                            placeholder="หมายเลขล๊อตสินค้า">
+                                                                            placeholder="หมายเลขล๊อตสินค้า"
+                                                                            value="{{ $code }}" disabled>
+                                                                        <input type="hidden" name="lot_number"
+                                                                            id="lot_number" value="{{ $code }}">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>จำนวนสินค้า:</b></label>
@@ -161,9 +166,9 @@
                                                                             </form>
                                                                         </div> --}}
                                                                     </div>
-                                                                    <div class="col-lg-12 text-left">
+                                                                    <div class="col-lg-6 mt-2 text-left">
                                                                         <label><b>หมายเหตุ:</b></label>
-                                                                        <textarea class="form-control" name="stock_remark" placeholder="รายละเอียดการรับเข้าสินค้า"></textarea>
+                                                                        <textarea class="form-control" rows="9" name="stock_remark" placeholder="รายละเอียดการรับเข้าสินค้า"></textarea>
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <input type="hidden" name="stock_type"
@@ -243,7 +248,8 @@
                                                                         <label><b>หมายเลขล๊อตสินค้า:</b></label>
                                                                         <input type="text" class="form-control"
                                                                             id="lot_number" name="lot_number"
-                                                                            placeholder="หมายเลขล๊อตสินค้า" disabled>
+                                                                            placeholder="หมายเลขล๊อตสินค้า"
+                                                                            value="{{ $code }}" disabled>
 
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
@@ -284,10 +290,10 @@
                                                                         <label><b>ไฟล์เอกสารแนบ:</b></label>
                                                                         <div id="img"></div>
                                                                     </div>
-                                                                    <div class="col-lg-12 mt-2 text-left">
+                                                                    <div class="col-lg-6 mt-2 text-left">
                                                                         <label><b>หมายเหตุ:</b></label>
-                                                                        <textarea class="form-control" id="stock_remark" name="stock_remark" placeholder="รายละเอียดการรับเข้าสินค้า"
-                                                                            disabled></textarea>
+                                                                        <textarea class="form-control" rows="4" id="stock_remark" name="stock_remark"
+                                                                            placeholder="รายละเอียดการรับเข้าสินค้า"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -326,7 +332,7 @@
 
         </div>
         <br>
-        
+
 
         <h6>รายการรับเข้าสินค้ารออนุมัติและยกเลิก</h6>
         <div class="table-responsive mb-4">
@@ -353,7 +359,9 @@
                 <tbody>
                     <?php $i = 1; ?>
                     @foreach ($get_stock_in as $value)
-                    @if (($value->stock_type == 'in' && $value->stock_status != 'confirm') || ($value->stock_type == 'in_transfer' && $value->stock_status != 'confirm'))
+                        @if (
+                            ($value->stock_type == 'in' && $value->stock_status != 'confirm') ||
+                                ($value->stock_type == 'in_transfer' && $value->stock_status != 'confirm'))
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $value->branch_name }}</td>
@@ -369,7 +377,7 @@
                                 <td>{{ $value->approve_date }}</td>
                                 <td>
                                     @if ($value->stock_status == 'pending')
-                                        <span class="badge badge-pill badge-info light">รอดำเนินการ</span>
+                                        <span class="badge badge-pill badge-warning light">รออนุมัติ</span>
                                     @endif
                                     @if ($value->stock_status == 'confirm')
                                         <span class="badge badge-pill badge-success light">สำเร็จ</span>
@@ -416,7 +424,9 @@
                 <tbody>
                     <?php $i = 1; ?>
                     @foreach ($get_stock_in as $value)
-                        @if (($value->stock_type == 'in' && $value->stock_status == 'confirm') || ($value->stock_type == 'in_transfer' && $value->stock_status == 'confirm'))
+                        @if (
+                            ($value->stock_type == 'in' && $value->stock_status == 'confirm') ||
+                                ($value->stock_type == 'in_transfer' && $value->stock_status == 'confirm'))
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $value->branch_name }}</td>
@@ -432,7 +442,7 @@
                                 <td>{{ $value->approve_date }}</td>
                                 <td>
                                     @if ($value->stock_status == 'pending')
-                                        <span class="badge badge-pill badge-info light">รอดำเนินการ</span>
+                                        <span class="badge badge-pill badge-warning light">รออนุมัติ</span>
                                     @endif
                                     @if ($value->stock_status == 'confirm')
                                         <span class="badge badge-pill badge-success light">สำเร็จ</span>

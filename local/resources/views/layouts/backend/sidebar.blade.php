@@ -116,10 +116,10 @@
                         <a href="{{ route('admin/Stock_in') }}"> รับเข้าสินค้า </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin/Stock_out') }}"> จ่ายออกสินค้า </a>
+                        <a href="{{ route('admin/Stock_out') }}"> โอนย้ายสินค้า </a>
                     </li>
                     <li>
-                        <a href="#"> รายงานการเคลื่อนไหวสต๊อก </a>
+                        <a href="#"> รายงานสต๊อกสินค้า </a>
                     </li>
                     
                 </ul>
@@ -148,10 +148,10 @@
                         <a href="{{ route('admin/Stock_in') }}"> รับเข้าสินค้า </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin/Stock_out') }}"> จ่ายออกสินค้า </a>
+                        <a href="{{ route('admin/Stock_out') }}"> โอนย้ายสินค้า </a>
                     </li>
                     <li>
-                        <a href="#"> รายงานการเคลื่อนไหวสต๊อก </a>
+                        <a href="#"> รายงานสต๊อกสินค้า </a>
                     </li>
                     
                 </ul>

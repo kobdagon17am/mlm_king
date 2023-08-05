@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Support\Arr;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class StockOutController extends Controller
 {
@@ -18,14 +19,13 @@ class StockOutController extends Controller
 
   public function index()
   {
-    // dd(Auth::guard('admin')->user()->id);
+
+        // dd(Auth::guard('admin')->user()->id);
     $get_stock = DB::table('db_stocks')
       ->select('db_stocks.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
       ->leftJoin('products', 'products.id', '=', 'db_stocks.product_id_fk')
       ->leftJoin('db_warehouse', 'db_warehouse.id', '=', 'db_stocks.warehouse_id_fk')
       ->get();
-
-
 
     return view('backend/stock_out', compact('get_stock'));
   }
@@ -33,6 +33,16 @@ class StockOutController extends Controller
   public function view_modal($id)
   {
 
+    $y = date('Y');
+    $y = substr($y, -2);
+    $code =  IdGenerator::generate([
+        'table' => 'db_stock_out',
+        'field' => 'transaction_stock',
+        'length' => 15,
+        'prefix' => 'TRANS'.$y.''.date("m").date("d"),
+        'reset_on_prefix_change' => true
+    ]);
+    
     $get_branch = DB::table('branch')
       ->where('status', 1)
       ->get();
@@ -70,7 +80,7 @@ class StockOutController extends Controller
       ->get();
 
 
-    return view('backend/stock_out_detail', compact('get_branch', 'get_warehouse', 'get_product', 'get_stock', 'get_stock_lot', 'get_stock_out'));
+    return view('backend/stock_out_detail', compact('get_branch', 'get_warehouse', 'get_product', 'get_stock', 'get_stock_lot', 'get_stock_out', 'code'));
   }
 
   public function get_data_warehouse_out_select(Request $request)
@@ -135,7 +145,6 @@ class StockOutController extends Controller
         // dd($total_amt_out_arr);
 
         $stock_out = [
-          'transaction_stock' => $rs->transaction_stock,
           'branch_id_fk' => $rs->branch_id_fk,
           'warehouse_id_fk' => $rs->warehouse_id_fk,
           'product_id_fk' => $rs->product_id_fk,
@@ -156,10 +165,10 @@ class StockOutController extends Controller
 
 
         DB::commit();
-        return redirect('admin/Stock_out')->withSuccess('นำออกสินค้าสำเร็จ');
+        return redirect('admin/Stock_out')->withSuccess('โอนย้ายสินค้าสำเร็จ');
       } catch (Exception $e) {
         DB::rollback();
-        return redirect('admin/Stock_out')->withError('นำออกสินค้าไม่สำเร็จ');
+        return redirect('admin/Stock_out')->withError('โอนย้ายสินค้าไม่สำเร็จ');
       }
     }
   }
@@ -179,13 +188,18 @@ class StockOutController extends Controller
         'approve_date' => now(),
       ];
 
-
       DB::table('db_stock_out')
         ->where('id', $rs->id)
         ->update($updateData);
 
 
       // update DB stock lot
+      $get_stock_out = DB::table('db_stock_out')
+      ->where('id', $rs->id)
+      ->first();
+
+      // dd($get_stock_out);
+
       $updateStockLot = [
         'stock_status' => 'confirm',
         'approve_id_fk' => Auth::guard('admin')->user()->id,
@@ -193,15 +207,14 @@ class StockOutController extends Controller
         'approve_date' => now(),
       ];
 
-      // dd($updateStockLot);
-
       DB::table('db_stock_lot')
-        ->where('transaction_stock', $rs->transaction_stock)
+        ->where('transaction_stock',$get_stock_out->transaction_stock)
         ->update($updateStockLot);
+
 
       // update stock movement
       $get_stock_data = DB::table('db_stock_lot')
-        ->where('transaction_stock', '=', $rs->transaction_stock)
+        ->where('transaction_stock',$get_stock_out->transaction_stock)
         ->orderByDesc('id')
         ->first();
 
@@ -284,19 +297,20 @@ class StockOutController extends Controller
 
       // update stock balance
       $get_stock_lot_data = DB::table('db_stock_lot')
-        ->where('transaction_stock', '=', $rs->transaction_stock)
+        ->where('transaction_stock', '=', $get_stock_out->transaction_stock)
         ->orderByDesc('id')
         ->first();
 
-      $get_stock_balance = DB::table('db_stocks')
+      $db_get_stock_balance = DB::table('db_stocks')
         ->where('branch_id_fk', $get_stock_lot_data->branch_id_fk)
         ->where('warehouse_id_fk', $get_stock_lot_data->warehouse_id_fk)
         ->where('product_id_fk', $get_stock_lot_data->product_id_fk)
         ->where('product_unit_id_fk', $get_stock_lot_data->product_unit_id_fk)
         ->orderByDesc('id')
         ->first();
+        // dd($db_get_stock_balance);
 
-      if ($get_stock_balance === null) {
+      if (empty($db_get_stock_balance)) {
         // กรณี $get_stock_balance เป็น null
         $get_stock_balance = $get_stock_lot_data->amt;
 
@@ -312,7 +326,7 @@ class StockOutController extends Controller
           ->insert($updateStock);
       } else {
         // กรณี $get_stock_balance ไม่เป็น null
-        $get_stock_balance = $get_stock_balance->stock_balance - $get_stock_lot_data->amt;
+        $get_stock_balance = $db_get_stock_balance->stock_balance - $get_stock_lot_data->amt;
 
         $updateStock = [
           // 'stock_id_fk' => $get_stock_lot_data->id,
@@ -323,7 +337,10 @@ class StockOutController extends Controller
           'stock_balance' => $get_stock_balance,
         ];
 
+         
         DB::table('db_stocks')
+          ->where('id',"=",$db_get_stock_balance->id)
+
           ->update($updateStock);
       }
 
@@ -332,12 +349,13 @@ class StockOutController extends Controller
         'branch_id_fk' => $get_stock_data->branch_out_id_fk,
         'warehouse_id_fk' => $get_stock_data->warehouse_out_id_fk,
         'product_id_fk' => $get_stock_data->product_id_fk,
+        'transaction_stock' => $get_stock_data->transaction_stock,
         'lot_number' => $get_stock_data->lot_number,
         'amt' => $get_stock_data->amt,
         'product_unit_id_fk' => $get_stock_data->product_unit_id_fk,
         'date_in_stock' => $get_stock_data->date_in_stock,
         'stock_remark' => $get_stock_data->stock_remark,
-        'lot_expired_date' => $get_stock_data->	lot_expired_date,
+        'lot_expired_date' => $get_stock_data->lot_expired_date,
         'create_id_fk' => Auth::guard('admin')->user()->id,
         'create_name' => Auth::guard('admin')->user()->first_name,
         'stock_type' => 'in_transfer',
@@ -346,7 +364,7 @@ class StockOutController extends Controller
       DB::table('db_stock_lot')
         ->insert($dataNewRow_in);
 
-      return redirect('admin/Stock_out')->withSuccess('จ่ายออกสินค้าสำเร็จ');
+      return redirect('admin/Stock_out')->withSuccess('โอนย้ายสินค้าสำเร็จ');
     } elseif ($rs->stock_status == "cancel") {
       // อัปเดตเมื่อ stock_status เป็น "cancel"
       $updateData = [
@@ -356,7 +374,7 @@ class StockOutController extends Controller
       DB::table('db_stock_lot')
         ->where('id', $rs->id) // แนะนำให้ใช้ id หรือ primary key เพื่ออัปเดตแถวที่ต้องการ
         ->update($updateData);
-      return redirect('admin/Stock_out')->withError('ยกเลิกการรับเข้าสินค้า');
+      return redirect('admin/Stock_out')->withError('โอนย้ายสินค้าไม่สำเร็จ');
     }
   }
 

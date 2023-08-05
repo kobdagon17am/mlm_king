@@ -16,7 +16,7 @@
     <nav class="breadcrumb-one" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">ระบบคลัง</li>
-            <li class="breadcrumb-item active" aria-current="page"><span>สินค้าในคลัง</span></li>
+            <li class="breadcrumb-item active" aria-current="page"><span>คลังสินค้า</span></li>
         </ol>
     </nav>
 @endsection
@@ -31,9 +31,9 @@
                         <th>สาขา</th>
                         <th>คลังสินค้า</th>
                         <th>สินค้า</th>
-                        <th>จำนวนคงเหลือ</th>
+                        <th>จำนวนสินค้าคงเหลือ</th>
                         <th>หน่วย</th>
-                        <th>จ่ายออกสินค้า</th>
+                        <th>โอนย้ายสินค้า</th>
                     </tr>
                 </thead>
                 <tbody>
