@@ -51,7 +51,7 @@
                                         value="{{ $get_stock->product_name }}" disabled>
                                     <input type="hidden" name="product_id_fk" value="{{ $get_stock->product_id_fk }}">
                                 </div>
-                                <input type="hidden" name="transaction_stock" id="transaction_stock">
+                                <input type="hidden" name="transaction_stock" id="transaction_stock" value="1111">
                                 <div class="col-lg-4  mt-2 text-left">
                                     <label><b>สาขาปลายทาง:</b></label>
                                     <span class="form-label text-danger branch_out_id_fk_err _err"></span>
@@ -162,6 +162,7 @@
                                                         <div class="w-100">
                                                             <div class="form-group row">
                                                                 <input type="hidden" name="id" id="id">
+                                                                <input type="hidden" name="transaction_stock" id="transaction_stock" value="1111">
                                                                 <div class="col-lg-4  mt-2 text-left">
                                                                     <label><b>สาขาต้นทาง:</b></label>
                                                                     <input type="text" class="form-control"

@@ -57,6 +57,7 @@ class StockOutController extends Controller
       ->where('warehouse_id_fk', $get_stock->warehouse_id_fk)
       ->where('product_id_fk', $get_stock->product_id_fk)
       ->where('stock_type', 'in')
+      ->where('lot_balance', '!=', 0)
       ->where('stock_status', 'confirm')
       ->get();
 
@@ -167,10 +168,10 @@ class StockOutController extends Controller
   {
     // dd($rs->all());
 
+    // อัปเดตเมื่อ stock_status เป็น "confirm"
     if ($rs->stock_status == "confirm") {
-      // อัปเดตเมื่อ stock_status เป็น "confirm"
 
-      // update DB stock lot
+      // update DB stock out
       $updateData = [
         'stock_status' => 'confirm',
         'approve_id_fk' => Auth::guard('admin')->user()->id,
@@ -179,29 +180,32 @@ class StockOutController extends Controller
       ];
 
 
-      DB::table('db_stock_lot')
-        ->where('transaction_stock', $rs->transaction_stock)
+      DB::table('db_stock_out')
+        ->where('id', $rs->id)
         ->update($updateData);
- 
 
-      // update DB stock out
-      $updateOut = [
+
+      // update DB stock lot
+      $updateStockLot = [
         'stock_status' => 'confirm',
         'approve_id_fk' => Auth::guard('admin')->user()->id,
         'approve_name' => Auth::guard('admin')->user()->first_name,
         'approve_date' => now(),
       ];
 
-      
-      DB::table('db_stock_out')
+      // dd($updateStockLot);
+
+      DB::table('db_stock_lot')
         ->where('transaction_stock', $rs->transaction_stock)
-        ->update($updateOut);
+        ->update($updateStockLot);
 
       // update stock movement
       $get_stock_data = DB::table('db_stock_lot')
         ->where('transaction_stock', '=', $rs->transaction_stock)
+        ->orderByDesc('id')
         ->first();
 
+      // dd($get_stock_data);
 
       //amt balance
       $query = DB::table('db_stock_movement')
@@ -211,7 +215,7 @@ class StockOutController extends Controller
         ->orderByDesc('id')
         ->first();
 
-        // dd($query);
+      // dd($query);
 
       if ($query === null) {
         // กรณี $query เป็น null
@@ -232,10 +236,13 @@ class StockOutController extends Controller
 
       if ($query1 === null) {
         // กรณี $query เป็น null
+        // dd('1');
         $lot_balance = $get_stock_data->amt;
       } else {
         // กรณี $query ไม่เป็น null
-        $lot_balance = $query1->amt - $get_stock_data->amt;
+        
+        $lot_balance = $query1->amt_balance - $get_stock_data->amt;
+        // dd($query1->amt, $get_stock_data->amt);
       }
 
       $updateMovement = [
@@ -259,21 +266,26 @@ class StockOutController extends Controller
         'approve_date' => $get_stock_data->approve_date,
       ];
 
+      // dd($updateMovement);
+
       DB::table('db_stock_movement')
         ->insert($updateMovement);
 
       // update lot balance in db_stock_lot
-      DB::table('db_stock_lot')
+      $xxx=DB::table('db_stock_lot')
         ->where('branch_id_fk', $get_stock_data->branch_id_fk)
-        ->where('product_id_fk', $get_stock_data->product_id_fk)
         ->where('warehouse_id_fk', $get_stock_data->warehouse_id_fk)
+        ->where('product_id_fk', $get_stock_data->product_id_fk)
         ->where('lot_number', $get_stock_data->lot_number)
-        ->update(['lot_balance' => $lot_balance]);
 
+        // dd($lot_balance);
+        ->update(['lot_balance' => $lot_balance]);
+        
 
       // update stock balance
       $get_stock_lot_data = DB::table('db_stock_lot')
         ->where('transaction_stock', '=', $rs->transaction_stock)
+        ->orderByDesc('id')
         ->first();
 
       $get_stock_balance = DB::table('db_stocks')
@@ -281,7 +293,7 @@ class StockOutController extends Controller
         ->where('warehouse_id_fk', $get_stock_lot_data->warehouse_id_fk)
         ->where('product_id_fk', $get_stock_lot_data->product_id_fk)
         ->where('product_unit_id_fk', $get_stock_lot_data->product_unit_id_fk)
-        // ->orderByDesc('id')
+        ->orderByDesc('id')
         ->first();
 
 
@@ -315,6 +327,7 @@ class StockOutController extends Controller
         DB::table('db_stocks')
           ->update($updateStock);
       }
+
 
       return redirect('admin/Stock_out')->withSuccess('จ่ายออกสินค้าสำเร็จ');
     } elseif ($rs->stock_status == "cancel") {
