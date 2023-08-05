@@ -119,7 +119,7 @@
                         <a href="{{ route('admin/Stock_out') }}"> โอนย้ายสินค้า </a>
                     </li>
                     <li>
-                        <a href="#"> รายงานสต๊อกสินค้า </a>
+                        <a href="{{ route('admin/Stock_report') }}"> รายงานคลังสินค้า </a>
                     </li>
                     
                 </ul>
@@ -151,7 +151,7 @@
                         <a href="{{ route('admin/Stock_out') }}"> โอนย้ายสินค้า </a>
                     </li>
                     <li>
-                        <a href="#"> รายงานสต๊อกสินค้า </a>
+                        <a href="{{ route('admin/Stock_report') }}"> รายงานคลังสินค้า </a>
                     </li>
                     
                 </ul>

@@ -107,8 +107,6 @@
                                                                             class="form-control"
                                                                             placeholder="หมายเลขล๊อตสินค้า"
                                                                             value="{{ $code }}" disabled>
-                                                                        <input type="hidden" name="lot_number"
-                                                                            id="lot_number" value="{{ $code }}">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>จำนวนสินค้า:</b></label>

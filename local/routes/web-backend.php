@@ -130,3 +130,13 @@ Route::get('admin/Blank', function () {
   Route::get('admin/view_stock_out','Admin\StockOutController@view_stock_out')->name('admin/view_stock_out');
   Route::post('admin/update_stock_out','Admin\StockOutController@update_stock_out')->name('admin/update_stock_out');
 
+
+  // Route::get('admin/Stock_report', function () {
+  //   return view('backend.Stock_report');
+  // })->name('admin/Stock_report');
+  Route::get('admin/Stock_report','Admin\StockReportController@index')->name('admin/Stock_report');
+  Route::get('admin/get_data_warehouse_select', 'Admin\StockReportController@get_data_warehouse_select')->name('get_data_warehouse_select');
+
+  Route::get('admin/Stock_card', function () {
+    return view('backend.Stock_card');
+  })->name('admin/Stock_card');
