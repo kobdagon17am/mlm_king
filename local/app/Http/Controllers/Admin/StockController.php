@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Auth;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use DataTables;
 
 class StockController extends Controller
 {
@@ -23,11 +24,11 @@ class StockController extends Controller
     $y = date('Y');
     $y = substr($y, -2);
     $code =  IdGenerator::generate([
-        'table' => 'db_stock_lot',
-        'field' => 'lot_number',
-        'length' => 15,
-        'prefix' => 'LOTIN'.$y.''.date("m").date("d"),
-        'reset_on_prefix_change' => true
+      'table' => 'db_stock_lot',
+      'field' => 'lot_number',
+      'length' => 15,
+      'prefix' => 'LOTIN' . $y . '' . date("m") . date("d"),
+      'reset_on_prefix_change' => true
     ]);
 
     // dd($code);
@@ -50,7 +51,7 @@ class StockController extends Controller
       ->get();
 
 
-    return view('backend/stock_in', compact('get_stock_in', 'get_branch', 'get_product','code'));
+    return view('backend/stock_in', compact('get_stock_in', 'get_branch', 'get_product', 'code'));
   }
 
 
@@ -209,10 +210,10 @@ class StockController extends Controller
       }
 
       $updateMovement = [
-        'stock_id_fk' => $get_stock_data->id,
         'branch_id_fk' => $get_stock_data->branch_id_fk,
         'warehouse_id_fk' => $get_stock_data->warehouse_id_fk,
         'product_id_fk' => $get_stock_data->product_id_fk,
+        'stock_lot_id_fk' => $get_stock_data->id,
         'lot_number' => $get_stock_data->lot_number,
         'lot_balance' => $lot_balance,
         'amt_balance' => $amt_balance,
@@ -251,7 +252,7 @@ class StockController extends Controller
         ->where('product_unit_id_fk', $get_stock_lot_data->product_unit_id_fk)
         // ->orderByDesc('id')
         ->first();
-       
+
 
 
       if (empty($db_get_stock_balance)) {
@@ -282,8 +283,8 @@ class StockController extends Controller
         ];
 
         DB::table('db_stocks')
-        ->where('id',$db_get_stock_balance->id)
-        ->update($updateStock);
+          ->where('id', $db_get_stock_balance->id)
+          ->update($updateStock);
       }
 
       return redirect('admin/Stock_in')->withSuccess('รับเข้าสินค้าสำเร็จ');
@@ -319,6 +320,127 @@ class StockController extends Controller
     return $data;
 
     // dd($data);
+  }
+
+
+  public function Stock_in_confirm_datatable(Request $rs)
+  {
+
+ 
+    $db_stock_lot = DB::table('db_stock_lot')
+      ->select('db_stock_lot.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
+      ->leftJoin('products', 'products.id', '=', 'db_stock_lot.product_id_fk')
+      ->leftJoin('db_warehouse', 'db_warehouse.id', '=', 'db_stock_lot.warehouse_id_fk')
+      ->where('db_stock_lot.stock_status','=','confirm')
+ 
+
+      ->whereRaw(("case WHEN  '{$rs->s_branch_id_fk}' != ''  THEN  db_stock_lot.branch_id_fk = '{$rs->s_branch_id_fk}' else 1 END"))
+      ->whereRaw(("case WHEN  '{$rs->s_warehouse_id_fk}' != ''  THEN  db_stock_lot.warehouse_id_fk = '{$rs->s_warehouse_id_fk}' else 1 END"))
+      ->whereRaw(("case WHEN  '{$rs->s_product_name}' != ''  THEN  db_stock_lot.product_id_fk = '{$rs->s_product_name}' else 1 END"));
+
+
+      // ->whereRaw(("case WHEN  '{$rs->position}' != ''  THEN  customers.qualification_id = '{$rs->position}' else 1 END"))
+      // ->whereRaw(("case WHEN  '{$rs->id_card}' != ''  THEN  customers.id_card = '{$rs->id_card}' else 1 END"))
+  
+
+      //$query->orderBy($request->input('order.0.column'), $request->input('order.0.dir'))
+
+    $sQuery = Datatables::of($db_stock_lot);
+    return $sQuery
+
+
+      ->addColumn('branch_name', function ($row) {
+        return $row->branch_name;
+      })
+
+      ->addColumn('warehouse_name', function ($row) {
+        return $row->warehouse_name;
+      })
+
+      ->addColumn('product_name', function ($row) {
+        return $row->product_name;
+      })
+
+      
+      ->addColumn('amt', function ($row) {
+        return $row->amt;
+      })
+
+      ->addColumn('product_unit_name', function ($row) {
+        return $row->product_unit_name;
+      })
+
+      ->addColumn('lot_number', function ($row) {
+        return $row->lot_number;
+      })
+
+      ->addColumn('date_in_stock', function ($row) {
+
+
+        if ($row->date_in_stock) {
+          return date('Y/m/d', strtotime($row->date_in_stock));
+        } else {
+          return '';
+        }
+      })
+
+      ->addColumn('lot_expired_date', function ($row) {
+
+
+        if ($row->lot_expired_date) {
+          return date('Y/m/d', strtotime($row->lot_expired_date));
+        } else {
+          return '';
+        }
+      })
+
+      ->addColumn('create_name', function ($row) {
+        return $row->create_name;
+      })
+
+
+      ->addColumn('approve_name', function ($row) {
+        return $row->approve_name;
+      })
+
+      ->addColumn('approve_date', function ($row) {
+
+
+        if ($row->approve_date) {
+          return date('Y/m/d', strtotime($row->approve_date));
+        } else {
+          return '';
+        }
+      })
+ 
+      ->addColumn('stock_status', function ($row) {
+
+        if ($row->stock_status == 'pending') {
+          $html = '<span class="badge badge-pill badge-warning light">รออนุมัติ</span>';
+        } elseif ($row->stock_status == 'confirm') {
+          $html = '<span class="badge badge-pill badge-success light">สำเร็จ</span>';
+        } elseif ($row->stock_status == 'cancel') {
+          $html = '<span class="badge badge-pill badge-danger light">ยกเลิก</span>';
+        } else {
+          $html = '';
+        }
+
+        return  $html;
+      })
+      ->addColumn('stock_remark', function ($row) {
+        return $row->stock_remark;
+      })
+      ->addColumn('action', function ($row) {
+
+        $html = '<a href="#!" onclick="edit(' . $row->id . ')" class="p-2">
+              <i class="lab la-whmcs font-25 text-warning"></i></a>';
+        return $html;
+      })
+
+ 
+      ->rawColumns(['stock_status', 'action'])
+
+      ->make(true);
   }
 
   

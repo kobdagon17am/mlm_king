@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Support\Arr;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use DataTables;
 
 class StockOutController extends Controller
 {
@@ -20,7 +21,7 @@ class StockOutController extends Controller
   public function index()
   {
 
-        // dd(Auth::guard('admin')->user()->id);
+    // dd(Auth::guard('admin')->user()->id);
     $get_stock = DB::table('db_stocks')
       ->select('db_stocks.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
       ->leftJoin('products', 'products.id', '=', 'db_stocks.product_id_fk')
@@ -36,13 +37,13 @@ class StockOutController extends Controller
     $y = date('Y');
     $y = substr($y, -2);
     $code =  IdGenerator::generate([
-        'table' => 'db_stock_out',
-        'field' => 'transaction_stock',
-        'length' => 15,
-        'prefix' => 'TRANS'.$y.''.date("m").date("d"),
-        'reset_on_prefix_change' => true
+      'table' => 'db_stock_out',
+      'field' => 'transaction_stock',
+      'length' => 15,
+      'prefix' => 'TRANS' . $y . '' . date("m") . date("d"),
+      'reset_on_prefix_change' => true
     ]);
-    
+
     $get_branch = DB::table('branch')
       ->where('status', 1)
       ->get();
@@ -195,8 +196,8 @@ class StockOutController extends Controller
 
       // update DB stock lot
       $get_stock_out = DB::table('db_stock_out')
-      ->where('id', $rs->id)
-      ->first();
+        ->where('id', $rs->id)
+        ->first();
 
       // dd($get_stock_out);
 
@@ -208,13 +209,13 @@ class StockOutController extends Controller
       ];
 
       DB::table('db_stock_lot')
-        ->where('transaction_stock',$get_stock_out->transaction_stock)
+        ->where('transaction_stock', $get_stock_out->transaction_stock)
         ->update($updateStockLot);
 
 
       // update stock movement
       $get_stock_data = DB::table('db_stock_lot')
-        ->where('transaction_stock',$get_stock_out->transaction_stock)
+        ->where('transaction_stock', $get_stock_out->transaction_stock)
         ->orderByDesc('id')
         ->first();
 
@@ -259,12 +260,12 @@ class StockOutController extends Controller
       }
 
       $updateMovement = [
-        'stock_id_fk' => $get_stock_data->id,
         'branch_id_fk' => $get_stock_data->branch_id_fk,
         'warehouse_id_fk' => $get_stock_data->warehouse_id_fk,
         'branch_out_id_fk' => $get_stock_data->branch_out_id_fk,
         'warehouse_out_id_fk' => $get_stock_data->warehouse_out_id_fk,
         'product_id_fk' => $get_stock_data->product_id_fk,
+        'stock_lot_id_fk' => $get_stock_data->id,
         'lot_number' => $get_stock_data->lot_number,
         'lot_balance' => $lot_balance,
         'amt_balance' => $amt_balance,
@@ -308,7 +309,7 @@ class StockOutController extends Controller
         ->where('product_unit_id_fk', $get_stock_lot_data->product_unit_id_fk)
         ->orderByDesc('id')
         ->first();
-        // dd($db_get_stock_balance);
+      // dd($db_get_stock_balance);
 
       if (empty($db_get_stock_balance)) {
         // กรณี $get_stock_balance เป็น null
@@ -337,9 +338,9 @@ class StockOutController extends Controller
           'stock_balance' => $get_stock_balance,
         ];
 
-         
+
         DB::table('db_stocks')
-          ->where('id',"=",$db_get_stock_balance->id)
+          ->where('id', "=", $db_get_stock_balance->id)
 
           ->update($updateStock);
       }
@@ -396,5 +397,115 @@ class StockOutController extends Controller
     return $data;
 
     // dd($data);
+  }
+
+  public function Stock_out_confirm_datatable(Request $rs)
+  {
+
+    $get_stock_out = DB::table('db_stock_out')
+      ->select('db_stock_out.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
+      ->leftJoin('products', 'products.id', '=', 'db_stock_out.product_id_fk')
+      ->leftJoin('db_warehouse', 'db_warehouse.id', '=', 'db_stock_out.warehouse_id_fk')
+      ->where('db_stock_out.stock_status','=','confirm')
+
+      ->whereRaw(("case WHEN  '{$rs->s_branch_id_fk}' != ''  THEN  db_stock_out.branch_id_fk = '{$rs->s_branch_id_fk}' else 1 END"))
+      ->whereRaw(("case WHEN  '{$rs->s_warehouse_id_fk}' != ''  THEN  db_stock_out.warehouse_id_fk = '{$rs->s_warehouse_id_fk}' else 1 END"))
+      ->whereRaw(("case WHEN  '{$rs->out_branch_id_fk}' != ''  THEN  db_stock_out.branch_out_id_fk = '{$rs->out_branch_id_fk}' else 1 END"))
+      ->whereRaw(("case WHEN  '{$rs->out_warehouse_id_fk}' != ''  THEN  db_stock_out.warehouse_out_id_fk = '{$rs->out_warehouse_id_fk}' else 1 END"))
+      ->whereRaw(("case WHEN  '{$rs->s_product_name}' != ''  THEN  db_stock_out.product_id_fk = '{$rs->s_product_name}' else 1 END"));
+
+
+    // ->whereRaw(("case WHEN  '{$rs->position}' != ''  THEN  customers.qualification_id = '{$rs->position}' else 1 END"))
+    // ->whereRaw(("case WHEN  '{$rs->id_card}' != ''  THEN  customers.id_card = '{$rs->id_card}' else 1 END"))
+
+
+    //$query->orderBy($request->input('order.0.column'), $request->input('order.0.dir'))
+
+    $sQuery = Datatables::of($get_stock_out);
+    return $sQuery
+
+
+      ->addColumn('branch_name', function ($row) {
+        return $row->branch_name;
+      })
+
+      ->addColumn('warehouse_name', function ($row) {
+        return $row->warehouse_name;
+      })
+
+      ->addColumn('branch_out_name', function ($row) {
+        $get_branch = DB::table('branch')
+          ->where('id', $row->branch_out_id_fk)
+          ->first();
+        return $get_branch->branch_name;
+      })
+
+      ->addColumn('warehouse_out_name', function ($row) {
+        $get_warehouse = DB::table('db_warehouse')
+        ->where('id', $row->warehouse_out_id_fk)
+        ->first();
+        return $get_warehouse->warehouse_name;
+      })
+
+      ->addColumn('product_name', function ($row) {
+        return $row->product_name;
+      })
+
+
+      ->addColumn('total_amt_out', function ($row) {
+        return $row->total_amt_out;
+      })
+
+      ->addColumn('product_unit_name', function ($row) {
+        return $row->product_unit_name;
+      })
+
+      ->addColumn('create_name', function ($row) {
+        return $row->create_name;
+      })
+
+
+      ->addColumn('approve_name', function ($row) {
+        return $row->approve_name;
+      })
+
+      ->addColumn('approve_date', function ($row) {
+
+
+        if ($row->approve_date) {
+          return date('Y/m/d', strtotime($row->approve_date));
+        } else {
+          return '';
+        }
+      })
+
+      ->addColumn('stock_status', function ($row) {
+
+        if ($row->stock_status == 'pending') {
+          $html = '<span class="badge badge-pill badge-warning light">รออนุมัติ</span>';
+        } elseif ($row->stock_status == 'confirm') {
+          $html = '<span class="badge badge-pill badge-success light">สำเร็จ</span>';
+        } elseif ($row->stock_status == 'cancel') {
+          $html = '<span class="badge badge-pill badge-danger light">ยกเลิก</span>';
+        } else {
+          $html = '';
+        }
+
+        return  $html;
+      })
+      ->addColumn('stock_remark', function ($row) {
+        return $row->stock_out_remark;
+      })
+      ->addColumn('action', function ($row) {
+
+        $html = '<a href="#!" onclick="edit(' . $row->id . ')" class="p-2">
+              <i class="lab la-whmcs font-25 text-warning"></i></a>';
+        return $html;
+      })
+
+
+      ->rawColumns(['stock_status', 'action'])
+
+      ->make(true);
   }
 }

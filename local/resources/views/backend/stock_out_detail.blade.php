@@ -52,7 +52,7 @@
                                         value="{{ $get_stock->product_name }}" disabled>
                                     <input type="hidden" name="product_id_fk" value="{{ $get_stock->product_id_fk }}">
                                 </div>
-                                                                <div class="col-lg-4  mt-2 text-left">
+                                <div class="col-lg-4  mt-2 text-left">
                                     <label><b>สาขาปลายทาง:</b></label>
                                     <span class="form-label text-danger branch_out_id_fk_err _err"></span>
                                     <select class="form-control branch_out_select" name="branch_out_id_fk">
@@ -162,8 +162,8 @@
                                                         <div class="w-100">
                                                             <div class="form-group row">
                                                                 <input type="hidden" name="id" id="id">
-                                                                <input type="hidden" name="transaction_stock" id="transaction_stock"
-                                                                value="{{ $code }}">
+                                                                <input type="hidden" name="transaction_stock"
+                                                                    id="transaction_stock" value="{{ $code }}">
                                                                 <div class="col-lg-4  mt-2 text-left">
                                                                     <label><b>สาขาต้นทาง:</b></label>
                                                                     <input type="text" class="form-control"
@@ -210,7 +210,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="info-area col-md-12 text-center mt-4">
+                                                    <div class="info-area col-md-12 text-center">
                                                         <div id="stock_button">
                                                             <button type="submit" class="btn btn-success btn-rounded"
                                                                 name="stock_status" value="confirm">
@@ -236,8 +236,12 @@
                 </div>
             </div>
         </div>
-        <h6>รายการโอนย้ายสินค้ารออนุมัติและยกเลิก</h6>
-        <div class="table-responsive mb-4">
+    </div>
+
+    <div class="widget-content widget-content-area mt-4 br-6">
+
+        <div class="table-responsive mt-2 mb-4">
+            <h6>รายการโอนย้ายสินค้ารออนุมัติและยกเลิก</h6>
             <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
                     <tr>
@@ -299,78 +303,102 @@
         </div>
 
         <h6>รายการโอนย้ายสินค้าอนุมัติแล้ว</h6>
-        <div class="table-responsive mb-4">
-            <table id="ordertable" class="table table-hover table-sm" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>ลำดับ</th>
-                        <th>สาขาต้นทาง</th>
-                        <th>คลังต้นทาง</th>
-                        <th>สาขาปลายทาง</th>
-                        <th>คลังปลายทาง</th>
-                        <th>สินค้า</th>
-                        <th>จำนวนโอนย้ายสินค้า</th>
-                        <th>หน่วย</th>
-                        <th>ผู้ทำรายการ</th>
-                        <th>ผู้อนุมัติ</th>
-                        <th>วันที่อนุมัติ</th>
-                        <th>สถานะ</th>
-                        <th>หมายเหตุ</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1; ?>
-                    @foreach ($get_stock_out as $value)
-                        @if ($value->stock_status == 'confirm')
-                            <tr>
-                                <td>{{ $i++ }}</td>
-                                <td>{{ $value->branch_id_fk }}</td>
-                                <td>{{ $value->warehouse_id_fk }}</td>
-                                <td>{{ $value->branch_out_id_fk }}</td>
-                                <td>{{ $value->warehouse_out_id_fk }}</td>
-                                <td>{{ $value->product_name }}</td>
-                                <td>{{ $value->total_amt_out }}</td>
-                                <td>{{ $value->product_unit_name }}</td>
-                                <td>{{ $value->create_name }}</td>
-                                <td>{{ $value->approve_name }}</td>
-                                <td>{{ $value->approve_date }}</td>
-                                <td>
-                                    @if ($value->stock_status == 'pending')
-                                        <span class="badge badge-pill badge-warning light">รออนุมัติ</span>
-                                    @endif
-                                    @if ($value->stock_status == 'confirm')
-                                        <span class="badge badge-pill badge-success light">สำเร็จ</span>
-                                    @endif
-                                    @if ($value->stock_status == 'cancel')
-                                        <span class="badge badge-pill badge-danger light">ยกเลิก</span>
-                                    @endif
-                                </td>
-                                <td>{{ $value->stock_out_remark }}</td>
-                                <td>
-                                    <a href="#!" onclick="edit({{ $value->id }})" class="p-2">
-                                        <i class="lab la-whmcs font-25 text-warning"></i></a>
-                                </td>
-                            </tr>
-                        @endif
+        <div class="row">
+            <div class="col-lg-2 mb-2 text-left">
+                <span class="form-label text-danger branch_id_fk_err _err"></span>
+                <select class="form-control branch_select" name="branch_id_fk" id="s_branch_id_fk">
+                    <option selected disabled> เลือกสาขาต้นทาง
+                    </option>
+                    @foreach ($get_branch as $val)
+                        <option value="{{ $val->id }}">
+                            {{ $val->branch_name }}
+                            ({{ $val->branch_code }})
+                        </option>
                     @endforeach
+                </select>
+            </div>
+            <div class="col-lg-2 mb-2 text-left">
+                <span class="form-label text-danger warehouse_id_fk_err _err"></span>
+                <select class="form-control warehouse_select" name="warehouse_id_fk" id="s_warehouse_id_fk">
+                    <option selected disabled> เลือกคลังต้นทาง
+                    </option>
+                    @foreach ($get_warehouse as $val)
+                        <option value="{{ $val->id }}">
+                            {{ $val->warehouse_name }}
+                            ({{ $val->warehouse_code }})
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-lg-2 mb-2 text-left">
+                <span class="form-label text-danger branch_out_id_fk_err _err"></span>
+                <select class="form-control branch_select" name="branch_out_id_fk" id="out_branch_id_fk">
+                    <option selected disabled> เลือกสาขาปลายทาง
+                    </option>
+                    @foreach ($get_branch as $val)
+                        <option value="{{ $val->id }}">
+                            {{ $val->branch_name }}
+                            ({{ $val->branch_code }})
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-lg-2 mb-2 text-left">
+                <span class="form-label text-danger warehouse_out_id_fk_err _err"></span>
+                <select class="form-control warehouse_select" name="warehouse_out_id_fk" id="out_warehouse_id_fk">
+                    <option selected disabled> เลือกคลังต้นทาง
+                    </option>
+                    @foreach ($get_warehouse as $val)
+                        <option value="{{ $val->id }}">
+                            {{ $val->warehouse_name }}
+                            ({{ $val->warehouse_code }})
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-lg-2 mb-2 text-left">
+                <select class="form-control" name="product_name" id="s_product_name">
+                    <option selected disabled> เลือกสินค้า
+                    </option>
+                    @foreach ($get_product as $key => $val)
+                        <option value="{{ $val->id }}" data-name_unit="{{ $val->product_unit_name }}">
+                            {{-- {{ $key + 1 }} . --}}
+                            {{ $val->product_name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-lg-2 mb-2 text-left" style="margin-top:23x">
+                <button type="button" class="btn btn-outline-success btn-rounded" id="search-form"><i
+                        class="las la-search font-15"></i>
+                    สืบค้น</button>
+            </div>
+        </div>
+        <div class="table-responsive mt-2 mb-2">
+            <table id="basic-dt" class="table table-hover" style="width:100%">
 
-                </tbody>
             </table>
         </div>
-
+    </div>
 
     </div>
 @endsection
 @section('js')
-    <script src="{{ asset('backend/plugins/select2/select2.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/forms/custom-select2.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/forms/multiple-step.js') }}"></script>
     <script src="{{ asset('backend/plugins/dropify/dropify.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/pages/profile_edit.js') }}"></script>
     <script src="{{ asset('backend/assets/js/forms/file-upload.js') }}"></script>
     <script src="{{ asset('backend/plugins/dropzone/dropzone.min.js') }}"></script>
+
+
+    <script src="{{ asset('backend/plugins/table/datatable/datatables.js') }}"></script>
+    <!--  The following JS library files are loaded to use Copy CSV Excel Print Options-->
+    <script src="{{ asset('backend/plugins/table/datatable/button-ext/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/table/datatable/button-ext/jszip.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/table/datatable/button-ext/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/table/datatable/button-ext/buttons.print.min.js') }}"></script>
+    <!-- The following JS library files are loaded to use PDF Options-->
+    <script src="{{ asset('backend/plugins/table/datatable/button-ext/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/table/datatable/button-ext/vfs_fonts.js') }}"></script>
     <script>
         function edit(id) {
             $.ajax({
@@ -469,6 +497,148 @@
 
             // เมื่อโหลดหน้าใหม่ให้คำนวณแสดงผลรวมตั้งแต่เริ่มต้น
             calculateTotalAmtOut();
+        });
+
+        $(function() {
+            table_order = $('#basic-dt').DataTable({
+                // dom: 'Bfrtip',
+                // buttons: ['excel'],
+                searching: false,
+                ordering: true,
+                lengthChange: false,
+                responsive: true,
+                // paging: true,
+                pageLength: 20,
+                processing: true,
+                serverSide: true,
+                "language": {
+                    "lengthMenu": "แสดง _MENU_ แถว",
+                    "zeroRecords": "ไม่พบข้อมูล",
+                    "info": "แสดงหน้า _PAGE_ จาก _PAGES_ หน้า",
+                    "search": "ค้นหา",
+                    "infoEmpty": "",
+                    "infoFiltered": "",
+                    "paginate": {
+                        "first": "หน้าแรก",
+                        "previous": "ย้อนกลับ",
+                        "next": "ถัดไป",
+                        "last": "หน้าสุดท้าย"
+                    },
+                    'processing': "กำลังโหลดข้อมูล",
+                },
+                ajax: {
+                    url: '{{ route('admin/Stock_out_confirm_datatable') }}',
+                    data: function(d) {
+                        d.s_branch_id_fk = $('#s_branch_id_fk').val();
+                        d.s_warehouse_id_fk = $('#s_warehouse_id_fk').val();
+                        d.out_branch_id_fk = $('#out_branch_id_fk').val();
+                        d.out_warehouse_id_fk = $('#out_warehouse_id_fk').val();
+                        d.s_product_name = $('#s_product_name').val();
+
+                        // d.position = $('#type').val();
+                        // d.id_card = $('#id_card').val();
+
+                    },
+                },
+
+
+                columns: [
+                    // {
+                    //     data: "id",
+                    //     title: "ลำดับ",
+                    //     className: "w-10 text-center",
+                    // },
+
+
+                    {
+                        data: "branch_name",
+                        title: "สาขาต้นทาง",
+                        className: "w-10 ",
+                    },
+                    {
+                        data: "warehouse_name",
+                        title: "คลังต้นทาง",
+                        className: "w-10",
+                    },
+                    {
+                        data: "branch_out_name",
+                        title: "สาขาปลายทาง",
+                        className: "w-10 ",
+                    },
+                    {
+                        data: "warehouse_out_name",
+                        title: "คลังปลายทาง",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "product_name",
+                        title: "สินค้า",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "total_amt_out",
+                        title: "จำนวนสินค้าโอนย้าย",
+                        className: "w-10",
+
+                    },
+
+                    {
+                        data: "product_unit_name",
+                        title: "หน่วย",
+                        className: "w-10",
+
+                    },
+
+                    {
+                        data: "create_name",
+                        title: "ผู้ทำรายการ",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "approve_name",
+                        title: "ผู้อนุมัติ",
+                        className: "w-10",
+                    },
+                    {
+                        data: "approve_date",
+                        title: "วันที่อนุมัติ",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "stock_status",
+                        title: "สถานะ",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "stock_remark",
+                        title: "หมายเหตุ",
+                        className: "w-10",
+                    },
+
+
+                    {
+                        data: "action",
+                        title: "Action",
+                        className: "w-10",
+                    },
+
+
+
+                ],
+
+
+
+            });
+            $('#search-form').on('click', function(e) {
+                table_order.draw();
+                e.preventDefault();
+            });
+
         });
     </script>
 @endsection
