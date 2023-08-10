@@ -119,7 +119,7 @@
                                                                 <input type="text"
                                                                 class="form-control @error('side') is-invalid @enderror"
                                                                 name="side" placeholder="สาย"
-                                                                value="{{ old('side') }}">
+                                                                value="A">
                                                             @error('side')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
