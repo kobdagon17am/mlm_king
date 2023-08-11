@@ -133,4 +133,11 @@ Route::get('Bonus', function () {
   return view('frontend.bonus');
 })->name('Bonus');
 
+
+// Route::get('RegisterSuccess', function () {
+
+//   return view('frontend.register_success');
+// })->name('RegisterSuccess');
+Route::get('RegisterSuccess/{username}','Frontend\RegisterSuccessController@index')->name('RegisterSuccess');
+
 // BEGIN eWallet withdraw

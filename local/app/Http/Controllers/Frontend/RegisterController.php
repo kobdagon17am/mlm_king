@@ -68,7 +68,7 @@ class RegisterController extends Controller
 
     public function member_register(Request $request)
     {
-        // dd('1');
+        //  dd('1');
         // dd($request->all());
         //return response()->json(['status' => 'fail', 'ms' => 'ลงทะเบียนไม่สำเร็จกรุณาลงทะเบียนไหม่sss']);
 
@@ -185,9 +185,8 @@ class RegisterController extends Controller
             'bank_type.required' => 'กรุณากรอกข้อมูล',
             // END ข้อมูลบัญชี
 
+            
         ];
-
-
         // if ($request->file_bank) {
 
         //     $rule['file_bank'] = 'mimes:jpeg,jpg,png';
@@ -220,38 +219,39 @@ class RegisterController extends Controller
 
         if (!$validator->fails()) {
             // dd('111');
-            $customer = [
-                'user_name' => 'hhhh',
-                // 'expire_date' => date('Y-m-d', $mt_mount_new),
-                'password' => md5('11111'),
-                'upline_id' => $request->upline_id,
-                // 'pv_upgrad' =>$request->pv,
-                'introduce_id' => $request->sponser,
-                'type_upline' => $request->side,
-                'prefix_name' => trim($request->prefixname),
-                'first_name' => trim($request->firstname),
-                'last_name' => trim($request->lastname),
-                'business_name' => trim($request->businessname),
-                'id_card' => trim($request->id_card),
-                'phone' =>  trim($request->phone),
-                'birth_day' =>  trim($request->birthdate),
-                'nation_id' => 'ไทย',
-                'email' => trim($request->email),
-            ];
+            // $customer = [
+            //     'user_name' => 'hhhh',
+            //     // 'expire_date' => date('Y-m-d', $mt_mount_new),
+            //     'password' => md5('11111'),
+            //     'upline_id' => $request->upline_id,
+            //     // 'pv_upgrad' =>$request->pv,
+            //     'introduce_id' => $request->sponsor,
+            //     'type_upline' => $request->side,
+            //     'prefix_name' => trim($request->prefix),
+            //     'first_name' => trim($request->firstname),
+            //     'last_name' => trim($request->lastname),
+            //     'business_name' => trim($request->businessname),
+            //     'id_card' => trim($request->id_card),
+            //     'phone' =>  trim($request->phone),
+            //     'birth_day' =>  trim($request->birthdate),
+            //     'nation_id' => 'ไทย',
+            //     'email' => trim($request->email),
+            // ];
 
 
             //INSERT CUSTOMER
             $customer_insert = new Customer;
-            $customer_insert->username = 'hhh';
+            $customer_insert->username = 'hhh3';
             $customer_insert->password = md5('11111');
+            $customer_insert->password_real = '11111';
             $customer_insert->upline_id = $request->upline_id;
-            $customer_insert->introduce_id = $request->sponser;
+            $customer_insert->introduce_id = $request->sponsor;
             $customer_insert->line_type = $request->side;
             // $customer_insert->number_of_member=$request->number_of_member;
             // $customer_insert->business_location=$request->business_location;
-            $customer_insert->prefix_name = trim($request->prefixname);
-            $customer_insert->first_name = trim($request->first_name);
-            $customer_insert->last_name = trim($request->last_name);
+            $customer_insert->prefix_name = trim($request->prefix);
+            $customer_insert->first_name = trim($request->firstname);
+            $customer_insert->last_name = trim($request->lastname);
             $customer_insert->marital_status = trim($request->marital_status);
             $customer_insert->business_name = trim($request->businessname);
             $customer_insert->birth_day = trim($request->birthdate);
@@ -261,7 +261,7 @@ class RegisterController extends Controller
             $customer_insert->phone = trim($request->phone);
             $customer_insert->email = trim($request->email);
 
-
+            
          
             //INSERT CUSTOMER ADDRESS CARD
             $customers_address_card_insert = new Customers_address_card;
@@ -270,11 +270,11 @@ class RegisterController extends Controller
             $customers_address_card_insert->card_home_name = trim($request->card_home_name);
             $customers_address_card_insert->card_soi = trim($request->card_soi);
             $customers_address_card_insert->card_road = trim($request->card_road);
-            $customers_address_card_insert->card_tambon_id_fk = $request->card_tambon_id_fk;
+            $customers_address_card_insert->card_tambon_id_fk = '1';
             $customers_address_card_insert->card_tambon = trim($request->card_tambon);
-            $customers_address_card_insert->card_district_id_fk = $request->card_district_id_fk;
+            $customers_address_card_insert->card_district_id_fk = '1';
             $customers_address_card_insert->card_amphur = trim($request->card_amphur);
-            $customers_address_card_insert->card_province_id_fk = $request->card_province_id_fk;
+            $customers_address_card_insert->card_province_id_fk = '1';
             $customers_address_card_insert->card_changwat = trim($request->card_changwat);
             $customers_address_card_insert->card_zipcode = trim($request->card_zipcode);
 
@@ -286,11 +286,11 @@ class RegisterController extends Controller
             $customers_address_delivery_insert->sent_home_name = trim($request->sent_home_name);
             $customers_address_delivery_insert->sent_soi = trim($request->sent_soi);
             $customers_address_delivery_insert->sent_road = trim($request->sent_road);
-            $customers_address_delivery_insert->sent_tambon_id_fk = trim($request->sent_tambon_id_fk);
+            $customers_address_delivery_insert->sent_tambon_id_fk = '1';
             $customers_address_delivery_insert->sent_tambon = trim($request->sent_tambon);
-            $customers_address_delivery_insert->sent_district_id_fk = trim($request->sent_amphur_id_fk);
+            $customers_address_delivery_insert->sent_district_id_fk = '1';
             $customers_address_delivery_insert->sent_district = trim($request->sent_amphur);
-            $customers_address_delivery_insert->sent_province_id_fk = trim($request->sent_changwat_id_fk);
+            $customers_address_delivery_insert->sent_province_id_fk = '1';
             $customers_address_delivery_insert->sent_province = trim($request->sent_changwat);
             $customers_address_delivery_insert->sent_zipcode = trim($request->sent_zipcode);
 
@@ -299,7 +299,7 @@ class RegisterController extends Controller
             $customers_bank_insert = new Customers_bank;
             $customers_bank_insert->account_name = trim($request->acc_name);
             $customers_bank_insert->account_no = trim($request->acc_no);
-            $customers_bank_insert->bank_id_fk = trim($request->bank_id_fk);
+            $customers_bank_insert->bank_id_fk = '1';
             $customers_bank_insert->bank_name = trim($request->bank_name);
             $customers_bank_insert->bank_code = trim($request->bank_code);
             $customers_bank_insert->bank_branch = trim($request->bank_branch);
@@ -322,13 +322,15 @@ class RegisterController extends Controller
                 $customers_bank_insert->save();
                 DB::commit();
 
-                return redirect('ChangeAccount')->withSuccess('สำเร็จ');
+                // dd($customer_insert);
+
+                return redirect('RegisterSuccess/'. $customer_insert->username)->withSuccess('สมัครสมาชิกสำเร็จ');
             } catch (Exception $e) {
                 //code
                 DB::rollback();
             }
         } else {
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'กรุณากรอกข้อมูลให้ครบถ้วนก่อนลงทะเบียน');
+            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'กรุณากรอกข้อมูลให้ครบถ้วน');
         }
     }
 }

@@ -22,8 +22,6 @@ class CouponController extends Controller
         ->get();
         return view('frontend.coupon', compact('get_coupon'));
 
-
-        ;
     }
 
 

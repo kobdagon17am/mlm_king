@@ -106,6 +106,7 @@
                                                                 class="form-control @error('sponsor') is-invalid @enderror"
                                                                 name="sponsor" placeholder="ผู้แนะนำ"
                                                                 value="{{Auth::guard('c_user')->user()->first_name}} {{Auth::guard('c_user')->user()->last_name}} ( {{ Auth::guard('c_user')->user()->username }} )" disabled>
+                                                                <input type="hidden" name="sponsor" value="{{ Auth::guard('c_user')->user()->username }}">
                                                             @error('sponsor')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -391,8 +392,8 @@
                                                             <select name="card_tambon" class="form-control"
                                                                 id="card_tambon">
                                                                 <option>แขวง/ตำบล</option>
-                                                                <option> </option>
-                                                                <option> </option>
+                                                                <option>1</option>
+                                                                <option>2</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -404,8 +405,8 @@
                                                             <select name="card_amphur" class="form-control"
                                                                 id="card_amphur">
                                                                 <option>เขต/อำเภอ</option>
-                                                                <option> </option>
-                                                                <option> </option>
+                                                                <option>1</option>
+                                                                <option>2</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -417,8 +418,8 @@
                                                             <select name="card_changwat" class="form-control"
                                                                 id="card_changwat">
                                                                 <option>จังหวัด</option>
-                                                                <option> </option>
-                                                                <option> </option>
+                                                                <option>1</option>
+                                                                <option>2</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -537,8 +538,8 @@
                                                             <select name="sent_tambon" class="form-control"
                                                                 id="sent_tambon">
                                                                 <option>แขวง/ตำบล</option>
-                                                                <option> </option>
-                                                                <option> </option>
+                                                                <option>1</option>
+                                                                <option>2</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -550,8 +551,8 @@
                                                             <select name="sent_amphur" class="form-control"
                                                                 id="sent_amphur">
                                                                 <option>เขต/อำเภอ</option>
-                                                                <option> </option>
-                                                                <option> </option>
+                                                                <option>1</option>
+                                                                <option>2</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -563,8 +564,8 @@
                                                             <select name="sent_changwat" class="form-control"
                                                                 id="sent_changwat">
                                                                 <option>จังหวัด</option>
-                                                                <option> </option>
-                                                                <option> </option>
+                                                                <option>1</option>
+                                                                <option>2</option>
                                                             </select>
                                                         </div>
                                                     </div>
