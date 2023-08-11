@@ -110,6 +110,8 @@
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
 
+                                                            <input type="hidden" name="sponsor" value="{{ Auth::guard('c_user')->user()->username }}">
+
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -119,7 +121,7 @@
                                                                 <input type="text"
                                                                 class="form-control @error('side') is-invalid @enderror"
                                                                 name="side" placeholder="สาย"
-                                                                value="{{ old('side') }}">
+                                                                value="{{ $data['line_type_back'] }}" disabled>
                                                             @error('side')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -142,13 +144,15 @@
                                                             <label for="business_location">ประเทศ
                                                                 <span class="text-danger">
                                                                 </span></label>
-                                                            <select name="business_location" class="form-control"
-                                                                id="business_location">
-                                                                <option>Thailand</option>
-                                                                <option>Cambodia</option>
-                                                                <option>Laos</option>
-                                                                <option>Myanmar</option>
-                                                                <option>Vietnam</option>
+                                                            <select name="country" class="form-control"
+                                                                id="country">
+
+                                                                @foreach ($data['country'] as $business_location_value)
+                                                                <option value="{{ $business_location_value->id }}"
+                                                                    @if ($business_location_value->id == $data['data']->business_location_id) selected="" @endif>
+                                                                    {{ $business_location_value->name }}</option>
+                                                            @endforeach
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -273,8 +277,7 @@
                                                                 <span
                                                                     class="text-danger"></span></label>
                                                             <select name="national" class="form-control" id="national">
-                                                                <option>ไทย</option>
-                                                                <option>ลาว</option>
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -383,32 +386,7 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="card_tambon">แขวง/ตำบล
-                                                                <span
-                                                                    class="text-danger">*</span></label>
-                                                            <select name="card_tambon" class="form-control"
-                                                                id="card_tambon">
-                                                                <option>แขวง/ตำบล</option>
-                                                                <option> </option>
-                                                                <option> </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="card_amphur">เขต/อำเภอ
-                                                                <span
-                                                                    class="text-danger">*</span></label>
-                                                            <select name="card_amphur" class="form-control"
-                                                                id="card_amphur">
-                                                                <option>เขต/อำเภอ</option>
-                                                                <option> </option>
-                                                                <option> </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
+
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="card_changwat">จังหวัด
@@ -422,6 +400,36 @@
                                                             </select>
                                                         </div>
                                                     </div>
+
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="card_amphur">เขต/อำเภอ
+                                                                <span
+                                                                    class="text-danger">*</span></label>
+                                                            <select name="card_amphur" class="form-control"
+                                                                id="card_amphur">
+                                                                <option>เขต/อำเภอ</option>
+                                                                <option> </option>
+                                                                <option> </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="card_tambon">แขวง/ตำบล
+                                                                <span
+                                                                    class="text-danger">*</span></label>
+                                                            <select name="card_tambon" class="form-control"
+                                                                id="card_tambon">
+                                                                <option>แขวง/ตำบล</option>
+                                                                <option> </option>
+                                                                <option> </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="card_zipcode">รหัสไปรษณีย์
@@ -529,14 +537,16 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+
+
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="sent_tambon">แขวง/ตำบล
+                                                            <label for="sent_changwat">จังหวัด
                                                                 <span
                                                                     class="text-danger">*</span></label>
-                                                            <select name="sent_tambon" class="form-control"
-                                                                id="sent_tambon">
-                                                                <option>แขวง/ตำบล</option>
+                                                            <select name="sent_changwat" class="form-control"
+                                                                id="sent_changwat">
+                                                                <option>จังหวัด</option>
                                                                 <option> </option>
                                                                 <option> </option>
                                                             </select>
@@ -555,19 +565,21 @@
                                                             </select>
                                                         </div>
                                                     </div>
+
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="sent_changwat">จังหวัด
+                                                            <label for="sent_tambon">แขวง/ตำบล
                                                                 <span
                                                                     class="text-danger">*</span></label>
-                                                            <select name="sent_changwat" class="form-control"
-                                                                id="sent_changwat">
-                                                                <option>จังหวัด</option>
+                                                            <select name="sent_tambon" class="form-control"
+                                                                id="sent_tambon">
+                                                                <option>แขวง/ตำบล</option>
                                                                 <option> </option>
                                                                 <option> </option>
                                                             </select>
                                                         </div>
                                                     </div>
+
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="sent_zipcode">รหัสไปรษณีย์
