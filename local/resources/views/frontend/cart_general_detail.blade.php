@@ -87,14 +87,18 @@
                                                 class="text-primary mb-3 d-block">
                                                 <i class="las la-arrow-left"></i> รายการสินค้า
                                             </a>
-                                            <h2 class="mb-3 text-black strong">{{$data['product_data']->product_name}}</h2>
+                                            <h2 class="mb-3 text-black strong">{{ $data['product_data']->product_name }}
+                                            </h2>
                                             <h3 class="mb-3">
-                                                <b>฿ {{$data['product_data']->product_price_member}}</b>
-                                                <span class="text-success ml-2">({{$data['product_data']->product_pv}}PV)</span>
+                                                <b>฿ {{ $data['product_data']->product_price_member }}</b>
+                                                <span
+                                                    class="text-success ml-2">({{ $data['product_data']->product_pv }}PV)</span>
                                             </h3>
                                             <h6>
-                                                <p class="text-muted mb-4"><b>รายละเอียดสินค้า:</b> {{$data['product_data']->product_detail}}</p>
+                                                <p class="text-muted mb-4"><b>รายละเอียดสินค้า:</b>
+                                                    {{ $data['product_data']->product_detail }}</p>
                                             </h6>
+
                                             {{-- <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <p class="text-muted strong font-13">Highlights</p>
@@ -118,7 +122,7 @@
                                                 </div>
                                             </div> --}}
                                             <div class="row">
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                                                     <label class="my-1 mr-2" for="quantityinput">จำนวนสินค้า</label>
                                                     <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput">
                                                         <option value="1">1</option>
@@ -130,7 +134,7 @@
                                                         <option value="7">7</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-center " id=""
+                                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 text-center " id=""
                                                     style="margin-top:30px">
                                                     <a href="{{ route('Cart') }}"><button type="button"
                                                             class="btn btn-success btn-rounded btn-block">
@@ -140,7 +144,29 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
+
+                                <div class="row mt-5">
+                                    <div class="col-lg-12">
+                                        <h6>
+                                            <p class="text-muted mb-4 text-center"><b>วิดีโอสินค้า</b>
+                                        </h6>
+                                    </div>
+                                    <div class="col-lg-6 mt-2 text-center">
+                                        <iframe width="500" height="300"
+                                            src="{{ $data['product_data']->product_url1 }}" title="YouTube video player"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                    <div class="col-lg-6 mt-2 text-center">
+                                        <iframe width="500" height="300"
+                                            src="{{ $data['product_data']->product_url2 }}" title="YouTube video player"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                    </div>
                                 </div>
                                 <!-- end row -->
                                 {{-- <div class="w-100 animated-underline-content mt-2 details-tab-area"> --}}
@@ -212,5 +238,4 @@
         </div>
     </div>
     <!--  Content Area Ends  -->
-
 @endsection

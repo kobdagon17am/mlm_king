@@ -121,7 +121,7 @@
                                                                 <input type="text"
                                                                 class="form-control @error('side') is-invalid @enderror"
                                                                 name="side" placeholder="สาย"
-                                                                value="{{ $data['line_type_back'] }}" disabled>
+                                                                value="A">
                                                             @error('side')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror

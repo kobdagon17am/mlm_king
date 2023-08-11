@@ -99,11 +99,14 @@
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>หมายเลขล๊อตสินค้า:</b></label>
+                                                                        <input type="hidden" name="lot_number"
+                                                                            id="lot_number" value="{{ $code }}">
                                                                         <span
                                                                             class="form-label text-danger lot_number_err _err"></span>
                                                                         <input type="text" name="lot_number"
                                                                             class="form-control"
-                                                                            placeholder="หมายเลขล๊อตสินค้า">
+                                                                            placeholder="หมายเลขล๊อตสินค้า"
+                                                                            value="{{ $code }}" disabled>
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>จำนวนสินค้า:</b></label>
@@ -123,14 +126,14 @@
                                                                             </option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                    {{-- <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>เลขที่เอกสาร:</b></label>
                                                                         <span
                                                                             class="form-label text-danger doc_no_err _err"></span>
                                                                         <input type="text" name="doc_no"
                                                                             class="form-control"
                                                                             placeholder="เลขที่เอกสาร">
-                                                                    </div>
+                                                                    </div> --}}
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>วันที่รับเข้าสินค้า:</b></label>
                                                                         <span
@@ -151,10 +154,19 @@
                                                                             <input type="file" name="doc_name"
                                                                                 class="dropify">
                                                                         </div>
+                                                                        {{-- <div id="dropzone">
+                                                                            <form action="/upload" class="dropzone needsclick dz-clickable" id="demo-upload">
+                                                                                <div class="dz-message needsclick">
+                                                                                <button type="button" class="dz-button" name="doc_name">Drop files here or click to upload.</button>
+                                                                                <br>
+                                                                                <span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div> --}}
                                                                     </div>
-                                                                    <div class="col-lg-12 text-left">
+                                                                    <div class="col-lg-6 mt-2 text-left">
                                                                         <label><b>หมายเหตุ:</b></label>
-                                                                        <textarea class="form-control" name="stock_remark" placeholder="รายละเอียดการรับเข้าสินค้า"></textarea>
+                                                                        <textarea class="form-control" rows="9" name="stock_remark" placeholder="รายละเอียดการรับเข้าสินค้า"></textarea>
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <input type="hidden" name="stock_type"
@@ -234,7 +246,8 @@
                                                                         <label><b>หมายเลขล๊อตสินค้า:</b></label>
                                                                         <input type="text" class="form-control"
                                                                             id="lot_number" name="lot_number"
-                                                                            placeholder="หมายเลขล๊อตสินค้า" disabled>
+                                                                            placeholder="หมายเลขล๊อตสินค้า"
+                                                                            value="{{ $code }}" disabled>
 
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
@@ -252,13 +265,13 @@
                                                                             placeholder="หน่วยสินค้า" disabled>
 
                                                                     </div>
-                                                                    <div class="col-lg-6  mt-2 text-left">
+                                                                    {{-- <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>เลขที่เอกสาร:</b></label>
                                                                         <input type="text" class="form-control"
                                                                             id="doc_no" name="doc_no"
                                                                             placeholder="เลขที่เอกสาร" disabled>
 
-                                                                    </div>
+                                                                    </div> --}}
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>วันที่รับเข้าสินค้า:</b></label>
                                                                         <input type="date" class="form-control"
@@ -275,10 +288,10 @@
                                                                         <label><b>ไฟล์เอกสารแนบ:</b></label>
                                                                         <div id="img"></div>
                                                                     </div>
-                                                                    <div class="col-lg-12 mt-2 text-left">
+                                                                    <div class="col-lg-6 mt-2 text-left">
                                                                         <label><b>หมายเหตุ:</b></label>
-                                                                        <textarea class="form-control" id="stock_remark" name="stock_remark" placeholder="รายละเอียดการรับเข้าสินค้า"
-                                                                            disabled></textarea>
+                                                                        <textarea class="form-control" rows="4" id="stock_remark" name="stock_remark"
+                                                                            placeholder="รายละเอียดการรับเข้าสินค้า"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -317,8 +330,11 @@
 
         </div>
         <br>
+
+
+        <h6>รายการรับเข้าสินค้ารออนุมัติและยกเลิก</h6>
         <div class="table-responsive mb-4">
-            <table id="ordertable" class="table table-hover table-sm" style="width:100%">
+            <table id="" class="table table-hover table-sm" style="width:100%">
                 <thead>
                     <tr>
                         <th>ลำดับ</th>
@@ -341,43 +357,96 @@
                 <tbody>
                     <?php $i = 1; ?>
                     @foreach ($get_stock_in as $value)
-                        <tr>
-                            <td>{{ $i++ }}</td>
-                            <td>{{ $value->branch_name }}</td>
-                            <td>{{ $value->warehouse_name }}</td>
-                            <td>{{ $value->product_name }}</td>
-                            <td>{{ $value->amt }}</td>
-                            <td>{{ $value->product_unit_name }}</td>
-                            <td>{{ $value->lot_number }}</td>
-                            <td>{{ $value->date_in_stock }}</td>
-                            <td>{{ $value->lot_expired_date }}</td>
-                            <td>{{ $value->create_name }}</td>
-                            <td>{{ $value->approve_name }}</td>
-                            <td>{{ $value->approve_date }}</td>
-                            <td>
-                                @if ($value->stock_status == 'pending')
-                                    <span class="badge badge-pill badge-info light">รอดำเนินการ</span>
-                                @endif
-                                @if ($value->stock_status == 'confirm')
-                                    <span class="badge badge-pill badge-success light">สำเร็จ</span>
-                                @endif
-                                @if ($value->stock_status == 'cancel')
-                                    <span class="badge badge-pill badge-danger light">ยกเลิก</span>
-                                @endif
-                            </td>
-                            <td>{{ $value->stock_remark }}</td>
-                            <td>
-                                <a href="#!" onclick="edit({{ $value->id }})" class="p-2">
-                                    <i class="lab la-whmcs font-25 text-warning"></i></a>
-                            </td>
-                        </tr>
+                        @if (
+                            ($value->stock_type == 'in' && $value->stock_status != 'confirm') ||
+                                ($value->stock_type == 'in_transfer' && $value->stock_status != 'confirm'))
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $value->branch_name }}</td>
+                                <td>{{ $value->warehouse_name }}</td>
+                                <td>{{ $value->product_name }}</td>
+                                <td>{{ $value->amt }}</td>
+                                <td>{{ $value->product_unit_name }}</td>
+                                <td>{{ $value->lot_number }}</td>
+                                <td>{{ $value->date_in_stock }}</td>
+                                <td>{{ $value->lot_expired_date }}</td>
+                                <td>{{ $value->create_name }}</td>
+                                <td>{{ $value->approve_name }}</td>
+                                <td>{{ $value->approve_date }}</td>
+                                <td>
+                                    @if ($value->stock_status == 'pending')
+                                        <span class="badge badge-pill badge-warning light">รออนุมัติ</span>
+                                    @endif
+                                    @if ($value->stock_status == 'confirm')
+                                        <span class="badge badge-pill badge-success light">สำเร็จ</span>
+                                    @endif
+                                    @if ($value->stock_status == 'cancel')
+                                        <span class="badge badge-pill badge-danger light">ยกเลิก</span>
+                                    @endif
+                                </td>
+                                <td>{{ $value->stock_remark }}</td>
+                                <td>
+                                    <a href="#!" onclick="edit({{ $value->id }})" class="p-2">
+                                        <i class="lab la-whmcs font-25 text-warning"></i></a>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
 
                 </tbody>
             </table>
         </div>
+        
+        <h6>รายการรับเข้าสินค้าอนุมัติแล้ว</h6>
+        <hr>
+        <div class="row">
+            <div class="col-lg-3 mb-2 text-left">
+                <span class="form-label text-danger branch_id_fk_err _err"></span>
+                <select class="form-control branch_select" name="branch_id_fk" id="s_branch_id_fk">
+                    <option selected disabled> เลือกสาขา
+                    </option>
+                    @foreach ($get_branch as $val)
+                        <option value="{{ $val->id }}">
+                            {{ $val->branch_name }}
+                            ({{ $val->branch_code }})
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-lg-3 mb-2 text-left">
+                <span class="form-label text-danger warehouse_id_fk_err _err"></span>
+                <select class="form-control warehouse_select" name="warehouse_id_fk" id="s_warehouse_id_fk" disabled>
+                    <option selected disabled> เลือกคลัง
+                    </option>
+                </select>
+            </div>
+            <div class="col-lg-3 mb-2 text-left">
+                <select class="form-control" name="product_name" id="s_product_name">
+                    <option selected disabled> เลือกสินค้า
+                    </option>
+                    @foreach ($get_product as $key => $val)
+                        <option value="{{ $val->id }}" data-name_unit="{{ $val->product_unit_name }}">
+                            {{-- {{ $key + 1 }} . --}}
+                            {{ $val->product_name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            {{-- <div class="col-lg-3  mt-2">
+                <label><b>หมายเลขล๊อต:</b></label>
+                <select class="form-control" name="lot_number">
+                </select>
+            </div> --}}
+            <div class="col-lg-3 mb-2 text-left" style="margin-top:20x">
+                <button type="button" class="btn btn-outline-success btn-rounded" id="search-form"><i class="las la-search font-15"></i>
+                    สืบค้น</button>
+            </div>
+        </div>
+        <div class="table-responsive mt-2 mb-2">
+            <table id="basic-dt" class="table table-hover" style="width:100%">
 
-
+            </table>
+        </div>
 
 
     </div>
@@ -387,6 +456,18 @@
     <script src="{{ asset('backend/assets/js/pages/profile_edit.js') }}"></script>
     <script src="{{ asset('backend/assets/js/forms/file-upload.js') }}"></script>
     <script src="{{ asset('backend/plugins/dropzone/dropzone.min.js') }}"></script>
+
+
+    <script src="{{ asset('backend/plugins/table/datatable/datatables.js') }}"></script>
+    <!--  The following JS library files are loaded to use Copy CSV Excel Print Options-->
+    <script src="{{ asset('backend/plugins/table/datatable/button-ext/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/table/datatable/button-ext/jszip.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/table/datatable/button-ext/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/table/datatable/button-ext/buttons.print.min.js') }}"></script>
+    <!-- The following JS library files are loaded to use PDF Options-->
+    <script src="{{ asset('backend/plugins/table/datatable/button-ext/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/table/datatable/button-ext/vfs_fonts.js') }}"></script>
+
 
     <script>
         $('.branch_select').change(function() {
@@ -436,7 +517,7 @@
         });
 
 
-        //
+
         function edit(id) {
             $.ajax({
                     url: '{{ route('admin/view_stock_in') }}',
@@ -455,7 +536,7 @@
                     $("#lot_number").val(data['data']['lot_number']);
                     $("#product_amount").val(data['data']['amt']);
                     $("#product_unit_id_fk").val(data['data']['product_unit_name']);
-                    $("#doc_no").val(data['data']['doc_no']);
+                    // $("#doc_no").val(data['data']['doc_no']);
                     $("#date_stock_in").val(data['data']['date_in_stock']);
                     $("#expire_stock_in").val(data['data']['lot_expired_date']);
                     $("#stock_remark").val(data['data']['stock_remark']);
@@ -486,5 +567,156 @@
                     console.log("error");
                 })
         }
+
+        $(function() {
+            table_order = $('#basic-dt').DataTable({
+                // dom: 'Bfrtip',
+                // buttons: ['excel'],
+                searching: false,
+                ordering: true,
+                lengthChange: false,
+                responsive: true,
+                // paging: true,
+                pageLength: 20,
+                processing: true,
+                serverSide: true,
+                "language": {
+                    "lengthMenu": "แสดง _MENU_ แถว",
+                    "zeroRecords": "ไม่พบข้อมูล",
+                    "info": "แสดงหน้า _PAGE_ จาก _PAGES_ หน้า",
+                    "search": "ค้นหา",
+                    "infoEmpty": "",
+                    "infoFiltered": "",
+                    "paginate": {
+                        "first": "หน้าแรก",
+                        "previous": "ย้อนกลับ",
+                        "next": "ถัดไป",
+                        "last": "หน้าสุดท้าย"
+                    },
+                    'processing': "กำลังโหลดข้อมูล",
+                },
+                ajax: {
+                    url: '{{ route('admin/Stock_in_confirm_datatable') }}',
+                    data: function(d) {
+                        d.s_branch_id_fk = $('#s_branch_id_fk').val();
+                        d.s_warehouse_id_fk = $('#s_warehouse_id_fk').val();
+                        d.s_product_name = $('#s_product_name').val();
+ 
+                        // d.position = $('#type').val();
+                        // d.id_card = $('#id_card').val();
+
+                    },
+                },
+
+
+                columns: [
+                    // {
+                    //     data: "id",
+                    //     title: "ลำดับ",
+                    //     className: "w-10 text-center",
+                    // },
+
+
+                    {
+                        data: "branch_name",
+                        title: "สาขา",
+                        className: "w-10 ",
+                    },
+                    {
+                        data: "warehouse_name",
+                        title: "คลัง",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "product_name",
+                        title: "สินค้า",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "amt",
+                        title: "จำนวน",
+                        className: "w-10",
+
+                    },
+
+                    {
+                        data: "product_unit_name",
+                        title: "หน่วย",
+                        className: "w-10",
+
+                    },
+
+
+
+
+                    {
+                        data: "lot_number",
+                        title: "หมายเลขล๊อต",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "date_in_stock",
+                        title: "วันที่รับเข้า",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "lot_expired_date",
+                        title: "วันที่หมดอายุ",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "create_name",
+                        title: "ผู้ทำรายการ",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "approve_name",
+                        title: "ผู้อนุมัติ",
+                        className: "w-10",
+                    },
+                    {
+                        data: "approve_date",
+                        title: "วันที่อนุมัติ",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "stock_status",
+                        title: "สถานะ",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "stock_remark",
+                        title: "หมายเหตุ",
+                        className: "w-10",
+                    },
+
+
+                    {
+                        data: "action",
+                        title: "Action",
+                        className: "w-10",
+                    },
+
+
+
+                ],
+
+
+
+            });
+            $('#search-form').on('click', function(e) {
+                table_order.draw();
+                e.preventDefault();
+            });
+
+        });
     </script>
 @endsection

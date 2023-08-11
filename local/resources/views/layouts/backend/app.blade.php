@@ -477,11 +477,6 @@
     </script>
     <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
     <!-- Common Script Ends -->
-    <!-- Page Level Plugin/Script Starts -->
-    <script src="{{ asset('backend/assets/js/loader.js') }}"></script>
-
-    <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
-    <!-- Common Script Ends -->
     <script src="{{ asset('backend/assets/js/loader.js') }}"></script>
 
     <script src="{{ asset('backend/plugins/sweetalerts/sweetalert2.min.js') }}"></script>

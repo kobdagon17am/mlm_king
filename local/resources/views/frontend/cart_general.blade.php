@@ -128,7 +128,6 @@
                         <div class="col-md-12 ">
                             <div class="widget-content widget-content-area tab-horizontal-line">
                                 <ul class="nav nav-tabs" id="category" role="tablist">
-
                                     @foreach ($get_category as $index => $value)
                                         <li class="nav-item">
                                             <a class="nav-link {{ $index == 0 ? 'active' : '' }}"

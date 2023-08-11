@@ -118,16 +118,32 @@ Route::get('admin/Blank', function () {
   Route::post('admin/Stockin_insert','Admin\StockController@insert')->name('admin/Stockin_insert');
   Route::get('admin/view_stock_in','Admin\StockController@view_stock_in')->name('admin/view_stock_in');
   Route::post('admin/update_stock_in','Admin\StockController@update_stock_in')->name('admin/update_stock_in');
+
+  Route::get('admin/Stock_in_confirm_datatable','Admin\StockController@Stock_in_confirm_datatable')->name('admin/Stock_in_confirm_datatable');
     // END receive
 
   // Route::get('admin/Stock_out', function () {
   //   return view('backend.Stock_out');
   // })->name('admin/Stock_out');
   Route::get('admin/Stock_out','Admin\StockOutController@index')->name('admin/Stock_out');
-  Route::get('admin/get_data_warehouse_select', 'Admin\StockOutController@get_data_warehouse_select')->name('get_data_warehouse_select');
+  Route::get('admin/Stock_out_detail/{id}','Admin\StockOutController@view_modal')->name('admin/Stock_out_detail');
   Route::get('admin/get_data_warehouse_out_select', 'Admin\StockOutController@get_data_warehouse_out_select')->name('get_data_warehouse_out_select');
-  Route::get('admin/get_data_product_select', 'Admin\StockOutController@get_data_product_select')->name('get_data_product_select');
-  Route::get('admin/get_data_product_unit_select', 'Admin\StockOutController@get_data_product_unit_select')->name('get_data_product_unit_select');
-  Route::post('admin/Stockout_insert','Admin\StockOutController@insert_stock_out')->name('admin/Stockout_insert');
-  // Route::get('admin/view_stock_out','Admin\StockOutController@view_stock_out')->name('admin/view_stock_out');
-  // Route::post('admin/update_stock_out','Admin\StockOutController@update_stock_out')->name('admin/update_stock_out');
+  Route::post('admin/Stockout_insert','Admin\StockOutController@insert')->name('admin/Stockout_insert');
+  Route::get('admin/view_stock_out','Admin\StockOutController@view_stock_out')->name('admin/view_stock_out');
+  Route::post('admin/update_stock_out','Admin\StockOutController@update_stock_out')->name('admin/update_stock_out');
+  Route::get('admin/Stock_out_confirm_datatable','Admin\StockOutController@Stock_out_confirm_datatable')->name('admin/Stock_out_confirm_datatable');
+
+
+  // Route::get('admin/Stock_report', function () {
+  //   return view('backend.Stock_report');
+  // })->name('admin/Stock_report');
+  Route::get('admin/Stock_report','Admin\StockReportController@index')->name('admin/Stock_report');
+  Route::get('admin/get_data_warehouse_select', 'Admin\StockReportController@get_data_warehouse_select')->name('get_data_warehouse_select');
+  Route::get('admin/Stock_report_datatable','Admin\StockReportController@Stock_report_datatable')->name('admin/Stock_report_datatable');
+
+
+  // Route::get('admin/Stock_card', function () {
+  //   return view('backend.Stock_card');
+  // })->name('admin/Stock_card');
+  Route::get('admin/Stock_card/{lot_id}','Admin\StockCardController@index')->name('admin/Stock_card');
+  Route::get('admin/Stock_card_datatable','Admin\StockCardController@Stock_card_datatable')->name('admin/Stock_card_datatable');
