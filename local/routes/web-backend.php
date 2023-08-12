@@ -34,9 +34,13 @@ Route::get('admin/Blank', function () {
     return view('backend.member_regis');
   })->name('admin/MemberRegister');
 
-  Route::get('admin/MemberDocument', function () {
-    return view('backend.member_doc');
-  })->name('admin/MemberDocument');
+  // Route::get('admin/MemberDocument', function () {
+  //   return view('backend.member_doc');
+  // })->name('admin/MemberDocument');
+  Route::get('admin/MemberDoc','Admin\MemberDocController@index')->name('admin/MemberDoc');
+  Route::get('admin/Member_Doc_datatable','Admin\MemberDocController@Member_Doc_datatable')->name('admin/Member_Doc_datatable');
+  Route::get('admin/Member_Doc_update','Admin\MemberDocController@Member_Doc_update')->name('admin/Member_Doc_update');
+  Route::get('admin/Member_Doc_view','Admin\MemberDocController@Member_Doc_view')->name('admin/Member_Doc_view');
 
   Route::get('admin/HistoryDocument', function () {
     return view('backend.history_doc');

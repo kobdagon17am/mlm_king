@@ -27,7 +27,7 @@
                         <a href="{{ route('admin/MemberRegister') }}"> ระบบบริการสมาชิก </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin/MemberDocument') }}"> ระบบตรวจสอบเอกสาร </a>
+                        <a href="{{ route('admin/MemberDoc') }}"> ระบบตรวจสอบเอกสาร </a>
                     </li>
                     <li>
                         <a href="{{ route('admin/HistoryDocument') }}"> ประวัติการตรวจสอบเอกสาร </a>

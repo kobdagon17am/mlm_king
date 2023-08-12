@@ -185,8 +185,10 @@ class RegisterController extends Controller
             'bank_type.required' => 'กรุณากรอกข้อมูล',
             // END ข้อมูลบัญชี
 
-            
+
         ];
+
+        
         // if ($request->file_bank) {
 
         //     $rule['file_bank'] = 'mimes:jpeg,jpg,png';
@@ -218,26 +220,6 @@ class RegisterController extends Controller
         //END data validator
 
         if (!$validator->fails()) {
-            // dd('111');
-            // $customer = [
-            //     'user_name' => 'hhhh',
-            //     // 'expire_date' => date('Y-m-d', $mt_mount_new),
-            //     'password' => md5('11111'),
-            //     'upline_id' => $request->upline_id,
-            //     // 'pv_upgrad' =>$request->pv,
-            //     'introduce_id' => $request->sponsor,
-            //     'type_upline' => $request->side,
-            //     'prefix_name' => trim($request->prefix),
-            //     'first_name' => trim($request->firstname),
-            //     'last_name' => trim($request->lastname),
-            //     'business_name' => trim($request->businessname),
-            //     'id_card' => trim($request->id_card),
-            //     'phone' =>  trim($request->phone),
-            //     'birth_day' =>  trim($request->birthdate),
-            //     'nation_id' => 'ไทย',
-            //     'email' => trim($request->email),
-            // ];
-
 
             //INSERT CUSTOMER
             $customer_insert = new Customer;
@@ -261,8 +243,8 @@ class RegisterController extends Controller
             $customer_insert->phone = trim($request->phone);
             $customer_insert->email = trim($request->email);
 
-            
-         
+
+
             //INSERT CUSTOMER ADDRESS CARD
             $customers_address_card_insert = new Customers_address_card;
             $customers_address_card_insert->card_house_no = trim($request->card_no);
@@ -324,7 +306,7 @@ class RegisterController extends Controller
 
                 // dd($customer_insert);
 
-                return redirect('RegisterSuccess/'. $customer_insert->username)->withSuccess('สมัครสมาชิกสำเร็จ');
+                return redirect('RegisterSuccess/' . $customer_insert->username)->withSuccess('สมัครสมาชิกสำเร็จ');
             } catch (Exception $e) {
                 //code
                 DB::rollback();

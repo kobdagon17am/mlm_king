@@ -518,12 +518,12 @@
 
 
 
-        function edit(id) {
+        function edit(idddd) {
             $.ajax({
                     url: '{{ route('admin/view_stock_in') }}',
                     type: 'GET',
                     data: {
-                        id
+                        id:id
                     }
                 })
                 .done(function(data) {
