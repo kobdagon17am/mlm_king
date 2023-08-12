@@ -31,6 +31,8 @@
                         <div class="w-100">
                             <div class="form-group row">
                                 <input type="hidden" name="transaction_stock" value="{{ $code }}">
+                                <input type="hidden" name="stock_id_fk" value="{{ $get_stock->id }}">
+
                                 <div class="col-lg-4  mt-2 text-left">
                                     <label><b>สาขาต้นทาง:</b></label>
                                     <span class="form-label text-danger branch_id_fk_err _err"></span>
@@ -55,8 +57,8 @@
                                 <div class="col-lg-4  mt-2 text-left">
                                     <label><b>สาขาปลายทาง:</b></label>
                                     <span class="form-label text-danger branch_out_id_fk_err _err"></span>
-                                    <select class="form-control branch_out_select" name="branch_out_id_fk">
-                                        <option selected disabled> เลือกสาขาปลายทาง
+                                    <select class="form-control branch_out_select" name="branch_out_id_fk"  required>
+                                        <option selected disabled value=""> เลือกสาขาปลายทาง
                                         </option>
                                         @foreach ($get_branch as $val)
                                             <option value="{{ $val->id }}">
@@ -69,8 +71,8 @@
                                 <div class="col-lg-4  mt-2 text-left">
                                     <label><b>คลังสินค้าปลายทาง:</b></label>
                                     <span class="form-label text-danger warehouse_out_id_fk_err _err"></span>
-                                    <select class="form-control warehouse_out_select" name="warehouse_out_id_fk" disabled>
-                                        <option selected disabled> เลือกคลังปลายทาง
+                                    <select class="form-control warehouse_out_select" name="warehouse_out_id_fk" disabled required>
+                                        <option selected disabled value=""> เลือกคลังปลายทาง
                                         </option>
                                     </select>
                                 </div>
@@ -130,10 +132,12 @@
                             </tbody>
                         </table>
                     </div>
+                    @if(count($get_stock_lot) > 0)
                     <div class="info-area col-md-12 text-center mt-2 mb-4">
                         <button type="submit" class="btn btn-info btn-rounded" name="stock_out_add" value="success">
                             <i class="las la-plus-circle"></i> โอนย้ายสินค้า</button>
                     </div>
+                    @endif
                 </div>
             </div>
         </form>
@@ -156,6 +160,7 @@
                                         <form method="post" action="{{ route('admin/update_stock_out') }}"
                                             enctype="multipart/form-data" id="msform">
                                             @csrf
+                                            <input type="hidden" name="stock_id_fk" value="{{ $get_stock->id }}">
                                             <div class="row">
                                                 <div class="col-md-12 mx-0">
                                                     <div class="form-card">
