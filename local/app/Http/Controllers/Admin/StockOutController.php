@@ -28,11 +28,14 @@ class StockOutController extends Controller
       ->leftJoin('db_warehouse', 'db_warehouse.id', '=', 'db_stocks.warehouse_id_fk')
       ->get();
 
+
     return view('backend/stock_out', compact('get_stock'));
   }
 
   public function view_modal($id)
   {
+
+
 
     $y = date('Y');
     $y = substr($y, -2);
@@ -62,17 +65,42 @@ class StockOutController extends Controller
       ->leftJoin('db_warehouse', 'db_warehouse.id', '=', 'db_stocks.warehouse_id_fk')
       ->where('db_stocks.id', $id)
       ->first();
+//       id
+// branch_id_fk
+// warehouse_id_fk
+// product_id_fk
+// product_unit_id_fk
+// branch_out_id_fk
+// warehouse_out_id_fk
+// transaction_stock
+// lot_number
+// lot_balance
+// amt
+// date_in_stock
+// lot_expired_date
+// stock_type
+// stock_status
+// create_id_fk
+// create_name
+// approve_id_fk
+// approve_name
+// approve_date
+// stock_remark
+// created_at
+// updated_at
+// deleted_at
 
     $get_stock_lot = DB::table('db_stock_lot')
+    //    ->select('lot_number','')
       ->where('branch_id_fk', $get_stock->branch_id_fk)
       ->where('warehouse_id_fk', $get_stock->warehouse_id_fk)
       ->where('product_id_fk', $get_stock->product_id_fk)
-      ->where('stock_type', 'in')
+      ->wherein('stock_type',['in','in_transfer'])
       ->where('lot_balance', '!=', 0)
       ->where('stock_status', 'confirm')
+    //   ->groupBy('db_stock_lot.lot_number')
       ->get();
-
-    // dd($get_stock_lot);
+// dd( $get_stock_lot);
 
     $get_stock_out = DB::table('db_stock_out')
       ->select('db_stock_out.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
@@ -96,7 +124,13 @@ class StockOutController extends Controller
 
   public function insert(Request $rs)
   {
-    // dd($rs->all());
+
+
+     $amt_total = array_sum($rs->amt);
+     if($amt_total<= 0){
+        return redirect('admin/Stock_out_detail/'.$rs->stock_id_fk)->withError('กรุณาใส่จำนวนสินค้าที่ต้องการโอนระหวางสาขา');
+    }
+
 
     $get_stock_data = DB::table('db_stock_lot')
       ->where('branch_id_fk', '=', $rs->branch_id_fk)
@@ -166,17 +200,16 @@ class StockOutController extends Controller
 
 
         DB::commit();
-        return redirect('admin/Stock_out')->withSuccess('โอนย้ายสินค้าสำเร็จ');
+        return redirect('admin/Stock_out_detail/'.$rs->stock_id_fk)->withSuccess('โอนย้ายสินค้าสำเร็จ');
       } catch (Exception $e) {
         DB::rollback();
-        return redirect('admin/Stock_out')->withError('โอนย้ายสินค้าไม่สำเร็จ');
+        return redirect('admin/Stock_out_detail/'.$rs->stock_id_fk)->withError('โอนย้ายสินค้าไม่สำเร็จ');
       }
     }
   }
 
   public function update_stock_out(Request $rs)
   {
-    // dd($rs->all());
 
     // อัปเดตเมื่อ stock_status เป็น "confirm"
     if ($rs->stock_status == "confirm") {
@@ -198,6 +231,8 @@ class StockOutController extends Controller
       $get_stock_out = DB::table('db_stock_out')
         ->where('id', $rs->id)
         ->first();
+
+
 
       // dd($get_stock_out);
 
@@ -365,7 +400,8 @@ class StockOutController extends Controller
       DB::table('db_stock_lot')
         ->insert($dataNewRow_in);
 
-      return redirect('admin/Stock_out')->withSuccess('โอนย้ายสินค้าสำเร็จ');
+        return redirect('admin/Stock_out_detail/'.$rs->stock_id_fk)->withSuccess('โอนย้ายสินค้าสำเร็จ');
+
     } elseif ($rs->stock_status == "cancel") {
       // อัปเดตเมื่อ stock_status เป็น "cancel"
       $updateData = [
@@ -375,7 +411,8 @@ class StockOutController extends Controller
       DB::table('db_stock_lot')
         ->where('id', $rs->id) // แนะนำให้ใช้ id หรือ primary key เพื่ออัปเดตแถวที่ต้องการ
         ->update($updateData);
-      return redirect('admin/Stock_out')->withError('โอนย้ายสินค้าไม่สำเร็จ');
+        return redirect('admin/Stock_out_detail/'.$rs->stock_id_fk)->withError('โอนย้ายสินค้าไม่สำเร็จ');
+
     }
   }
 
@@ -401,6 +438,8 @@ class StockOutController extends Controller
 
   public function Stock_out_confirm_datatable(Request $rs)
   {
+
+
 
     $get_stock_out = DB::table('db_stock_out')
       ->select('db_stock_out.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
