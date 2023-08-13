@@ -308,7 +308,7 @@ class MemberDocController extends Controller
     if($update_db_customer){
       DB::table('customers')
       ->where('id', $customer_id)
-      ->update(['regis_date_doc' => now()]);
+      ->update(['regis_date_doc' => now(),'regis_doc_status'=>'approve']);
       return 'success';
     }else{
       return 'fail';
