@@ -19,7 +19,9 @@ class MemberDocController extends Controller
 
   public function index()
   {
-
+    //  $x= DB::table('customers')
+    //   ->update(['regis_doc1_status' => 1]);
+    //   dd($x);
     return view('backend/member_doc');
   }
 
@@ -148,17 +150,130 @@ class MemberDocController extends Controller
 
   public function Member_Doc_update(Request $rs)
   {
-
-    dd($rs->all());
-    if ($rs->member_doc_status == "confirm") {
-      // อัปเดตเมื่อ member_doc_status เป็น "confirm"
+    
+    if ($rs->regis_doc_status == "2") {
+      // อัปเดตเมื่อ regis_doc_status เป็น "อนุมัติ"
       $updateData = [
-        'regis_doc1_status' => '2'
+        'regis_doc_status' => '2',
+        'remark' => $rs->remark,
+        'approve_id_fk' => Auth::guard('admin')->user()->id,
+        'approve_name' => Auth::guard('admin')->user()->first_name,
+        'approve_date' => now(),
       ];
 
-      DB::table('customers')
+      DB::table('register_files')
         ->where('id', $rs->id)
         ->update($updateData);
+
+      // update db customers
+      $get_db_register_file = DB::table('register_files')
+        ->where('id', '=', $rs->id)
+        ->first();
+
+      // dd($get_db_register_file);
+
+      $update_db_customer = DB::table('customers')
+        ->where('id', $get_db_register_file->customer_id)
+    
+        ->first();
+
+      
+
+      // dd($update_db_customer);
+
+      if ($get_db_register_file->type == '1') {
+        // กรณี type เป็น 1
+        $regis_doc1_status = $get_db_register_file->regis_doc_status;
+        DB::table('customers')
+          ->where('id', $get_db_register_file->customer_id)
+          ->update(['regis_doc1_status' => $regis_doc1_status]);
+          
+      } elseif ($get_db_register_file->type == '2') {
+        // กรณี type เป็น 2
+        $regis_doc2_status = $get_db_register_file->regis_doc_status;
+        // dd($regis_doc2_status);
+        DB::table('customers')
+          ->where('id', $get_db_register_file->customer_id)
+          ->update(['regis_doc2_status' => $regis_doc2_status]);
+      } elseif ($get_db_register_file->type == '3') {
+        // กรณี type เป็น 3
+        $regis_doc3_status = $get_db_register_file->regis_doc_status;
+        // dd($regis_doc3_status);
+        DB::table('customers')
+          ->where('id', $get_db_register_file->customer_id)
+          ->update(['regis_doc3_status' => $regis_doc3_status]);
+      } elseif ($get_db_register_file->type == '4') {
+        // กรณี type เป็น 4
+        $regis_doc4_status = $get_db_register_file->regis_doc_status;
+        // dd($regis_doc4_status);
+        DB::table('customers')
+          ->where('id', $get_db_register_file->customer_id)
+          ->update(['regis_doc4_status' => $regis_doc4_status]);
+      }
+
+      \App\Http\Controllers\Admin\MemberDocController::check_customer_doc_approve($get_db_register_file->customer_id);
+
+
+      return redirect('admin/MemberDoc')->withSuccess('อนุมัติเอกสาร');
+    } elseif ($rs->regis_doc_status == "3") {
+      // อัปเดตเมื่อ regis_doc_status เป็น "ไม่อนุมัติ"
+      $updateData = [
+        'regis_doc_status' => '3',
+        'remark' => $rs->remark,
+        'approve_id_fk' => Auth::guard('admin')->user()->id,
+        'approve_name' => Auth::guard('admin')->user()->first_name,
+        'approve_date' => now(),
+      ];
+
+      DB::table('register_files')
+        ->where('id', $rs->id) // แนะนำให้ใช้ id หรือ primary key เพื่ออัปเดตแถวที่ต้องการ
+        ->update($updateData);
+
+      // update db customers
+      $get_db_register_file = DB::table('register_files')
+        ->where('id', '=', $rs->id)
+        ->first();
+
+      // dd($get_db_register_file);
+
+      $update_db_customer = DB::table('customers')
+        ->where('id', $get_db_register_file->customer_id)
+        ->orderByDesc('id')
+        ->first();
+
+      // dd($update_db_customer);
+
+      if ($get_db_register_file->type == '1') {
+        // กรณี type เป็น 1
+        $regis_doc1_status = $get_db_register_file->regis_doc_status;
+        DB::table('customers')
+          ->where('id', $get_db_register_file->customer_id)
+          ->update(['regis_doc1_status' => $regis_doc1_status]);
+
+          
+      } elseif ($get_db_register_file->type == '2') {
+        // กรณี type เป็น 2
+        $regis_doc2_status = $get_db_register_file->regis_doc_status;
+        // dd($regis_doc2_status);
+        DB::table('customers')
+          ->where('id', $get_db_register_file->customer_id)
+          ->update(['regis_doc2_status' => $regis_doc2_status]);
+      } elseif ($get_db_register_file->type == '3') {
+        // กรณี type เป็น 3
+        $regis_doc3_status = $get_db_register_file->regis_doc_status;
+        // dd($regis_doc3_status);
+        DB::table('customers')
+          ->where('id', $get_db_register_file->customer_id)
+          ->update(['regis_doc3_status' => $regis_doc3_status]);
+      } elseif ($get_db_register_file->type == '4') {
+        // กรณี type เป็น 4
+        $regis_doc4_status = $get_db_register_file->regis_doc_status;
+        // dd($regis_doc4_status);
+        DB::table('customers')
+          ->where('id', $get_db_register_file->customer_id)
+          ->update(['regis_doc4_status' => $regis_doc4_status]);
+      }
+      return redirect('admin/MemberDoc')->withError('ไม่อนุมัติเอกสาร');
     }
   }
 
@@ -167,7 +282,7 @@ class MemberDocController extends Controller
     // dd($rs->all());
 
     $get_member_doc = DB::table('register_files')
-    ->select('register_files.*', 'customers.first_name', 'customers.last_name', 'customers.id_card',)
+      ->select('register_files.*', 'customers.first_name', 'customers.last_name', 'customers.id_card',)
       ->leftJoin('customers', 'customers.id', '=', 'register_files.customer_id')
       ->where('register_files.customer_id', '=', $rs->id)
       ->where('register_files.type', '=', $rs->type)
@@ -178,5 +293,27 @@ class MemberDocController extends Controller
     $data = ['status' => 'success', 'data' => $get_member_doc];
 
     return $data;
+  }
+
+  public function check_customer_doc_approve($customer_id)
+  {
+     
+    $update_db_customer = DB::table('customers')
+    ->where('id', $customer_id)
+    ->where('regis_doc1_status', '=', '2')
+    ->Where('regis_doc2_status', '=', '2')
+    ->Where('regis_doc3_status', '=', '2')
+    ->first();
+
+    if($update_db_customer){
+      DB::table('customers')
+      ->where('id', $customer_id)
+      ->update(['regis_date_doc' => now()]);
+      return 'success';
+    }else{
+      return 'fail';
+
+    }
+
   }
 }

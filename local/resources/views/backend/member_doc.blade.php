@@ -82,13 +82,12 @@
                                                             <div class="form-group row">
                                                                 <div class="col-lg-6">
                                                                     <div class="col-lg-12 mt-2 text-center ">
-                                                                        <label><b>รูปภาพ</b></label>
+                                                                        <label><b></b></label>
                                                                         <div id="img"></div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <input type="hidden" name="id" id="id">
-                                                                    <input type="hidden" name="type" id="type">
                                                                     <div class="col-lg-12  mt-2 text-left">
                                                                         <label><b>รหัสสมาชิก:</b></label>
                                                                         <input type="text" class="form-control"
@@ -122,13 +121,13 @@
                                                     <div class="info-area col-md-12 text-center mt-4">
                                                         <div id="stock_button">
                                                             <button type="submit" class="btn btn-success btn-rounded"
-                                                                name="member_doc_status" value="confirm">
+                                                                name="regis_doc_status" value="2">
                                                                 <i class="las la-check-circle"></i>
                                                                 อนุมัติ
                                                             </button>
 
                                                             <button type="submit" class="btn btn-danger btn-rounded"
-                                                                name="member_doc_status" value="cancel">
+                                                                name="regis_doc_status" value="3">
                                                                 <i class="las la-times-circle"></i>
                                                                 ไม่อนุมัติ
                                                             </button>
@@ -196,7 +195,7 @@
                     $("#edit").modal();
 
 
-                    if (data['data']['member_doc_status'] == 'cancel' || data['data']['member_doc_status'] ==
+                    if (data['data']['regis_doc_status'] == 'cancel' || data['data']['regis_doc_status'] ==
                         'confirm') {
                         stock_button.style.display = "none";
 
@@ -204,7 +203,7 @@
 
                     } else {
                         stock_button.style.display = "block";
-                        // console.log(data['data']['member_doc_status']);
+                        // console.log(data['data']['regis_doc_status']);
                     }
 
 
