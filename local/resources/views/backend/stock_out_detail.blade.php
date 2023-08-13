@@ -94,7 +94,7 @@
                                 <tr>
                                     <th>ลำดับ</th>
                                     <th>หมายเลขล๊อต</th>
-                                    <th>วันที่รับเข้า</th>
+                                    {{-- <th>วันที่รับเข้า</th> --}}
                                     <th>วันที่หมดอายุ</th>
                                     <th>จำนวนสินค้าคงเหลือ</th>
                                     <th>จำนวนสินค้าโอนย้าย</th>
@@ -106,15 +106,15 @@
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $value->lot_number }}
-                                            <input name="lot_number[{{ $value->id }}]"
+                                            <input name="lot_number[{{$i}}]"
                                                 value="{{ $value->lot_number }}" type="hidden">
                                         </td>
-                                        <td>{{ $value->date_in_stock }}</td>
+
                                         <td>{{ $value->lot_expired_date }}</td>
                                         <td>{{ $value->lot_balance }}</td>
                                         <td>
                                             <input type="number" max="{{ $value->lot_balance }}" min="0"
-                                                name="amt[{{ $value->id }}]" class="amt_input form-control"
+                                                name="amt[{{$i}}]" class="amt_input form-control"
                                                 style="max-width: 100px; max-height: 40px; border-radius: 5px;"
                                                 value="0">
                                         </td>
