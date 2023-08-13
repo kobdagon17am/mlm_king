@@ -396,7 +396,7 @@
                 </tbody>
             </table>
         </div>
-        
+
         <h6>รายการรับเข้าสินค้าอนุมัติแล้ว</h6>
         <hr>
         <div class="row">
@@ -518,7 +518,7 @@
 
 
 
-        function edit(idddd) {
+        function edit(id) {
             $.ajax({
                     url: '{{ route('admin/view_stock_in') }}',
                     type: 'GET',
@@ -601,7 +601,7 @@
                         d.s_branch_id_fk = $('#s_branch_id_fk').val();
                         d.s_warehouse_id_fk = $('#s_warehouse_id_fk').val();
                         d.s_product_name = $('#s_product_name').val();
- 
+
                         // d.position = $('#type').val();
                         // d.id_card = $('#id_card').val();
 
