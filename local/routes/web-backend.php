@@ -30,9 +30,12 @@ Route::get('admin/Blank', function () {
 
 
 
-  Route::get('admin/MemberRegister', function () {
-    return view('backend.member_regis');
-  })->name('admin/MemberRegister');
+  // Route::get('admin/MemberRegister', function () {
+  //   return view('backend.member_regis');
+  // })->name('admin/MemberRegister');
+  Route::get('admin/MemberRegister','Admin\MemberRigisterController@index')->name('admin/MemberRegister');
+  Route::get('admin/MemberRegister_datatable','Admin\MemberRigisterController@MemberRegister_datatable')->name('admin/MemberRegister_datatable');
+
 
   // Route::get('admin/MemberDocument', function () {
   //   return view('backend.member_doc');
@@ -42,9 +45,13 @@ Route::get('admin/Blank', function () {
   Route::post('admin/Member_Doc_update','Admin\MemberDocController@Member_Doc_update')->name('admin/Member_Doc_update');
   Route::get('admin/Member_Doc_view','Admin\MemberDocController@Member_Doc_view')->name('admin/Member_Doc_view');
 
-  Route::get('admin/HistoryDocument', function () {
-    return view('backend.history_doc');
-  })->name('admin/HistoryDocument');
+  // Route::get('admin/HistoryDocument', function () {
+  //   return view('backend.history_doc');
+  // })->name('admin/HistoryDocument');
+  Route::get('admin/HistoryDocument','Admin\DocHistoryController@index')->name('admin/HistoryDocument');
+  Route::get('admin/History_Doc_datatable','Admin\DocHistoryController@History_Doc_datatable')->name('admin/History_Doc_datatable');
+  Route::get('admin/History_Doc_view','Admin\DocHistoryController@History_Doc_view')->name('admin/History_Doc_view');
+  
 
   // Route::get('admin/Products', function () {
   //   return view('backend.products');

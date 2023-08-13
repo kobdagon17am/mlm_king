@@ -19,9 +19,16 @@ class MemberDocController extends Controller
 
   public function index()
   {
-    //  $x= DB::table('customers')
-    //   ->update(['regis_doc1_status' => 1]);
-    //   dd($x);
+    // $get_member_doc = DB::table('customers')
+    //   ->where('username', 'PS512')
+    //   ->where('regis_doc1_status', '=', '1')
+    //   ->orWhere('regis_doc2_status', '=', '1')
+    //   // ->orWhere('regis_doc3_status', '=', '1')
+    //   // ->orWhere('regis_doc4_status', '=', '1')
+    //   ->orderBy('order_regis_file_date')
+    //   ->get();
+
+    // dd($get_member_doc);
     return view('backend/member_doc');
   }
 
@@ -33,7 +40,6 @@ class MemberDocController extends Controller
       ->where('regis_doc1_status', '=', '1')
       ->orWhere('regis_doc2_status', '=', '1')
       ->orWhere('regis_doc3_status', '=', '1')
-      ->orWhere('regis_doc4_status', '=', '1')
       ->orderBy('order_regis_file_date');
 
 
@@ -81,9 +87,9 @@ class MemberDocController extends Controller
         } elseif ($row->regis_doc1_status == '1') {
           $html = '<a href="#!" onclick="edit(' . $row->id . ',1)"> <span class="badge badge-rounded outline-badge-warning">รอตรวจสอบ</span>';
         } elseif ($row->regis_doc1_status == '2') {
-          $html = '<span class="badge badge-rounded badge-success">อนุมัติ</span>';
+          $html = '<a href="#!" onclick="edit(' . $row->id . ',1)"> <span class="badge badge-rounded badge-success">อนุมัติ</span>';
         } elseif ($row->regis_doc1_status == '3') {
-          $html = '<span class="badge badge-rounded badge-danger">ไม่อนุมัติ</span>';
+          $html = '<a href="#!" onclick="edit(' . $row->id . ',1)"> <span class="badge badge-rounded badge-danger">ไม่อนุมัติ</span>';
         } else {
           $html = '';
         }
@@ -97,9 +103,9 @@ class MemberDocController extends Controller
         } elseif ($row->regis_doc2_status == '1') {
           $html = '<a href="#!" onclick="edit(' . $row->id . ',2)"> <span class="badge badge-rounded outline-badge-warning">รอตรวจสอบ</span>';
         } elseif ($row->regis_doc2_status == '2') {
-          $html = '<span class="badge badge-rounded badge-success">อนุมัติ</span>';
+          $html = '<a href="#!" onclick="edit(' . $row->id . ',2)"> <span class="badge badge-rounded badge-success">อนุมัติ</span>';
         } elseif ($row->regis_doc2_status == '3') {
-          $html = '<span class="badge badge-rounded badge-danger">ไม่อนุมัติ</span>';
+          $html = '<a href="#!" onclick="edit(' . $row->id . ',2)"> <span class="badge badge-rounded badge-danger">ไม่อนุมัติ</span>';
         } else {
           $html = '';
         }
@@ -113,9 +119,9 @@ class MemberDocController extends Controller
         } elseif ($row->regis_doc3_status == '1') {
           $html = '<a href="#!" onclick="edit(' . $row->id . ',3)"> <span class="badge badge-rounded outline-badge-warning">รอตรวจสอบ</span>';
         } elseif ($row->regis_doc3_status == '2') {
-          $html = '<span class="badge badge-rounded badge-success">อนุมัติ</span>';
+          $html = '<a href="#!" onclick="edit(' . $row->id . ',3)"> <span class="badge badge-rounded badge-success">อนุมัติ</span>';
         } elseif ($row->regis_doc3_status == '3') {
-          $html = '<span class="badge badge-rounded badge-danger">ไม่อนุมัติ</span>';
+          $html = '<a href="#!" onclick="edit(' . $row->id . ',3)"> <span class="badge badge-rounded badge-danger">ไม่อนุมัติ</span>';
         } else {
           $html = '';
         }
@@ -129,9 +135,9 @@ class MemberDocController extends Controller
         } elseif ($row->regis_doc4_status == '1') {
           $html = '<a href="#!" onclick="edit(' . $row->id . ',4)"> <span class="badge badge-rounded outline-badge-warning">รอตรวจสอบ</span>';
         } elseif ($row->regis_doc4_status == '2') {
-          $html = '<span class="badge badge-rounded badge-success">อนุมัติ</span>';
+          $html = '<a href="#!" onclick="edit(' . $row->id . ',4)"> <span class="badge badge-rounded badge-success">อนุมัติ</span>';
         } elseif ($row->regis_doc4_status == '3') {
-          $html = '<span class="badge badge-rounded badge-danger">ไม่อนุมัติ</span>';
+          $html = '<a href="#!" onclick="edit(' . $row->id . ',4)"> <span class="badge badge-rounded badge-danger">ไม่อนุมัติ</span>';
         } else {
           $html = '';
         }
@@ -140,7 +146,11 @@ class MemberDocController extends Controller
       })
 
       ->addColumn('order_regis_file_date', function ($row) {
-        return "";
+        if ($row->order_regis_file_date) {
+          return date('Y/m/d', strtotime($row->order_regis_file_date));
+        } else {
+          return '';
+        }
       })
 
 
@@ -150,7 +160,7 @@ class MemberDocController extends Controller
 
   public function Member_Doc_update(Request $rs)
   {
-    
+
     if ($rs->regis_doc_status == "2") {
       // อัปเดตเมื่อ regis_doc_status เป็น "อนุมัติ"
       $updateData = [
@@ -174,10 +184,10 @@ class MemberDocController extends Controller
 
       $update_db_customer = DB::table('customers')
         ->where('id', $get_db_register_file->customer_id)
-    
+
         ->first();
 
-      
+
 
       // dd($update_db_customer);
 
@@ -187,7 +197,6 @@ class MemberDocController extends Controller
         DB::table('customers')
           ->where('id', $get_db_register_file->customer_id)
           ->update(['regis_doc1_status' => $regis_doc1_status]);
-          
       } elseif ($get_db_register_file->type == '2') {
         // กรณี type เป็น 2
         $regis_doc2_status = $get_db_register_file->regis_doc_status;
@@ -249,8 +258,6 @@ class MemberDocController extends Controller
         DB::table('customers')
           ->where('id', $get_db_register_file->customer_id)
           ->update(['regis_doc1_status' => $regis_doc1_status]);
-
-          
       } elseif ($get_db_register_file->type == '2') {
         // กรณี type เป็น 2
         $regis_doc2_status = $get_db_register_file->regis_doc_status;
@@ -297,23 +304,21 @@ class MemberDocController extends Controller
 
   public function check_customer_doc_approve($customer_id)
   {
-     
+
     $update_db_customer = DB::table('customers')
-    ->where('id', $customer_id)
-    ->where('regis_doc1_status', '=', '2')
-    ->Where('regis_doc2_status', '=', '2')
-    ->Where('regis_doc3_status', '=', '2')
-    ->first();
-
-    if($update_db_customer){
-      DB::table('customers')
       ->where('id', $customer_id)
-      ->update(['regis_date_doc' => now(),'regis_doc_status'=>'approve']);
+      ->where('regis_doc1_status', '=', '2')
+      ->Where('regis_doc2_status', '=', '2')
+      ->Where('regis_doc3_status', '=', '2')
+      ->first();
+
+    if ($update_db_customer) {
+      DB::table('customers')
+        ->where('id', $customer_id)
+        ->update(['regis_date_doc' => now(), 'regis_doc_status' => 'approve']);
       return 'success';
-    }else{
+    } else {
       return 'fail';
-
     }
-
   }
 }
