@@ -117,24 +117,16 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="info-area col-md-12 text-center mt-4">
                                                         <div id="stock_button">
-                                                            <button type="submit" class="btn btn-success btn-rounded"
-                                                                name="regis_doc_status" value="2">
-                                                                <i class="las la-check-circle"></i>
-                                                                อนุมัติ
-                                                            </button>
-
-                                                            <button type="submit" class="btn btn-danger btn-rounded"
-                                                                name="regis_doc_status" value="3">
-                                                                <i class="las la-times-circle"></i>
-                                                                ไม่อนุมัติ
-                                                            </button>
+                                                            <span class="badge badge-rounded badge-success"
+                                                                name="regis_doc_status" value="2"><i
+                                                                    class="las la-check-double"></i> อนุมัติ</span>
+                                                            <span class="badge badge-rounded badge-danger"
+                                                                name="regis_doc_status" value="3"><i
+                                                                    class="las la-times-circle"></i> ไม่อนุมัติ</span>
                                                         </div>
                                                     </div>
-
-
                                                 </div>
                                             </div>
                                         </form>
@@ -149,8 +141,8 @@
             </div>
 
 
-            <div class="table-responsive ml-4 mt-2 mb-2">
-                <h6>รายงานเอกสารการสมัครสมาชิกรออนุมัติ</h6>
+            <div class="table-responsive mt-2 mb-2">
+                <h6>รายงานเอกสารการสมัครสมาชิกรอตรวจสอบ</h6>
                 <table id="basic-dt" class="table table-hover" style="width:100%">
 
                 </table>
@@ -195,8 +187,65 @@
                     $("#edit").modal();
 
 
-                    if (data['data']['regis_doc_status'] == 'cancel' || data['data']['regis_doc_status'] ==
-                        'confirm') {
+                    //display BUTTON
+                    if (data['data']['regis_doc_status'] == '2' || data['data']['regis_doc_status'] ==
+                        '3') {
+                        stock_button.style.display = "none";
+
+                        // console.log('ปิด');
+
+                    } else {
+                        stock_button.style.display = "block";
+                        // console.log(data['data']['regis_doc_status']);
+                    }
+
+                    //disable REMARK
+
+                    if (data['data']['regis_doc_status'] == '2' || data['data']['regis_doc_status'] ==
+                        '3') {
+                            remark.disabled = true;
+
+                        // console.log('ปิด');
+
+                    } else {
+                        remark.disabled = false;
+                        // console.log(data['data']['regis_doc_status']);
+                    }
+
+
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+        }
+
+        function edit1(id, type) {
+            $.ajax({
+                    url: '{{ route('admin/Member_Doc_view') }}',
+                    type: 'GET',
+                    data: {
+                        id: id,
+                        type: type
+                    }
+                })
+                .done(function(data) {
+                    $("#id").val(data['data']['id']);
+                    $("#username").val(data['data']['username']);
+                    $("#first_name").val(data['data']['first_name']);
+                    $("#last_name").val(data['data']['last_name']);
+                    $("#id_card").val(data['data']['id_card']);
+                    $("#remark").val(data['data']['remark']);
+                    var img = '{{ asset('') }}';
+                    var img_url = img + data['data']['url'] + '/' + data['data']['file'];
+
+                    var htmlContent = '<img src="' + img_url +
+                        '"class="img-fluid" id="file" name="file" alt="Document Image">';
+                    $("#img").html(htmlContent);
+                    $("#edi1").modal();
+
+
+                    if (data['data']['regis_doc_status'] == '2' || data['data']['regis_doc_status'] ==
+                        '3') {
                         stock_button.style.display = "none";
 
                         // console.log('ปิด');
@@ -212,7 +261,6 @@
                     console.log("error");
                 })
         }
-
 
         $(function() {
             table_order = $('#basic-dt').DataTable({
