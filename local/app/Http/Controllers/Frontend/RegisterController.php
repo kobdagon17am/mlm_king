@@ -36,9 +36,8 @@ class RegisterController extends Controller
                 ->select('*')
                 ->get();
 
-            //  $nation_id = DB::table('db_country')
-            //  ->select('*')
-            //  ->get();
+
+
 
             if (Auth::guard('c_user')->user()->business_location_id  == '1' || Auth::guard('c_user')->user()->business_location_id  == null) {
                 $business_location_id = 1;
@@ -58,6 +57,8 @@ class RegisterController extends Controller
                 ->where('lang_id', '=', 1)
                 ->orderby('id')
                 ->get();
+
+
 
             $data = ['data' => $resule, 'line_type_back' => $line_type, 'provinces' => $provinces, 'business_location' => $business_location, 'country' => $country];
 
@@ -188,7 +189,7 @@ class RegisterController extends Controller
 
         ];
 
-        
+
         // if ($request->file_bank) {
 
         //     $rule['file_bank'] = 'mimes:jpeg,jpg,png';
@@ -261,7 +262,7 @@ class RegisterController extends Controller
             $customers_address_card_insert->card_zipcode = trim($request->card_zipcode);
 
 
-            //INSERT CUSTOMER ADDRESS DELIVERY 
+            //INSERT CUSTOMER ADDRESS DELIVERY
             $customers_address_delivery_insert = new Customers_address_delivery;
             $customers_address_delivery_insert->sent_no = trim($request->sent_no);
             $customers_address_delivery_insert->sent_moo = trim($request->sent_moo);
