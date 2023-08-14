@@ -2,9 +2,9 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/dropify/dropify.min.css') }}">
     <link href="{{ asset('frontend/assets/css/pages/profile_edit.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('frontend/assets/css/forms/form-widgets.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('frontend/assets/css/forms/file-upload.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('frontend/plugins/dropzone/dropzone.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('frontend/assets/css/forms/form-widgets.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('frontend/assets/css/forms/file-upload.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('frontend/plugins/dropzone/dropzone.min.css') }}" rel="stylesheet" type="text/css">
 @endsection
 
 @section('content')
@@ -74,158 +74,168 @@
                             <div class="tab-content" id="v-border-pills-tabContent">
                                 <div class="tab-pane fade show active" id="v-border-pills-home" role="tabpanel"
                                     aria-labelledby="v-border-pills-home-tab">
-                                    <div class="media">
-                                        <div class="profile-shadow w-100">
-                                            <div class="row">
-                                                <div class="col-md-6 p-2">
-                                                    <div class="card">
-                                                        <div class="card-header">
-                                                            <h6><b>อัพโหลดภาพถ่ายบัตรประชาชน</b>
-                                                                <span class="text-danger">* </span>
-                                                            </h6>
-                                                        </div>
-                                                        <div class="upload text-center img-thumbnail">
-                                                            <input type="file" id="idcard_image" class="dropify"
-                                                                data-default-file="{{ asset('frontend/assets/img/idcard.png') }}"
-                                                                data-max-file-size="2M">
-                                                            <div class="info-area col-md-12 text-center p-2">
-                                                                <button type="submit" class="btn btn-info">
-                                                                    <i class="las la-save"></i>
-                                                                    อัพโหลดรูปภาพ</button>
-                                                            </div>
-                                                        </div>
+                                    <div class="row">
+                                        @if (empty($get_customer_doc1))
+                                            <div class="col-md-6 p-2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h6><b>อัพโหลดภาพถ่ายบัตรประชาชน</b>
+                                                            <span class="text-danger">* </span>
+                                                        </h6>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6 p-2">
-                                                    <div class="card">
-                                                        <div class="card-header">
-                                                            <h6><b>อัพโหลดภาพหน้าตรงพร้อมบัตรประชาชน</b>
-                                                                <span class="text-danger">* </span>
-                                                            </h6>
-                                                        </div>
-                                                        <div class="upload text-center img-thumbnail">
-                                                            <input type="file" id="user_idcard_image" class="dropify"
-                                                                data-default-file="{{ asset('frontend/assets/img/user_card.jpg') }}"
-                                                                data-max-file-size="2M">
-                                                            <div class="info-area col-md-12 text-center p-2">
-                                                                <button type="submit" class="btn btn-info">
-                                                                    <i class="las la-save"></i>
-                                                                    อัพโหลดรูปภาพ</button>
-                                                            </div>
+                                                    <div class="upload text-center img-thumbnail">
+                                                        <input type="file" id="idcard_image" class="dropify"
+                                                            data-default-file="{{ asset('frontend/assets/img/idcard.png') }}"
+                                                            data-max-file-size="2M">
+                                                        <div class="info-area col-md-12 text-center p-2">
+                                                            <button type="submit" class="btn btn-info">
+                                                                <i class="las la-save"></i>
+                                                                อัพโหลดรูปภาพ</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <p></p>
-                                            <div class="row">
-                                                <div class="col-md-6 p-2">
-                                                    <div class="card">
-                                                        <div class="card-header">
-                                                            <h6><b>อัพโหลดภาพถ่ายหน้าตรง</b>
-                                                                <span class="text-danger">* </span>
-                                                            </h6>
-                                                        </div>
-                                                        <div class="upload text-center img-thumbnail">
-                                                            <input type="file" id="user_image" class="dropify"
-                                                                data-default-file="{{ asset('frontend/assets/img/user.png') }}"
-                                                                data-max-file-size="2M">
-                                                            <div class="info-area col-md-12 text-center p-2">
-                                                                <button type="submit" class="btn btn-info">
-                                                                    <i class="las la-save"></i>
-                                                                    อัพโหลดรูปภาพ</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 p-2">
+                                        @endif
 
-                                                    <div class="card">
-                                                        <div class="card-header">
-                                                            <h6><b>อัพโหลดภาพถ่ายหน้าบัญชีธนาคาร</b>
-                                                                <span class="text-danger">* </span>
-                                                            </h6>
-                                                        </div>
-                                                        <div class="upload text-center img-thumbnail">
-                                                            <input type="file" id="bookbank_image" class="dropify"
-                                                                data-default-file="{{ asset('frontend/assets/img/BookBank.png') }}"
-                                                                data-max-file-size="2M">
-                                                            <div class="info-area col-md-12 text-center p-2">
-                                                                <button type="submit" class="btn btn-info">
-                                                                    <i class="las la-save"></i>
-                                                                    อัพโหลดรูปภาพ</button>
-                                                            </div>
+                                        @if (empty($get_customer_doc2))
+                                            <div class="col-md-6 p-2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h6><b>อัพโหลดภาพถ่ายหน้าตรงพร้อมบัตรประชาชน</b>
+                                                            <span class="text-danger">* </span>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="upload text-center img-thumbnail">
+                                                        <input type="file" id="user_idcard_image" class="dropify"
+                                                            data-default-file="{{ asset('frontend/assets/img/user_card.jpg') }}"
+                                                            data-max-file-size="2M">
+                                                        <div class="info-area col-md-12 text-center p-2">
+                                                            <button type="submit" class="btn btn-info">
+                                                                <i class="las la-save"></i>
+                                                                อัพโหลดรูปภาพ</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <p></p>
-                                            <div class="row">
-                                                <div class="col-md-12 p-2">
-                                                    <div class="card">
-                                                        <div class="widget-content widget-content-area br-6">
-                                                            <h5 class="table-header"><b>สถานะเอกสาร</b></h5>
-                                                            <div class="table-responsive mb-4">
-                                                                <table id="ordertable" class="table table-hover"
-                                                                    style="width:100%">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>วันที่สมัคร</th>
-                                                                            <th>เอกสาร</th>
-                                                                            <th>สถานะ</th>
-                                                                            <th>รายละเอียด</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td>06/09/2023</td>
-                                                                            <td>ภาพถ่ายหน้าตรง</td>
-                                                                            <td>
-                                                                                <span class="badge badge-info light">กำลังดำเนินการ</span>
-                                                                            </td>
-                                                                            <td>---</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>06/09/2023</td>
-                                                                            <td>ภาพถ่ายหน้าตรง</td>
-                                                                            <td>
-                                                                                <span class="badge badge-success-teal light">สำเร็จ</span>
-                                                                            </td>
-                                                                            <td>---</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>06/09/2023</td>
-                                                                            <td>ภาพถ่ายหน้าตรง</td>
-                                                                            <td>
-                                                                                <span class="badge badge-warning light">ไม่สำเร็จ</span>
-                                                                            </td>
-                                                                            <td>---</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>06/09/2023</td>
-                                                                            <td>ภาพถ่ายหน้าตรง</td>
-                                                                            <td>
-                                                                                <span class="badge badge-danger light">ยกเลิก</span>
-                                                                            </td>
-                                                                            <td>---</td>
-                                                                        </tr>
-                                                                    </tbody>
+                                        @endif
 
-
-
-                                                                </table>
-                                                                <p class="text-danger" style="font-size: 13px">
-                                                                    *กรณีเอกสารไม่ผ่านการอนุมัติ
-                                                                    สามารถส่งเอกสารเพิ่มเติมได้ โดยการแนบไฟล์เอกสารด้านบน
-                                                                    ทางทีมงานจะรีบดำเนินการตรวจสอบให้ภายใน 1-2 วันทำการค่ะ
-                                                                </p>
-                                                            </div>
+                                        @if (empty($get_customer_doc3))
+                                            <div class="col-md-6 p-2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h6><b>อัพโหลดภาพถ่ายหน้าตรง</b>
+                                                            <span class="text-danger">* </span>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="upload text-center img-thumbnail">
+                                                        <input type="file" id="user_image" class="dropify"
+                                                            data-default-file="{{ asset('frontend/assets/img/user.png') }}"
+                                                            data-max-file-size="2M">
+                                                        <div class="info-area col-md-12 text-center p-2">
+                                                            <button type="submit" class="btn btn-info">
+                                                                <i class="las la-save"></i>
+                                                                อัพโหลดรูปภาพ</button>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        @endif
 
+                                        @if (empty($get_customer_doc4))
+                                            <div class="col-md-6 p-2">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h6><b>อัพโหลดภาพถ่ายหน้าบัญชีธนาคาร</b>
+                                                            <span class="text-danger">* </span>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="upload text-center img-thumbnail">
+                                                        <input type="file" id="bookbank_image" class="dropify"
+                                                            data-default-file="{{ asset('frontend/assets/img/BookBank.png') }}"
+                                                            data-max-file-size="2M">
+                                                        <div class="info-area col-md-12 text-center p-2">
+                                                            <button type="submit" class="btn btn-info">
+                                                                <i class="las la-save"></i>
+                                                                อัพโหลดรูปภาพ</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <p></p>
+                                    <div class="row">
+                                        <div class="col-md-12 p-2">
+                                            <div class="card">
+                                                <div class="widget-content widget-content-area br-6">
+                                                    <h5 class="table-header"><b>สถานะเอกสาร</b></h5>
+                                                    <div class="table-responsive mb-4">
+                                                        <table id="ordertable" class="table table-hover"
+                                                            style="width:100%">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>วันที่ตรวจสอบ</th>
+                                                                    <th>เอกสาร</th>
+                                                                    <th>สถานะ</th>
+                                                                    <th>รายละเอียด</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach ($get_customer_doc as $value)
+                                                                    <tr>
+                                                                        <td>{{ date('Y/m/d', strtotime($value->approve_date)) }}
+                                                                        </td>
+                                                                        <td>
+                                                                            @if ($value->type == '1')
+                                                                                ภาพถ่ายบัตรประชาชน
+                                                                            @endif
+                                                                            @if ($value->type == '2')
+                                                                                ภาพถ่ายหน้าตรงพร้อมบัตรประชาชน
+                                                                            @endif
+                                                                            @if ($value->type == '3')
+                                                                                ภาพถ่ายหน้าตรง
+                                                                            @endif
+                                                                            @if ($value->type == '4')
+                                                                                ภาพถ่ายหน้าบัญชีธนาคาร
+                                                                            @endif
+                                                                        </td>
+                                                                        <td>
+                                                                            @if ($value->regis_doc_status == '1')
+                                                                                <span
+                                                                                    class="badge badge-warning light">รอตรวจสอบเอกสาร</span>
+                                                                            @endif
+                                                                            @if ($value->regis_doc_status == '2')
+                                                                                <span
+                                                                                    class="badge badge-success light">อนุมัติ</span>
+                                                                            @endif
+                                                                            @if ($value->regis_doc_status == '3')
+                                                                                <span
+                                                                                    class="badge badge-danger light">ไม่อนุมัติ</span>
+                                                                            @endif
+                                                                        </td>
+
+                                                                        <td>{{ $value->remark }}</td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            </tbody>
+
+
+
+                                                        </table>
+                                                        <p class="text-danger" style="font-size: 13px">
+                                                            *กรณีเอกสารไม่ผ่านการอนุมัติ
+                                                            สามารถส่งเอกสารเพิ่มเติมได้
+                                                            โดยการแนบไฟล์เอกสารด้านบน
+                                                            ทางทีมงานจะรีบดำเนินการตรวจสอบให้ภายใน 1-2
+                                                            วันทำการค่ะ
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+
                                     </div>
+                                    {{-- @endforeach --}}
                                 </div>
                             </div>
                         </div>
@@ -233,12 +243,14 @@
                 </div>
             </div>
         </div>
-        <!-- Main Body Ends -->
+    </div>
+    </div>
+    <!-- Main Body Ends -->
     </div>
 @endsection
 @section('js')
     <script src="{{ asset('frontend/plugins/dropify/dropify.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/pages/profile_edit.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/forms/file-upload.js')}}"></script>
-    <script src="{{ asset('frontend/plugins/dropzone/dropzone.min.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/forms/file-upload.js') }}"></script>
+    <script src="{{ asset('frontend/plugins/dropzone/dropzone.min.js') }}"></script>
 @endsection

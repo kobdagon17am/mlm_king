@@ -97,10 +97,11 @@ Route::get('ProfileUpload', function () {
   return view('frontend.profile_upload');
 })->name('ProfileUpload');
 
-Route::get('Document', function () {
+// Route::get('Document', function () {
+//   return view('frontend.doc');
+// })->name('Document');
+Route::get('Document','Frontend\DocumentController@index')->name('Document');
 
-  return view('frontend.doc');
-})->name('Document');
 
 Route::get('ChangePassword', function () {
 
@@ -135,7 +136,6 @@ Route::get('Bonus', function () {
 
 
 // Route::get('RegisterSuccess', function () {
-
 //   return view('frontend.register_success');
 // })->name('RegisterSuccess');
 Route::get('RegisterSuccess/{username}','Frontend\RegisterSuccessController@index')->name('RegisterSuccess');
