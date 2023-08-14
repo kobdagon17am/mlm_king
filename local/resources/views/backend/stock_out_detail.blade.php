@@ -123,7 +123,7 @@
 
                                 <!-- เพิ่มแถวสุดท้ายเพื่อแสดงผลรวมจำนวนสินค้าจำนวนที่โอนย้ายสินค้า -->
                                 <tr>
-                                    <td colspan="4"></td>
+                                    <td colspan="3"></td>
                                     <td class="text-left"><b>รวมจำนวนสินค้าโอนย้ายทั้งหมด</b></td>
                                     <td>
                                         <h6><b><span class="total_amt_out"></span></b></h6>
@@ -172,33 +172,33 @@
                                                                 <div class="col-lg-4  mt-2 text-left">
                                                                     <label><b>สาขาต้นทาง:</b></label>
                                                                     <input type="text" class="form-control"
-                                                                        id="branch_id_fk" name="branch_id_fk"
+                                                                        id="branch_name" name="branch_name"
                                                                         placeholder="สาขาต้นทาง" disabled>
                                                                 </div>
                                                                 <div class="col-lg-4  mt-2 text-left">
                                                                     <label><b>คลังสินค้าต้นทาง:</b></label>
                                                                     <input type="text" class="form-control"
-                                                                        id="warehouse_id_fk" name="warehouse_id_fk"
+                                                                        id="warehouse_name" name="warehouse_name"
                                                                         placeholder="คลังสินค้าต้นทาง" disabled>
                                                                 </div>
                                                                 <div class="col-lg-4  mt-2 text-left">
                                                                     <label><b>สินค้าต้นทาง:</b></label>
                                                                     <input type="text" class="form-control"
-                                                                        id="product_id_fk" name="product_id_fk"
+                                                                        id="product_name" name="product_name"
                                                                         placeholder="สินค้าต้นทาง" disabled>
                                                                 </div>
 
                                                                 <div class="col-lg-4  mt-2 text-left">
                                                                     <label><b>สาขาปลายทาง:</b></label>
                                                                     <input type="text" class="form-control"
-                                                                        id="branch_out_id_fk" name="branch_out_id_fk"
+                                                                        id="branch_name_out" name="branch_name_out"
                                                                         placeholder="สาขาปลายทาง" disabled>
                                                                 </div>
                                                                 <div class="col-lg-4  mt-2 text-left">
                                                                     <label><b>คลังสินค้าปลายทาง:</b></label>
                                                                     <input type="text" class="form-control"
-                                                                        id="warehouse_out_id_fk"
-                                                                        name="warehouse_out_id_fk"
+                                                                        id="warehouse_name_out"
+                                                                        name="warehouse_name_out"
                                                                         placeholder="คลังสินค้าปลายทาง" disabled>
                                                                 </div>
                                                                 <div class="col-lg-4  mt-2 text-left">
@@ -250,7 +250,6 @@
             <table id="ordertable" class="table table-hover table-sm" style="width:100%">
                 <thead>
                     <tr>
-                        <th>ลำดับ</th>
                         <th>สาขาต้นทาง</th>
                         <th>คลังต้นทาง</th>
                         <th>สาขาปลายทาง</th>
@@ -271,11 +270,10 @@
                     @foreach ($get_stock_out as $value)
                         @if ($value->stock_status != 'confirm')
                             <tr>
-                                <td>{{ $i++ }}</td>
-                                <td>{{ $value->branch_id_fk }}</td>
-                                <td>{{ $value->warehouse_id_fk }}</td>
-                                <td>{{ $value->branch_out_id_fk }}</td>
-                                <td>{{ $value->warehouse_out_id_fk }}</td>
+                                <td>{{ $value->branch_name }}</td>
+                                <td>{{ $value->warehouse_name }}</td>
+                                <td>{{ $value->branch_name_out }}</td>
+                                <td>{{ $value->warehouse_name_out }}</td>
                                 <td>{{ $value->product_name }}</td>
                                 <td>{{ $value->total_amt_out }}</td>
                                 <td>{{ $value->product_unit_name }}</td>
@@ -417,11 +415,11 @@
                     // console.log(data);
                     $("#edit").modal();
                     $("#id").val(data['data']['id']);
-                    $("#branch_id_fk").val(data['data']['branch_id_fk']);
-                    $("#warehouse_id_fk").val(data['data']['warehouse_id_fk']);
-                    $("#branch_out_id_fk").val(data['data']['branch_out_id_fk']);
-                    $("#warehouse_out_id_fk").val(data['data']['warehouse_out_id_fk']);
-                    $("#product_id_fk").val(data['data']['product_id_fk']);
+                    $("#branch_name").val(data['data']['branch_name']);
+                    $("#warehouse_name").val(data['data']['warehouse_name']);
+                    $("#branch_name_out").val(data['data']['branch_name_out']);
+                    $("#warehouse_name_out").val(data['data']['warehouse_name_out']);
+                    $("#product_name").val(data['data']['product_name']);
                     $("#product_unit_id_fk").val(data['data']['product_unit_id_fk']);
                     $("#total_amt_out").val(data['data']['total_amt_out']);
                     $("#stock_out_remark").val(data['data']['stock_out_remark']);

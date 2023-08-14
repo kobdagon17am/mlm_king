@@ -67,24 +67,26 @@ class StockOutController extends Controller
       ->first();
 
     $get_stock_lot = DB::table('db_stock_lot')
-      ->select('lot_number','lot_expired_date','lot_balance')
+      ->select('lot_number', 'lot_expired_date', 'lot_balance')
       ->where('branch_id_fk', $get_stock->branch_id_fk)
       ->where('warehouse_id_fk', $get_stock->warehouse_id_fk)
       ->where('product_id_fk', $get_stock->product_id_fk)
-      ->wherein('stock_type',['in','in_transfer'])
+      ->wherein('stock_type', ['in', 'in_transfer'])
       ->where('lot_balance', '!=', 0)
       ->where('stock_status', 'confirm')
       ->distinct()
       ->get();
 
-      //dd($get_stock_lot);
+    //dd($get_stock_lot);
 
 
 
     $get_stock_out = DB::table('db_stock_out')
-      ->select('db_stock_out.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
-      ->leftJoin('products', 'products.id', '=', 'db_stock_out.product_id_fk')
-      ->leftJoin('db_warehouse', 'db_warehouse.id', '=', 'db_stock_out.warehouse_id_fk')
+    ->select('db_stock_out.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name', 'db_branch_out.branch_name as branch_name_out', 'db_warehouse_out.warehouse_name as warehouse_name_out')
+    ->leftJoin('products', 'products.id', '=', 'db_stock_out.product_id_fk')
+    ->leftJoin('db_warehouse', 'db_warehouse.branch_id_fk', '=', 'db_stock_out.branch_id_fk')
+    ->leftJoin('branch as db_branch_out', 'db_branch_out.id', '=', 'db_stock_out.branch_out_id_fk')
+    ->leftJoin('db_warehouse as db_warehouse_out', 'db_warehouse_out.id', '=', 'db_stock_out.warehouse_out_id_fk')
       ->get();
 
 
@@ -105,9 +107,9 @@ class StockOutController extends Controller
   {
 
 
-     $amt_total = array_sum($rs->amt);
-     if($amt_total<= 0){
-        return redirect('admin/Stock_out_detail/'.$rs->stock_id_fk)->withError('กรุณาใส่จำนวนสินค้าที่ต้องการโอนระหวางสาขา');
+    $amt_total = array_sum($rs->amt);
+    if ($amt_total <= 0) {
+      return redirect('admin/Stock_out_detail/' . $rs->stock_id_fk)->withError('กรุณาใส่จำนวนสินค้าที่ต้องการโอนระหวางสาขา');
     }
 
 
@@ -179,10 +181,10 @@ class StockOutController extends Controller
 
 
         DB::commit();
-        return redirect('admin/Stock_out_detail/'.$rs->stock_id_fk)->withSuccess('โอนย้ายสินค้าสำเร็จ');
+        return redirect('admin/Stock_out_detail/' . $rs->stock_id_fk)->withSuccess('โอนย้ายสินค้าสำเร็จ');
       } catch (Exception $e) {
         DB::rollback();
-        return redirect('admin/Stock_out_detail/'.$rs->stock_id_fk)->withError('โอนย้ายสินค้าไม่สำเร็จ');
+        return redirect('admin/Stock_out_detail/' . $rs->stock_id_fk)->withError('โอนย้ายสินค้าไม่สำเร็จ');
       }
     }
   }
@@ -379,8 +381,7 @@ class StockOutController extends Controller
       DB::table('db_stock_lot')
         ->insert($dataNewRow_in);
 
-        return redirect('admin/Stock_out_detail/'.$rs->stock_id_fk)->withSuccess('โอนย้ายสินค้าสำเร็จ');
-
+      return redirect('admin/Stock_out_detail/' . $rs->stock_id_fk)->withSuccess('โอนย้ายสินค้าสำเร็จ');
     } elseif ($rs->stock_status == "cancel") {
       // อัปเดตเมื่อ stock_status เป็น "cancel"
       $updateData = [
@@ -390,8 +391,7 @@ class StockOutController extends Controller
       DB::table('db_stock_lot')
         ->where('id', $rs->id) // แนะนำให้ใช้ id หรือ primary key เพื่ออัปเดตแถวที่ต้องการ
         ->update($updateData);
-        return redirect('admin/Stock_out_detail/'.$rs->stock_id_fk)->withError('โอนย้ายสินค้าไม่สำเร็จ');
-
+      return redirect('admin/Stock_out_detail/' . $rs->stock_id_fk)->withError('โอนย้ายสินค้าไม่สำเร็จ');
     }
   }
 
@@ -400,13 +400,16 @@ class StockOutController extends Controller
     // dd($rs->all());
 
     $get_stock_out = DB::table('db_stock_out')
-      ->select('db_stock_out.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
+      ->select('db_stock_out.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name', 'db_branch_out.branch_name as branch_name_out', 'db_warehouse_out.warehouse_name as warehouse_name_out')
       ->leftJoin('products', 'products.id', '=', 'db_stock_out.product_id_fk')
       ->leftJoin('db_warehouse', 'db_warehouse.branch_id_fk', '=', 'db_stock_out.branch_id_fk')
+      ->leftJoin('branch as db_branch_out', 'db_branch_out.id', '=', 'db_stock_out.branch_out_id_fk')
+      ->leftJoin('db_warehouse as db_warehouse_out', 'db_warehouse_out.id', '=', 'db_stock_out.warehouse_out_id_fk')
       ->where('db_stock_out.id', '=', $rs->id)
       ->first();
 
-    // dd($get_stock_in);
+
+    // dd($get_stock_out);
 
     $data = ['status' => 'success', 'data' => $get_stock_out];
 
@@ -424,7 +427,7 @@ class StockOutController extends Controller
       ->select('db_stock_out.*', 'products.product_name', 'products.product_unit_name', 'db_warehouse.branch_name', 'db_warehouse.warehouse_name')
       ->leftJoin('products', 'products.id', '=', 'db_stock_out.product_id_fk')
       ->leftJoin('db_warehouse', 'db_warehouse.id', '=', 'db_stock_out.warehouse_id_fk')
-      ->where('db_stock_out.stock_status','=','confirm')
+      ->where('db_stock_out.stock_status', '=', 'confirm')
 
       ->whereRaw(("case WHEN  '{$rs->s_branch_id_fk}' != ''  THEN  db_stock_out.branch_id_fk = '{$rs->s_branch_id_fk}' else 1 END"))
       ->whereRaw(("case WHEN  '{$rs->s_warehouse_id_fk}' != ''  THEN  db_stock_out.warehouse_id_fk = '{$rs->s_warehouse_id_fk}' else 1 END"))
@@ -460,8 +463,8 @@ class StockOutController extends Controller
 
       ->addColumn('warehouse_out_name', function ($row) {
         $get_warehouse = DB::table('db_warehouse')
-        ->where('id', $row->warehouse_out_id_fk)
-        ->first();
+          ->where('id', $row->warehouse_out_id_fk)
+          ->first();
         return $get_warehouse->warehouse_name;
       })
 
