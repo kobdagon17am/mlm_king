@@ -242,7 +242,7 @@
                                                 </div>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <span class="text-primary font-15">{{ Auth::guard('c_user')->user()->first_name }} ({{ Auth::guard('c_user')->user()->username }})</span>
+                                                <span class="text-primary font-15"><b>{{ Auth::guard('c_user')->user()->first_name }} ({{ Auth::guard('c_user')->user()->username }})</b></span>
                                             </div>
                                             <div class="media-right">
                                                 <i data-feather="check"></i>
@@ -255,7 +255,7 @@
                                                 <i class="las la-clone font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-12 mb-0">สลับบัญชี</h6>
+                                                <h6 class="font-14 mb-0">สลับบัญชี</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -265,7 +265,7 @@
                                                 <i class="las la-money-check font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-12 mb-0">โค้ดคูปอง</h6>
+                                                <h6 class="font-14 mb-0">โค้ดคูปอง</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -275,7 +275,7 @@
                                                 <i class="las la-image font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-12 mb-0">อัพโหลดรูปโปรไฟล์</h6>
+                                                <h6 class="font-14 mb-0">อัพโหลดรูปโปรไฟล์</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -287,7 +287,7 @@
                                                 <i class="las la-user-edit font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-12 mb-0">แก้ไขข้อมูลส่วนตัว</h6>
+                                                <h6 class="font-14 mb-0">แก้ไขข้อมูลส่วนตัว</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -297,7 +297,7 @@
                                                 <i class="las la-clipboard font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-12 mb-0">เอกสารการลงทะเบียน</h6>
+                                                <h6 class="font-14 mb-0">เอกสารการลงทะเบียน</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -307,7 +307,7 @@
                                                 <i class="las la-key font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-12 mb-0">แก้ไขรหัส Login</h6>
+                                                <h6 class="font-14 mb-0">แก้ไขรหัส Login</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -318,7 +318,7 @@
                                                 <i class="las la-sign-out-alt font-20"></i>
                                             </div>
                                             <div class="media-content ml-3">
-                                                <h6 class="font-12 mb-0 ">Logout</h6>
+                                                <h6 class="font-14 mb-0 ">Logout</h6>
                                             </div>
                                         </div>
                                     </a>
