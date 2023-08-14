@@ -179,9 +179,7 @@
                                                             <button type="submit" class="btn btn-info btn-rounded"
                                                                 name="stock_in_add" value="success">
                                                                 <i class="las la-plus-circle"></i> รับเข้าสินค้า</button>
-
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </form>

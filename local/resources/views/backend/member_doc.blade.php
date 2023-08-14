@@ -117,14 +117,17 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="info-area col-md-12 text-center mt-4">
+                                                    <div class="col-md-12 text-center mt-4">
                                                         <div id="stock_button">
-                                                            <span class="badge badge-rounded badge-success"
-                                                                name="regis_doc_status" value="2"><i
-                                                                    class="las la-check-double"></i> อนุมัติ</span>
-                                                            <span class="badge badge-rounded badge-danger"
-                                                                name="regis_doc_status" value="3"><i
-                                                                    class="las la-times-circle"></i> ไม่อนุมัติ</span>
+                                                            <button type="submit" class="btn btn-success btn-rounded"
+                                                                name="regis_doc_status" value="2">
+                                                                <i class="las la-check-double"></i> อนุมัติ
+                                                            </button>
+
+                                                            <button type="submit" class="btn btn-danger btn-rounded"
+                                                                name="regis_doc_status" value="3">
+                                                                <i class="las la-times-circle"></i> ไม่อนุมัติ
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -140,6 +143,98 @@
                 </div>
             </div>
 
+            <div class="modal fade bd-example-modal-lg" id="edit1" tabindex="-1" role="dialog"
+                aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header ml-4">
+                            <h5 class="modal-title" id="myLargeModalLabel"><b>ตรวจสอบเอกสาร</b></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <i class="las la-times"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="modal-text">
+                            <div class="widget-content widget-content-area">
+                                <div class="form-group row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+
+                                        <form method="post" action="{{ route('admin/Member_Acc_update') }}"
+                                            enctype="multipart/form-data" id="msform">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="col-md-12 mx-0">
+                                                    <div class="form-card">
+                                                        <div class="w-100">
+                                                            <div class="form-group row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="col-lg-12 mt-2 text-center ">
+                                                                        <label><b></b></label>
+                                                                        <div id="img1"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <input type="hidden" name="id1" id="id1">
+                                                                    <div class="col-lg-12  mt-2 text-left">
+                                                                        <label><b>ชื่อบัญชี:</b></label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="account_name" name="account_name"
+                                                                            disabled>
+                                                                    </div>
+                                                                    <div class="col-lg-12  mt-2 text-left">
+                                                                        <label><b>เลขที่บัญชี:</b></label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="account_no" name="account_no" disabled>
+                                                                    </div>
+                                                                    <div class="col-lg-12  mt-2 text-left">
+                                                                        <label><b>ธนาคาร:</b></label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="bank_name" name="bank_name" disabled>
+                                                                    </div>
+                                                                    <div class="col-lg-12  mt-2 text-left">
+                                                                        <label><b>สาขา:</b></label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="bank_branch" name="bank_branch" disabled>
+                                                                    </div>
+                                                                    <div class="col-lg-12  mt-2 text-left">
+                                                                        <label><b>ประเภทบัญชี:</b></label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="bank_type" name="bank_type" disabled>
+                                                                    </div>
+                                                                    <div class="col-lg-12  mt-2 text-left">
+                                                                        <label><b>หมายเหตุ:</b></label>
+                                                                        <input type="text-area" class="form-control"
+                                                                            id="remark1" name="remark1">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 text-center mt-4">
+                                                        <div id="stock_button1">
+                                                            <button type="submit" class="btn btn-success btn-rounded"
+                                                                name="regis_doc_status" value="2">
+                                                                <i class="las la-check-double"></i> อนุมัติ
+                                                            </button>
+
+                                                            <button type="submit" class="btn btn-danger btn-rounded"
+                                                                name="regis_doc_status" value="3">
+                                                                <i class="las la-times-circle"></i> ไม่อนุมัติ
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
             <div class="table-responsive mt-2 mb-2">
                 <h6>รายงานเอกสารการสมัครสมาชิกรอตรวจสอบ</h6>
@@ -203,7 +298,7 @@
 
                     if (data['data']['regis_doc_status'] == '2' || data['data']['regis_doc_status'] ==
                         '3') {
-                            remark.disabled = true;
+                        remark.disabled = true;
 
                         // console.log('ปิด');
 
@@ -221,7 +316,7 @@
 
         function edit1(id, type) {
             $.ajax({
-                    url: '{{ route('admin/Member_Doc_view') }}',
+                    url: '{{ route('admin/Member_Acc_view') }}',
                     type: 'GET',
                     data: {
                         id: id,
@@ -252,6 +347,60 @@
 
                     } else {
                         stock_button.style.display = "block";
+                        // console.log(data['data']['regis_doc_status']);
+                    }
+
+
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+        }
+
+        function edit1(id1, type) {
+            $.ajax({
+                    url: '{{ route('admin/History_Acc_view') }}',
+                    type: 'GET',
+                    data: {
+                        id: id1,
+                        type: type
+                    }
+                })
+                .done(function(data) {
+                    $("#id1").val(data['data']['id']);
+                    $("#account_name").val(data['data']['account_name']);
+                    $("#account_no").val(data['data']['account_no']);
+                    $("#bank_name").val(data['data']['bank_name']);
+                    $("#bank_branch").val(data['data']['bank_branch']);
+                    $("#bank_type").val(data['data']['bank_type']);
+                    $("#remark1").val(data['data']['remark']);
+                    var img1 = '{{ asset('') }}';
+                    var img_url = img1 + data['data']['url'] + '/' + data['data']['file'];
+
+                    var htmlContent = '<img src="' + img_url +
+                        '"class="img-fluid" id="file" name="file" alt="Document Image">';
+                    $("#img1").html(htmlContent);
+                    $("#edit1").modal();
+
+                    //display BUTTON
+                    if (data['data']['regis_doc_status'] == '2' || data['data']['regis_doc_status'] ==
+                        '3') {
+                        stock_button1.style.display = "none";
+                        // console.log('ปิด');
+                    } else {
+                        stock_button1.style.display = "block";
+                        // console.log(data['data']['regis_doc_status']);
+                    }
+
+                    //disable REMARK
+                    if (data['data']['regis_doc_status'] == '2' || data['data']['regis_doc_status'] ==
+                        '3') {
+                        remark1.disabled = true;
+
+                        // console.log('ปิด');
+
+                    } else {
+                        remark1.disabled = false;
                         // console.log(data['data']['regis_doc_status']);
                     }
 

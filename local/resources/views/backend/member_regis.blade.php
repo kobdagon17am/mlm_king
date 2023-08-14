@@ -24,7 +24,7 @@
                 </table>
             </div>
 
-                       
+
         </div>
     </div>
 @endsection
@@ -121,7 +121,14 @@
 
                     {
                         data: "regis_date_doc",
-                        title: "วันที่อนุมัติ",
+                        title: "วันที่อนุมัติสมาชิก",
+                        className: "w-10",
+
+                    },
+
+                    {
+                        data: "regis_doc_status",
+                        title: "สถานะสมาชิก",
                         className: "w-10",
 
                     },
@@ -131,6 +138,7 @@
                         title: "Action",
                         className: "w-10",
                     },
+
 
 
                 ],
