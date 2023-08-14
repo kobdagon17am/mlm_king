@@ -34,12 +34,9 @@ class MemberDocController extends Controller
 
   public function Member_Doc_datatable(Request $rs)
   {
-
+ 
     $get_member_doc = DB::table('customers')
-
-      ->where('regis_doc1_status', '=', '1')
-      ->orWhere('regis_doc2_status', '=', '1')
-      ->orWhere('regis_doc3_status', '=', '1')
+      ->whereRaw('(regis_doc1_status != 2 or regis_doc2_status != 2 or regis_doc3_status != 2)') 
       ->orderBy('order_regis_file_date');
 
 
