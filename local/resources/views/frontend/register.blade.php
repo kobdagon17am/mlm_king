@@ -146,23 +146,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <div class="form-group">
-                                                            <label for="business_location">ประเทศ
-                                                                <span class="text-danger">
-                                                                </span></label>
-                                                            <select name="country" class="form-control"
-                                                                id="country">
 
-                                                                @foreach ($data['country'] as $business_location_value)
-                                                                <option value="{{ $business_location_value->id }}"
-                                                                    @if ($business_location_value->id == $data['data']->business_location_id) selected="" @endif>
-                                                                    {{ $business_location_value->name }}</option>
-                                                            @endforeach
-
-                                                            </select>
-                                                        </div>
-                                                    </div>
                                                     <div class="info-area col-md-12 text-right">
                                                         {{-- <button type="submit" class="btn btn-info mr-2">
                                                         <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button> --}}
@@ -256,22 +240,9 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="id_card">หมายเลขบัตรประชาชน
-                                                                <span class="text-danger">*</span></label>
-                                                                <input type="number" minlength="13" unique="customers"
-                                                                class="form-control @error('id_card') is-invalid @enderror"
-                                                                name="id_card" placeholder="หมายเลขบัตรประชาชน"
-                                                                value="{{ old('id_card') }}">
-                                                            @error('id_card')
-                                                                <div class="invalid-feedback">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
                                                             <label for="country">ประเทศ
-                                                                <span class="text-danger"></span></label>
-                                                            <select name="country" class="form-control" id="country">
+                                                                <span class="text-danger">*</span></label>
+                                                            <select name="country" class="form-control basic" id="country" required>
                                                                 @foreach ($data['country'] as $c_value)
                                                                 <option value="{{ $c_value->txt_desc }}"
                                                                     @if ($c_value->id == $data['data']->business_location_id) selected="" @endif>
@@ -282,6 +253,8 @@
                                                             </select>
                                                         </div>
                                                     </div>
+
+
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="national">สัญชาติ
@@ -291,6 +264,7 @@
                                                             <select name="national" class="form-control basic" id="national">
 
                                                                 <option value="ไทย">ไทย</option>
+                                                                <option value="ไทย(พิเศษ)">ไทย(พิเศษ)</option>
                                                                 <option value="ลาว">ลาว</option>
                                                                 <option value="กัมพูชา">กัมพูชา</option>
                                                                 <option value="เวียดนาม">เวียดนาม</option>
@@ -301,6 +275,21 @@
 
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="id_card">หมายเลขบัตรประชาชน
+                                                                <span class="text-danger">*</span></label>
+                                                                <input type="text" maxlength="13" unique="customers"
+                                                                class="form-control @error('id_card') is-invalid @enderror"
+                                                                name="id_card" id="id_card" placeholder="หมายเลขบัตรประชาชน"
+                                                                value="{{ old('id_card') }}">
+                                                            @error('id_card')
+                                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                            @enderror
+                                                            <span class="error text-danger"></span>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="phone">หมายเลขโทรศัพท์
@@ -412,12 +401,16 @@
                                                             <label for="card_changwat">จังหวัด
                                                                 <span
                                                                     class="text-danger">*</span></label>
-                                                            <select name="card_changwat" class="form-control"
-                                                                id="card_changwat">
-                                                                <option>จังหวัด</option>
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                            </select>
+
+                                                            <select name="card_changwat" class="form-control basic" id="card_changwat" required>
+                                                            <option value="">เลือกจังหวัด</option>
+                                                            @foreach ($data['provinces'] as $value_provinces)
+                                                                <option value="{{ $value_provinces->id }}"
+                                                                    @if ($value_provinces->id == old('card_province')) selected @endif>
+                                                                    {{ $value_provinces->name_th }}</option>
+                                                            @endforeach
+                                                        </select>
+
                                                         </div>
                                                     </div>
 
@@ -429,9 +422,8 @@
                                                                     class="text-danger">*</span></label>
                                                             <select name="card_amphur" class="form-control"
                                                                 id="card_amphur">
-                                                                <option>เขต/อำเภอ</option>
-                                                                <option> </option>
-                                                                <option> </option>
+                                                                <option>เลือกเขต/อำเภอ</option>
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -443,9 +435,8 @@
                                                                     class="text-danger">*</span></label>
                                                             <select name="card_tambon" class="form-control"
                                                                 id="card_tambon">
-                                                                <option>แขวง/ตำบล</option>
-                                                                <option> </option>
-                                                                <option> </option>
+                                                                <option>เลือกแขวง/ตำบล</option>
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -829,4 +820,91 @@
 
     <script src="{{ asset('frontend/plugins/select2/select2.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/forms/custom-select2.js') }}"></script>
+
+   <script>
+                 $(document).ready(function() {
+             $('#id_card').on('change', function() {
+                national = $('#national').val();
+
+                 if (national == 'ไทย') {
+                     if ($.trim($(this).val()) != '' && $(this).val().length == 13) {
+                         id = $(this).val().replace(/-/g, "");
+                         var result = Script_checkID(id);
+                        id_card = $('#id_card').val();
+                         if (result === false) {
+
+                             $('span.error').removeClass('text-success').text('เลขบัตร ' + id_card +
+                                 ' ไม่ถูกต้อง');
+                             $('#id_card').val('');
+                         } else {
+
+
+                             $.ajax({
+                                     url: '{{ route('check_id_card') }}',
+                                     type: 'GET',
+                                     data: {
+                                      id_card: id_card
+                                     },
+                                 })
+                                 .done(function(data) {
+                                     if (data['status'] == 'success') {
+                                         $('span.error').addClass('text-success').text('เลขบัตรถูกต้อง');
+                                     } else {
+                                      $('span.error').removeClass('text-success').text('มีเลขบัตรประชาชนในระบบแล้วไม่สามารถสมัครซ้ำได้');
+                                      $('#id_card').val('');
+                                         Swal.fire({
+                                             icon: 'error',
+                                             title: 'เลขบัตรประชาชนซ้ำ',
+                                         })
+                                     }
+                                  })
+                                }
+                     } else {
+                         $('span.error').removeClass('text-success').text('เลขบัตรไม่ครบ 13 หลัก');
+                         $('#id_card').val('');
+
+                     }
+
+                 }else{
+                  id_card = $('#id_card').val();
+                  $.ajax({
+                                     url: '{{ route('check_id_card') }}',
+                                     type: 'GET',
+                                     data: {
+                                      id_card: id_card
+                                     },
+                                 })
+                                 .done(function(data) {
+                                     if (data['status'] == 'success') {
+                                         $('span.error').addClass('text-success').text('เลขบัตรถูกต้อง');
+                                     } else {
+                                      $('span.error').removeClass('text-success').text('มีเลขบัตรประชาชนในระบบแล้วไม่สามารถสมัครซ้ำได้');
+                                      $('#id_card').val('');
+                                         Swal.fire({
+                                             icon: 'error',
+                                             title: 'เลขบัตรประชาชนซ้ำ',
+                                         })
+                                     }
+                                  })
+
+                 }
+
+             })
+         });
+
+         function Script_checkID(id) {
+             if (!IsNumeric(id)) return false;
+             if (id.substring(0, 1) == 0) return false;
+             if (id.length != 13) return false;
+             for (i = 0, sum = 0; i < 12; i++)
+                 sum += parseFloat(id.charAt(i)) * (13 - i);
+             if ((11 - sum % 11) % 10 != parseFloat(id.charAt(12))) return false;
+             return true;
+         }
+
+         function IsNumeric(input) {
+             var RE = /^-?(0|INF|(0[1-7][0-7]*)|(0x[0-9a-fA-F]+)|((0|[1-9][0-9]*|(?=[\.,]))([\.,][0-9]+)?([eE]-?\d+)?))$/;
+             return (RE.test(input));
+         }
+    </script>
 @endsection

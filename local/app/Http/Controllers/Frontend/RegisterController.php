@@ -34,6 +34,7 @@ class RegisterController extends Controller
 
             $provinces = DB::table('dataset_provinces')
                 ->select('*')
+                ->where('status','0')
                 ->get();
 
 
@@ -316,4 +317,23 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors($validator)->withInput()->with('error', 'กรุณากรอกข้อมูลให้ครบถ้วน');
         }
     }
+
+
+    public static function check_id_card(Request $rs){
+        if($rs->id_card){
+          $resule = DB::table('customers')
+          ->select('id')
+          ->where('id_card','=',$rs->id_card)
+          ->first();
+          if($resule){
+            $rs = ['status'=>'fail'];
+          }else{
+            $rs = ['status'=>'success'];
+          }
+
+        }else{
+          $rs = ['status'=>'fail'];
+        }
+            return $rs;
+        }
 }

@@ -90,6 +90,7 @@ Route::get('Register/{username?}/{line_type?}','Frontend\RegisterController@inde
 
 
 Route::post('Register_member','Frontend\RegisterController@member_register')->name('Register_member');
+Route::get('check_id_card','Frontend\RegisterController@check_id_card')->name('check_id_card');
 
 
 Route::get('ProfileUpload', function () {
