@@ -112,7 +112,7 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header ml-4">
-                            <h5 class="modal-title" id="myLargeModalLabel"><b>เพิ่มสาขาบริษัท</b></h5>
+                            <h5 class="modal-title" id="myLargeModalLabel"><b>เเก้ไขสาขาบริษัท</b></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <i class="las la-times"></i>
                             </button>
