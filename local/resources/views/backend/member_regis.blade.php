@@ -18,6 +18,39 @@
     <div class="col-lg-12 layout-spacing">
         <div class="statbox widget box box-shadow mb-4 mt-4">
             <div class="table-responsive mt-2 mb-2">
+
+                <div class="row mb-4">
+                    <div class="col-lg-1 mt-2 text-left">
+                        <input type="text" class="form-control" name="username" id="s_username" placeholder="รหัส">
+                    </div>
+                    <div class="col-lg-2 mt-2 text-left">
+                        <input type="text" class="form-control" name="first_name" id="s_first_name"
+                            placeholder="ชื่อสมาชิก">
+                    </div>
+                    <div class="col-lg-2 mt-2 text-left">
+                        <input type="text" class="form-control" name="id_card" id="s_id_card"
+                            placeholder="หมายเลขบัตรประชาชน">
+                    </div>
+                    <div class="col-lg-2 mt-2 text-left">
+                        <input type="text" class="form-control" name="upline_id" id="s_upline_id" placeholder="UPLINE">
+                    </div>
+                    <div class="col-lg-2 mt-2 text-left">
+                        <span class="form-label text-danger introduce_id_err _err"></span>
+                        <input type="text" class="form-control" name="introduce_id" id="s_introduce_id"
+                            placeholder="ผู้แนะนำ">
+                    </div>
+                    <div class="col-lg-2 mt-2 text-left">
+                        <input type="date" class="form-control" name="regis_date_doc" id="s_regis_date_doc"
+                            placeholder="วันที่อนุมัติ">
+                    </div>
+
+                    <div class="col-lg-1 mb-2 mt-2 text-left" style="margin-top:10px">
+                        <button type="button" class="btn btn-outline-success btn-rounded" id="search-form"><i
+                                class="las la-search font-15"></i>
+                            สืบค้น</button>
+                    </div>
+                </div>
+
                 <h6>รายงานสมาชิก</h6>
                 <table id="basic-dt" class="table table-hover" style="width:100%">
 
@@ -38,6 +71,9 @@
     <!-- The following JS library files are loaded to use PDF Options-->
     <script src="{{ asset('backend/plugins/table/datatable/button-ext/pdfmake.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/table/datatable/button-ext/vfs_fonts.js') }}"></script>
+
+    <script src="{{ asset('frontend/plugins/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/forms/custom-select2.js') }}"></script>
     <script>
         $(function() {
             table_order = $('#basic-dt').DataTable({
@@ -69,10 +105,13 @@
                 ajax: {
                     url: '{{ route('admin/MemberRegister_datatable') }}',
                     data: function(d) {
-                        // d.s_branch_id_fk = $('#s_branch_id_fk').val();
-                        // d.s_warehouse_id_fk = $('#s_warehouse_id_fk').val();
-                        // d.s_product_name = $('#s_product_name').val();
-                        // d.s_lot_number = $('#s_lot_number').val();
+                        d.s_username = $('#s_username').val();
+                        // console.log(s_username);
+                        d.s_first_name = $('#s_first_name').val();
+                        d.s_id_card = $('#s_id_card').val();
+                        d.s_upline_id = $('#s_upline_id').val();
+                        d.s_introduce_id = $('#s_introduce_id').val();
+                        d.s_regis_date_doc = $('#s_regis_date_doc').val();
 
                         // d.position = $('#type').val();
                         // d.id_card = $('#id_card').val();
@@ -108,8 +147,8 @@
                     },
 
                     {
-                        data: "upline_id",
-                        title: "ผู้เเนะนำ",
+                        data: "id_card",
+                        title: "หมายเลขบัตรประชาชน",
                         className: "w-10",
                     },
 
@@ -120,8 +159,26 @@
                     },
 
                     {
+                        data: "upline_id",
+                        title: "Upline",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "line_type",
+                        title: "สายงาน",
+                        className: "w-10",
+                    },
+
+                    {
+                        data: "introduce_id",
+                        title: "ผู้แนะนำ",
+                        className: "w-10",
+                    },
+
+                    {
                         data: "regis_date_doc",
-                        title: "วันที่อนุมัติสมาชิก",
+                        title: "วันที่อนุมัติ",
                         className: "w-10",
 
                     },

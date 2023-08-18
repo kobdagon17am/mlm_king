@@ -67,9 +67,24 @@
                                                                             placeholder="ชื่อสาขา (ภาษาอังกฤษ)">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2">
+                                                                        <label><b>ตำบล:</b></label>
+                                                                        <input type="text" name="tambon"
+                                                                            class="form-control" placeholder="ตำบล">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2">
+                                                                        <label><b>อำเภอ:</b></label>
+                                                                        <input type="text" name="amphur"
+                                                                            class="form-control" placeholder="อำเภอ">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2">
                                                                         <label><b>จังหวัด:</b></label>
-                                                                        <input type="text" name="province"
+                                                                        <input type="text" name="changwat"
                                                                             class="form-control" placeholder="จังหวัด">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2">
+                                                                        <label><b>รหัสไปรษณีย์:</b></label>
+                                                                        <input type="text" name="zipcode"
+                                                                            class="form-control" placeholder="รหัสไปรษณีย์">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2">
                                                                         <label><b>เบอร์ติดต่อ:</b></label>
@@ -150,9 +165,24 @@
                                                                             placeholder="ชื่อสาขา (ภาษาอังกฤษ)">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2">
+                                                                        <label><b>ตำบล:</b></label>
+                                                                        <input type="text" name="tambon" id="tambon"
+                                                                            class="form-control" placeholder="ตำบล">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2">
+                                                                        <label><b>อำเภอ:</b></label>
+                                                                        <input type="text" name="amphur" id="amphur"
+                                                                            class="form-control" placeholder="อำเภอ">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2">
                                                                         <label><b>จังหวัด:</b></label>
-                                                                        <input type="text" name="province" id="province"
+                                                                        <input type="text" name="changwat" id="changwat"
                                                                             class="form-control" placeholder="จังหวัด">
+                                                                    </div>
+                                                                    <div class="col-lg-6  mt-2">
+                                                                        <label><b>รหัสไปรษณีย์:</b></label>
+                                                                        <input type="text" name="zipcode" id="zipcode"
+                                                                            class="form-control" placeholder="รหัสไปรษณีย์">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2">
                                                                         <label><b>เบอร์ติดต่อ:</b></label>
@@ -201,7 +231,10 @@
                         <th>รหัสสาขา</th>
                         <th>ชื่อสาขา</th>
                         <th>ชื่อสาขา (ภาษาอังกฤษ)</th>
+                        <th>ตำบล</th>
+                        <th>อำเภอ</th>
                         <th>จังหวัด</th>
+                        <th>รหัสไปรษณีย์</th>
                         <th>เบอร์ติดต่อ</th>
                         <th>สถานะ</th>
                         <th>แก้ไข</th>
@@ -215,7 +248,10 @@
                             <td>{{ $value->branch_code }}</td>
                             <td>{{ $value->branch_name }}</td>
                             <td>{{ $value->branch_en_name }}</td>
-                            <td>{{ $value->province }}</td>
+                            <td>{{ $value->tambon }}</td>
+                            <td>{{ $value->amphur }}</td>
+                            <td>{{ $value->changwat }}</td>
+                            <td>{{ $value->zipcode }}</td>
                             <td>{{ $value->phone }}</td>
                             <td>
                                 @if ($value->status == '1')
@@ -274,7 +310,10 @@
                     $("#branch_code").val(data['data']['branch_code']);
                     $("#branch_name").val(data['data']['branch_name']);
                     $("#branch_en_name").val(data['data']['branch_en_name']);
-                    $("#province").val(data['data']['province']);
+                    $("#tambon").val(data['data']['tambon']);
+                    $("#amphur").val(data['data']['amphur']);
+                    $("#changwat").val(data['data']['changwat']);
+                    $("#zipcode").val(data['data']['zipcode']);
                     $("#phone").val(data['data']['phone']);
                     $("#branch_status").val(data['data']['status']); 
 

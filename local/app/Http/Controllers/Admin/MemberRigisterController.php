@@ -19,9 +19,14 @@ class MemberRigisterController extends Controller
 
   public function index()
   {
+    $get_member_data = DB::table('customers')
 
+      ->where('regis_doc_status', '=', 'approve')
+      ->get();
 
-    return view('backend/member_regis');
+    // dd($get_member_data);
+
+    return view('backend/member_regis', compact('get_member_data'));
   }
 
   public function MemberRegister_datatable(Request $rs)
@@ -30,6 +35,19 @@ class MemberRigisterController extends Controller
     $get_member_regis_doc = DB::table('customers')
 
       ->where('regis_doc_status', '=', 'approve')
+
+      ->whereRaw(("case WHEN  '{$rs->s_username}' != ''  THEN  customers.username = '{$rs->s_username}' else 1 END"))
+      ->whereRaw(("case WHEN  '{$rs->s_first_name}' != ''  THEN  customers.first_name LIKE '{$rs->s_first_name}%' else 1 END"))
+      ->whereRaw(("case WHEN  '{$rs->s_id_card}' != ''  THEN  customers.id_card = '{$rs->s_id_card}' else 1 END"))
+      ->whereRaw(("case WHEN  '{$rs->s_upline_id}' != ''  THEN  customers.upline_id = '{$rs->s_upline_id}' else 1 END"))
+      ->whereRaw(("case WHEN  '{$rs->s_introduce_id}' != ''  THEN  customers.introduce_id = '{$rs->s_introduce_id}' else 1 END"))
+      ->whereRaw(("case WHEN '{$rs->s_regis_date_doc}' != ''  THEN  date(customers.regis_date_doc) = '{$rs->s_regis_date_doc}' else 1 END"))
+
+      // ->whereRaw(("case WHEN '{$request['s_date']}' != '' and '{$request['e_date']}' = ''  THEN  date(ewallet.created_at) = '{$request['s_date']}' else 1 END"))
+      // ->whereRaw(("case WHEN '{$request['s_date']}' != '' and '{$request['e_date']}' != ''  THEN  date(ewallet.created_at) >= '{$request['s_date']}' and date(ewallet.created_at) <= '{$request['e_date']}'else 1 END"))
+      // ->whereRaw(("case WHEN '{$request['s_date']}' = '' and '{$request['e_date']}' != ''  THEN  date(ewallet.created_at) = '{$request['e_date']}' else 1 END"))
+      // ->whereRaw(("case WHEN  '{$rs->regis_date_doc}' != ''  THEN  customers.regis_date_doc = '{$rs->regis_date_doc}' else 1 END"))
+
       ->orderBy('regis_date_doc');
     // ->get();
 
@@ -52,8 +70,20 @@ class MemberRigisterController extends Controller
         return $row->last_name;
       })
 
+      ->addColumn('id_card', function ($row) {
+        return $row->id_card;
+      })
+
       ->addColumn('upline_id', function ($row) {
         return $row->upline_id;
+      })
+
+      ->addColumn('line_type', function ($row) {
+        return $row->line_type;
+      })
+
+      ->addColumn('introduce_id', function ($row) {
+        return $row->introduce_id;
       })
 
       ->addColumn('pv_all', function ($row) {
@@ -70,9 +100,9 @@ class MemberRigisterController extends Controller
 
       ->addColumn('regis_doc_status', function ($row) {
         if ($row->regis_doc_status == 'approve') {
-          $html = '<span class="badge badge-pill outline-badge-success light">ใช้งาน</span>';
+          $html = '<span class="badge badge-pill badge-success light">ใช้งาน</span>';
         } elseif ($row->stock_status == 'cancel') {
-          $html = '<span class="badge badge-pill outline-badge-danger light">ไม่ใช้งาน</span>';
+          $html = '<span class="badge badge-pill badge-danger light">ไม่ใช้งาน</span>';
         } else {
           $html = '';
         }

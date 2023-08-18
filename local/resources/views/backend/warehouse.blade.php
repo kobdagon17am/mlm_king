@@ -172,7 +172,7 @@
                                                         </div>
                                                         <div class="info-area col-md-12 text-center mt-4 ">
                                                             <button type="submit" class="btn btn-info btn-rounded">
-                                                                <i class="las la-save"></i> เพิ่มคลังสินค้า</button>
+                                                                <i class="las la-save"></i> แก้ไขคลังสินค้า</button>
                                                         </div>
 
                                                     </div>
