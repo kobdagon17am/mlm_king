@@ -35,7 +35,10 @@ Route::get('admin/Blank', function () {
   // })->name('admin/MemberRegister');
   Route::get('admin/MemberRegister','Admin\MemberRigisterController@index')->name('admin/MemberRegister');
   Route::get('admin/MemberRegister_datatable','Admin\MemberRigisterController@MemberRegister_datatable')->name('admin/MemberRegister_datatable');
-
+  Route::get('admin/view_password','Admin\MemberRigisterController@view_password')->name('admin/view_password');
+  Route::post('admin/edit_password','Admin\MemberRigisterController@edit_password')->name('admin/edit_password');
+  Route::get('admin/view_member_data','Admin\MemberRigisterController@view_member_data')->name('admin/view_member_data');
+  Route::post('admin/cancel_member','Admin\MemberRigisterController@cancel_member')->name('admin/cancel_member');
 
   // Route::get('admin/MemberDocument', function () {
   //   return view('backend.member_doc');

@@ -98,11 +98,11 @@ class MemberRigisterController extends Controller
         }
       })
 
-      ->addColumn('regis_doc_status', function ($row) {
-        if ($row->regis_doc_status == 'approve') {
+      ->addColumn('customer_status', function ($row) {
+        if ($row->customer_status == '1') {
           $html = '<span class="badge badge-pill badge-success light">ใช้งาน</span>';
-        } elseif ($row->stock_status == 'cancel') {
-          $html = '<span class="badge badge-pill badge-danger light">ไม่ใช้งาน</span>';
+        } elseif ($row->customer_status == '0') {
+          $html = '<span class="badge badge-pill badge-danger light">ยกเลิกรหัส</span>';
         } else {
           $html = '';
         }
@@ -118,10 +118,10 @@ class MemberRigisterController extends Controller
               <i class='las la-user-edit font-25 text-info'></i></a>";
         // $html2 = '<a href="#!" onclick="edit(' . $row->id . ')" class="p-2">
         //       <i class="lab la-whmcs font-25 text-warning"></i></a>';
-        $html2 = '<i class="lab la-whmcs font-25 text-warning" id="btnGroupDrop1"  data-toggle="dropdown"></i>
-        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="#">เปลี่ยนรหัส</a>
-                <a class="dropdown-item" href="#">ยกเลิกรหัส</a>
+        $html2 = '<i class="lab la-whmcs font-25 text-warning" id="btnGroupDrop1" data-toggle="dropdown"></i>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" >
+                <a class="dropdown-item" href="#!" onclick="edit(' . $row->id . ')" class="p-2">แก้ไขรหัสผ่าน</a>
+                <a class="dropdown-item" href="#!" onclick="cancel_member(' . $row->id . ')" class="p-2">ยกเลิกรหัส</a>                           
               </div>';
 
         return $html . $html1 . $html2; // รวมค่า $html และ $html1 ด้วยเครื่องหมาย .
@@ -129,8 +129,77 @@ class MemberRigisterController extends Controller
       })
 
 
-      ->rawColumns(['regis_doc_status', 'action'])
+      ->rawColumns(['customer_status', 'action'])
 
       ->make(true);
+  }
+
+  public function edit_password(Request $rs)
+  {
+    // dd($rs->all());
+
+    if ($rs->password_new == $rs->password_new_confirm) {
+
+      // dd($rs->password_new,$rs->password_new_confirm);
+
+      $dataPrepare = [
+        'password' => md5($rs->password_new),
+      ];
+
+      $get_customer = DB::table('customers')
+      ->where('id', '=', $rs->id)
+      ->update($dataPrepare);
+
+    DB::commit();
+    return redirect('admin/MemberRegister')->withSuccess('แก้ไขรหัสผ่านสำเร็จ');
+    } else {
+      return redirect('admin/MemberRegister')->withError('แก้ไขรหัสไม่สำเร็จ');
+    }
+  }
+
+  public function view_member_data(Request $rs)
+  {
+
+    $get_customer = DB::table('customers')
+      ->where('id', '=', $rs->id)
+      ->first();
+
+    $data = ['status' => 'success', 'data' => $get_customer];
+
+
+    return $data;
+  }
+
+  public function cancel_member(Request $rs)
+  {
+    // dd($rs->all());
+
+    if ($rs->cencel_member == 'confirm') {
+      $dataPrepare = [
+        'customer_status' => '0',
+      ];
+
+      $get_customer = DB::table('customers')
+      ->where('id', '=', $rs->id)
+      ->update($dataPrepare);
+
+    DB::commit();
+    return redirect('admin/MemberRegister')->withSuccess('ยกเลิกรหัสสำเร็จ');
+    } else {
+      return redirect('admin/MemberRegister')->withError('ยกเลิกรหัสไม่สำเร็จ');
+    }
+  }
+
+  public function view_password(Request $rs)
+  {
+
+    $get_customer = DB::table('customers')
+      ->where('id', '=', $rs->id)
+      ->first();
+
+    $data = ['status' => 'success', 'data' => $get_customer];
+
+
+    return $data;
   }
 }
