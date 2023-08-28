@@ -54,6 +54,12 @@ Route::post('tree','Frontend\TreeController@index')->name('tree');
 Route::post('under_a','Frontend\TreeController@under_a')->name('under_a');
 Route::post('under_b','Frontend\TreeController@under_b')->name('under_b');
 
+Route::get('/getProvince', 'Fc\AddressController@getProvince')->name('getProvince');
+Route::get('/getDistrict', 'Fc\AddressController@getDistrict')->name('getDistrict');
+Route::get('/getTambon', 'Fc\AddressController@getTambon')->name('getTambon');
+Route::get('/getZipcode', 'Fc\AddressController@getZipcode')->name('getZipcode');
+
+
 Route::get('Blank', function () {
     return view('frontend.blank');
   });

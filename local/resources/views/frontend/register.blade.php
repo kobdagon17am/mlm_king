@@ -421,8 +421,8 @@
                                                                 <span
                                                                     class="text-danger">*</span></label>
                                                             <select name="card_amphur" class="form-control"
-                                                                id="card_amphur">
-                                                                <option>เลือกเขต/อำเภอ</option>
+                                                                id="card_amphur" disabled required>
+                                                                <option value="">เลือกเขต/อำเภอ</option>
 
                                                             </select>
                                                         </div>
@@ -434,8 +434,8 @@
                                                                 <span
                                                                     class="text-danger">*</span></label>
                                                             <select name="card_tambon" class="form-control"
-                                                                id="card_tambon">
-                                                                <option>เลือกแขวง/ตำบล</option>
+                                                                id="card_tambon" disabled required>
+                                                                <option value="">เลือกแขวง/ตำบล</option>
 
                                                             </select>
                                                         </div>
@@ -448,8 +448,8 @@
                                                                 </span></label>
                                                                 <input type="text"
                                                                 class="form-control @error('card_zipcode') is-invalid @enderror"
-                                                                name="card_zipcode" placeholder="รหัสไปรษณีย์"
-                                                                value="{{ old('card_zipcode') }}">
+                                                                name="card_zipcode" placeholder="รหัสไปรษณีย์" id="card_zipcode"
+                                                                value="{{ old('card_zipcode') }}" required disabled>
                                                             @error('card_zipcode')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -832,7 +832,7 @@
                          var result = Script_checkID(id);
                         id_card = $('#id_card').val();
                          if (result === false) {
-
+                            $('span.error').addClass('text-danger');
                              $('span.error').removeClass('text-success').text('เลขบัตร ' + id_card +
                                  ' ไม่ถูกต้อง');
                              $('#id_card').val('');
@@ -848,8 +848,10 @@
                                  })
                                  .done(function(data) {
                                      if (data['status'] == 'success') {
+                                        $('span.error').removeClass('text-danger');
                                          $('span.error').addClass('text-success').text('เลขบัตรถูกต้อง');
                                      } else {
+                                        $('span.error').addClass('text-danger');
                                       $('span.error').removeClass('text-success').text('มีเลขบัตรประชาชนในระบบแล้วไม่สามารถสมัครซ้ำได้');
                                       $('#id_card').val('');
                                          Swal.fire({
@@ -860,6 +862,7 @@
                                   })
                                 }
                      } else {
+                        $('span.error').addClass('text-danger');
                          $('span.error').removeClass('text-success').text('เลขบัตรไม่ครบ 13 หลัก');
                          $('#id_card').val('');
 
@@ -876,8 +879,10 @@
                                  })
                                  .done(function(data) {
                                      if (data['status'] == 'success') {
+                                        $('span.error').removeClass('text-danger');
                                          $('span.error').addClass('text-success').text('เลขบัตรถูกต้อง');
                                      } else {
+                                        $('span.error').addClass('text-danger');
                                       $('span.error').removeClass('text-success').text('มีเลขบัตรประชาชนในระบบแล้วไม่สามารถสมัครซ้ำได้');
                                       $('#id_card').val('');
                                          Swal.fire({
@@ -906,5 +911,84 @@
              var RE = /^-?(0|INF|(0[1-7][0-7]*)|(0x[0-9a-fA-F]+)|((0|[1-9][0-9]*|(?=[\.,]))([\.,][0-9]+)?([eE]-?\d+)?))$/;
              return (RE.test(input));
          }
+
+
+         $("#card_changwat").change(function() {
+            let province_id = $(this).val();
+            $.ajax({
+                url: '{{ route('getDistrict') }}',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    province_id: province_id,
+                },
+                success: function(data) {
+                    $("#card_amphur").children().remove();
+                    $("#card_tambon").children().remove();
+                    $("#card_amphur").append(` <option value=""> เลือกอำเภอ </option>`);
+                    $("#card_tambon").append(` <option value=""> เลือกตำบล </option>`);
+                    $("#card_zipcode").val("");
+                    data.forEach((item) => {
+                        $("#card_amphur").append(
+                            `<option value="${item.id}">${item.name_th}</option>`
+                        );
+
+                    });
+                    $("#card_amphur").attr('disabled', false);
+                    $("#card_tambon").attr('disabled', true);
+                },
+                error: function() {}
+            })
+        });
+
+
+        $("#card_amphur").change(function() {
+            let district_id = $(this).val();
+            $.ajax({
+                url: '{{ route('getTambon') }}',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    district_id: district_id,
+                },
+                success: function(data) {
+                    $("#card_tambon").children().remove();
+                    $("#card_tambon").append(` <option value=""> เลือกตำบล </option>`);
+                    $("#card_zipcode").val("");
+                    data.forEach((item) => {
+                        $("#card_tambon").append(
+                            `<option value="${item.id}">${item.name_th}</option>`
+                        );
+                    });
+                    $("#card_tambon").attr('disabled', false);
+                },
+                error: function() {}
+            })
+        });
+        // BEGIN district
+
+        $("#card_tambon").change(function() {
+            let tambon_id = $('#card_tambon').val();
+            console.log(tambon_id);
+            $.ajax({
+                url: '{{ route('getZipcode') }}',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    tambon_id: tambon_id,
+                },
+                success: function(data) {
+                    // console.log(data);
+                    $("#card_zipcode").attr('disabled', false);
+                    $("#card_zipcode").val(data.zip_code);
+                },
+                error: function() {}
+            })
+        });
+        //  END tambon
+    </script>
+
+
+
     </script>
 @endsection
