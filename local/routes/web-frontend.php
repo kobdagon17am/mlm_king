@@ -147,4 +147,15 @@ Route::get('Bonus', function () {
 // })->name('RegisterSuccess');
 Route::get('RegisterSuccess/{username}','Frontend\RegisterSuccessController@index')->name('RegisterSuccess');
 
+
+Route::get('SalePage1', function () {
+
+  return view('frontend.salepage1');
+})->name('SalePage1');
+
+Route::get('SalePageSetting', function () {
+
+  return view('frontend.salepage_setting');
+})->name('SalePageSetting');
+
 // BEGIN eWallet withdraw
