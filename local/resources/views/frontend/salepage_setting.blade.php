@@ -38,7 +38,7 @@
                                             <h5 class="font-16 mb-3"><b>การติดต่อ (Contact)</b></h5>
                                             <div class="row">
 
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="phone">หมายเลขโทรศัพท์
                                                             <span class="text-danger"></span></label>
@@ -46,15 +46,15 @@
                                                             placeholder="หมายเลขโทรศัพท์">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                {{-- <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="email">Email Address
                                                             <span class="text-danger"></span></label>
                                                         <input type="email" class="form-control" id="email"
                                                             placeholder="email@example.com">
                                                     </div>
-                                                </div>
-                                                <div class="col-md-4">
+                                                </div> --}}
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="email">Facebook
                                                             <span class="text-danger"></span></label>
@@ -62,7 +62,7 @@
                                                             placeholder="https://www.facebook.com/kingthong/">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="email">Instagram
                                                             <span class="text-danger"></span></label>
@@ -70,7 +70,7 @@
                                                             placeholder="https://www.instagram.com/kingthong/">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="email">Line
                                                             <span class="text-danger"></span></label>
