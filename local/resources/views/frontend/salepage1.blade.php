@@ -35,7 +35,7 @@
         </div>
         <div class="col-6 mt-4 text-center">
             <a href="!#">
-                <span class="badge badge-rounded badge-success">สมัครสมาชิก!</span>
+                <span class="badge badge-rounded badge-success" style="font-size: 20px;">สมัครสมาชิก!</span>
             </a>
         </div>
     </div>
