@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title>kingthong Baiyok</title>
+    <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <link href="{{ asset('frontend/assets/css/loader.css') }}" rel="stylesheet" type="text/css" />
     <script src="{{ asset('frontend/assets/js/loader.js') }}"></script>
@@ -16,6 +17,7 @@
     <link href="{{ asset('frontend/assets/css/main.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('frontend/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet"
         type="text/css" />
+    
     <!-- Common Styles Ends -->
     <!-- Common Icon Starts -->
     <link rel="stylesheet"
@@ -35,7 +37,7 @@
         </div>
         <div class="col-6 mt-4 text-center">
             <a href="!#">
-                <span class="badge badge-rounded badge-success" style="font-size: 20px;">สมัครสมาชิก!</span>
+                <span class="badge badge-rounded badge-success" style="font-size: 17px;">สมัครสมาชิก!</span>
             </a>
         </div>
     </div>
@@ -121,7 +123,8 @@
                         <img src="{{ asset('frontend/assets/img/profile-16.jpg') }}" class="rounded-circle"
                             style="width: 60px;" alt="Avatar">
                         <h6>คุณ กิ่งทอง ใบหยก</h6>
-                        <p><i class="las la-phone-volume" style="font-size: 25px;"></i><a href="tel:000-0000000"> : 000-0000000</a></p>
+                        <p><i class="las la-phone-volume" style="font-size: 25px;"></i><a href="tel:000-0000000"> :
+                                000-0000000</a></p>
 
 
                     </div>
@@ -137,8 +140,8 @@
                         style="width: 25px;" alt="Responsive image">
                 </a>
                 <a href="#!">
-                    <img src="{{ asset('frontend/assets/img/line-icon.png') }}" class="img-fluid" style="width: 25px;"
-                        alt="Responsive image">
+                    <img src="{{ asset('frontend/assets/img/line-icon.png') }}" class="img-fluid"
+                        style="width: 25px;" alt="Responsive image">
                 </a>
             </div>
         </div>
