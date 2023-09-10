@@ -60,7 +60,7 @@
                         <a href="{{ route('admin/Unit') }}"> หน่วยสินค้า </a>
                     </li>
                     <li>
-                        <a href="#"> สินค้าโปรโมชั่น </a>
+                        <a href="{{ route('admin/Promotion') }}"> สินค้าโปรโมชั่น </a>
                     </li>
                     <li>
                         <a href="#"> คูปองโปรโมชั่น </a>

@@ -111,6 +111,16 @@ Route::get('admin/Blank', function () {
   Route::post('admin/edit_unit','Admin\UnitController@edit_unit')->name('admin/edit_unit');
 
 
+   // Route::get('admin/Promotion', function () {
+  //   return view('backend.promotion');
+  // })->name('admin/Promotion');
+  Route::get('admin/Promotion','Admin\PromotionController@index')->name('admin/Promotion');
+  Route::post('admin/Promotion_insert','Admin\PromotionController@insert')->name('admin/Promotion_insert');
+  Route::get('admin/view_promotion','Admin\PromotionController@view_promotion')->name('admin/view_promotion');
+  Route::post('admin/edit_promotion','Admin\PromotionController@edit_promotion')->name('admin/edit_promotion');
+  Route::get('admin/promotion_datatable','Admin\PromotionController@promotion_datatable')->name('admin/promotion_datatable');
+
+
   // Route::get('admin/Branch', function () {
   //   return view('backend.branch');
   // })->name('admin/Branch');
@@ -136,7 +146,6 @@ Route::get('admin/Blank', function () {
   Route::post('admin/Stockin_insert','Admin\StockController@insert')->name('admin/Stockin_insert');
   Route::get('admin/view_stock_in','Admin\StockController@view_stock_in')->name('admin/view_stock_in');
   Route::post('admin/update_stock_in','Admin\StockController@update_stock_in')->name('admin/update_stock_in');
-
   Route::get('admin/Stock_in_confirm_datatable','Admin\StockController@Stock_in_confirm_datatable')->name('admin/Stock_in_confirm_datatable');
     // END receive
 
