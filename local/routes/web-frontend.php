@@ -148,20 +148,15 @@ Route::get('Bonus', function () {
 Route::get('RegisterSuccess/{username}','Frontend\RegisterSuccessController@index')->name('RegisterSuccess');
 
 
-Route::get('SalePage1', function () {
-  return view('frontend.salepage1');
-})->name('SalePage1');
-
+// Route::get('SalePage1', function () {
+//   return view('frontend.salepage1');
+// })->name('SalePage1');
+Route::get('SalePage1','Frontend\SalePageController@index')->name('SalePage1');
 
 // Route::get('SalePageSetting', function () {
 //   return view('frontend.salepage_setting');
 // })->name('SalePageSetting');
 Route::get('SalePageSetting','Frontend\SalePageSettingController@index')->name('SalePageSetting');
 Route::post('edit_SalePageSetting','Frontend\SalePageSettingController@edit_SalePageSetting')->name('edit_SalePageSetting');
-
-// Route::get('admin/Category','Admin\CategoryController@index')->name('admin/Category');
-//   Route::post('admin/Category_insert','Admin\CategoryController@insert')->name('admin/Category_insert');
-//   Route::get('admin/view_category','Admin\CategoryController@view_category')->name('admin/view_category');
-//   Route::post('admin/edit_category','Admin\CategoryController@edit_category')->name('admin/edit_category');
 
 // BEGIN eWallet withdraw

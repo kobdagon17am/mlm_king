@@ -43,22 +43,6 @@
     </div>
 
 
-    {{-- <div class="col-md-4">
-        <div class="card text-xs-center">
-            <div class="card-header bg-gradient-dark text-white">
-                Featured
-            </div>
-            <div class="card-body">
-                <p class="card-text">With supporting text below as a natural lead-in to
-                    additional content. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <div class="card-footer text-muted">
-                2 days ago
-            </div>
-        </div> 
-    </div> --}}
-
-
     <div class="row mt-5 mb-5">
         <div class="col-md-12 text-center">
             <div class="card-body">
@@ -122,24 +106,24 @@
                     <div class="single-user mt-2 mr-3 ml-3">
                         <img src="{{ asset('frontend/assets/img/profile-16.jpg') }}" class="rounded-circle"
                             style="width: 60px;" alt="Avatar">
-                        <h6>คุณ กิ่งทอง ใบหยก</h6>
-                        <p><i class="las la-phone-volume" style="font-size: 25px;"></i><a href="tel:000-0000000"> :
-                                000-0000000</a></p>
+                        <h6>คุณ {{ $get_customer->first_name }} {{ $get_customer->last_name }}</h6>
+                        <p><i class="las la-phone-volume" style="font-size: 25px;"></i><a href="tel:{{ $get_customer->phone }}"> :
+                            {{ $get_customer->phone }}</a></p>
 
 
                     </div>
                 </div>
             </div>
             <div class="col-md-12 mt-2 mb-3 text-center">
-                <a href="#!">
+                <a href="{{ $get_customer->facebook }}">
                     <img src="{{ asset('frontend/assets/img/facebook-icon.png') }}" class="img-fluid"
                         style="width: 25px;" alt="Responsive image">
                 </a>
-                <a href="#!">
+                <a href="{{ $get_customer->instagram }}">
                     <img src="{{ asset('frontend/assets/img/instagram-icon.png') }}" class="img-fluid"
                         style="width: 25px;" alt="Responsive image">
                 </a>
-                <a href="#!">
+                <a href="{{ $get_customer->id_line }}">
                     <img src="{{ asset('frontend/assets/img/line-icon.png') }}" class="img-fluid"
                         style="width: 25px;" alt="Responsive image">
                 </a>
