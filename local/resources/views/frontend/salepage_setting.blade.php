@@ -33,62 +33,57 @@
                 <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="row tab-area-content">
                         <div class="col-xl-12 col-lg-12 col-md-12 mb-2">
-                            <div class="media">
-                                <div class="profile-shadow w-100">
-                                    <h5 class="font-16 mb-3"><b>การติดต่อ (Contact)</b></h5>
-                                    <div class="row">
-
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="phone">หมายเลขโทรศัพท์
-                                                    <span class="text-danger"></span></label>
-                                                <input type="text" class="form-control" id="phone"
-                                                    placeholder="000-0000000">
+                            <form method="post" id="edit" action="{{ route('edit_SalePageSetting') }}">
+                                @csrf
+                                <div class="media">
+                                    <div class="profile-shadow w-100">
+                                        <h5 class="font-16 mb-3"><b>การติดต่อ (Contact)</b></h5>
+                                        <div class="row">
+                                            <input type="hidden" name="id"  value="{{ $get_customer->id }}">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="phone">หมายเลขโทรศัพท์
+                                                        <span class="text-danger"></span></label>
+                                                        <input type="text" class="form-control" name="phone" id="phone"
+                                                            value="{{ $get_customer->phone }}">
+                                                </div>
                                             </div>
-                                        </div>
-                                        {{-- <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="email">Email Address
-                                                            <span class="text-danger"></span></label>
-                                                        <input type="email" class="form-control" id="email"
-                                                            placeholder="email@example.com">
-                                                    </div>
-                                                </div> --}}
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="email">Facebook
-                                                    <span class="text-danger"></span></label>
-                                                <input type="facebook" class="form-control" id="email"
-                                                    placeholder="https://www.facebook.com/kingthong/">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="facebook">Facebook
+                                                        <span class="text-danger"></span></label>
+                                                        <input type="text" class="form-control" name="facebook" id="facebook"
+                                                            value="{{ $get_customer->facebook }}">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="email">Instagram
-                                                    <span class="text-danger"></span></label>
-                                                <input type="instagram" class="form-control" id="email"
-                                                    placeholder="https://www.instagram.com/kingthong/">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="instagram">Instagram
+                                                        <span class="text-danger"></span></label>
+                                                        <input type="text" class="form-control" name="instagram" id="instagram"
+                                                            value="{{ $get_customer->instagram }}">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="email">Line
-                                                    <span class="text-danger"></span></label>
-                                                <input type="line" class="form-control" id="email"
-                                                    placeholder="@kingthong">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="line">Line
+                                                        <span class="text-danger"></span></label>
+                                                        <input type="text" class="form-control" name="id_line" id="id_line"
+                                                            value="{{ $get_customer->id_line }}">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12 text-right">
-                                            <button type="button" class="btn btn-info btn-rounded"><i
-                                                    class="las la-save"></i> บันทึก</button>
+                                            <div class="col-md-12 text-right">
+                                                <button type="submit" class="btn btn-info btn-rounded">
+                                                    <i class="las la-save"></i> แก้ไขข้อมูล</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
+                            </form>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="row tab-area-content">
