@@ -120,6 +120,16 @@ Route::get('admin/Blank', function () {
   Route::post('admin/edit_promotion','Admin\PromotionController@edit_promotion')->name('admin/edit_promotion');
   Route::get('admin/promotion_datatable','Admin\PromotionController@promotion_datatable')->name('admin/promotion_datatable');
 
+  // Route::get('admin/News', function () {
+  //   return view('backend.news');
+  // })->name('admin/News');
+  Route::get('admin/News','Admin\NewsController@index')->name('admin/News');
+  Route::post('admin/News_insert','Admin\NewsController@insert')->name('admin/News_insert');
+  Route::get('admin/view_news','Admin\NewsController@view_news')->name('admin/view_news');
+  Route::post('admin/edit_news','Admin\NewsController@edit_news')->name('admin/edit_news');
+  Route::get('admin/news_datatable','Admin\NewsController@news_datatable')->name('admin/news_datatable');
+
+
 
   // Route::get('admin/Branch', function () {
   //   return view('backend.branch');
