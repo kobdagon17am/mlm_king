@@ -184,3 +184,13 @@ Route::get('admin/Blank', function () {
   // })->name('admin/Stock_card');
   Route::get('admin/Stock_card/{lot_id}','Admin\StockCardController@index')->name('admin/Stock_card');
   Route::get('admin/Stock_card_datatable','Admin\StockCardController@Stock_card_datatable')->name('admin/Stock_card_datatable');
+
+  // Route::get('admin/Announce', function () {
+  //   return view('backend.announce');
+  // })->name('admin/Announce');
+  Route::get('admin/Announce','Admin\AnnounceController@index')->name('admin/Announce');
+  Route::post('admin/Announce_insert','Admin\AnnounceController@insert')->name('admin/Announce_insert');
+  Route::get('admin/view_announce','Admin\AnnounceController@view_announce')->name('admin/view_announce');
+  Route::post('admin/edit_announce','Admin\AnnounceController@edit_announce')->name('admin/edit_announce');
+  Route::get('admin/announce_datatable','Admin\AnnounceController@announce_datatable')->name('admin/announce_datatable');
+

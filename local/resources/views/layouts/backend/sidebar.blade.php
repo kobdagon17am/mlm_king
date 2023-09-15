@@ -192,6 +192,9 @@
                     <li>
                         <a href="{{ route('admin/News') }}"> ข่าวสารและกิจกรรม </a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin/Announce') }}"> ประชาสัมพันธ์ </a>
+                    </li>
                 </ul>
             </li>
             <li class="menu main-single-menu">

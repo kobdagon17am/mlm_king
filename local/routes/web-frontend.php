@@ -159,4 +159,11 @@ Route::get('SalePage1','Frontend\SalePageController@index')->name('SalePage1');
 Route::get('SalePageSetting','Frontend\SalePageSettingController@index')->name('SalePageSetting');
 Route::post('edit_SalePageSetting','Frontend\SalePageSettingController@edit_SalePageSetting')->name('edit_SalePageSetting');
 
+
+// Route::get('NewsDetail', function () {
+//   return view('frontend.news_detail');
+// })->name('NewsDetail');
+Route::get('NewsDetail/{id}','Frontend\NewsDetailController@index')->name('NewsDetail');
+
+
 // BEGIN eWallet withdraw
