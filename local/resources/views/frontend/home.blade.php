@@ -103,12 +103,14 @@
                                 {{-- <div class="ticker-heading bg-gradient-info">
                                 <p>ประกาศ</p>
                             </div> --}}
+                            @foreach ($get_announce as $item)
                                 <div class="ticker">
                                     <div class="ticker-item"><span class="text-danger"><b>ประชาสัมพันธ์ :</b></span></div>
-                                    <div class="ticker-item"><b>โปรโมชั่นรักษาสิทธิ์</b></div>
-                                    <div class="ticker-item"><span class="text-danger">เฉพาะวันที่ 1 มิถุนายน 2566 นี้
-                                            เท่านั้น!!</span></div>
+                                    <div class="ticker-item"><b>{{ $item->announce }}</b></div>
+                                    {{-- <div class="ticker-item"><span class="text-danger">เฉพาะวันที่ 1 มิถุนายน 2566 นี้
+                                            เท่านั้น!!</span></div> --}}
                                 </div>
+                            <@endforeach>
                             </div>
                         </div>
                     </div>
@@ -230,7 +232,7 @@
                 </div>
             </div>
 
-            <div class="row mt-3">
+            <div class="row mt-3 mb-4">
                 @foreach ($get_news as $item)
                     <div class="col-md-4">
                         <div class="card">
@@ -240,9 +242,9 @@
                             <div class="card-body">
                                 <h5 class="card-title text-center"><b>{{ $item->news_title }}</b></h5>
                                 <p class="card-text">{{ $item->news_name }}</p>
-                                <p class="card-text">
-                                    <small class="text-muted">{{ $item->created_at }}</small>
-                                </p>
+                                <p class="card-text text-right">
+                                    <small class="text-muted">วันที่เขียนข่าว: {{ $item->created_at }}</small>
+                                </p>                                
                             </div>
                         </div>
                     </div>
