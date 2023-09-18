@@ -110,7 +110,7 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="salespage" data-parent="#accordionExample">
                     <li>
-                        <a href="#!"> เพจซื้อขาย 1 </a>
+                        <a href="{{route('SalePage1')}}"> เพจซื้อขาย 1 </a>
                     </li>
                     <li>
                         <a href="#!"> เพจซื้อขาย 2 </a>
@@ -123,6 +123,9 @@
                     </li>
                     <li>
                         <a href="#!"> เพจซื้อขาย 5 </a>
+                    </li>
+                    <li>
+                        <a href="{{route('SalePageSetting')}}"> ตั้งค่าเพจซื้อขาย </a>
                     </li>
                 </ul>
             </li>

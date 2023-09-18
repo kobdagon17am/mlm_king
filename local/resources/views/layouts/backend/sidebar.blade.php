@@ -60,7 +60,7 @@
                         <a href="{{ route('admin/Unit') }}"> หน่วยสินค้า </a>
                     </li>
                     <li>
-                        <a href="#"> สินค้าโปรโมชั่น </a>
+                        <a href="{{ route('admin/Promotion') }}"> สินค้าโปรโมชั่น </a>
                     </li>
                     <li>
                         <a href="#"> คูปองโปรโมชั่น </a>
@@ -175,6 +175,25 @@
                     </li>
                     <li>
                         <a href="#"> อัปโหลดใบทวิ 50 </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu main-single-menu">
+                <a href="#a7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <i class="las la-newspaper"></i>
+                        <span> ระบบข่าวสาร </span>
+                    </div>
+                    <div>
+                        <i class="las la-angle-right sidemenu-right-icon"></i>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled" id="a4" data-parent="#accordionExample">
+                    <li>
+                        <a href="{{ route('admin/News') }}"> ข่าวสารและกิจกรรม </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin/Announce') }}"> ประชาสัมพันธ์ </a>
                     </li>
                 </ul>
             </li>

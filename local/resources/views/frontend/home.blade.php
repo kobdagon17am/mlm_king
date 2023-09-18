@@ -103,12 +103,14 @@
                                 {{-- <div class="ticker-heading bg-gradient-info">
                                 <p>ประกาศ</p>
                             </div> --}}
+                            @foreach ($get_announce as $item)
                                 <div class="ticker">
                                     <div class="ticker-item"><span class="text-danger"><b>ประชาสัมพันธ์ :</b></span></div>
-                                    <div class="ticker-item"><b>โปรโมชั่นรักษาสิทธิ์</b></div>
-                                    <div class="ticker-item"><span class="text-danger">เฉพาะวันที่ 1 มิถุนายน 2566 นี้
-                                            เท่านั้น!!</span></div>
+                                    <div class="ticker-item"><b>{{ $item->announce }}</b></div>
+                                    {{-- <div class="ticker-item"><span class="text-danger">เฉพาะวันที่ 1 มิถุนายน 2566 นี้
+                                            เท่านั้น!!</span></div> --}}
                                 </div>
+                            <@endforeach>
                             </div>
                         </div>
                     </div>
@@ -120,7 +122,7 @@
                         <div class="widget-header">
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <h3 class="text-center"><b>โปรโมชั่นสินค้า</b></h3>
+                                    <h3 class="text-center mb-3"><b>โปรโมชั่นสินค้า</b></h3>
                                 </div>
                                 <div class="col-lg-12 col-md-12">
                                     <div id="promotionpic" class="carousel slide" data-ride="carousel">
@@ -130,33 +132,26 @@
                                             <li data-target="pic3" data-slide-to="2"></li>
                                         </ol>
                                         <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <img class="d-block w-50 mx-auto" src="{{ asset('local/public/products/All Products 500x500 Pixel-01.png')}}" alt="First slide">
-                                                {{-- <div class="carousel-caption d-none d-sm-block">
-                                                    <h3>First label</h3>
-                                                    <h5>Nulla vitae elit libero, a pharetra augue mollis.</h5>
-                                                </div> --}}
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img class="d-block w-50 mx-auto" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-02.png')}}">
-                                                {{-- <div class="carousel-caption d-none d-sm-block">
-                                                    <h3>Second label</h3>
-                                                    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
-                                                </div> --}}
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img class="d-block w-50 mx-auto" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-03.png')}}">
-                                                {{-- <div class="carousel-caption d-none d-sm-block">
-                                                    <h3>Third label</h3>
-                                                    <h5>Praesent commodo cursus magna, vel scelerisque nisl.</h5>
-                                                </div> --}}
+                                            <div class="carousel-inner">
+
+                                                @foreach ($get_promotion_general as $key => $item)
+                                                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                                        <a href="{{ $item->promotion_url }}">
+                                                            <img class="d-block w-50 mx-auto"
+                                                                src="{{ asset($item->promotion_image_url . '/' . $item->promotion_image_name) }}"
+                                                                alt="Slide {{ $key + 1 }}">
+                                                        </a>
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
-                                        <a class="carousel-control-prev" href="#promotionpic" role="button" data-slide="prev">
+                                        <a class="carousel-control-prev" href="#promotionpic" role="button"
+                                            data-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                             <span class="sr-only">Previous</span>
                                         </a>
-                                        <a class="carousel-control-next" href="#promotionpic" role="button" data-slide="next">
+                                        <a class="carousel-control-next" href="#promotionpic" role="button"
+                                            data-slide="next">
                                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                             <span class="sr-only">Next</span>
                                         </a>
@@ -166,12 +161,13 @@
                         </div>
                         <div class="widget-content widget-content-area">
                             <h6 class="text-center"><span class="text-danger">รีบซื้อด่วน!
-                                โปรโมชั่นเหลือเวลาแค่</span></h6>
+                                    โปรโมชั่นเหลือเวลาแค่</span></h6>
                             <div id="timer" class="square-countdown no-color">
                                 <div class="days"><span class="count">00</span> <span class="text">วัน</span></div>
                                 <div class="hours"><span class="count">00</span> <span class="text">ชม.</span></div>
                                 <div class="min"><span class="count">00</span> <span class="text">นาที</span></div>
-                                <div class="sec"><span class="count">00</span> <span class="text">วินาที</span></div>
+                                <div class="sec"><span class="count">00</span> <span class="text">วินาที</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -181,7 +177,7 @@
                         <div class="widget-header">
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <h3 class="text-center"><b>โปรโมชั่นเปิดคลังใบหยก</b></h3>
+                                    <h3 class="text-center mb-3"><b>โปรโมชั่นเปิดคลังใบหยก</b></h3>
                                 </div>
                                 <div class="col-lg-12 col-md-12">
                                     <div id="promotionpic1" class="carousel slide" data-ride="carousel">
@@ -191,33 +187,23 @@
                                             <li data-target="pic3" data-slide-to="2"></li>
                                         </ol>
                                         <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <img class="d-block w-50 mx-auto" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-04.png')}}" alt="First slide">
-                                                {{-- <div class="carousel-caption d-none d-sm-block">
-                                                    <h3>First label</h3>
-                                                    <h5>Nulla vitae elit libero, a pharetra augue mollis.</h5>
-                                                </div> --}}
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img class="d-block w-50 mx-auto" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-05.png')}}">
-                                                {{-- <div class="carousel-caption d-none d-sm-block">
-                                                    <h3>Second label</h3>
-                                                    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
-                                                </div> --}}
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img class="d-block w-50 mx-auto" alt="Responsive image" src="{{ asset('local/public/products/All Products 500x500 Pixel-06.png')}}">
-                                                {{-- <div class="carousel-caption d-none d-sm-block">
-                                                    <h3>Third label</h3>
-                                                    <h5>Praesent commodo cursus magna, vel scelerisque nisl.</h5>
-                                                </div> --}}
+                                            <div class="carousel-inner">
+                                                @foreach ($get_promotion_warehouse as $key => $item)
+                                                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                                        <img class="d-block w-50 mx-auto"
+                                                            src="{{ asset($item->promotion_image_url . '/' . $item->promotion_image_name) }}"
+                                                            alt="Slide {{ $key + 1 }}">
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
-                                        <a class="carousel-control-prev" href="#promotionpic1" role="button" data-slide="prev">
+                                        <a class="carousel-control-prev" href="#promotionpic1" role="button"
+                                            data-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                             <span class="sr-only">Previous</span>
                                         </a>
-                                        <a class="carousel-control-next" href="#promotionpic1" role="button" data-slide="next">
+                                        <a class="carousel-control-next" href="#promotionpic1" role="button"
+                                            data-slide="next">
                                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                             <span class="sr-only">Next</span>
                                         </a>
@@ -227,65 +213,74 @@
                         </div>
                         <div class="widget-content widget-content-area">
                             <h6 class="text-center"><span class="text-danger">รีบซื้อด่วน!
-                                โปรโมชั่นเหลือเวลาแค่</span></h6>
+                                    โปรโมชั่นเหลือเวลาแค่</span></h6>
                             <div id="timersquare" class="square-countdown no-color">
                                 <div class="days"><span class="count">00</span> <span class="text">วัน</span></div>
                                 <div class="hours"><span class="count">00</span> <span class="text">ชม.</span></div>
                                 <div class="min"><span class="count">00</span> <span class="text">นาที</span></div>
-                                <div class="sec"><span class="count">00</span> <span class="text">วินาที</span></div>
+                                <div class="sec"><span class="count">00</span> <span class="text">วินาที</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top img-fluid" src="{{ asset('frontend/assets/img/lightbox-7.jpg')}}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a
-                                natural lead-in to additional content. This content is a little bit
-                                longer.</p>
-                            <p class="card-text">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </p>
+                <div class="col-md-12 mt-4 text-center">
+                    <h3><b>ข่าวสารและกิจกรรม</b></h3>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row mt-3 mb-4">
+                @foreach ($get_news as $item)
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a href="{{ route('NewsDetail', ['id' => $item->id]) }}"><img class="card-img-top img-fluid"
+                                    src="{{ asset($item->news_image_url . '' . $item->news_image_name) }}"
+                                    alt="Card image cap"></a>
+                            <div class="card-body">
+                                <h5 class="card-title text-center"><b>{{ $item->news_title }}</b></h5>
+                                <p class="card-text">{{ $item->news_name }}</p>
+                                <p class="card-text text-right">
+                                    <small class="text-muted">วันที่เขียนข่าว: {{ $item->created_at }}</small>
+                                </p>                                
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top img-fluid" src="{{ asset('frontend/assets/img/lightbox-6.jpg')}}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a
-                                natural lead-in to additional content. This content is a little bit
-                                longer.</p>
-                            <p class="card-text">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </p>
+                    {{-- <div class="col-md-4">
+                        <div class="card">
+                            <img class="card-img-top img-fluid" src="{{ asset('frontend/assets/img/lightbox-6.jpg') }}"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a
+                                    natural lead-in to additional content. This content is a little bit
+                                    longer.</p>
+                                <p class="card-text">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top img-fluid" src="{{ asset('frontend/assets/img/lightbox-5.jpg')}}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a
-                                natural lead-in to additional content. This content is a little bit
-                                longer.</p>
-                            <p class="card-text">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </p>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img class="card-img-top img-fluid" src="{{ asset('frontend/assets/img/lightbox-5.jpg') }}"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a
+                                    natural lead-in to additional content. This content is a little bit
+                                    longer.</p>
+                                <p class="card-text">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-
-
+                    </div> --}}
+                @endforeach
             </div>
 
 
@@ -300,13 +295,11 @@
         <!-- Arrow Ends -->
 
     </div>
-
-    
 @endsection
 @section('js')
-    <script src="{{ asset('frontend/plugins/apex/apexcharts.min.js')}}"></script>
-    <script src="{{ asset('frontend/plugins/flatpickr/flatpickr.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/dashboard/dashboard_2.js')}}"></script>
-    <script src="{{ asset('frontend/plugins/countdown/jquery.countdown.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/basicui/custom-countdown.js')}}"></script>
+    <script src="{{ asset('frontend/plugins/apex/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('frontend/plugins/flatpickr/flatpickr.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/dashboard/dashboard_2.js') }}"></script>
+    <script src="{{ asset('frontend/plugins/countdown/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/basicui/custom-countdown.js') }}"></script>
 @endsection

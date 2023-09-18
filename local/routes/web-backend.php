@@ -111,6 +111,26 @@ Route::get('admin/Blank', function () {
   Route::post('admin/edit_unit','Admin\UnitController@edit_unit')->name('admin/edit_unit');
 
 
+   // Route::get('admin/Promotion', function () {
+  //   return view('backend.promotion');
+  // })->name('admin/Promotion');
+  Route::get('admin/Promotion','Admin\PromotionController@index')->name('admin/Promotion');
+  Route::post('admin/Promotion_insert','Admin\PromotionController@insert')->name('admin/Promotion_insert');
+  Route::get('admin/view_promotion','Admin\PromotionController@view_promotion')->name('admin/view_promotion');
+  Route::post('admin/edit_promotion','Admin\PromotionController@edit_promotion')->name('admin/edit_promotion');
+  Route::get('admin/promotion_datatable','Admin\PromotionController@promotion_datatable')->name('admin/promotion_datatable');
+
+  // Route::get('admin/News', function () {
+  //   return view('backend.news');
+  // })->name('admin/News');
+  Route::get('admin/News','Admin\NewsController@index')->name('admin/News');
+  Route::post('admin/News_insert','Admin\NewsController@insert')->name('admin/News_insert');
+  Route::get('admin/view_news','Admin\NewsController@view_news')->name('admin/view_news');
+  Route::post('admin/edit_news','Admin\NewsController@edit_news')->name('admin/edit_news');
+  Route::get('admin/news_datatable','Admin\NewsController@news_datatable')->name('admin/news_datatable');
+
+
+
   // Route::get('admin/Branch', function () {
   //   return view('backend.branch');
   // })->name('admin/Branch');
@@ -136,7 +156,6 @@ Route::get('admin/Blank', function () {
   Route::post('admin/Stockin_insert','Admin\StockController@insert')->name('admin/Stockin_insert');
   Route::get('admin/view_stock_in','Admin\StockController@view_stock_in')->name('admin/view_stock_in');
   Route::post('admin/update_stock_in','Admin\StockController@update_stock_in')->name('admin/update_stock_in');
-
   Route::get('admin/Stock_in_confirm_datatable','Admin\StockController@Stock_in_confirm_datatable')->name('admin/Stock_in_confirm_datatable');
     // END receive
 
@@ -165,3 +184,13 @@ Route::get('admin/Blank', function () {
   // })->name('admin/Stock_card');
   Route::get('admin/Stock_card/{lot_id}','Admin\StockCardController@index')->name('admin/Stock_card');
   Route::get('admin/Stock_card_datatable','Admin\StockCardController@Stock_card_datatable')->name('admin/Stock_card_datatable');
+
+  // Route::get('admin/Announce', function () {
+  //   return view('backend.announce');
+  // })->name('admin/Announce');
+  Route::get('admin/Announce','Admin\AnnounceController@index')->name('admin/Announce');
+  Route::post('admin/Announce_insert','Admin\AnnounceController@insert')->name('admin/Announce_insert');
+  Route::get('admin/view_announce','Admin\AnnounceController@view_announce')->name('admin/view_announce');
+  Route::post('admin/edit_announce','Admin\AnnounceController@edit_announce')->name('admin/edit_announce');
+  Route::get('admin/announce_datatable','Admin\AnnounceController@announce_datatable')->name('admin/announce_datatable');
+

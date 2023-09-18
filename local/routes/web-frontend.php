@@ -147,4 +147,23 @@ Route::get('Bonus', function () {
 // })->name('RegisterSuccess');
 Route::get('RegisterSuccess/{username}','Frontend\RegisterSuccessController@index')->name('RegisterSuccess');
 
+
+// Route::get('SalePage1', function () {
+//   return view('frontend.salepage1');
+// })->name('SalePage1');
+Route::get('SalePage1','Frontend\SalePageController@index')->name('SalePage1');
+
+// Route::get('SalePageSetting', function () {
+//   return view('frontend.salepage_setting');
+// })->name('SalePageSetting');
+Route::get('SalePageSetting','Frontend\SalePageSettingController@index')->name('SalePageSetting');
+Route::post('edit_SalePageSetting','Frontend\SalePageSettingController@edit_SalePageSetting')->name('edit_SalePageSetting');
+
+
+// Route::get('NewsDetail', function () {
+//   return view('frontend.news_detail');
+// })->name('NewsDetail');
+Route::get('NewsDetail/{id}','Frontend\NewsDetailController@index')->name('NewsDetail');
+
+
 // BEGIN eWallet withdraw
