@@ -32,6 +32,7 @@ class MemberRigisterController extends Controller
   public function MemberRegister_datatable(Request $rs)
   {
 
+
     $get_member_regis_doc = DB::table('customers')
 
       ->where('regis_doc_status', '=', 'approve')
@@ -121,7 +122,7 @@ class MemberRigisterController extends Controller
         $html2 = '<i class="lab la-whmcs font-25 text-warning" id="btnGroupDrop1" data-toggle="dropdown"></i>
               <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" >
                 <a class="dropdown-item" href="#!" onclick="edit(' . $row->id . ')" class="p-2">แก้ไขรหัสผ่าน</a>
-                <a class="dropdown-item" href="#!" onclick="cancel_member(' . $row->id . ')" class="p-2">ยกเลิกรหัส</a>                           
+                <a class="dropdown-item" href="#!" onclick="cancel_member(' . $row->id . ')" class="p-2">ยกเลิกรหัส</a>
               </div>';
 
         return $html . $html1 . $html2; // รวมค่า $html และ $html1 ด้วยเครื่องหมาย .

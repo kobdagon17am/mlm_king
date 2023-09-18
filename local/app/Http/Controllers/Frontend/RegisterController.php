@@ -71,7 +71,7 @@ class RegisterController extends Controller
     public function member_register(Request $request)
     {
         //  dd('1');
-        // dd($request->all());
+        dd($request->all());
         //return response()->json(['status' => 'fail', 'ms' => 'ลงทะเบียนไม่สำเร็จกรุณาลงทะเบียนไหม่sss']);
 
         //BEGIN data validator

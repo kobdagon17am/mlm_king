@@ -121,7 +121,7 @@
                     <li>
                         <a href="{{ route('admin/Stock_report') }}"> รายงานคลังสินค้า </a>
                     </li>
-                    
+
                 </ul>
             </li>
             <li class="menu main-single-menu">
@@ -153,7 +153,7 @@
                     <li>
                         <a href="{{ route('admin/Stock_report') }}"> รายงานคลังสินค้า </a>
                     </li>
-                    
+
                 </ul>
             </li>
             <li class="menu main-single-menu">

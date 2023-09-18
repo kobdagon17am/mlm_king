@@ -15,7 +15,7 @@ class TreeController extends Controller
     public function __construct()
     {
         $this->middleware('customer');
-         
+
     }
 
     public function index(Request $request)
