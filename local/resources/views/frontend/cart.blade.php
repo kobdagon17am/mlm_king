@@ -155,7 +155,7 @@
                                             class="w-100 btn btn-outline-info mb-0 ml-3 mr-3"><i
                                                 class="las la-arrow-left"></i>
                                             สินค้า</a>
-                                        <a href="{{ route('CartGeneral',['type'=>1]) }}"
+                                        <a href="{{ route('CartSummary') }}"
                                             class="w-100 btn btn-outline-info mb-0 ml-3 mr-3">สั่งซื้อ <i
                                                 class="las la-arrow-right"></i></a>
                                     </div>

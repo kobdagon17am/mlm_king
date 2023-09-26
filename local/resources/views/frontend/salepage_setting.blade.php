@@ -94,10 +94,10 @@
                                     <div class="row mt-3">
                                         <div class="col-6 ml-4">
                                             <div class="radio-inline">
-                                                <label class="radio radio-outline radio-outline-2x radio-primary">
-                                                    <input type="radio" name="radios16" checked="checked"อ>
+                                                <label class="radio radio-outline radio-outline-2x radio-primary  ml-3">
+                                                    <input type="radio" name="radios16" checked="checked">
                                                     <span></span>สาย A</label>
-                                                <label class="radio radio-outline radio-outline-2x radio-primary">
+                                                <label class="radio radio-outline radio-outline-2x radio-primary  ml-5">
                                                     <input type="radio" name="radios16">
                                                     <span></span>สาย B</label>
                                             </div>

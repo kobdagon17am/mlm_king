@@ -165,7 +165,10 @@ Route::post('edit_SalePageSetting','Frontend\SalePageSettingController@edit_Sale
 // })->name('NewsDetail');
 Route::get('NewsDetail/{id}','Frontend\NewsDetailController@index')->name('NewsDetail');
 
-
 Route::get('add_cart', 'Frontend\CartGeneralController@add_cart')->name('add_cart');
+
+Route::get('CartSummary', function () {
+  return view('frontend.cart_summary');
+})->name('CartSummary');
 
 // BEGIN eWallet withdraw
