@@ -165,10 +165,11 @@
                                 ?>
 
 
-                                    <div class="row">
-                                        <div class="col-12 col-md-12">
-                                            <div class="widget-content searchable-container grid">
-                                                <div class="searchable-items grid card-box">
+                                <div class="row">
+                                    <div class="col-12 col-md-12">
+                                        <div class="widget-content searchable-container grid">
+                                            <div class="searchable-items grid card-box">
+                                                @if (count($product) > 0)
                                                     @foreach ($product as $item)
                                                         <div class="items">
                                                             <div class="item-content">
@@ -184,7 +185,8 @@
                                                                     <div class="user-meta-info">
                                                                         <p class="product-name">
                                                                         <h5 class="text-center">
-                                                                            <b>{{ $item->product_name }}</b></h5>
+                                                                            <b>{{ $item->product_name }}</b>
+                                                                        </h5>
                                                                         </p>
                                                                     </div>
                                                                     <div class="product-price">
@@ -194,12 +196,9 @@
                                                                         </p>
                                                                     </div>
                                                                     <div class="product-stock-status">
-                                                                        <p class="product-stock-status-inner">
-                                                                            <a href="{{ route('Cart') }}"><button
-                                                                                    type="button"
-                                                                                    class="btn btn-outline-success btn-rounded"><i
-                                                                                        class="las la-cart-plus las-white font-17"></i>
-                                                                                    เพิ่มสินค้า</button>
+                                                                        <p class="product-stock-status-inner" >
+                                                                          <button type="button" class="btn btn-outline-success btn-rounded " onclick="addcart({{$item->id}},1)">
+                                                                                    <b style="color: black"><i class="las la-cart-plus las-white font-17"></i>เพิ่มสินค้า</b></button>
                                                                         </p>
                                                                     </div>
                                                                 @endif
@@ -207,10 +206,26 @@
                                                             </div>
                                                         </div>
                                                     @endforeach
-                                                </div>
+                                                @else
+                                                    <div class="items">
+                                                        <div class="item-content">
+                                                            <div class="product-info">
+                                                            </div>
+                                                            <div class="product-stock-status">
+                                                                <p class="product-stock-status-inner">
+                                                                    <a href="#!">
+                                                                        <button type="button" class="btn btn-outline-warning btn-rounded"> ยังไม่มีสินค้า</button>
+                                                                    </a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
                             </div>
                         @endforeach
@@ -225,3 +240,41 @@
     </div>
     <!--  Content Area Ends  -->
 @endsection
+@section('js')
+<script>
+    function addcart(product_id,qty) {
+
+var id = product_id;
+//  alert(id);
+var quantity = qty;
+
+$.ajax({
+        url: '{{ route('add_cart') }}',
+        type: 'get',
+        // dataType: 'json',
+        data: {
+            id: id,
+            quantity: quantity
+        },
+    })
+    .done(function(data) {
+
+        // $('#count_cart').html(data['qty']);
+
+
+          swal.fire({
+                icon: 'success',
+                title:'Success !',
+                text:"Product added to cart successfully.",
+                timer:4000,
+                type:'success'
+            }).then((value) => {
+            }).catch(swal.noop);
+                  })
+            .fail(function() {
+                console.log("error");
+            });
+        }
+</script>
+@endsection
+

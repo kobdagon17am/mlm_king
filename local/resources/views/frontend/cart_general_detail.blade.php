@@ -136,7 +136,7 @@
                                                 </div>
                                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 text-center " id=""
                                                     style="margin-top:30px">
-                                                    <a href="{{ route('Cart') }}"><button type="button"
+                                                     <button type="button" onclick="addcart({{$data['product_data']->id}})"
                                                             class="btn btn-success btn-rounded btn-block">
                                                             <i class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
                                                         </button>
@@ -239,3 +239,42 @@
     </div>
     <!--  Content Area Ends  -->
 @endsection
+
+@section('js')
+<script>
+    function addcart(product_id) {
+
+        var id = product_id;
+        //  alert(id);
+        var quantity =  $('#quantityinput').val();
+
+    $.ajax({
+            url: '{{ route('add_cart') }}',
+            type: 'get',
+            // dataType: 'json',
+            data: {
+                id: id,
+                quantity: quantity
+            },
+        })
+        .done(function(data) {
+
+            // $('#count_cart').html(data['qty']);
+
+
+            swal.fire({
+                    icon: 'success',
+                    title:'Success !',
+                    text:"Product added to cart successfully.",
+                    timer:4000,
+                    type:'success'
+                }).then((value) => {
+                }).catch(swal.noop);
+                    })
+                .fail(function() {
+                    console.log("error");
+                });
+            }
+</script>
+@endsection
+
