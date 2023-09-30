@@ -20,13 +20,25 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
 
-    <link href="{{ asset('frontend/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
+    {{-- <link href="{{ asset('frontend/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" /> --}}
     <script src="{{ asset('frontend/plugins/sweetalerts/promise-polyfill.js') }}"></script>
     <link href="{{ asset('frontend/plugins/sweetalerts/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('frontend/plugins/sweetalerts/sweetalert.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('frontend/assets/css/basic-ui/custom_sweetalert.css') }}" rel="stylesheet" type="text/css" />
-
-
+    <style>
+  
+  .nav-item.dropdown.notification-dropdown .blink {
+    position: relative;
+    
+    width: 17px; /* เปลี่ยนขนาดของกล่องแจ้งเตือน */
+    height: 17px; /* เปลี่ยนขนาดของกล่องแจ้งเตือน */
+    background-color: red; /* เปลี่ยนสีของกล่องแจ้งเตือน */
+    border-radius: 50%; /* ทำให้มีรูปร่างเป็นวงกลม */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    </style>
     @yield('css')
 </head>
 <body>
@@ -78,152 +90,24 @@
                             <img src="{{ asset('frontend/assets/img/flag/usa-flag.png')}}" class="flag-width" alt="flag">
                             <span class="align-self-center">&nbsp;English</span>
                         </a>
-                        {{-- <a class="dropdown-item d-flex" href="javascript:void(0);">
-                            <img src="{{ asset('frontend/assets/img/flag/spain-flag.png')}}" class="flag-width" alt="flag">
-                            <span class="align-self-center">&nbsp;Spanish</span>
-                        </a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);">
-                            <img src="{{ asset('frontend/assets/img/flag/france-flag.png')}}" class="flag-width" alt="flag">
-                            <span class="align-self-center">&nbsp;French</span>
-                        </a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);">
-                            <img src="{{ asset('frontend/assets/img/flag/saudi-arabia-flag.png')}}" class="flag-width" alt="flag">
-                            <span class="align-self-center">&nbsp;Arabic</span>
-                        </a> --}}
+                       
                     </div>
                 </li>
-                {{-- <li class="nav-item dropdown message-dropdown">
-                    <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="las la-envelope"></i>
-                    </a>
-                    <div class="dropdown-menu position-absolute" aria-labelledby="messageDropdown">
-                        <div class="nav-drop is-notification-dropdown" >
-                            <div class="inner">
-                                <div class="nav-drop-header">
-                                      <span class="text-black font-12">3 new mails</span>
-                                      <a class="text-muted font-12" href="#!">
-                                        Mark all read
-                                      </a>
-                                </div>
-                                <div class="nav-drop-body account-items pb-0">
-                                    <a class="account-item">
-                                        <div class="media">
-                                            <div class="user-img">
-                                                <img class="rounded-circle avatar-xs" src="{{ asset('frontend/assets/img/profile-11.jpg" alt="profile">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="">
-                                                    <h6 class="text-primary font-12 mb-0">Jennifer Queen</h6>
-                                                    <p class="m-0 mt-1 font-10 text-muted">Permission Required</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="account-item marked-read">
-                                        <div class="media">
-                                            <div class="user-img">
-                                                <img class="rounded-circle avatar-xs" src="{{ asset('frontend/assets/img/profile-10.jpg" alt="profile">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="">
-                                                    <h6 class="text-primary font-12 mb-0">Lara Smith</h6>
-                                                    <p class="m-0 mt-1 font-10 text-muted">Invoice needed</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="account-item marked-read">
-                                        <div class="media">
-                                            <div class="user-img">
-                                                <img class="rounded-circle avatar-xs" src="{{ asset('frontend/assets/img/profile-9.jpg" alt="profile">
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="">
-                                                    <h6 class="text-primary font-12 mb-0">Victoria Williamson</h6>
-                                                    <p class="m-0 mt-1 font-10 text-muted">Account need to be synced</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <hr class="account-divider">
-                                    <div class="text-center">
-                                        <a class="text-primary font-12" href="apps_mail.html">View All</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li> --}}
+              
                 <li class="nav-item dropdown notification-dropdown">
-                    <a href="{{ route('Cart') }}" class="nav-link dropdown-toggle position-relative" id="order" ">
-                        <i class="las la-shopping-cart"></i>
-                        <div class="blink">
-                            <div class="circle"></div>
+                    <a href="{{ route('Cart') }}" class="nav-link dropdown-toggle position-relative" id="order" >
+                        
+                        <i class="las la-shopping-cart"> </i>
+                        
+                        <div class="blink " style="top: -9px;right: 8px;">
+                            <b class="" style="font-size: 12px;color: white;">4</b>
+                        
+                             
                         </div>
                     </a>
-                    <div class="dropdown-menu position-absolute" aria-labelledby="notificationDropdown">
-                        <div class="nav-drop is-notification-dropdown" >
-                            <div class="inner">
-                                <div class="nav-drop-header">
-                                      <span class="text-black font-12">5 Notifications</span>
-                                      <a class="text-muted font-12" href="#!">
-                                        Clear All
-                                      </a>
-                                </div>
-                                <div class="nav-drop-body account-items pb-0">
-                                    <a class="account-item" href="apps_ecommerce_orders.html">
-                                      <div class="media align-center">
-                                          <div class="icon-wrap">
-                                            <i class="las la-box font-20"></i>
-                                          </div>
-                                          <div class="media-content ml-3">
-                                              <h6 class="font-12 mb-0">2 New orders placed</h6>
-                                              <p class="m-0 mt-1 font-10 text-muted">10 sec ago</p>
-                                          </div>
-                                      </div>
-                                    </a>
-                                    <a class="account-item" href="javascript:void(0)">
-                                    <div class="media align-center">
-                                        <div class="icon-wrap">
-                                            <i class="las la-user-plus font-20"></i>
-                                        </div>
-                                        <div class="media-content ml-3">
-                                            <h6 class="font-12 mb-0">New User registered</h6>
-                                            <p class="m-0 mt-1 font-10 text-muted">5 minute ago</p>
-                                        </div>
-                                    </div>
-                                    </a>
-                                    <a class="account-item" href="apps_tickets.html">
-                                      <div class="media align-center">
-                                          <div class="icon-wrap">
-                                            <i class="las la-grin-beam font-20"></i>
-                                          </div>
-                                          <div class="media-content ml-3">
-                                              <h6 class="font-12 mb-0">21 Queries solved</h6>
-                                              <p class="m-0 mt-1 font-10 text-muted">1 hour ago</p>
-                                          </div>
-                                      </div>
-                                    </a>
-                                    <a class="account-item" href="javascript:void(0)">
-                                        <div class="media align-center">
-                                            <div class="icon-wrap">
-                                                <i class="las la-cloud-download-alt font-20"></i>
-                                            </div>
-                                            <div class="media-content ml-3">
-                                                <h6 class="font-12 mb-0">New update available</h6>
-                                                <p class="m-0 mt-1 font-10 text-muted">1 day ago</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <hr class="account-divider">
-                                    <div class="text-center">
-                                        <a class="text-primary font-12" href="pages_notifications.html">View All</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                     
                 </li>
+                 
                 <li class="nav-item dropdown user-profile-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         <img class="rounded-circle img-thumbnail" src="{{ asset('frontend/assets/img/profile-16.jpg') }}" alt="avatar">
