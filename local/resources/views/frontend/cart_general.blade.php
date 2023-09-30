@@ -259,7 +259,7 @@ $.ajax({
     })
     .done(function(data) {
 
-        // $('#count_cart').html(data['qty']);
+        $('#count_cart').html(data['qty']);
 
 
           swal.fire({

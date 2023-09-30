@@ -58,58 +58,65 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                               
+                                        @foreach($bill['data'] as $value)
+
+                                        {{-- <div class="cardL-cart">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <img src="{{asset($value['attributes']['img'])}}"
+                                                        class="mw-100 mb-2">
+                                                </div>
+                                                <div class="col-6">
+                                                    <h6 class="mb-0">{{ $value['name'] }}</h6>
+                                                    {!! $value['attributes']['descriptions'] !!}
+
+
+                                                        <p class="mb-0"> {{ number_format($value['price'],2) }} บาท</p>
+                                                        <p class="mb-0"> {{ number_format($value['attributes']['pv'],2) }} PV</p>
+
+                                                </div>
+                                                <div class="col-3">
+
+                                                    <div class="text-md-end">
+                                                        <button type="button" class="btn btn-outline-secondary px-2 py-1"
+                                                         onclick="quantity_change({{$value['id']}},{{$value['quantity']}})">จำนวน {{ $value['quantity'] }} ชิ้น</button>
+                                                            <button type="button" class="btn btn-p2 rounded-pill mb-1" onclick="cart_delete('{{ $value['id'] }}')"> <i class="fa fa-trash" aria-hidden="true"></i> </button>
+                                                        <p class="mb-0">รวม {{ number_format($value['quantity']*$value['price'],2) }} บาท</p>
+                                                        <p class="mb-0">รวม {{ number_format($value['quantity']*$value['attributes']['pv'],2) }} PV</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> --}}
+
                                         <tr>
                                             <td>
-                                                <img src="{{ asset('frontend/assets/img/product-1.jpg') }}" alt="contact-img"
+                                                <img src="{{asset($value['attributes']['img'])}}" alt="contact-img"
                                                     title="contact-img" class="rounded-circle mr-3" height="60"
                                                     width="60"
                                                     style="object-fit: cover;">
                                             </td>
                                             <td>
-                                                <b>Jose Headphone</b>
+                                                <p><b>{{ $value['name'] }}</b><br>
+                                                    {!! $value['attributes']['descriptions'] !!}</p>
                                             </td>
                                             <td>
-                                                <input type="number" min="1" value="2"
-                                                    class="form-control" placeholder="Qty" style="width: 75px;">
+                                                <input type="number" min="1" value="{{ $value['quantity'] }}"
+                                                    class="form-control" style="width: 75px;">
                                             </td>
                                             <td>
-                                                ฿1,000
+                                                {{ number_format($value['price'],2) }} บาท
                                             </td>
                                             <td>
-                                                50
+                                                {{ number_format($value['attributes']['pv'],2) }}
                                             </td>
                                             <td>
-                                                <a href="javascript:void(0);" class="action-icon text-center">
+                                                <a href="javascript:void(0);" onclick="cart_delete('{{ $value['id'] }}')" class="action-icon text-center">
                                                     <button type="delete" class="btn btn-danger font-15"><i
                                                             class="lar la-trash-alt"></i></button></a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <img src="{{ asset('frontend/assets/img/product-2.jpg') }}" alt="contact-img"
-                                                    title="contact-img" class="rounded-circle mr-3" height="60"
-                                                    width="60"
-                                                    style="object-fit: cover;">
-                                            </td>
-                                            <td>
-                                                <b>Zikkon Camera</b>
-                                            </td>
-                                            <td>
-                                                <input type="number" min="1" value="5"
-                                                    class="form-control" placeholder="Qty" style="width: 75px;">
-                                            </td>
-                                            <td>
-                                                ฿1,000
-                                            </td>
-                                            <td>
-                                                50
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0);" class="action-icon text-center">
-                                                    <button type="delete" class="btn btn-danger font-15"><i
-                                                            class="lar la-trash-alt"></i></button></a>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
 
                                 </table>
@@ -170,8 +177,49 @@
                         <button type="reset" class="btn btn-primary mr-2">Submit</button>
                         <button type="reset" class="btn btn-outline-primary">Cancel</button>
                     </div> --}}
+                    <form action="{{ route('cart_delete') }}" method="POST" id="cart_delete">
+                        @csrf
+                        <input type="hidden" id="data_id" name="data_id">
+               
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
+    
+
+@endsection
+@section('js')
+<script> 
+function cart_delete(item_id){
+    
+
+    swal({
+      title: 'ลบสินค้าออกจากตะกร้า',
+    //   text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+    //   confirmButtonText: 'Confirm',
+      confirmButtonText: 'ยืนยัน',
+      cancelButtonText: 'ยกเลิก',
+      padding: '2em'
+    }).then(function(result) {
+      if (result.value) {
+        $('#data_id').val(item_id);
+       
+        // swal(
+        //   'Deleted!',
+        //   'Your file has been deleted.',
+        //   'success'
+        // )
+        $("#cart_delete" ).submit();
+      }
+    })
+
+
+   
+}
+</script>
+
 @endsection

@@ -80,10 +80,14 @@ Route::get('CartGeneral/{type}','Frontend\CartGeneralController@index')->name('C
 // })->name('CartGeneralDetail');
 Route::get('CartGeneralDetail/{type}/{id?}','Frontend\ProductDetailController@product_detail')->name('CartGeneralDetail');
 
-Route::get('Cart', function () {
+Route::get('Cart','Frontend\CartController@index')->name('Cart');
+Route::post('cart_delete','Frontend\CartController@cart_delete')->name('cart_delete');
 
-  return view('frontend.cart');
-})->name('Cart');
+
+// Route::get('Cart', function () {
+
+//   return view('frontend.cart');
+// })->name('Cart');
 
 Route::get('Order', function () {
 

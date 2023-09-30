@@ -100,7 +100,9 @@
                         <i class="las la-shopping-cart"> </i>
                         
                         <div class="blink " style="top: -9px;right: 8px;">
-                            <b class="" style="font-size: 12px;color: white;">4</b>
+                            
+                 
+                            <b class="" style="font-size: 12px;color: white;" id="count_cart"> {{Cart::session(1)->getTotalQuantity() }}</b>
                         
                              
                         </div>
