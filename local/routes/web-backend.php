@@ -194,3 +194,7 @@ Route::get('admin/Blank', function () {
   Route::post('admin/edit_announce','Admin\AnnounceController@edit_announce')->name('admin/edit_announce');
   Route::get('admin/announce_datatable','Admin\AnnounceController@announce_datatable')->name('admin/announce_datatable');
 
+   Route::get('admin/PromotionProducts', function () {
+    return view('backend.promotion_products');
+  })->name('admin/PromotionProducts');
+
