@@ -74,69 +74,66 @@
                                                                             </option>
                                                                         </select>
                                                                     </div>
+                                                                    <div class="col-lg-6 mt-2 text-left">
+                                                                        <label><b>ราคาโปรโมชั่น:</b></label>
+                                                                        <input type="text" name="promotion_price"
+                                                                            class="form-control"
+                                                                            placeholder="ราคาโปรโมชั่น">
+                                                                    </div>
+                                                                    <div class="col-lg-6 mt-2 text-left">
+                                                                        <label><b>URL:</b></label>
+                                                                        <input type="text" name="promotion_url"
+                                                                            class="form-control" placeholder="URL">
+                                                                    </div>
                                                                     <div class="col-lg-12 mt-2 text-left">
                                                                         <label><b>รายละเอียด:</b></label>
                                                                         <textarea class="form-control" rows="3" name="promotion_detail" placeholder="รายละเอียดโปรโมชั่น"></textarea>
                                                                     </div>
-                                                                    
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>วันที่เริ่มโปรโมชั่น:</b></label>
-                                                                        <input class="form-control" type="datetime-local" value="{{date ('Y-m-d H:i:00')}}" name="promotion_start_date">
+                                                                        <input class="form-control" type="datetime-local"
+                                                                            value="{{ date('Y-m-d H:i:00') }}"
+                                                                            name="promotion_start_date">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>วันที่สิ้นสุดโปรโมชั่น:</b></label>
-                                                                        <input class="form-control" type="datetime-local" value="{{date ('Y-m-d H:i:00')}}"  name="promotion_end_date">
+                                                                        <input class="form-control" type="datetime-local"
+                                                                            value="{{ date('Y-m-d H:i:00') }}"
+                                                                            name="promotion_end_date">
                                                                     </div>
+                                                                    <div class="col-lg-12 mt-2 text-left">
+                                                                        <label
+                                                                            for="promotion_image1"><b>รูปภาพโปรโมท:</b></label>
+                                                                        <div class="upload text-center img-thumbnail">
+                                                                            <input type="file" name="promotion_image1"
+                                                                                class="dropify" data-default-file="">
+                                                                        </div>
+                                                                    </div>
+                                                                    {{-- <div class="col-lg-6 mt-2 text-left">
+                                                                        <label
+                                                                            for="promotion_image2"><b>รูปภาพโปรโมท</b></label>
+                                                                        <div class="upload text-center img-thumbnail">
+                                                                            <input type="file" name="promotion_image2"
+                                                                                class="dropify" data-default-file="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 mt-2 text-left">
+                                                                        <label
+                                                                            for="promotion_image3"><b>รูปภาพโปรโมท</b></label>
+                                                                        <div class="upload text-center img-thumbnail">
+                                                                            <input type="file" name="promotion_image3"
+                                                                                class="dropify" data-default-file="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 mt-2 text-left">
+                                                                        <label
+                                                                            for="promotion_image4"><b>รูปภาพโปรโมท</b></label>
+                                                                        <div class="upload text-center img-thumbnail">
+                                                                            <input type="file" name="promotion_image4"
+                                                                                class="dropify" data-default-file="">
+                                                                        </div>
+                                                                    </div> --}}
 
-                                                                    <div class="col-lg-6 mt-2 text-left">
-                                                                        <label><b>URL:</b></label>
-                                                                        <input type="text" name="promotion_url"
-                                                                            class="form-control"
-                                                                            placeholder="URL">
-                                                                    </div>
-
-                                                                    <div class="col-lg-6 mt-2 text-left">
-                                                                        <label><b>สถานะโปรโมชั่น:</b></label>
-                                                                        <select class="form-control"
-                                                                            name="promotion_status">
-                                                                            <option value="1">เปิดใช้งาน</option>
-                                                                            <option value="0">ปิดใช้งาน</option>
-                                                                        </select>
-                                                                    </div>
-
-                                                                    <div class="col-lg-6 mt-2 text-left">
-                                                                        <label for="promotion_image1"><b>รูปภาพโปรโมท</b></label>
-                                                                        <div class="upload text-center img-thumbnail">
-                                                                            <input type="file"
-                                                                                name="promotion_image1" class="dropify"
-                                                                                data-default-file="">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-6 mt-2 text-left">
-                                                                        <label for="promotion_image2"><b>รูปภาพโปรโมท</b></label>
-                                                                        <div class="upload text-center img-thumbnail">
-                                                                            <input type="file"
-                                                                                name="promotion_image2" class="dropify"
-                                                                                data-default-file="">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-6 mt-2 text-left">
-                                                                        <label for="promotion_image3"><b>รูปภาพโปรโมท</b></label>
-                                                                        <div class="upload text-center img-thumbnail">
-                                                                            <input type="file"
-                                                                                name="promotion_image3" class="dropify"
-                                                                                data-default-file="">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-6 mt-2 text-left">
-                                                                        <label for="promotion_image4"><b>รูปภาพโปรโมท</b></label>
-                                                                        <div class="upload text-center img-thumbnail">
-                                                                            <input type="file"
-                                                                                name="promotion_image4" class="dropify"
-                                                                                data-default-file="">
-                                                                        </div>
-                                                                    </div>
-                                                                    
                                                                 </div>
 
                                                             </div>
@@ -204,26 +201,46 @@
                                                                             </option>
                                                                         </select>
                                                                     </div>
+                                                                    <div class="col-lg-6 mt-2 text-left">
+                                                                        <label><b>ราคาโปรโมชั่น:</b></label>
+                                                                        <input type="text" name="promotion_price"
+                                                                            id="promotion_price" class="form-control"
+                                                                            placeholder="ราคาโปรโมชั่น">
+                                                                    </div>
+                                                                    <div class="col-lg-6 mt-2 text-left">
+                                                                        <label><b>URL:</b></label>
+                                                                        <input type="text" name="promotion_url"
+                                                                            id="promotion_url" class="form-control"
+                                                                            placeholder="URL">
+                                                                    </div>
                                                                     <div class="col-lg-12 mt-2 text-left">
                                                                         <label><b>รายละเอียด:</b></label>
                                                                         <textarea class="form-control" rows="3" name="promotion_detail" id="promotion_detail"
                                                                             placeholder="รายละเอียดโปรโมชั่น"></textarea>
                                                                     </div>
+
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>วันที่เริ่มโปรโมชั่น:</b></label>
-                                                                        <input class="form-control" type="datetime-local" value="" id="promotion_start_date" name="promotion_start_date">
+                                                                        <input class="form-control" type="datetime-local"
+                                                                            value="" id="promotion_start_date"
+                                                                            name="promotion_start_date">
                                                                     </div>
                                                                     <div class="col-lg-6  mt-2 text-left">
                                                                         <label><b>วันที่สิ้นสุดโปรโมชั่น:</b></label>
-                                                                        <input class="form-control" type="datetime-local" value="" id="promotion_end_date" name="promotion_end_date">
+                                                                        <input class="form-control" type="datetime-local"
+                                                                            value="" id="promotion_end_date"
+                                                                            name="promotion_end_date">
                                                                     </div>
-                                                                    <div class="col-lg-6 mt-2 text-left">
-                                                                        <label><b>URL:</b></label>
-                                                                        <input type="text" name="promotion_url" id="promotion_url"
-                                                                            class="form-control"
-                                                                            placeholder="URL">
+                                                                    <div class="col-lg-12 mt-2 text-left">
+                                                                        <label for="promotion_image1"><b>รูปภาพโปรโมท:
+                                                                            </b></label>
+                                                                        <div class="upload text-center img-thumbnail">
+                                                                            <input type="file" id="promotion_image1"
+                                                                                name="promotion_image1" class="dropify"
+                                                                                data-default-file="">
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-lg-6 mt-2 text-left">
+                                                                    <div class="col-lg-12 mt-2 text-left">
                                                                         <label><b>สถานะโปรโมชั่น:</b></label>
                                                                         <select class="form-control"
                                                                             name="promotion_status" id="promotion_status">
@@ -232,38 +249,33 @@
                                                                         </select>
                                                                     </div>
 
-                                                                    <div class="col-lg-6 mt-2 text-left">
-                                                                        <label for="promotion_image1"><b>รูปภาพโปรโมท</b></label>
+                                                                    {{-- <div class="col-lg-6 mt-2 text-left">
+                                                                        <label
+                                                                            for="promotion_image2"><b>รูปภาพโปรโมท</b></label>
                                                                         <div class="upload text-center img-thumbnail">
-                                                                            <input type="file" id="promotion_image1"
-                                                                                name="promotion_image1" class="dropify"
+                                                                            <input type="file" name="promotion_image2"
+                                                                                id="promotion_image2" class="dropify"
                                                                                 data-default-file="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-6 mt-2 text-left">
-                                                                        <label for="promotion_image2"><b>รูปภาพโปรโมท</b></label>
+                                                                        <label
+                                                                            for="promotion_image3"><b>รูปภาพโปรโมท</b></label>
                                                                         <div class="upload text-center img-thumbnail">
-                                                                            <input type="file"
-                                                                                name="promotion_image2" id="promotion_image2" class="dropify"
+                                                                            <input type="file" name="promotion_image3"
+                                                                                id="promotion_image3" class="dropify"
                                                                                 data-default-file="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-6 mt-2 text-left">
-                                                                        <label for="promotion_image3"><b>รูปภาพโปรโมท</b></label>
+                                                                        <label
+                                                                            for="promotion_image4"><b>รูปภาพโปรโมท</b></label>
                                                                         <div class="upload text-center img-thumbnail">
-                                                                            <input type="file"
-                                                                                name="promotion_image3" id="promotion_image3" class="dropify"
+                                                                            <input type="file" name="promotion_image4"
+                                                                                id="promotion_image4" class="dropify"
                                                                                 data-default-file="">
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="col-lg-6 mt-2 text-left">
-                                                                        <label for="promotion_image4"><b>รูปภาพโปรโมท</b></label>
-                                                                        <div class="upload text-center img-thumbnail">
-                                                                            <input type="file"
-                                                                                name="promotion_image4" id="promotion_image4" class="dropify"
-                                                                                data-default-file="">
-                                                                        </div>
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>
 
                                                             </div>
@@ -285,6 +297,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="table-responsive mt-4 mb-2">
             <table id="basic-dt" class="table table-hover" style="width:100%">
@@ -326,6 +339,7 @@
                     $("#promotion_type").val(data['data']['promotion_type']);
                     $("#promotion_detail").val(data['data']['promotion_detail']);
                     $("#promotion_url").val(data['data']['promotion_url']);
+                    $("#promotion_price").val(data['data']['promotion_price']);
                     $("#promotion_start_date").val(data['data']['promotion_start_date']);
                     $("#promotion_end_date").val(data['data']['promotion_end_date']);
                     $("#promotion_status").val(data['data']['promotion_status']);
@@ -362,6 +376,9 @@
                     console.log("error");
                 })
         }
+
+
+
         $(function() {
             table_order = $('#basic-dt').DataTable({
                 // dom: 'Bfrtip',
@@ -415,15 +432,20 @@
                     },
                     {
                         data: "promotion_type",
-                        title: "ประเภท",
+                        title: "ประเภทโปรโมชั่น",
                         className: "w-10",
+                    },
+                    {
+                        data: "promotion_price",
+                        title: "ราคาโปรโมชั่น",
+                        className: "w-10 ",
                     },
                     {
                         data: "promotion_detail",
                         title: "รายละเอียด",
                         className: "w-10 ",
                     },
-                    
+
                     {
                         data: "promotion_start_date",
                         title: "วันที่เริ่มโปรโมชั่น",

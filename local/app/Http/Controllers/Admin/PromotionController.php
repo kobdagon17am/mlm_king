@@ -35,6 +35,7 @@ class PromotionController extends Controller
       'promotion_type' => $rs->promotion_type,
       'promotion_detail' => $rs->promotion_detail,
       'promotion_url' => $rs->promotion_url,
+      'promotion_price' => $rs->promotion_price,
       'promotion_start_date' => $rs->promotion_start_date,
       'promotion_end_date' => $rs->promotion_end_date,
       'promotion_status' => $rs->promotion_status,
@@ -139,6 +140,7 @@ class PromotionController extends Controller
       'promotion_type' => $rs->promotion_type,
       'promotion_detail' => $rs->promotion_detail,
       'promotion_url' => $rs->promotion_url,
+      'promotion_price' => $rs->promotion_price,
       'promotion_start_date' => $rs->promotion_start_date,
       'promotion_end_date' => $rs->promotion_end_date,
       'promotion_status' => $rs->promotion_status,
@@ -281,9 +283,9 @@ class PromotionController extends Controller
 
       ->addColumn('promotion_type', function ($row) {
         if ($row->promotion_type == 'General') {
-          $html = '<span class="badge outline-badge-info">โปรโมชั่นสินค้าทั่วไป</span>';
+          $html = '<span class="badge outline-badge-info">สินค้าทั่วไป</span>';
         } elseif ($row->promotion_type == 'Warehouse') {
-          $html = '<span class="badge outline-badge-warning">โปรโมชั่นเปิดคลังใบหยก</span>';
+          $html = '<span class="badge outline-badge-warning">เปิดคลังใบหยก</span>';
         } else {
           $html = '';
         }
@@ -295,14 +297,18 @@ class PromotionController extends Controller
         return $row->promotion_detail;
       })
 
+      ->addColumn('promotion_price', function ($row) {
+        return $row->promotion_price;
+      })
+
       ->addColumn('promotion_image', function ($row) {
         $html = '<img src="' . asset($row->promotion_image_url . '' . $row->promotion_image_name) . '"
             alt="contact-img" title="contact-img" class=".avatar-xl mr-3" height="100"
             width="100" style="object-fit: cover;">';
-            
+
         return $html;
-    })
-    
+      })
+
 
 
       ->addColumn('promotion_start_date', function ($row) {
@@ -331,7 +337,11 @@ class PromotionController extends Controller
           $html = '<span class="badge badge-pill badge-success light">เปิดใช้งาน</span>';
         } elseif ($row->promotion_status == '0') {
           $html = '<span class="badge badge-pill badge-danger light">ปิดใช้งาน</span>';
-        } else {
+        } 
+        elseif ($row->promotion_status == '2') {
+          $html = '<span class="badge badge-pill bg-light-dark light">กำลังดำเนินการ</span>';
+        } 
+        else {
           $html = '';
         }
 
@@ -339,14 +349,16 @@ class PromotionController extends Controller
       })
 
       ->addColumn('action', function ($row) {
-
-        $html = '<a href="#!" onclick="edit(' . $row->id . ')" class="p-2">
+        $html = "<a href='" . route('admin/PromotionProducts') . "' onclick='edit(" . $row->id . ")' class='p-2'>
+        <i class='las la-plus-circle font-25 text-info'></i></a>";
+        $html1 = '<a href="#!" onclick="edit(' . $row->id . ')" class="p-2">
               <i class="lab la-whmcs font-25 text-warning"></i></a>';
-        return $html;
+        
+        return $html . $html1;
       })
 
 
-      ->rawColumns(['promotion_image','promotion_type', 'promotion_status', 'action'])
+      ->rawColumns(['promotion_image', 'promotion_type', 'promotion_status', 'action'])
 
       ->make(true);
   }
