@@ -100,10 +100,56 @@
                                                                 {!! $value['attributes']['descriptions'] !!}</p>
                                                         </td>
                                                         <td>
-                                                            <input type="number" min="1"
-                                                                value="{{ $value['quantity'] }}"
-                                                                class="form-control text-center"
-                                                                style="width: 75px; height: 40px;" onclick="openPopup()">
+                                                            <button  type="button"  class="btn btn-outline-primary" onclick="quantity_change({{$value['id']}},{{$value['quantity']}})">{{ $value['quantity'] }}</button>
+                                                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered  modal-sm" role="document">
+                                                                      <form action="{{ route('quantity_change') }}" method="POST">
+                                                                                @csrf
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalCenterTitle">แก้ไขจำนวนสินค้า</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <i class="las la-times"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <input type="hidden" name="product_id" id="product_id">
+                                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                                                <label class="my-1 mr-2" for="quantityinput">จำนวนสินค้า</label>
+                                                                                <div class="p-l-0 m-b-30">
+                                                                                    <div class="input-group">
+                                                                                        <span class="input-group-btn">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-default btn-number shadow-none btn-sm btn-block"
+                                                                                                data-type="minus" data-field="quant[1]">
+                                                                                                <i class="las la-minus-circle font-25"></i>
+                                                                                            </button>
+                                                                                        </span>
+
+                                                                                        <input type="text" id="quant" name="productQty"
+                                                                                            class="form-control input-number text-center font-15"
+                                                                                            value="1" max="1000">
+                                                                                        <span class="input-group-btn">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-default btn-number shadow-none btn-sm"
+                                                                                                data-type="plus" data-field="quant[1]">
+                                                                                                <i class="las la-plus-circle font-25"></i>
+                                                                                            </button>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> ยกเลิก</button>
+                                                                            <button type="submit"  class="btn btn-primary" onclick="addcart()">แก้ไข</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                                </div>
+                                                            </div>
                                                         </td>
                                                         <td>
                                                             {{ number_format($value['price'], 2) }}
@@ -112,13 +158,9 @@
                                                             {{ number_format($value['attributes']['pv'], 2) }}
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0);"
-                                                                onclick="cart_delete('{{ $value['id'] }}')"
-                                                                class="action-icon text-center">
-                                                                <button type="delete"
-                                                                    class="btn btn-outline-danger btn-rounded font-20"><i
-                                                                        class="lar la-trash-alt"></i></button>
-                                                            </a>
+
+
+                                                             <a href="javascript:void(0);"  onclick="cart_delete('{{ $value['id'] }}')" class="bs-tooltip font-20 ml-2 text-danger" title="" data-original-title="Delete"><i class="las la-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -227,47 +269,39 @@
                 }
             })
 
-
-
         }
-
-        function openPopup() {
-            // สร้างหน้าต่างป๊อปอัพที่นี่
-            Swal.fire({
-                title: 'แก้ไขจำนวนสินค้า!',
-                input: 'number',
-                inputAttributes: {
-                    autocapitalize: 'off'
-                },
-                showCancelButton: true,
-                confirmButtonText: 'บันทึก',
-                cancelButtonText: 'ยกเลิก',
-                showLoaderOnConfirm: true,
-                preConfirm: (login) => {
-                    return fetch(`//api.github.com/users/${login}`)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error(response.statusText)
-                            }
-                            return response.json()
-                        })
-                        .catch(error => {
-                            Swal.showValidationMessage(
-                                `Request failed: ${error}`
-                            )
-                        })
-                },
-                allowOutsideClick: () => !Swal.isLoading()
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        title: `${result.value.login}'s avatar`,
-                        imageUrl: result.value.avatar_url
-                    })
-                }
-            })
-        }
-
 
     </script>
+
+     <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var plusBtn = document.querySelector("[data-type='plus']");
+                var minusBtn = document.querySelector("[data-type='minus']");
+                var inputField = document.getElementById("quant");
+
+                plusBtn.addEventListener("click", function() {
+                    var currentValue = parseInt(inputField.value);
+                    if (currentValue < parseInt(inputField.max)) {
+                        inputField.value = currentValue + 1;
+                    }
+                });
+
+                minusBtn.addEventListener("click", function() {
+                    var currentValue = parseInt(inputField.value);
+                    if (currentValue > 1) {
+                        inputField.value = currentValue - 1;
+                    }
+                });
+            });
+
+
+            function quantity_change(item_id,qyt){
+    $('#product_id').val(item_id);
+    $('#quant').val(qyt);
+     $('#exampleModalCenter').modal('show');
+
+  }
+        </script>
+
+
 @endsection

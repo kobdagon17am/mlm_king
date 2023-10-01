@@ -23,7 +23,7 @@ class CartController extends Controller
 
         $cartCollection = Cart::session(1)->getContent();
         $data = $cartCollection->toArray();
-  
+
 
         $quantity = Cart::session(1)->getTotalQuantity();
 
@@ -33,13 +33,13 @@ class CartController extends Controller
         if ($data) {
             foreach ($data as $value) {
                 $pv[] = $value['quantity'] * $value['attributes']['pv'];
- 
+
             }
- 
+
             $pv_total = array_sum($pv);
         } else {
             $pv_total = 0;
-           
+
         }
 
 
@@ -58,8 +58,8 @@ class CartController extends Controller
         }else{
           $shipping = 50;
         }
-        
-       
+
+
         $price_total = number_format($price+$shipping, 2);
 
         // $discount = floor($pv_total * $data_user->bonus/100);
@@ -76,18 +76,36 @@ class CartController extends Controller
             'status' => 'success',
 
         );
-      
+
 
 
         return view('frontend/cart', compact('bill'));
     }
 
-  
+
     public function cart_delete(Request $request)
     {
         // dd($request->all());
         Cart::session(1)->remove($request->data_id);
-        return redirect('Cart')->withSuccess('นำสินค้าออกจากตะกร้าสำเร็จ'); 
+        return redirect('Cart')->withSuccess('นำสินค้าออกจากตะกร้าสำเร็จ');
     }
-   
+
+
+    public function quantity_change(Request $request){
+        if ($request->product_id) {
+            Cart::session(1)->update($request->product_id, array(
+                'quantity' => array(
+                    'relative' => false,
+                    'value' => $request->productQty,
+                ),
+            ));
+            return redirect('Cart')->withSuccess('แก้ไขจำนวนสำเร็จ');
+        }else{
+            return redirect('Cart')->withError('ไม่สามารถแก้ไขจำนวนสินค้าได้');
+
+        }
+
+
+    }
+
 }

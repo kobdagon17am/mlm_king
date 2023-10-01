@@ -82,6 +82,7 @@ Route::get('CartGeneralDetail/{type}/{id?}','Frontend\ProductDetailController@pr
 
 Route::get('Cart','Frontend\CartController@index')->name('Cart');
 Route::post('cart_delete','Frontend\CartController@cart_delete')->name('cart_delete');
+Route::post('quantity_change', 'Frontend\CartController@quantity_change')->name('quantity_change');
 
 
 // Route::get('Cart', function () {
