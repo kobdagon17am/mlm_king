@@ -166,20 +166,19 @@
 
 
                                 <div class="row">
-                                    <div class="col-12 col-md-12">
+                                    <div class="col-md-12">
                                         <div class="widget-content searchable-container grid">
                                             <div class="searchable-items grid card-box">
                                                 @if (count($product) > 0)
                                                     @foreach ($product as $item)
                                                         <div class="items">
                                                             <div class="item-content">
-
                                                                 @if ($item->product_category_id_fk == $value->id)
                                                                     <div class="product-info">
                                                                         <a
                                                                             href="{{ route('CartGeneralDetail', ['type' => $type, 'id' => $item->id]) }}"><img
                                                                                 src="{{ asset($item->product_image_url . '' . $item->product_image_name) }}"
-                                                                                style="max-height: 150px; max-width: 150px;"
+                                                                                style="max-height: 180px; max-width: 180px;"
                                                                                 alt="Responsive image"></a>
                                                                     </div>
                                                                     <div class="user-meta-info">
@@ -192,13 +191,13 @@
                                                                     <div class="product-price">
                                                                         <p class="product-category-price">
                                                                             <span><b>฿{{ $item->product_price_member }}</b></span>({{ $item->product_pv }}
-                                                                            pv)
+                                                                            PV)
                                                                         </p>
                                                                     </div>
                                                                     <div class="product-stock-status">
                                                                         <p class="product-stock-status-inner" >
                                                                           <button type="button" class="btn btn-outline-success btn-rounded " onclick="addcart({{$item->id}},1)">
-                                                                                    <b style="color: black"><i class="las la-cart-plus las-white font-17"></i>เพิ่มสินค้า</b></button>
+                                                                                    <b style="color: black"><i class="las la-cart-plus font-20"></i>เพิ่มสินค้า</b></button>
                                                                         </p>
                                                                     </div>
                                                                 @endif
@@ -264,8 +263,8 @@ $.ajax({
 
           swal.fire({
                 icon: 'success',
-                title:'Success !',
-                text:"Product added to cart successfully.",
+                title:'สำเร็จ!',
+                text:"เพิ่มสินค้าในตระกร้าสำเร็จ",
                 timer:4000,
                 type:'success'
             }).then((value) => {

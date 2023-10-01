@@ -87,7 +87,7 @@ class CartController extends Controller
     {
         // dd($request->all());
         Cart::session(1)->remove($request->data_id);
-        return redirect('Cart')->withSuccess('Deleted Success'); 
+        return redirect('Cart')->withSuccess('นำสินค้าออกจากตะกร้าสำเร็จ'); 
     }
    
 }

@@ -122,46 +122,59 @@
                                                 </div>
                                             </div> --}}
                                             <div class="row">
+
                                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                                                     <label class="my-1 mr-2" for="quantityinput">จำนวนสินค้า</label>
-                                                    <select class="custom-select mb-1 mr-3 pr-5" id="quantityinput">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="6">6</option>
-                                                        <option value="7">7</option>
-                                                    </select>
+                                                    <div class="p-l-0 m-b-30">
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <button type="button"
+                                                                    class="btn btn-default btn-number shadow-none btn-sm btn-block"
+                                                                    data-type="minus" data-field="quant[1]">
+                                                                    <i class="las la-minus-circle font-25"></i>
+                                                                </button>
+                                                            </span>
+                                                            <input type="text" id="quant" name="quant[1]"
+                                                                class="form-control input-number text-center font-15"
+                                                                value="1" max="1000">
+                                                            <span class="input-group-btn">
+                                                                <button type="button"
+                                                                    class="btn btn-default btn-number shadow-none btn-sm"
+                                                                    data-type="plus" data-field="quant[1]">
+                                                                    <i class="las la-plus-circle font-25"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 text-center " id=""
+                                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 text-center " id=""
                                                     style="margin-top:30px">
-                                                     <button type="button" onclick="addcart({{$data['product_data']->id}})"
-                                                            class="btn btn-success btn-rounded btn-block">
-                                                            <i class="las la-cart-plus las-white font-17"></i> เพิ่มสินค้า
-                                                        </button>
+                                                    <button type="button"
+                                                        onclick="addcart({{ $data['product_data']->id }})"
+                                                        class="btn btn-success btn-rounded btn-block">
+                                                        <i class="las la-cart-plus las-white font-20"></i> เพิ่มสินค้า
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
-                                <div class="row mt-5">
-                                    <div class="col-lg-12">
+                                <hr>
+                                <div class="row mt-3">
+                                    <div class="col-md-12 ml-4">
                                         <h6>
-                                            <p class="text-muted mb-4 text-center"><b>วิดีโอสินค้า</b>
+                                            <p class="text-muted mb-4"><b>วิดีโอสินค้าเพิ่มเติม</b>
                                         </h6>
                                     </div>
-                                    <div class="col-lg-6 mt-2 text-center">
-                                        <iframe width="500" height="300"
+                                    <div class="col-md-3 mt-1 text-center">
+                                        <iframe width="300" height="200"
                                             src="{{ $data['product_data']->product_url1 }}" title="YouTube video player"
                                             frameborder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                             allowfullscreen></iframe>
                                     </div>
-                                    <div class="col-lg-6 mt-2 text-center">
-                                        <iframe width="500" height="300"
+                                    <div class="col-md-3 mt-1 text-center">
+                                        <iframe width="300" height="200"
                                             src="{{ $data['product_data']->product_url2 }}" title="YouTube video player"
                                             frameborder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -241,40 +254,60 @@
 @endsection
 
 @section('js')
-<script>
-    function addcart(product_id) {
+    <script>
+        function addcart(product_id) {
 
-        var id = product_id;
-        //  alert(id);
-        var quantity =  $('#quantityinput').val();
+            var id = product_id;
+            //  alert(id);
+            var quantity = $('#quantityinput').val();
 
-    $.ajax({
-            url: '{{ route('add_cart') }}',
-            type: 'get',
-            // dataType: 'json',
-            data: {
-                id: id,
-                quantity: quantity
-            },
-        })
-        .done(function(data) {
+            $.ajax({
+                    url: '{{ route('add_cart') }}',
+                    type: 'get',
+                    // dataType: 'json',
+                    data: {
+                        id: id,
+                        quantity: quantity
+                    },
+                })
+                .done(function(data) {
 
-            // $('#count_cart').html(data['qty']);
+                    // $('#count_cart').html(data['qty']);
 
 
-            swal.fire({
-                    icon: 'success',
-                    title:'Success !',
-                    text:"Product added to cart successfully.",
-                    timer:4000,
-                    type:'success'
-                }).then((value) => {
-                }).catch(swal.noop);
-                    })
+                    swal.fire({
+                        icon: 'success',
+                        title: 'สำเร็จ !',
+                        text: "เพิ่มสินค้าในตะกร้าสำเร็จ",
+                        timer: 4000,
+                        type: 'success'
+                    }).then((value) => {}).catch(swal.noop);
+                })
                 .fail(function() {
                     console.log("error");
                 });
-            }
-</script>
-@endsection
+        }
+    </script>
+    {{-- เพิ่มลดจำนวนสินค้า --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var plusBtn = document.querySelector("[data-type='plus']");
+            var minusBtn = document.querySelector("[data-type='minus']");
+            var inputField = document.getElementById("quant");
 
+            plusBtn.addEventListener("click", function() {
+                var currentValue = parseInt(inputField.value);
+                if (currentValue < parseInt(inputField.max)) {
+                    inputField.value = currentValue + 1;
+                }
+            });
+
+            minusBtn.addEventListener("click", function() {
+                var currentValue = parseInt(inputField.value);
+                if (currentValue > 1) {
+                    inputField.value = currentValue - 1;
+                }
+            });
+        });
+    </script>
+@endsection

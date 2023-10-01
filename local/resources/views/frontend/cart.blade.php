@@ -1,9 +1,9 @@
 @extends('layouts.frontend.app')
 @section('css')
-    <link href="{{ asset('frontend/plugins/jquery-ui/jquery-ui.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('frontend/assets/css/ui-elements/pagination.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('frontend/assets/css/elements/tooltip.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('frontend/assets/css/apps/ecommerce.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/plugins/jquery-ui/jquery-ui.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/ui-elements/pagination.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/assets/css/apps/ecommerce.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
     <div id="content" class="main-content">
@@ -44,24 +44,23 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="card-box">
+                                    <h4>สรุปรายการสินค้าในตระกร้า</h4>
+                                    <div class="table-responsive mt-2 mb-4">
+                                        <table id="ordertable" class="table table-hover" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>รูปภาพสินค้า</th>
+                                                    <th>รายละเอียดสินค้า</th>
+                                                    <th>จำนวนสินค้า</th>
+                                                    <th>ราคา (บาท)</th>
+                                                    <th>PV</th>
+                                                    <th>ACTION</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
-                            <div class="table-responsive mb-4">
-                                <table id="ordertable" class="table table-hover" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>รูปภาพ</th>
-                                            <th>รายการ</th>
-                                            <th>จำนวน</th>
-                                            <th>ราคา</th>
-                                            <th>PV</th>
-                                            <th>ACTION</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                               
-                                        @foreach($bill['data'] as $value)
-
-                                        {{-- <div class="cardL-cart">
+                                                @foreach ($bill['data'] as $value)
+                                                    {{-- <div class="cardL-cart">
                                             <div class="row">
                                                 <div class="col-3">
                                                     <img src="{{asset($value['attributes']['img'])}}"
@@ -89,39 +88,45 @@
                                             </div>
                                         </div> --}}
 
-                                        <tr>
-                                            <td>
-                                                <img src="{{asset($value['attributes']['img'])}}" alt="contact-img"
-                                                    title="contact-img" class="rounded-circle mr-3" height="60"
-                                                    width="60"
-                                                    style="object-fit: cover;">
-                                            </td>
-                                            <td>
-                                                <p><b>{{ $value['name'] }}</b><br>
-                                                    {!! $value['attributes']['descriptions'] !!}</p>
-                                            </td>
-                                            <td>
-                                                <input type="number" min="1" value="{{ $value['quantity'] }}"
-                                                    class="form-control" style="width: 75px;">
-                                            </td>
-                                            <td>
-                                                {{ number_format($value['price'],2) }} บาท
-                                            </td>
-                                            <td>
-                                                {{ number_format($value['attributes']['pv'],2) }}
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0);" onclick="cart_delete('{{ $value['id'] }}')" class="action-icon text-center">
-                                                    <button type="delete" class="btn btn-danger font-15"><i
-                                                            class="lar la-trash-alt"></i></button></a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <img src="{{ asset($value['attributes']['img']) }}"
+                                                                alt="contact-img" title="contact-img"
+                                                                class="rounded-circle mr-3" height="150" width="150"
+                                                                style="object-fit: cover;">
+                                                        </td>
+                                                        <td>
+                                                            <p><b>{{ $value['name'] }}</b><br>
+                                                                {!! $value['attributes']['descriptions'] !!}</p>
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" min="1"
+                                                                value="{{ $value['quantity'] }}"
+                                                                class="form-control text-center"
+                                                                style="width: 75px; height: 40px;" onclick="openPopup()">
+                                                        </td>
+                                                        <td>
+                                                            {{ number_format($value['price'], 2) }}
+                                                        </td>
+                                                        <td>
+                                                            {{ number_format($value['attributes']['pv'], 2) }}
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0);"
+                                                                onclick="cart_delete('{{ $value['id'] }}')"
+                                                                class="action-icon text-center">
+                                                                <button type="delete"
+                                                                    class="btn btn-outline-danger btn-rounded font-20"><i
+                                                                        class="lar la-trash-alt"></i></button>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
 
-                                </table>
+                                        </table>
 
-                            </div>
+                                    </div>
 
 
                                 </div>
@@ -130,16 +135,24 @@
                                 <div class="card-box">
                                     <div class="border border-light p-3 mt-1 rounded mb-3">
                                         <h5 class="mb-3"><b>สรุปรายการสั่งซื้อ</b></h5>
-                                        <div class="table-responsive" >
+                                        <div class="table-responsive">
                                             <table class="table mb-0" id="ordertable" style="width:100%">
                                                 <tbody>
                                                     <tr>
-                                                        <td><h6>จำนวนสินค้า :</h6></td>
-                                                        <td><h6>2</h6></td>
+                                                        <td>
+                                                            <h6>จำนวนสินค้า :</h6>
+                                                        </td>
+                                                        <td>
+                                                            <h6>2</h6>
+                                                        </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><h6>ราคารวม :</h6></td>
-                                                        <td><h6>฿2,000</h6></td>
+                                                        <td>
+                                                            <h6>ราคารวม :</h6>
+                                                        </td>
+                                                        <td>
+                                                            <h6>฿2,000</h6>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success-teal strong">ส่วนลด : </td>
@@ -158,7 +171,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        <a href="{{ route('CartGeneral',['type'=>1]) }}"
+                                        <a href="{{ route('CartGeneral', ['type' => 1]) }}"
                                             class="w-100 btn btn-outline-info mb-0 ml-3 mr-3"><i
                                                 class="las la-arrow-left"></i>
                                             สินค้า</a>
@@ -180,46 +193,81 @@
                     <form action="{{ route('cart_delete') }}" method="POST" id="cart_delete">
                         @csrf
                         <input type="hidden" id="data_id" name="data_id">
-               
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-    
-
 @endsection
 @section('js')
-<script> 
-function cart_delete(item_id){
-    
-
-    swal({
-      title: 'ลบสินค้าออกจากตะกร้า',
-    //   text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-    //   confirmButtonText: 'Confirm',
-      confirmButtonText: 'ยืนยัน',
-      cancelButtonText: 'ยกเลิก',
-      padding: '2em'
-    }).then(function(result) {
-      if (result.value) {
-        $('#data_id').val(item_id);
-       
-        // swal(
-        //   'Deleted!',
-        //   'Your file has been deleted.',
-        //   'success'
-        // )
-        $("#cart_delete" ).submit();
-      }
-    })
+    <script>
+        function cart_delete(item_id) {
 
 
-   
-}
-</script>
+            swal({
+                title: 'ลบสินค้าออกจากตะกร้า',
+                //   text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                //   confirmButtonText: 'Confirm',
+                confirmButtonText: 'ยืนยัน',
+                cancelButtonText: 'ยกเลิก',
+                padding: '2em'
+            }).then(function(result) {
+                if (result.value) {
+                    $('#data_id').val(item_id);
 
+                    // swal(
+                    //   'Deleted!',
+                    //   'Your file has been deleted.',
+                    //   'success'
+                    // )
+                    $("#cart_delete").submit();
+                }
+            })
+
+
+
+        }
+
+        function openPopup() {
+            // สร้างหน้าต่างป๊อปอัพที่นี่
+            Swal.fire({
+                title: 'แก้ไขจำนวนสินค้า!',
+                input: 'number',
+                inputAttributes: {
+                    autocapitalize: 'off'
+                },
+                showCancelButton: true,
+                confirmButtonText: 'บันทึก',
+                cancelButtonText: 'ยกเลิก',
+                showLoaderOnConfirm: true,
+                preConfirm: (login) => {
+                    return fetch(`//api.github.com/users/${login}`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(response.statusText)
+                            }
+                            return response.json()
+                        })
+                        .catch(error => {
+                            Swal.showValidationMessage(
+                                `Request failed: ${error}`
+                            )
+                        })
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: `${result.value.login}'s avatar`,
+                        imageUrl: result.value.avatar_url
+                    })
+                }
+            })
+        }
+
+
+    </script>
 @endsection
