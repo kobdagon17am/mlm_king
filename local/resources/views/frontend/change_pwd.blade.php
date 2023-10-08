@@ -49,18 +49,18 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="las la-key font-20"></i></span>
                                         </div>
-                                        <input type="password" class="form-control" placeholder="Change Password">
+                                        <input type="password" class="form-control" placeholder="รหัสผ่านใหม่">
                                     </div>
                                     <p></p>
                                     <div class="input-group" id="confirm_change_password">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="las la-key font-20"></i></span>
                                         </div>
-                                        <input type="password" class="form-control" placeholder="Confirm Change Password">
+                                        <input type="password" class="form-control" placeholder="ยืนยันรหัสผ่านใหม่">
                                     </div>
                                     <div class="info-area col-md-12 text-center">
                                         <button type="submit" class="btn btn-info ">
-                                            <i class="las la-key"></i> Change Password</button>
+                                            <i class="las la-key"></i> เปลี่ยนรหัสผ่าน</button>
                                     </div>
                                 </div>
                             </div>

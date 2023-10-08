@@ -196,7 +196,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="profile-shadow w-100 mt-4">
+                                    <div class="profile-shadow w-100 mt-2">
                                         <h5 class="font-16"><b>การชำระเงิน</b></h5>
                                         <hr>
                                         <h6 class="font-16 ml-4"><b>รูปแบบการชำระ</b></h6>
@@ -346,15 +346,14 @@
                                             </table>
                                         </div>
                                     </div>
-                                    {{-- <div class="d-flex align-items-center">
-                                        <a href="{{ route('CartGeneral', ['type' => 1]) }}"
-                                            class="w-100 btn btn-outline-info mb-0 ml-3 mr-3"><i
-                                                class="las la-arrow-left"></i>
-                                            สินค้า</a>
-                                        <a href="{{ route('CartGeneral', ['type' => 1]) }}"
-                                            class="w-100 btn btn-outline-info mb-0 ml-3 mr-3"><i
-                                                class="las la-money-bill-wave"></i> ชำระเงิน </a>
-                                    </div> --}}
+                                    <div class="col-md-6">
+                                        <div class="d-flex">
+                                            <a href="{{ route('Cart')}}" class="w-100 btn btn-outline-info mb-0 ml-3 mr-3">
+                                                <i class="las la-arrow-left"></i> ย้อนกลับ
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
 
                             </div>

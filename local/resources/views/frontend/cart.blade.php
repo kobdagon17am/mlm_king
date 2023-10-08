@@ -29,7 +29,6 @@
         <!--  Navbar Ends / Breadcrumb Area Ends -->
         <!-- Main Body Starts -->
 
-
         <div class="row layout-top-spacing">
             <div class="col-lg-12 layout-spacing">
                 <div class="statbox widget box box-shadow mb-4">
@@ -44,12 +43,12 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="card-box">
-                                    <h4>สรุปรายการสินค้าในตระกร้า</h4>
+                                    <h5>สรุปรายการสินค้าในตระกร้า</h5>
                                     <div class="table-responsive mt-2 mb-4">
                                         <table id="ordertable" class="table table-hover" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>รูปภาพสินค้า</th>
+                                                    <th>รูปภาพ</th>
                                                     <th>รายละเอียดสินค้า</th>
                                                     <th>จำนวนสินค้า</th>
                                                     <th>ราคา (บาท)</th>
@@ -175,8 +174,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="card-box">
-                                    <div class="border border-light p-3 mt-1 rounded mb-3">
-                                        <h5 class="mb-3"><b>สรุปรายการสั่งซื้อ</b></h5>
+                                    <div class="border border-light p-3  rounded mb-3">
+                                        <h5 class="mb-3"><b>สรุปยอดการสั่งซื้อสินค้า</b></h5>
                                         <div class="table-responsive">
                                             <table class="table mb-0" id="ordertable" style="width:100%">
                                                 <tbody>
@@ -190,10 +189,34 @@
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <h6>ราคารวม :</h6>
+                                                            <h6>ราคาสินค้ารวม :</h6>
                                                         </td>
                                                         <td>
-                                                            <h6>฿2,000</h6>
+                                                            <h6>฿200</h6>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h6>Vat (7.00%) :</h6>
+                                                        </td>
+                                                        <td>
+                                                            <h6>฿200</h6>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h6>ราคาสินค้ารวม + Vat :</h6>
+                                                        </td>
+                                                        <td>
+                                                            <h6>฿200</h6>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h6>ค่าจัดส่ง :</h6>
+                                                        </td>
+                                                        <td>
+                                                            <h6>฿0</h6>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -206,7 +229,7 @@
                                                     </tr>
                                                     <tr>
                                                         <th>ยอดชำระทั้งหมด :</th>
-                                                        <th>฿ 1,550</th>
+                                                        <th>฿1,550</th>
                                                     </tr>
                                                 </tbody>
                                             </table>

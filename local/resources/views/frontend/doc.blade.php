@@ -72,6 +72,76 @@
                     <div class="row tab-area-content">
                         <div class="col-xl-12 col-lg-12 col-md-12 mb-4">
                             <div class="tab-content" id="v-border-pills-tabContent">
+                                <div class="row">
+                                    <div class="col-md-12 p-2">
+                                        <div class="card">
+                                            <div class="widget-content widget-content-area br-6">
+                                                <h5 class="table-header"><b>สถานะเอกสารลงทะเบียน</b></h5>
+                                                <div class="table-responsive">
+                                                    <table id="ordertable" class="table table-hover" style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>วันที่ตรวจสอบ</th>
+                                                                <th>เอกสาร</th>
+                                                                <th>สถานะ</th>
+                                                                <th>รายละเอียด</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($get_customer_doc as $value)
+                                                                <tr>
+                                                                    <td>{{ date('Y/m/d', strtotime($value->approve_date)) }}
+                                                                    </td>
+                                                                    <td>
+                                                                        @if ($value->type == '1')
+                                                                            ภาพถ่ายบัตรประชาชน
+                                                                        @endif
+                                                                        @if ($value->type == '2')
+                                                                            ภาพถ่ายหน้าตรงพร้อมบัตรประชาชน
+                                                                        @endif
+                                                                        @if ($value->type == '3')
+                                                                            ภาพถ่ายหน้าตรง
+                                                                        @endif
+                                                                        @if ($value->type == '4')
+                                                                            ภาพถ่ายหน้าบัญชีธนาคาร
+                                                                        @endif
+                                                                    </td>
+                                                                    <td>
+                                                                        @if ($value->regis_doc_status == '1')
+                                                                            <span
+                                                                                class="badge badge-warning light">รอตรวจสอบเอกสาร</span>
+                                                                        @endif
+                                                                        @if ($value->regis_doc_status == '2')
+                                                                            <span
+                                                                                class="badge badge-success light">อนุมัติ</span>
+                                                                        @endif
+                                                                        @if ($value->regis_doc_status == '3')
+                                                                            <span
+                                                                                class="badge badge-danger light">ไม่อนุมัติ</span>
+                                                                        @endif
+                                                                    </td>
+
+                                                                    <td>{{ $value->remark }}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+
+
+
+                                                    </table>
+                                                    <p class="text-danger" style="font-size: 13px">
+                                                        *กรณีเอกสารไม่ผ่านการอนุมัติ
+                                                        สามารถส่งเอกสารเพิ่มเติมได้
+                                                        โดยการแนบไฟล์เอกสารด้านล่าง
+                                                        ทางทีมงานจะรีบดำเนินการตรวจสอบให้ภายใน 1-2
+                                                        วันทำการค่ะ
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                                 <div class="tab-pane fade show active" id="v-border-pills-home" role="tabpanel"
                                     aria-labelledby="v-border-pills-home-tab">
                                     <div class="row">
@@ -163,78 +233,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <p></p>
-                                    <div class="row">
-                                        <div class="col-md-12 p-2">
-                                            <div class="card">
-                                                <div class="widget-content widget-content-area br-6">
-                                                    <h5 class="table-header"><b>สถานะเอกสาร</b></h5>
-                                                    <div class="table-responsive mb-4">
-                                                        <table id="ordertable" class="table table-hover"
-                                                            style="width:100%">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>วันที่ตรวจสอบ</th>
-                                                                    <th>เอกสาร</th>
-                                                                    <th>สถานะ</th>
-                                                                    <th>รายละเอียด</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @foreach ($get_customer_doc as $value)
-                                                                    <tr>
-                                                                        <td>{{ date('Y/m/d', strtotime($value->approve_date)) }}
-                                                                        </td>
-                                                                        <td>
-                                                                            @if ($value->type == '1')
-                                                                                ภาพถ่ายบัตรประชาชน
-                                                                            @endif
-                                                                            @if ($value->type == '2')
-                                                                                ภาพถ่ายหน้าตรงพร้อมบัตรประชาชน
-                                                                            @endif
-                                                                            @if ($value->type == '3')
-                                                                                ภาพถ่ายหน้าตรง
-                                                                            @endif
-                                                                            @if ($value->type == '4')
-                                                                                ภาพถ่ายหน้าบัญชีธนาคาร
-                                                                            @endif
-                                                                        </td>
-                                                                        <td>
-                                                                            @if ($value->regis_doc_status == '1')
-                                                                                <span
-                                                                                    class="badge badge-warning light">รอตรวจสอบเอกสาร</span>
-                                                                            @endif
-                                                                            @if ($value->regis_doc_status == '2')
-                                                                                <span
-                                                                                    class="badge badge-success light">อนุมัติ</span>
-                                                                            @endif
-                                                                            @if ($value->regis_doc_status == '3')
-                                                                                <span
-                                                                                    class="badge badge-danger light">ไม่อนุมัติ</span>
-                                                                            @endif
-                                                                        </td>
 
-                                                                        <td>{{ $value->remark }}</td>
-                                                                    </tr>
-                                                                @endforeach
-                                                            </tbody>
-
-
-
-                                                        </table>
-                                                        <p class="text-danger" style="font-size: 13px">
-                                                            *กรณีเอกสารไม่ผ่านการอนุมัติ
-                                                            สามารถส่งเอกสารเพิ่มเติมได้
-                                                            โดยการแนบไฟล์เอกสารด้านบน
-                                                            ทางทีมงานจะรีบดำเนินการตรวจสอบให้ภายใน 1-2
-                                                            วันทำการค่ะ
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
                                     {{-- @endforeach --}}
                                 </div>
                             </div>
