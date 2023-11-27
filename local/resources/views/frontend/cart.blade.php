@@ -66,7 +66,7 @@
                                                         class="mw-100 mb-2">
                                                 </div>
                                                 <div class="col-6">
-                                                    <h6 class="mb-0">{{ $value['name'] }}</h6>
+                                                    <h6 class="mb-0ัั">{{ $value['name'] }}</h6>
                                                     {!! $value['attributes']['descriptions'] !!}
 
 
@@ -216,7 +216,11 @@
                                                             <h6>ค่าจัดส่ง :</h6>
                                                         </td>
                                                         <td>
+<<<<<<< HEAD
                                                             <h6>{{ number_format(Cart::session('1')->getTotal(),2) }}</h6>
+=======
+                                                            <h6>฿0</h6>
+>>>>>>> e65aa02ac115e3384644476b6ace3d91e4415b9a
                                                         </td>
                                                     </tr>
                                                     <tr>
