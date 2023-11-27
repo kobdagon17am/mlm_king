@@ -196,6 +196,91 @@
                                             </div>
                                         </div>
                                     </div>
+<<<<<<< HEAD
+=======
+                                    <div class="profile-shadow w-100 mt-2">
+                                        <h5 class="font-16"><b>การชำระเงิน</b></h5>
+                                        <hr>
+                                        <h6 class="font-16 ml-4"><b>รูปแบบการชำระ</b></h6>
+                                        <div class="widget-content widget-content-area tab-horizontal-line">
+                                            <ul class="nav nav-tabs mb-3" id="animateLine" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="animated-underline-home-tab"
+                                                        data-toggle="tab" href="#animated-underline-home" role="tab"
+                                                        aria-controls="animated-underline-home" aria-selected="true"> โอนชำระ</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="animated-underline-about-tab" data-toggle="tab"
+                                                        href="#animated-underline-about" role="tab"
+                                                        aria-controls="animated-underline-about" aria-selected="false">
+                                                        พร้อมเพย์</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="animated-underline-messages-tab"
+                                                        data-toggle="tab" href="#animated-underline-messages" role="tab"
+                                                        aria-controls="animated-underline-messages" aria-selected="false">
+                                                        บัตรเครดิต</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content" id="animateLineContent-4">
+                                                <div class="tab-pane fade show active" id="animated-underline-home"
+                                                    role="tabpanel" aria-labelledby="animated-underline-home-tab">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="text-center">
+                                                                <img src="{{ asset('frontend/assets/img/scb.png') }}"
+                                                                    class="img-fluid mx-auto" alt="Responsive image">
+                                                                <p class="font-20"><b>xxxx</b></p>
+                                                                <p class="font-13">ธนาคารไทยพาณิชย์</p>
+                                                                <p class="font-13">บริษัท กิ่งทองใบหยก จำกัด</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 text-center">
+                                                            <label
+                                                                for="slip_image"><b>อัพโหลดหลักฐานการชำระเงิน</b></label>
+                                                            <div class="upload text-center img-thumbnail">
+                                                                <input type="file" id="slip_image" name="slip_image"
+                                                                    class="dropify" data-default-file="">
+                                                            </div>
+                                                            <div class="text-center mt-2">
+                                                                <button type="button" class="btn btn-info btn-rounded">
+                                                                    <span class="btn-label"><i
+                                                                            class="las la-check-double"></i></span>อัพโหลดหลักฐาน
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="animated-underline-about" role="tabpanel"
+                                                    aria-labelledby="animated-underline-about-tab">
+                                                    <div class="text-center">
+                                                        <img src="{{ asset('frontend/assets/img/thai_qr_payment.png') }}"
+                                                            class="img-fluid mx-auto rounded" alt="Responsive image">
+                                                    </div>
+                                                    <div class="text-center mt-2">
+                                                        <button type="button" class="btn btn-info btn-rounded">
+                                                            <span class="btn-label"><i
+                                                                    class="las la-check-double"></i></span>ชำระด้วยพร้อมเพย์
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="animated-underline-messages"
+                                                    role="tabpanel" aria-labelledby="animated-underline-messages-tab">
+                                                    <div class="text-center">
+                                                        <img src="{{ asset('frontend/assets/img/credit-logo.png') }}"
+                                                            class="img-fluid mx-auto rounded" alt="Responsive image">
+                                                    </div>
+                                                    <div class="text-center mt-2">
+                                                        <button type="button" class="btn btn-info btn-rounded">
+                                                            <span class="btn-label"><i
+                                                                    class="las la-check-double"></i></span>ชำระด้วยบัตรเครดิต/บัตรเดบิต
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+>>>>>>> e65aa02ac115e3384644476b6ace3d91e4415b9a
 
                                 </div>
                             </div>

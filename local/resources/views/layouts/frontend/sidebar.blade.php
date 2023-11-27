@@ -91,10 +91,10 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="stock" data-parent="#accordionExample">
                     <li>
-                        <a href="#!"> สต๊อกสินค้า </a>
+                        <a href="{{route('Stock')}}"> สต๊อกสินค้า </a>
                     </li>
                     <li>
-                        <a href="#!"> ประวัติสต๊อกสินค้า </a>
+                        <a href="{{route('StockHistory')}}"> ประวัติสต๊อกสินค้า </a>
                     </li>
                 </ul>
             </li>

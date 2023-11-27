@@ -176,4 +176,11 @@ Route::get('CartSummary', function () {
   return view('frontend.cart_summary');
 })->name('CartSummary');
 
+Route::get('Stock', function () {
+  return view('frontend.stock');
+})->name('Stock');
+
+Route::get('StockHistory', function () {
+  return view('frontend.stock_history');
+})->name('StockHistory');
 // BEGIN eWallet withdraw
