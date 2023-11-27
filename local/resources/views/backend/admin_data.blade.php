@@ -77,17 +77,13 @@
                                                                         maxlength="10">
                                                                 </div>
                                                                 <div class="col-lg-6  mt-2">
-                                                                    <label><b>ตำแหน่งงาน:</b></label>
-                                                                    <input type="text" name="role"
-                                                                        class="form-control" placeholder="ตำแหน่งงาน">
-                                                                </div>
-                                                                <div class="col-lg-6 mt-2">
-                                                                    <label><b>สถานะสมาชิก:</b></label>
+                                                                    <label><b>ตำแหน่ง:</b></label>
                                                                     <select class="form-control" name="member_type">
                                                                         <option value="user">User</option>
                                                                         <option value="admin">Admin</option>
                                                                     </select>
                                                                 </div>
+
                                                                 <div class="col-lg-6  mt-2">
                                                                     <label><b>แผนก:</b></label>
                                                                     <input type="text" name="department"
@@ -229,14 +225,14 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-    
+
                                                             </div>
                                                         </div>
                                                         <div class="info-area col-md-12 text-center mt-4 ">
                                                             <button type="submit" class="btn btn-info btn-rounded">
                                                                 <i class="las la-save"></i> แก้ไขข้อมูลผู้ใช้งาน</button>
                                                         </div>
-    
+
                                                     </div>
                                                 </div>
                                             </form>
@@ -337,9 +333,9 @@
                     $("#member_type").val(data['data']['member_type']);
                     $("#department").val(data['data']['department']);
                     $("#branch_id_fk").val(data['data']['branch_id_fk']);
-                    $("#status").val(data['data']['status']); 
+                    $("#status").val(data['data']['status']);
 
-                }) 
+                })
                 .fail(function() {
                     console.log("error");
                 })

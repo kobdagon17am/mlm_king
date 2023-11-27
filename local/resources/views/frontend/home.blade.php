@@ -232,11 +232,11 @@
                 </div>
             </div>
 
-            <div class="row mt-3 mb-4">
+            <div class="row mt-2 mb-4">
                 @foreach ($get_news as $item)
                     <div class="col-md-4">
                         <div class="card">
-                            <a href="{{ route('NewsDetail', ['id' => $item->id]) }}"><img class="card-img-top img-fluid"
+                            <a href="{{ route('NewsDetail', ['id' => $item->id]) }}" target="_blank"><img class="card-img-top img-fluid"
                                     src="{{ asset($item->news_image_url . '' . $item->news_image_name) }}"
                                     alt="Card image cap"></a>
                             <div class="card-body">
@@ -244,10 +244,12 @@
                                 <p class="card-text">{{ $item->news_name }}</p>
                                 <p class="card-text text-right">
                                     <small class="text-muted">วันที่เขียนข่าว: {{ $item->created_at }}</small>
-                                </p>                                
+                                </p>
                             </div>
                         </div>
                     </div>
+
+
 
                     {{-- <div class="col-md-4">
                         <div class="card">

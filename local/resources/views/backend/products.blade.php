@@ -140,7 +140,7 @@
                                                                                 name="product_price_member"
                                                                                 placeholder="ราคาขายสมาชิก">
                                                                         </div>
-                                                                        <div class="col-lg-6  mt-2">
+                                                                        {{-- <div class="col-lg-6  mt-2">
                                                                             <label><b>ส่วนลด (%):</b></label>
                                                                             <input type="text" class="form-control"
                                                                                 name="product_discount_percent"
@@ -151,7 +151,7 @@
                                                                             <input type="text" class="form-control"
                                                                                 name="product_discount"
                                                                                 placeholder="ส่วนลด (บาท)">
-                                                                        </div>
+                                                                        </div> --}}
                                                                         <div class="col-lg-6  mt-2">
                                                                             <label><b>คะแนน PV:</b></label>
                                                                             <input type="number" class="form-control"
@@ -179,8 +179,8 @@
                                                                             <label><b>รายละเอียดสินค้า:</b></label>
                                                                             <textarea class="form-control" name="product_detail" placeholder="รายละเอียดสินค้า"></textarea>
                                                                         </div>
-                                                                      
-                                                                        
+
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -360,7 +360,7 @@
                                                                                 name="product_price_member"
                                                                                 placeholder="ราคาขายสมาชิก">
                                                                         </div>
-                                                                        <div class="col-lg-6  mt-2">
+                                                                        {{-- <div class="col-lg-6  mt-2">
                                                                             <label><b>ส่วนลด (%):</b></label>
                                                                             <input type="text" class="form-control"
                                                                                 id="product_discount_percent"
@@ -373,7 +373,7 @@
                                                                                 id="product_discount"
                                                                                 name="product_discount"
                                                                                 placeholder="ส่วนลด (บาท)">
-                                                                        </div>
+                                                                        </div> --}}
                                                                         <div class="col-lg-6  mt-2">
                                                                             <label><b>คะแนน PV:</b></label>
                                                                             <input type="number" class="form-control"
@@ -508,7 +508,7 @@
                                     alt="contact-img" title="contact-img" class="rounded-circle mr-3" height="60"
                                     width="60" style="object-fit: cover;"></td>
                             <td>{{ $value->product_name }}</td>
-                            <td>{{ $value->product_category_name }}</td>     
+                            <td>{{ $value->product_category_name }}</td>
                             <td>{{ $value->product_unit_name }}</td>
                             <td>{{ $value->product_vat }}</td>
                             <td>{{ $value->product_cost }}</td>

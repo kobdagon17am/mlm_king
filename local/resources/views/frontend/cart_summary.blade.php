@@ -45,7 +45,7 @@
                     <div class="widget-content widget-content-area">
                         <div class="row">
 
-                            <div class="col-md-8">
+                            <div class="col-md-7">
                                 <div class="card-box">
                                     <div class="profile-shadow w-100">
                                         <h5 class="font-16"><b>การสั่งซื้อ</b></h5>
@@ -66,7 +66,7 @@
                                         </div>
                                         <h6 class="font-16 ml-4 mt-4"><b>ที่อยู่ผู้รับสินค้า</b></h6>
                                         <div class="row mt-3">
-                                            <div class="col-6 ml-4">
+                                            <div class="col-7 ml-4">
                                                 <div class="radio-inline">
                                                     <label class="radio radio-outline radio-outline-2x radio-primary ml-4">
                                                         <input type="radio" name="address_delivery" id="address_delivery" checked="checked">
@@ -80,7 +80,7 @@
                                                     <label class="radio radio-outline radio-outline-2x radio-primary ml-4">
                                                         <input type="radio" name="address_delivery" id="address_others">
                                                         <span></span>ที่อยู่อื่นๆ</label>
-                                                </div>                                               
+                                                </div>
                                             </div>
                                             <div class="col-md-12 mt-3">
                                                 <div class="row">
@@ -196,94 +196,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="profile-shadow w-100 mt-4">
-                                        <h5 class="font-16"><b>การชำระเงิน</b></h5>
-                                        <hr>
-                                        <h6 class="font-16 ml-4"><b>รูปแบบการชำระ</b></h6>
-                                        <div class="widget-content widget-content-area tab-horizontal-line">
-                                            <ul class="nav nav-tabs mb-3" id="animateLine" role="tablist">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" id="animated-underline-home-tab"
-                                                        data-toggle="tab" href="#animated-underline-home" role="tab"
-                                                        aria-controls="animated-underline-home" aria-selected="true"> โอนชำระ</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="animated-underline-about-tab" data-toggle="tab"
-                                                        href="#animated-underline-about" role="tab"
-                                                        aria-controls="animated-underline-about" aria-selected="false">
-                                                        พร้อมเพย์</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" id="animated-underline-messages-tab"
-                                                        data-toggle="tab" href="#animated-underline-messages" role="tab"
-                                                        aria-controls="animated-underline-messages" aria-selected="false">
-                                                        บัตรเครดิต</a>
-                                                </li>
-                                            </ul>
-                                            <div class="tab-content" id="animateLineContent-4">
-                                                <div class="tab-pane fade show active" id="animated-underline-home"
-                                                    role="tabpanel" aria-labelledby="animated-underline-home-tab">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="text-center">
-                                                                <img src="{{ asset('frontend/assets/img/scb.png') }}"
-                                                                    class="img-fluid mx-auto" alt="Responsive image">
-                                                                <p class="font-20"><b>xxxx</b></p>
-                                                                <p class="font-13">ธนาคารไทยพาณิชย์</p>
-                                                                <p class="font-13">บริษัท กิ่งทองใบหยก จำกัด</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 text-center">
-                                                            <label
-                                                                for="slip_image"><b>อัพโหลดหลักฐานการชำระเงิน</b></label>
-                                                            <div class="upload text-center img-thumbnail">
-                                                                <input type="file" id="slip_image" name="slip_image"
-                                                                    class="dropify" data-default-file="">
-                                                            </div>
-                                                            <div class="text-center mt-2">
-                                                                <button type="button" class="btn btn-info btn-rounded">
-                                                                    <span class="btn-label"><i
-                                                                            class="las la-check-double"></i></span>อัพโหลดหลักฐาน
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="animated-underline-about" role="tabpanel"
-                                                    aria-labelledby="animated-underline-about-tab">
-                                                    <div class="text-center">
-                                                        <img src="{{ asset('frontend/assets/img/thai_qr_payment.png') }}"
-                                                            class="img-fluid mx-auto rounded" alt="Responsive image">
-                                                    </div>
-                                                    <div class="text-center mt-2">
-                                                        <button type="button" class="btn btn-info btn-rounded">
-                                                            <span class="btn-label"><i
-                                                                    class="las la-check-double"></i></span>ชำระด้วยพร้อมเพย์
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="animated-underline-messages"
-                                                    role="tabpanel" aria-labelledby="animated-underline-messages-tab">
-                                                    <div class="text-center">
-                                                        <img src="{{ asset('frontend/assets/img/credit-logo.png') }}"
-                                                            class="img-fluid mx-auto rounded" alt="Responsive image">
-                                                    </div>
-                                                    <div class="text-center mt-2">
-                                                        <button type="button" class="btn btn-info btn-rounded">
-                                                            <span class="btn-label"><i
-                                                                    class="las la-check-double"></i></span>ชำระด้วยบัตรเครดิต/บัตรเดบิต
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                        </div>
-
-
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <div class="card-box">
                                     <div class="border border-light p-3  rounded mb-3">
                                         <h5 class="mb-3"><b>สรุปยอดการสั่งซื้อสินค้า</b></h5>
@@ -346,15 +262,123 @@
                                             </table>
                                         </div>
                                     </div>
-                                    {{-- <div class="d-flex align-items-center">
-                                        <a href="{{ route('CartGeneral', ['type' => 1]) }}"
-                                            class="w-100 btn btn-outline-info mb-0 ml-3 mr-3"><i
-                                                class="las la-arrow-left"></i>
-                                            สินค้า</a>
-                                        <a href="{{ route('CartGeneral', ['type' => 1]) }}"
-                                            class="w-100 btn btn-outline-info mb-0 ml-3 mr-3"><i
-                                                class="las la-money-bill-wave"></i> ชำระเงิน </a>
-                                    </div> --}}
+
+                                    <div class="profile-shadow w-100 mt-4">
+                                        <h5 class="font-16"><b>การชำระเงิน</b></h5>
+                                        <hr>
+                                        <h6 class="font-16 ml-4"><b>รูปแบบการชำระ</b></h6>
+                                        <div class="widget-content widget-content-area tab-horizontal-line">
+                                            <ul class="nav nav-tabs mb-3" id="animateLine" role="tablist">
+
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="animated-underline-about-tab" data-toggle="tab"
+                                                        href="#animated-underline-about" role="tab"
+                                                        aria-controls="animated-underline-about" aria-selected="true">
+                                                        พร้อมเพย์</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="animated-underline-messages-tab"
+                                                        data-toggle="tab" href="#animated-underline-messages" role="tab"
+                                                        aria-controls="animated-underline-messages" aria-selected="false">
+                                                        บัตรเครดิต</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link " id="animated-underline-home-tab"
+                                                        data-toggle="tab" href="#animated-underline-home" role="tab"
+                                                        aria-controls="animated-underline-home" aria-selected="false"> โอนชำระ</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content" id="animateLineContent-4">
+
+                                                <div class="tab-pane fade  show active" id="animated-underline-about" role="tabpanel"
+                                                    aria-labelledby="animated-underline-about-tab">
+                                                    <div class="text-center">
+                                                        <img src="{{ asset('frontend/assets/img/thai_qr_payment.png') }}"
+                                                            class="img-fluid mx-auto rounded" alt="Responsive image">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                    <div class="d-flex align-items-center mt-5">
+                                                        <a href="{{ route('CartGeneral', ['type' => 1]) }}"
+                                                            class="w-100 btn btn-outline-info mb-0 ml-3 mr-3"><i
+                                                                class="las la-arrow-left"></i>
+                                                            สินค้า</a>
+                                                        <a href="{{ route('CartGeneral', ['type' => 1]) }}"
+                                                            class="w-100 btn  btn btn-success mb-0 ml-3 mr-3"><i
+                                                                class="las la-money-bill-wave"></i> ชำระด้วยพร้อมเพย์ </a>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="animated-underline-messages"
+                                                    role="tabpanel" aria-labelledby="animated-underline-messages-tab">
+                                                    <div class="text-center">
+                                                        <img src="{{ asset('frontend/assets/img/credit-logo.png') }}"
+                                                            class="img-fluid mx-auto rounded" alt="Responsive image">
+                                                    </div>
+                                                    {{-- <div class="text-center mt-2">
+                                                        <button type="button" class="btn btn-info btn-rounded">
+                                                            <span class="btn-label"><i
+                                                                    class="las la-check-double"></i></span>ชำระด้วยบัตรเครดิต/บัตรเดบิต
+                                                        </button>
+                                                    </div> --}}
+                                                    <div class="col-md-12">
+                                                    <div class="d-flex align-items-center mt-5">
+                                                        <a href="{{ route('CartGeneral', ['type' => 1]) }}"
+                                                            class="w-100 btn btn-outline-info mb-0 ml-3 mr-3"><i
+                                                                class="las la-arrow-left"></i>
+                                                            สินค้า</a>
+                                                        <a href="{{ route('CartGeneral', ['type' => 1]) }}"
+                                                            class="w-100 btn  btn btn-success mb-0 ml-3 mr-3"><i
+                                                                class="las la-money-bill-wave"></i> ชำระด้วยบัตรเครดิต </a>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="animated-underline-home"
+                                                role="tabpanel" aria-labelledby="animated-underline-home-tab">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="text-center">
+                                                            <img src="{{ asset('frontend/assets/img/scb.png') }}"
+                                                                class="img-fluid mx-auto" alt="Responsive image">
+                                                            <p class="font-20"><b>xxxx</b></p>
+                                                            <p class="font-13">ธนาคารไทยพาณิชย์</p>
+                                                            <p class="font-13">บริษัท กิ่งทองใบหยก จำกัด</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 text-center">
+                                                        <label
+                                                            for="slip_image"><b>อัพโหลดหลักฐานการชำระเงิน</b></label>
+                                                        <div class="upload text-center img-thumbnail">
+                                                            <input type="file" id="slip_image" name="slip_image"
+                                                                class="dropify" data-default-file="">
+                                                        </div>
+                                                        {{-- <div class="text-center mt-2">
+                                                            <button type="button" class="btn btn-info btn-rounded">
+                                                                <span class="btn-label"><i
+                                                                        class="las la-check-double"></i></span>อัพโหลดหลักฐาน
+                                                            </button>
+                                                        </div> --}}
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="d-flex align-items-center mt-5">
+                                                    <a href="{{ route('CartGeneral', ['type' => 1]) }}"
+                                                        class="w-100 btn btn-outline-info mb-0 ml-3 mr-3"><i
+                                                            class="las la-arrow-left"></i>
+                                                        สินค้า</a>
+                                                    <a href="{{ route('CartGeneral', ['type' => 1]) }}"
+                                                        class="w-100  btn btn-success  mb-0 ml-3 mr-3"><i
+                                                            class="las la-money-bill-wave"></i> โอนชำระ </a>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
                                 </div>
 
                             </div>

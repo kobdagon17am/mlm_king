@@ -23,7 +23,7 @@ class Customer
         return $next($request);
 
     }else{
-     return redirect('/');
+     return redirect('login');
  }
 }
 }

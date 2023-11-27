@@ -170,10 +170,12 @@
                                         <div class="widget-content searchable-container grid">
                                             <div class="searchable-items grid card-box">
                                                 @if (count($product) > 0)
+
                                                     @foreach ($product as $item)
                                                         <div class="items">
                                                             <div class="item-content">
-                                                                @if ($item->product_category_id_fk == $value->id)
+
+
                                                                     <div class="product-info">
                                                                         <a
                                                                             href="{{ route('CartGeneralDetail', ['type' => $type, 'id' => $item->id]) }}"><img
@@ -200,7 +202,7 @@
                                                                                     <b style="color: black"><i class="las la-cart-plus font-20"></i>เพิ่มสินค้า</b></button>
                                                                         </p>
                                                                     </div>
-                                                                @endif
+
 
                                                             </div>
                                                         </div>

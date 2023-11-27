@@ -259,7 +259,7 @@
 
             var id = product_id;
             //  alert(id);
-            var quantity = $('#quantityinput').val();
+            var quantity = $('#quant').val();
 
             $.ajax({
                     url: '{{ route('add_cart') }}',
@@ -272,8 +272,7 @@
                 })
                 .done(function(data) {
 
-                    // $('#count_cart').html(data['qty']);
-
+                    $('#count_cart').html(data['qty']);
 
                     swal.fire({
                         icon: 'success',

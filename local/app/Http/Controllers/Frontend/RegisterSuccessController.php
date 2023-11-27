@@ -13,12 +13,12 @@ class RegisterSuccessController extends Controller
     {
         $this->middleware('customer');
     }
-    public function index($username)
+    public function index($id_card)
     {
         //   dd('111');
 
         $get_customers = DB::table('customers')
-            ->where('username', '=', $username)
+            ->where('id_card',$id_card)
             ->get();
 
         // dd($get_customers);

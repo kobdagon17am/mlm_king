@@ -89,7 +89,7 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="upline_id">ภายใต้
-                                                                <span class="text-danger">*</span>
+                                                                {{-- <span class="text-danger">*</span> --}}
                                                             </label>
 
                                                             <input type="text"
@@ -107,8 +107,8 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="sponsor">ผู้แนะนำ
-                                                                <span class="text-danger">* </span></label>
+                                                            <label for="sponsor">ผู้แนะนำ</label>
+                                                                {{-- <span class="text-danger">* </span></label> --}}
                                                             <input type="text"
                                                                 class="form-control @error('sponsor') is-invalid @enderror"
                                                                 name="sponsor" placeholder="ผู้แนะนำ"
@@ -125,10 +125,10 @@
 
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label for="side">สาย
-                                                                <span class="text-danger">* </span></label>
+                                                            <label for="side">สาย</label>
+                                                                {{-- <span class="text-danger">* </span></label> --}}
                                                             <input type="text"
                                                                 class="form-control @error('side') is-invalid @enderror"
                                                                 placeholder="สาย" value="{{ $data['line_type_back'] }}"
@@ -148,16 +148,13 @@
                                                                 </span></label>
                                                             <select name="number_of_member" class="form-control "
                                                                 id="number_of_member">
-                                                                <option>ทั่วไป</option>
-                                                                <option>จอง 3 รหัส</option>
+                                                                <option value="1">ทั่วไป</option>
+                                                                <option value="3">จอง 3 รหัส</option>
                                                             </select>
                                                         </div>
                                                     </div>
 
-                                                    <div class="info-area col-md-12 text-right">
-                                                        {{-- <button type="submit" class="btn btn-info mr-2">
-                                                        <i class="las la-save"></i></i> ยืนยันข้อมูลการสมัคร</button> --}}
-                                                    </div>
+
                                                 </div>
                                                 {{-- <h5 class="font-16 mb-3">ข้อมูลพื้นฐาน (GENERAL INFORMATION)</h5> --}}
                                                 <div class="row">
@@ -179,7 +176,7 @@
                                                             <input type="text"
                                                                 class="form-control @error('firstname') is-invalid @enderror"
                                                                 name="firstname" placeholder="ชื่อ"
-                                                                value="{{ old('firstname') }}">
+                                                                value="{{ old('firstname') }}" required>
                                                             @error('firstname')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -193,7 +190,7 @@
                                                             <input type="text"
                                                                 class="form-control @error('lastname') is-invalid @enderror"
                                                                 name="lastname" placeholder="นามสุกล"
-                                                                value="{{ old('lastname') }}">
+                                                                value="{{ old('lastname') }}" required>
                                                             @error('lastname')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -222,7 +219,7 @@
                                                             <input type="text"
                                                                 class="form-control @error('businessname') is-invalid @enderror"
                                                                 name="businessname" placeholder="ชื่อในทางธุรกิจ"
-                                                                value="{{ old('businessname') }}">
+                                                                value="{{ old('businessname') }}" required>
                                                             @error('businessname')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -231,18 +228,19 @@
                                                     <div class="col-md-5">
                                                         <div class="form-group">
                                                             <label for="birthdate">วัน/เดือน/ปี เกิด
-                                                                <span class="text-danger"></span>*</label>
+                                                                <span class="text-danger">*</span></label>
                                                             <div>
                                                                 <input type="date"
                                                                     class="form-control @error('birthdate') is-invalid @enderror"
                                                                     name="birthdate" placeholder="yyyy-mm-dd"
-                                                                    value="{{ old('birthdate') }}">
+                                                                    value="{{ old('birthdate') }}" required>
                                                                 @error('birthdate')
                                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                                 @enderror
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <input type="hidden" name="business_location" value="1">
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="country">ประเทศ
@@ -289,7 +287,7 @@
                                                                 class="form-control @error('id_card') is-invalid @enderror"
                                                                 name="id_card" id="id_card"
                                                                 placeholder="หมายเลขบัตรประชาชน"
-                                                                value="{{ old('id_card') }}">
+                                                                value="{{ old('id_card') }}" required>
                                                             @error('id_card')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -305,7 +303,7 @@
                                                                 class="form-control @error('phone') is-invalid @enderror"
                                                                 name="phone" placeholder="หมายเลขโทรศัพท์"
                                                                 value="{{ old('phone') }}" maxlength="10"
-                                                                minlength="10">
+                                                                minlength="10" required>
                                                             @error('phone')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -319,7 +317,7 @@
                                                             <input type="email"
                                                                 class="form-control @error('email') is-invalid @enderror"
                                                                 name="email" placeholder="email@example.com"
-                                                                value="{{ old('email') }}">
+                                                                value="{{ old('email') }}" required>
                                                             @error('email')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -340,8 +338,8 @@
                                                                 </span></label>
                                                             <input type="text"
                                                                 class="form-control @error('card_no') is-invalid @enderror"
-                                                                name="card_no" placeholder="บ้านเลขที่"
-                                                                value="{{ old('card_no') }}">
+                                                                name="card_no" id="card_no" placeholder="บ้านเลขที่"
+                                                                value="{{ old('card_no') }}" required>
                                                             @error('card_no')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -354,8 +352,8 @@
                                                                 </span></label>
                                                             <input type="text"
                                                                 class="form-control @error('card_moo') is-invalid @enderror"
-                                                                name="card_moo" placeholder="หมู่ที่"
-                                                                value="{{ old('card_moo') }}">
+                                                                name="card_moo" id="card_moo" placeholder="หมู่ที่"
+                                                                value="{{ old('card_moo') }}" required>
                                                             @error('card_moo')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -368,8 +366,8 @@
                                                                 </span></label>
                                                             <input type="text"
                                                                 class="form-control @error('card_home_name') is-invalid @enderror"
-                                                                name="card_home_name" placeholder="หมู่บ้าน/อาคาร"
-                                                                value="{{ old('card_home_name') }}">
+                                                                name="card_home_name" id="card_home_name" placeholder="หมู่บ้าน/อาคาร"
+                                                                value="{{ old('card_home_name') }}" required>
                                                             @error('card_home_name')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -378,12 +376,11 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="card_soi">ตรอก/ซอย
-                                                                <span class="text-danger">*
-                                                                </span></label>
+                                                                 </label>
                                                             <input type="text"
                                                                 class="form-control @error('card_soi') is-invalid @enderror"
-                                                                name="card_soi" placeholder="ตรอก/ซอย"
-                                                                value="{{ old('card_soi') }}">
+                                                                name="card_soi" id="card_soi" placeholder="ตรอก/ซอย"
+                                                                value="{{ old('card_soi') }}" >
                                                             @error('card_soi')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -392,11 +389,10 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="card_road">ถนน
-                                                                <span class="text-danger">*
-                                                                </span></label>
+                                                                </label>
                                                             <input type="text"
                                                                 class="form-control @error('card_road') is-invalid @enderror"
-                                                                name="card_road" placeholder="ถนน"
+                                                                name="card_road" id="card_road" placeholder="ถนน"
                                                                 value="{{ old('card_road') }}">
                                                             @error('card_road')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -478,7 +474,7 @@
                                                                 <div class="checkbox-inline">
                                                                     <label class="checkbox checkbox-success ">
                                                                         <input type="checkbox" class="p-2"
-                                                                            name="copy_card_address">
+                                                                            name="copy_card_address" id="copy_card_address"  >
                                                                         <span class="ml-2">
                                                                             ที่อยู่ตามบัตรประชาชน</span></label>
                                                                 </div>
@@ -492,7 +488,7 @@
                                                                 </span></label>
                                                             <input type="text"
                                                                 class="form-control @error('sent_no') is-invalid @enderror"
-                                                                name="sent_no" placeholder="บ้านเลขที่"
+                                                                name="sent_no" id="sent_no" placeholder="บ้านเลขที่"
                                                                 value="{{ old('sent_no') }}">
                                                             @error('sent_no')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -506,8 +502,8 @@
                                                                 </span></label>
                                                             <input type="text"
                                                                 class="form-control @error('sent_moo') is-invalid @enderror"
-                                                                name="sent_moo" placeholder="หมู่ที่"
-                                                                value="{{ old('sent_moo') }}">
+                                                                name="sent_moo" id="sent_moo" placeholder="หมู่ที่"
+                                                                value="{{ old('sent_moo') }}" required>
                                                             @error('sent_moo')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -520,8 +516,8 @@
                                                                 </span></label>
                                                             <input type="text"
                                                                 class="form-control @error('sent_home_name') is-invalid @enderror"
-                                                                name="sent_home_name" placeholder="หมู่บ้าน/อาคาร"
-                                                                value="{{ old('sent_home_name') }}">
+                                                                name="sent_home_name" id="sent_home_name" placeholder="หมู่บ้าน/อาคาร"
+                                                                value="{{ old('sent_home_name') }}" required>
                                                             @error('sent_home_name')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -530,11 +526,10 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="sent_soi">ตรอก/ซอย
-                                                                <span class="text-danger">
-                                                                </span></label>
+                                                                </label>
                                                             <input type="text"
                                                                 class="form-control @error('sent_soi') is-invalid @enderror"
-                                                                name="sent_soi" placeholder="ตรอก/ซอย"
+                                                                name="sent_soi" id="sent_soi" placeholder="ตรอก/ซอย"
                                                                 value="{{ old('sent_soi') }}">
                                                             @error('sent_soi')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -544,11 +539,10 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="sent_road">ถนน
-                                                                <span class="text-danger">
-                                                                </span></label>
+                                                               </label>
                                                             <input type="text"
                                                                 class="form-control @error('sent_road') is-invalid @enderror"
-                                                                name="sent_road" placeholder="ถนน"
+                                                                name="sent_road" id="sent_road" placeholder="ถนน"
                                                                 value="{{ old('sent_road') }}">
                                                             @error('sent_road')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -556,56 +550,60 @@
                                                         </div>
                                                     </div>
 
+
+
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="sent_tambon">แขวง/ตำบล
+                                                            <label for="sent_changwat">จังหวัด
                                                                 <span class="text-danger">*</span></label>
-                                                            <select name="sent_changwat" class="form-control"
-                                                                id="sent_changwat">
-                                                                <option>จังหวัด</option>
-                                                                <option>1</option>
-                                                                <option>2</option>
+
+                                                            <select name="sent_changwat" class="form-control basic"
+                                                                id="sent_changwat" required>
+                                                                <option value="">เลือกจังหวัด</option>
+                                                                @foreach ($data['provinces'] as $value_provinces)
+                                                                    <option value="{{ $value_provinces->id }}"
+                                                                        @if ($value_provinces->id == old('sent_province')) selected @endif>
+                                                                        {{ $value_provinces->name_th }}</option>
+                                                                @endforeach
                                                             </select>
+
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-4">
+                                                             <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="sent_amphur">เขต/อำเภอ
                                                                 <span class="text-danger">*</span></label>
                                                             <select name="sent_amphur" class="form-control"
-                                                                id="sent_amphur">
-                                                                <option>เขต/อำเภอ</option>
-                                                                <option>1</option>
-                                                                <option>2</option>
+                                                                id="sent_amphur" disabled required>
+                                                                <option value="">เลือกเขต/อำเภอ</option>
+
                                                             </select>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="sent_changwat">ตำบล
+                                                            <label for="sent_tambon">แขวง/ตำบล
                                                                 <span class="text-danger">*</span></label>
                                                             <select name="sent_tambon" class="form-control"
-                                                                id="sent_tambon">
-                                                                <option>แขวง/ตำบล</option>
-                                                                <option>1</option>
-                                                                <option>2</option>
+                                                                id="sent_tambon" disabled required>
+                                                                <option value="">เลือกแขวง/ตำบล</option>
+
                                                             </select>
                                                         </div>
                                                     </div>
-
-
 
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="sent_zipcode">รหัสไปรษณีย์
-                                                                <span class="text-danger">*
+                                                                <span class="text-danger sent_zipcode_err _err">*
                                                                 </span></label>
                                                             <input type="text"
                                                                 class="form-control @error('sent_zipcode') is-invalid @enderror"
                                                                 name="sent_zipcode" placeholder="รหัสไปรษณีย์"
-                                                                value="{{ old('sent_zipcode') }}">
+                                                                id="sent_zipcode" value="{{ old('sent_zipcode') }}"
+                                                                required disabled>
                                                             @error('sent_zipcode')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
@@ -636,7 +634,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="acc_no">เลขที่บัญชี
-                                                                <span class="text-danger">* </span></label>
+                                                                </label>
                                                             <input type="text"
                                                                 class="form-control @error('acc_no') is-invalid @enderror"
                                                                 name="acc_no" placeholder="เลขที่บัญชี"
@@ -663,8 +661,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="bank_branch">สาขา
-                                                                <span class="text-danger">*
-                                                                </span></label>
+                                                                </label>
                                                             <input type="text"
                                                                 class="form-control @error('bank_branch') is-invalid @enderror"
                                                                 name="bank_branch" placeholder="สาขา"
@@ -742,7 +739,7 @@
                                                         <div class="upload text-center img-thumbnail">
                                                             <input type="file" id="idcard_image" class="dropify"
                                                                 data-default-file="{{ asset('frontend/assets/img/idcard.png') }}"
-                                                                data-max-file-size="2M" />
+                                                                data-max-file-size="2M" required />
                                                             {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
                                                             อัปโหลดรูปภาพ</p> --}}
                                                         </div>
@@ -760,7 +757,7 @@
                                                         <div class="upload text-center img-thumbnail">
                                                             <input type="file" id="user_idcard_image" class="dropify"
                                                                 data-default-file="{{ asset('frontend/assets/img/user_card.jpg') }}"
-                                                                data-max-file-size="2M" />
+                                                                data-max-file-size="2M" required />
                                                             {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
                                                             อัปโหลดรูปภาพ</p> --}}
                                                         </div>
@@ -778,7 +775,7 @@
                                                         <div class="upload text-center img-thumbnail">
                                                             <input type="file" id="user_image" class="dropify"
                                                                 data-default-file="{{ asset('frontend/assets/img/user.png') }}"
-                                                                data-max-file-size="2M" />
+                                                                data-max-file-size="2M" required />
                                                             {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
                                                             อัปโหลดรูปภาพ</p> --}}
                                                         </div>
@@ -793,7 +790,7 @@
                                                         <div class="upload text-center img-thumbnail">
                                                             <input type="file" id="bookbank_image" class="dropify"
                                                                 data-default-file="{{ asset('frontend/assets/img/BookBank.png') }}"
-                                                                data-max-file-size="2M" />
+                                                                data-max-file-size="2M" required />
                                                             {{-- <p class="mt-2"><i class="flaticon-cloud-upload mr-1"></i>
                                                             อัปโหลดรูปภาพ</p> --}}
                                                         </div>
@@ -992,6 +989,81 @@
         });
         //  END tambon
 
+
+        $("#sent_changwat").change(function() {
+            let province_id = $(this).val();
+            $.ajax({
+                url: '{{ route('getDistrict') }}',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    province_id: province_id,
+                },
+                success: function(data) {
+                    $("#sent_amphur").children().remove();
+                    $("#sent_tambon").children().remove();
+                    $("#sent_amphur").append(` <option value=""> เลือกอำเภอ </option>`);
+                    $("#sent_tambon").append(` <option value=""> เลือกตำบล </option>`);
+                    $("#sent_zipcode").val("");
+                    data.forEach((item) => {
+                        $("#sent_amphur").append(
+                            `<option value="${item.id}">${item.name_th}</option>`
+                        );
+
+                    });
+                    $("#sent_amphur").attr('disabled', false);
+                    $("#sent_tambon").attr('disabled', true);
+                },
+                error: function() {}
+            })
+        });
+
+
+        $("#sent_amphur").change(function() {
+            let district_id = $(this).val();
+            $.ajax({
+                url: '{{ route('getTambon') }}',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    district_id: district_id,
+                },
+                success: function(data) {
+                    $("#sent_tambon").children().remove();
+                    $("#sent_tambon").append(` <option value=""> เลือกตำบล </option>`);
+                    $("#sent_zipcode").val("");
+                    data.forEach((item) => {
+                        $("#sent_tambon").append(
+                            `<option value="${item.id}">${item.name_th}</option>`
+                        );
+                    });
+                    $("#sent_tambon").attr('disabled', false);
+                },
+                error: function() {}
+            })
+        });
+        // BEGIN district
+
+        $("#sent_tambon").change(function() {
+            let tambon_id = $('#sent_tambon').val();
+            console.log(tambon_id);
+            $.ajax({
+                url: '{{ route('getZipcode') }}',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    tambon_id: tambon_id,
+                },
+                success: function(data) {
+                    // console.log(data);
+                    $("#sent_zipcode").attr('disabled', false);
+                    $("#sent_zipcode").val(data.zip_code);
+                },
+                error: function() {}
+            })
+        });
+        //  END tambon
+
         $('#idcard_image').change(function() {
             var fileExtension = ['jpg', 'png', 'pdf', 'jpeg'];
             if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
@@ -1036,37 +1108,58 @@
 
         });
 
-
+        $('#copy_card_address').on('change', copyCardAddress)
         function copyCardAddress() {
+
+
             const isChecked = $(this).is(':checked')
-            const card_house_no = $('#card_house_no');
-            const card_house_name = $('#card_house_name');
+            const card_no = $('#card_no');
             const card_moo = $('#card_moo');
+            const card_home_name = $('#card_home_name');
+
             const card_soi = $('#card_soi');
             const card_road = $('#card_road');
 
             const card_changwat = $("#card_changwat").val();
             const card_amphur = $("#card_amphur").val();
-            const card_tambon =  $("#card_tambon")..val();
+            const card_tambon =  $("#card_tambon").val();
             const card_zipcode =  $("#card_zipcode").val();
 
-            if (isChecked) {
-                house_no.val(card_house_no.val())
-                house_name.val(card_house_name.val())
-                moo.val(card_moo.val())
-                soi.val(card_soi.val())
-                road.val(card_road.val())
 
-                $(`${province}`).val($(`${card_province}`).val()).trigger('change')
-                $(`${zipcode}`).val($(`${card_zipcode}`).val())
+            const sent_no = $('#sent_no');
+            const sent_home_name = $('#sent_home_name');
+            const sent_moo = $('#sent_moo');
+            const sent_soi = $('#sent_soi');
+            const sent_road = $('#sent_road');
+
+
+            const sent_changwat = '#sent_changwat';
+            const sent_amphures = '#sent_amphures';
+            const sent_tambon = '#sent_tambon';
+            const sent_zipcode = '#sent_zipcode';
+
+
+
+            if (isChecked) {
+
+
+                sent_no.val(card_no.val())
+                sent_home_name.val(card_home_name.val())
+                sent_moo.val(card_moo.val())
+                sent_soi.val(card_soi.val())
+                sent_road.val(card_road.val())
+
+                $(`${sent_changwat}`).val($(`${card_changwat}`).val()).trigger('change')
+                $(`${sent_zipcode}`).val($(`${card_zipcode}`).val())
             } else {
-                house_no.val('')
-                house_name.val('')
-                moo.val('')
-                soi.val('')
-                road.val('')
-                $(`${zipcode}`).val('')
-                $(`${province}, ${amphures}`).val('').trigger('change')
+
+                sent_no.val('')
+                sent_home_name.val('')
+                sent_moo.val('')
+                sent_soi.val('')
+                sent_road.val('')
+                $(`${sent_zipcode}`).val('')
+                $(`${sent_changwat}, ${sent_amphures}`).val('').trigger('change')
             }
         }
     </script>

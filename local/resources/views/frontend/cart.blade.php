@@ -185,7 +185,7 @@
                                                             <h6>จำนวนสินค้า :</h6>
                                                         </td>
                                                         <td>
-                                                            <h6>2</h6>
+                                                            <h6>{{Cart::session('1')->getTotalQuantity()}}</h6>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -193,20 +193,34 @@
                                                             <h6>ราคารวม :</h6>
                                                         </td>
                                                         <td>
-                                                            <h6>฿2,000</h6>
+                                                            <h6>{{ number_format(Cart::session('1')->getTotal(),2) }}</h6>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-success-teal strong">ส่วนลด : </td>
-                                                        <td class="text-success-teal strong">-฿50</td>
+                                                        <td class="text-success-teal strong">ค่าส่งสินค้า : </td>
+                                                        <td class="text-success-teal strong">{{$bill['shipping']}}</td>
                                                     </tr>
                                                     <tr>
+                                                        <?php
+                                                        $cartCollection = Cart::session('1')->getContent();
+                                                        $data = $cartCollection->toArray();
+
+                                                        if ($data) {
+                                                            foreach ($data as $value) {
+                                                                $pv[] = $value['quantity'] * $value['attributes']['pv'];
+                                                            }
+                                                            $pv_total = array_sum($pv);
+                                                        } else {
+                                                            $pv_total = 0;
+                                                        }
+
+                                                        ?>
                                                         <th>คะแนนที่ได้รับ :</th>
-                                                        <th>100 PV</th>
+                                                        <th>{{ number_format($pv_total,2)}} PV</th>
                                                     </tr>
                                                     <tr>
                                                         <th>ยอดชำระทั้งหมด :</th>
-                                                        <th>฿ 1,550</th>
+                                                        <th>{{ number_format(Cart::session('1')->getTotal()+$bill['shipping']) }} บาท</th>
                                                     </tr>
                                                 </tbody>
                                             </table>

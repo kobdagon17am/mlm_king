@@ -10,6 +10,7 @@ class ProductsController extends Controller
 {
     public function __construct()
     {
+
         $this->middleware('admin');
     }
   public function index()
@@ -28,6 +29,7 @@ class ProductsController extends Controller
 
     $get_categories = DB::table('categories')
     ->where('status', 1)
+    ->where('id','!=', 1)
       ->get();
 
     $get_unit = DB::table('dataset_product_unit')

@@ -2,8 +2,8 @@
     <nav id="sidebar">
         <ul class="list-unstyled menu-categories" id="accordionExample">
             {{-- <li class="menu-title">Components</li> --}}
-            <li class="menu">
-                <a href="{{route('Profile')}}" aria-expanded="false" class="dropdown-toggle" >
+            <li class="menu {{ (request()->is('Profile') ) ? 'active' : '' }}">
+                <a href="{{route('Profile')}}" aria-expanded="false" class="dropdown-toggle" data-active="{{ (request()->is('Profile') ) ? 'true' : '' }}">
                     <div class="">
                         <i class="las la-user-alt"></i>
                         <span>ข้อมูลส่วนตัว</span>
@@ -18,23 +18,23 @@
                     </div>
                 </a>
             </li> --}}
-            <li class="menu">
-                <a href="{{route('tree')}}"  aria-expanded="false" class="dropdown-toggle">
+            <li class="menu {{ (request()->is('tree') ) ? 'active' : '' }}">
+                <a href="{{route('tree')}}"  aria-expanded="false" class="dropdown-toggle" data-active="{{ (request()->is('tree') ) ? 'true' : '' }}">
                     <div class="">
                         <i class="las la-sitemap"></i>
                         <span>โครงสร้างสายงาน</span>
                     </div>
                 </a>
             </li>
-            <li class="menu">
-                <a href="{{route('DirectSponsor')}}"  aria-expanded="false" class="dropdown-toggle">
+            <li class="menu {{ (request()->is('DirectSponsor') ) ? 'active' : '' }}">
+                <a href="{{route('DirectSponsor')}}"  aria-expanded="false" class="dropdown-toggle" data-active="{{ (request()->is('DirectSponsor') ) ? 'true' : '' }}">
                     <div class="">
                         <i class="las la-handshake"></i>
                         <span>แนะนำตรง</span>
                     </div>
                 </a>
             </li>
-            <li class="menu">
+            <li class="menu {{ (request()->is('Bonus') ) ? 'active' : '' }}">
                 <a href="{{route('Bonus')}}"  aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-coins"></i>
@@ -42,8 +42,8 @@
                     </div>
                 </a>
             </li>
-            <li class="menu">
-                <a href="#cart" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <li class="menu {{ (request()->is('CartGeneral/general') ) ? 'active' : '' }}">
+                <a href="#cart" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"  data-active="{{ (request()->is('CartGeneral/general') ) ? 'true' : '' }}">
                     <div class="">
                         <i class="las la-shopping-basket"></i>
                         <span>สั่งซื้อสินค้า</span>
@@ -52,11 +52,11 @@
                         <i class="las la-angle-right sidemenu-right-icon"></i>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled" id="cart" data-parent="#accordionExample">
-                    <li>
+                <ul class="collapse submenu list-unstyled {{ (request()->is('CartGeneral/general') || request()->is('CartGeneral/stock') ) ? 'show' : '' }}" id="cart" data-parent="#accordionExample">
+                    <li class="{{ (request()->is('CartGeneral/general') ) ? 'active' : '' }}">
                         <a href="{{ route('CartGeneral',['type' => 'general'])}}"> สินค้าทั่วไป </a>
                     </li>
-                    <li>
+                    <li class="{{ (request()->is('CartGeneral/stock') ) ? 'active' : '' }}">
                         <a href="{{ route('CartGeneral',['type' => 'stock'])}}"> สินค้า (คลัง) </a>
                     </li>
                 </ul>
