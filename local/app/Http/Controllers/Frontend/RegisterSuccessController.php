@@ -17,7 +17,7 @@ class RegisterSuccessController extends Controller
     {
         //   dd('111');
 
-        $get_customers = DB::table('customers')
+        $get_customers = DB::table('customers_warning')
             ->where('id_card',$id_card)
             ->get();
 

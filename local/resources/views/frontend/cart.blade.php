@@ -216,11 +216,7 @@
                                                             <h6>ค่าจัดส่ง :</h6>
                                                         </td>
                                                         <td>
-<<<<<<< HEAD
                                                             <h6>{{ number_format(Cart::session('1')->getTotal(),2) }}</h6>
-=======
-                                                            <h6>฿0</h6>
->>>>>>> e65aa02ac115e3384644476b6ace3d91e4415b9a
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -247,11 +243,7 @@
                                                     </tr>
                                                     <tr>
                                                         <th>ยอดชำระทั้งหมด :</th>
-<<<<<<< HEAD
                                                         <th>{{ number_format(Cart::session('1')->getTotal()+$bill['shipping']) }} บาท</th>
-=======
-                                                        <th>฿1,550</th>
->>>>>>> e65aa02ac115e3384644476b6ace3d91e4415b9a
                                                     </tr>
                                                 </tbody>
                                             </table>

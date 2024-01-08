@@ -15,7 +15,9 @@
 
         <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Close</button>
         {{-- <a href="{{route('Register',['id'=>$data->username,'line_type'=>$type])}}" type="button" class="btn btn-primary waves-effect waves-light ">Add</a> --}}
-        <a href="{{route('Register',['username'=>$data->username,'line_type'=>$type])}}" type="button" class="btn btn-primary waves-effect waves-light ">Add</a>
+        <a href="{{route('Register',['username'=>$data->username,'line_type'=>$type,'type'=>'orther'])}}" type="button" class="btn btn-primary waves-effect waves-light ">สมัครสมาชิก</a>
+
+        <a href="{{route('Register',['username'=>$data->username,'line_type'=>$type,'type'=>'warehouse'])}}" type="button" class="btn btn-primary waves-effect waves-light ">สมัครคลัง</a>
 
       </div>
     </div>

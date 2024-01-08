@@ -40,7 +40,7 @@ class AdminDataController extends Controller
 
     $dataPrepare = [
       'username' => $rs->usermame,
-      'password' => $rs->password,
+      'password' => md5($rs->password),
       'first_name' => $rs->first_name,
       'last_name' => $rs->last_name,
       'phone' => $rs->phone,
@@ -72,7 +72,7 @@ class AdminDataController extends Controller
 
     $dataPrepare = [
       'username' => $rs->usermame,
-      'password' => $rs->password,
+      'password' => md5($rs->password),
       'first_name' => $rs->first_name,
       'last_name' => $rs->last_name,
       'phone' => $rs->phone,

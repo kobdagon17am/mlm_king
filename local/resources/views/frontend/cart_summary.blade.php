@@ -5,6 +5,7 @@
     <link href="{{ asset('frontend/assets/css/elements/tooltip.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('frontend/assets/css/apps/ecommerce.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/dropify/dropify.min.css') }}">
+    <link href="{{ asset('frontend/assets/css/forms/radio-theme.css') }}" rel="stylesheet" type="text/css">
 @endsection
 @section('content')
     <div id="content" class="main-content">

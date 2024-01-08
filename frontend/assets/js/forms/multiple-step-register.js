@@ -4,7 +4,45 @@ $(document).ready(function() {
         multiple_form_one_next_fs,
         multiple_form_one_previous_fs; //fieldsets
     var multiple_form_one_opacity;
+
+    // Handle the "Previous" button
+    // $(".previous").click(function() {
+    //     $(".form-card:visible").hide();
+    //     $(".form-card:visible").prev().show();
+    // });
+
+
     $(".multiple-form-one .next").click(function() {
+
+        var isValid = true;
+
+        // Check each required field
+        $(".form-card:visible input[required]").each(function() {
+            if ($(this).val() == "") {
+                isValid = false;
+                $(this).addClass("is-invalid");
+            } else {
+                $(this).removeClass("is-invalid");
+            }
+        });
+
+        // Check if the dropdowns are selected
+        $(".form-card:visible select[required]").each(function() {
+            if ($(this).val() == "") {
+                isValid = false;
+                $(this).addClass("is-invalid");
+            } else {
+                $(this).removeClass("is-invalid");
+            }
+        });
+
+        // Check if any required field is invalid
+        if (!isValid) {
+            alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+            return;
+        }
+
+
         multiple_form_one_current_fs = $(this).parent();
         multiple_form_one_next_fs = $(this).parent().next();
         //Add Class Active

@@ -84,6 +84,10 @@ Route::get('Cart','Frontend\CartController@index')->name('Cart');
 Route::post('cart_delete','Frontend\CartController@cart_delete')->name('cart_delete');
 Route::post('quantity_change', 'Frontend\CartController@quantity_change')->name('quantity_change');
 
+Route::post('edit_item_register', 'Frontend\CartController@edit_item_register')->name('edit_item_register');
+
+
+
 
 // Route::get('Cart', function () {
 
@@ -97,7 +101,7 @@ Route::get('Order', function () {
 
 
 
-Route::get('Register/{username?}/{line_type?}','Frontend\RegisterController@index')->name('Register');
+Route::get('Register/{username?}/{line_type?}/{type?}','Frontend\RegisterController@index')->name('Register');
 
 
 Route::post('Register_member','Frontend\RegisterController@member_register')->name('Register_member');
