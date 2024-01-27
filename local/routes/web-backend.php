@@ -58,7 +58,7 @@ Route::get('admin/Blank', function () {
   Route::get('admin/History_Doc_view','Admin\DocHistoryController@History_Doc_view')->name('admin/History_Doc_view');
   Route::get('admin/History_Acc_view','Admin\DocHistoryController@History_Acc_view')->name('admin/History_Acc_view');
   Route::post('admin/History_Acc_update','Admin\DocHistoryController@History_Acc_update')->name('admin/History_Acc_update');
-  
+
 
   // Route::get('admin/Products', function () {
   //   return view('backend.products');
@@ -198,3 +198,16 @@ Route::get('admin/Blank', function () {
     return view('backend.promotion_products');
   })->name('admin/PromotionProducts');
 
+
+
+  Route::get('admin/orders/list', 'Admin\OrderController@orders_list')->name('admin/orders/list');
+  Route::get('admin/orders/product_list_view', 'Admin\OrderController@product_list_view')->name('admin/orders/product_list_view');
+  Route::get('admin/orders/get_data_order_list', 'Admin\OrderController@get_data_order_list')->name('admin/orders/get_data_order_list');
+
+  Route::get('admin/orders/list_success', 'Admin\OrderController@orders_success')->name('admin/orders/list_success');
+  Route::get('admin/orders/get_data_order_list_success', 'Admin\OrderController@get_data_order_list_success')->name('admin/orders/get_data_order_list_success');
+  Route::post('admin/orders/tracking_no', 'Admin\OrderController@tracking_no')->name('admin/orders/tracking_no');
+  Route::post('admin/orders/tracking_no_sort', 'Admin\OrderController@tracking_no_sort')->name('admin/orders/tracking_no_sort');
+  Route::post('admin/orders/view_detail_order_pdf/', 'Admin\OrderController@view_detail_order_pdf')->name('admin/orders/view_detail_order_pdf');
+  Route::post('importorder', 'Admin\OrderController@importorder')->name('admin/orders/importorder');
+  Route::get('admin/get_data_warehouse_out_select', 'Admin\StockOutController@get_data_warehouse_out_select')->name('admin/get_data_warehouse_out_select');

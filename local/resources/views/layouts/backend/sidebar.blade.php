@@ -79,9 +79,20 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="a3" data-parent="#accordionExample">
                     <li>
-                        <a href="#"> ใบขาย </a>
+                        <a href="{{route('admin/orders/list')}}"> สั่งซื้อรอตรวจสอบ(Online) </a>
+                    </li>
+
+                    <li>
+                        <a href="{{route('admin/orders/list')}}"> รอส่ง(Online) </a>
+                    </li>
+
+                    <li>
+                        <a href="{{route('admin/orders/list')}}"> รับเองที่สาขา  </a>
                     </li>
                     <li>
+                        <a href="{{route('admin/orders/list_success')}}"> รายการจัดส่งสำเร็จ </a>
+                    </li>
+                    {{-- <li>
                         <a href="#"> รายงานสรุปยอดขาย </a>
                     </li>
                     <li>
@@ -89,7 +100,7 @@
                     </li>
                     <li>
                         <a href="#"> รายงานการขาย (สินค้า) </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
             <li class="menu main-single-menu">

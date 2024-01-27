@@ -19,17 +19,35 @@ class CartGeneralController extends Controller
   public function index($type)
   {
 
-    // dd($type);
 
-   //$product =\App\Http\Controllers\Frontend\CartGeneralController::product_detail(9);
-   //dd($product);
+    if($type == 'general'){
+        $data = ['1','9','10','11'];
+        $get_category = DB::table('categories')
+          //->select('categories.*', 'products.*', 'product_images.product_image_url', 'product_images.product_image_name')
+          //->leftJoin('products', 'products.product_category_id_fk', '=', 'categories.id')
+          //->leftJoin('product_images', 'products.id', '=', 'product_images.product_id_fk')
+          ->wherein('categories.id',$data)
+          ->get();
 
-    $get_category = DB::table('categories')
-      //->select('categories.*', 'products.*', 'product_images.product_image_url', 'product_images.product_image_name')
-      //->leftJoin('products', 'products.product_category_id_fk', '=', 'categories.id')
-      //->leftJoin('product_images', 'products.id', '=', 'product_images.product_id_fk')
-      //->where('product_images.product_image_orderby', '=', '1')
-      ->get();
+    }elseif($type == 'stock'){
+        $data = ['12'];
+        $get_category = DB::table('categories')
+          //->select('categories.*', 'products.*', 'product_images.product_image_url', 'product_images.product_image_name')
+          //->leftJoin('products', 'products.product_category_id_fk', '=', 'categories.id')
+          //->leftJoin('product_images', 'products.id', '=', 'product_images.product_id_fk')
+          ->wherein('categories.id',$data)
+          ->get();
+
+    }else{
+        $data = ['1','9','10','11'];
+        $get_category = DB::table('categories')
+          //->select('categories.*', 'products.*', 'product_images.product_image_url', 'product_images.product_image_name')
+          //->leftJoin('products', 'products.product_category_id_fk', '=', 'categories.id')
+          //->leftJoin('product_images', 'products.id', '=', 'product_images.product_id_fk')
+          ->wherein('categories.id',$data)
+          ->get();
+    }
+
 
     return view('frontend.cart_general', compact('get_category','type'));
 
@@ -63,6 +81,37 @@ class CartGeneralController extends Controller
 
 
   }
+
+
+  public static function product_detail_register($c_id){//1 ทั้วไป 2 คลัง
+
+    // \App\Http\Controllers\Frontend\CartGeneralController::product_detail();
+    if($c_id == 1 ){
+     $get_product = DB::table('products')
+     ->select('products.*', 'product_images.product_image_url', 'product_images.product_image_name')
+     ->leftJoin('product_images', 'product_images.product_id_fk', '=', 'products.id')
+     //->where('products.product_category_name', '=', 'คลังเกษตร')
+     ->where('product_images.product_image_orderby', '=', '1')
+     ->wherein('products.product_category_id_fk',['9','10','11'])
+     ->where('products.status', '=', '1')
+     ->get();
+
+    }else{
+     $get_product = DB::table('products')
+     ->select('products.*', 'product_images.product_image_url', 'product_images.product_image_name')
+     ->leftJoin('product_images', 'product_images.product_id_fk', '=', 'products.id')
+     //->where('products.product_category_name', '=', 'คลังเกษตร')
+     ->where('product_images.product_image_orderby', '=', '1')
+     ->wherein('products.product_category_id_fk',['12'])
+     ->where('products.status', '=', '1')
+     ->get();
+
+    }
+
+       return $get_product;
+
+
+   }
 
   public function add_cart(Request $rs)
   {

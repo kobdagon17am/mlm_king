@@ -24,7 +24,7 @@
                         <div class="page-header">
                             <nav class="breadcrumb-one" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item active" aria-current="page"> <span>สมัครสมาชิก</span></li>
+                                    <li class="breadcrumb-item active" aria-current="page"> <span>สมัครสมาชิกคลัง</span></li>
                                 </ol>
                             </nav>
                         </div>
@@ -50,7 +50,7 @@
                                         <div class="row"> --}}
                                         <div class="col-md-12 mx-0">
 
-                                            <form id="msform" method="post" action="{{ route('Register_member') }}">
+                                            <form id="msform" method="post" action="{{ route('Register_member') }}" enctype="multipart/form-data">
                                                 @csrf
                                                 <input type="hidden" name="pay_type_id" id="pay_type_id">
 
@@ -121,6 +121,53 @@
 
                                                         </div>
 
+                                                        <div class="row">
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="changwat_warehouse"><b>เลือกจังหวัดที่เปิดคลัง</b>
+                                                                    <span
+                                                                        class="text-danger">*</span></label>
+
+                                                                        <select name="changwat_warehouse"
+                                                                        class="form-control basic" id="changwat_warehouse"
+                                                                        required>
+                                                                        <option value="">เลือกจังหวัด</option>
+                                                                        @foreach ($data['provinces'] as $value_provinces)
+                                                                            <option value="{{ $value_provinces->id }}"
+                                                                                @if ($value_provinces->id == old('sent_province')) selected @endif>
+                                                                                {{ $value_provinces->name_th }}</option>
+                                                                        @endforeach
+                                                                    </select>
+
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="amphur_warehouse"><b>เขต/อำเภอ ที่เปิดคลัง</b>
+                                                                    <span
+                                                                        class="text-danger">*</span></label>
+                                                                <select class="form-control basic" name="amphur_warehouse" id="amphur_warehouse" required>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="tambon_warehouse">แขวง/ตำบล
+                                                                    <span class="text-danger">*</span></label>
+                                                                <select name="tambon_warehouse" class="form-control"
+                                                                    id="tambon_warehouse" required>
+                                                                    <option value="">เลือกแขวง/ตำบล</option>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        </div>
+                                                        <hr>
                                                         <div class="row">
                                                             <div class="col-md-2">
                                                                 <div class="form-group">
@@ -649,8 +696,6 @@
                                                     <input type="button" name="next"
                                                         class="next action-button btn btn-primary" value="Next Step" />
 
-
-
                                                 </fieldset>
                                                 <fieldset>
                                                     <div class="form-card">
@@ -663,9 +708,8 @@
                                                                     <select name="number_of_member"
                                                                         class="form-control "id="number_of_member">
 
-                                                                        <option value="1">ทั่วไป (400 PV)</option>
-                                                                        <option value="3">จอง 3 รหัส (1200 PV)
-                                                                        </option>
+                                                                        <option value="4">สมัครคลัง (30,000 PV)</option>
+
 
                                                                     </select>
                                                                 </div>
@@ -701,7 +745,7 @@
                                                                         </thead>
                                                                         <tbody>
                                                                             <?php
-                                                                            $product = \App\Http\Controllers\Frontend\CartGeneralController::product_detail_register('1');
+                                                                            $product = \App\Http\Controllers\Frontend\CartGeneralController::product_detail_register('2');
 
                                                                             ?>
                                                                             @foreach ($product as $value)
@@ -1193,8 +1237,8 @@
                                                                                         class="d-flex align-items-center mt-5  btn-list">
 
                                                                                         <button type="button"
-                                                                                            name="make_payment"
-                                                                                            onclick="submit_confirm(1)"
+
+                                                                                            onclick="submit_confirm(1,'qr_payment')"
                                                                                             class="action-button btn btn-primary"
                                                                                             value="qr">ชำระเงินออนไลน์
                                                                                         </button>
@@ -1227,8 +1271,8 @@
                                                                                                 <div
                                                                                                     class="upload text-center img-thumbnail">
                                                                                                     <input type="file"
-                                                                                                        id="img_card"
-                                                                                                        name="img_card"
+                                                                                                        id="img_pay"
+                                                                                                        name="img_pay"
                                                                                                         class="dropify"
                                                                                                         data-default-file=""
                                                                                                         required>
@@ -1245,8 +1289,8 @@
                                                                                                 <div
                                                                                                     class="upload text-center img-thumbnail">
                                                                                                     <input type="file"
-                                                                                                        id="slip_image_idcard"
-                                                                                                        name="slip_image_idcard"
+                                                                                                        id="img_idcard_pay"
+                                                                                                        name="img_idcard_pay"
                                                                                                         class="dropify"
                                                                                                         data-default-file=""
                                                                                                         required>
@@ -1280,17 +1324,12 @@
 
 
                                                                                                         </div>
-
+                                                                                                        <input type="hidden" name="make_payment" id="make_payment">
                                                                                                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                                                            <button type="button"
-                                                                                                           name="make_payment"
-                                                                                                           onclick="submit_confirm(4)"
-                                                                                                           class="action-button btn btn-primary"
+                                                                                                            <button type="button" onclick="submit_confirm(4,'trafer')"
+                                                                                                           class="action-button btn btn-prnimary"t
                                                                                                            value="tranfer">ชำระเงินบัตรเกตรสุขใจ </button>
                                                                                                    </div>
-
-
-
 
 
 
@@ -1382,7 +1421,9 @@
         }
 
 
-        function submit_confirm(pay_type) {
+        function submit_confirm(pay_type,type) {
+            $('#make_payment').val(type);
+
             $('#pay_type_id').val(pay_type);
             var address_type_order = $('[name="address_type_order"]:checked').val();
             foundEmpty = false;
@@ -1464,12 +1505,12 @@
 
             number_of_member = $('#number_of_member').val();
             pv_total_js = $('#pv_total_js').val();
-            if (number_of_member == 1) {
-                if (pv_total_js >= 400) {
+            if (number_of_member == 4) {
+                if (pv_total_js >= 30000) {
 
                     swal({
-                        title: 'ยืนยันการสมัครสมาชิก',
-                        text: "ยืนยันการสมัครสมาชิกทั่วไปจอง 1 รหัส 400 pv",
+                        title: 'ยืนยันการสมัครสมาชิกคลัง',
+                        text: "ยืนยันการสมัครสมาชิกคลัง 3 รหัส รหัสล่ะ 10000 pv",
                         type: 'warning',
                         showCancelButton: true,
                         confirmButtonText: 'Confirm',
@@ -1486,40 +1527,13 @@
                     })
 
                 } else {
-                    alert("ต้องสั่งซื้อสินค้ามากกว่า 400 pv ขึ้นไป");
+                    alert("ต้องสั่งซื้อสินค้ามากกว่า 30,000 pv ขึ้นไป");
                     return;
                 }
 
             }
 
-            if (number_of_member == 3) {
-                if (pv_total_js >= 1200) {
 
-
-                    swal({
-                        title: 'ยืนยันการสมัครสมาชิก',
-                        text: "ยืนยันการสมัครสมาชิกทั่วไปจอง 1 รหัส 1,200 pv",
-                        type: 'warning',
-                        showCancelButton: true,
-                        confirmButtonText: 'Confirm',
-                        padding: '2em'
-                    }).then(function(result) {
-                        if (result.value) {
-                            $("#msform").submit();
-                            //     swal(
-                            //     'Deleted!',
-                            //     'Your file has been deleted.',
-                            //     'success'
-                            //     )
-                        }
-                    })
-
-                } else {
-                    alert("ต้องสั่งซื้อสินค้ามากกว่า 1,200 pv ขึ้นไป");
-                    return;
-                }
-
-            }
 
 
         }
@@ -1621,6 +1635,120 @@
         }
 
 
+        $("#changwat_warehouse").change(function() {
+            let province_id = $(this).val();
+            $.ajax({
+                url: '{{ route('getDistrict') }}',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    province_id: province_id,
+                },
+                success: function(data) {
+                    $("#amphur_warehouse").children().remove();
+
+                    $("#amphur_warehouse").append(` <option value=""> เลือกอำเภอ </option>`);
+
+                    data.forEach((item) => {
+                        $("#amphur_warehouse").append(
+                            `<option value="${item.id}">${item.name_th}</option>`
+                        );
+
+                    });
+                    $("#amphur_warehouse").attr('disabled', false);
+
+                },
+                error: function() {}
+            })
+        });
+
+
+
+        $("#amphur_warehouse").change(function() {
+            let district_id = $(this).val();
+            $.ajax({
+                url: '{{ route('getTambon') }}',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    district_id: district_id,
+                },
+                success: function(data) {
+                    $("#tambon_warehouse").children().remove();
+                    $("#tambon_warehouse").append(` <option value=""> เลือกตำบล </option>`);
+
+                    data.forEach((item) => {
+                        $("#tambon_warehouse").append(
+                            `<option value="${item.id}">${item.name_th}</option>`
+                        );
+                    });
+                    $("#tambon_warehouse").attr('disabled', false);
+                },
+                error: function() {}
+            })
+        });
+
+
+        $("#tambon_warehouse").change(function() {
+            let tambon_id = $('#tambon_warehouse').val();
+            console.log(tambon_id);
+            $.ajax({
+                url: '{{ route('getZipcode') }}',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    tambon_id: tambon_id,
+                },
+                success: function(data) {
+                    // console.log(data);
+                    $.ajax({
+                url: '{{ route('customers_warehouse') }}',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    tambon_id:tambon_id,
+                },
+                success: function(data) {
+
+                    if(data['status'] == 'success'){
+
+                        swal({
+                            title: 'สมารถสมัครคลังในเขตนี้ได้',
+                            // text: "You clicked the!",
+                            type: 'success',
+                            padding: '2em'
+                        })
+                    }else{
+                        swal({
+                            title: 'ไม่สมารถสมัครคลังในเขตนี้ได้',
+                            // text: "You clicked the!",
+                            type: 'error',
+                            padding: '2em'
+                        })
+                        $("#amphur_warehouse").children().remove();
+                        $("#amphur_warehouse").append(` <option value=""> เลือกอำเภอ </option>`);
+
+                        var element = $("#select2-changwat_warehouse-container");
+                        element.attr("title", "เลือกจังหวัด");
+                        element.html("เลือกจังหวัด");
+                        $("#changwat_warehouse").val('');
+
+                        $("#tambon_warehouse").children().remove();
+                        $("#tambon_warehouse").append(` <option value=""> เลือกตำบล </option>`);
+
+                    }
+
+                },
+                error: function() {}
+            })
+                },
+                error: function() {}
+            })
+        });
+
+        // tambon_warehouse
+
+
         $("#sent_changwat_order").change(function() {
             let province_id = $(this).val();
             $.ajax({
@@ -1648,6 +1776,9 @@
                 error: function() {}
             })
         });
+
+
+
 
 
         $("#sent_amphur_order").change(function() {

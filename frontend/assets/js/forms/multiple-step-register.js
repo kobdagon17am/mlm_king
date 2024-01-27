@@ -37,10 +37,10 @@ $(document).ready(function() {
         });
 
         // Check if any required field is invalid
-        if (!isValid) {
-            alert("กรุณากรอกข้อมูลให้ครบถ้วน");
-            return;
-        }
+        // if (!isValid) {
+        //     alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+        //     return;
+        // }
 
 
         multiple_form_one_current_fs = $(this).parent();

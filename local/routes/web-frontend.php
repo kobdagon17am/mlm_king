@@ -107,6 +107,8 @@ Route::get('Register/{username?}/{line_type?}/{type?}','Frontend\RegisterControl
 Route::post('Register_member','Frontend\RegisterController@member_register')->name('Register_member');
 Route::get('check_id_card','Frontend\RegisterController@check_id_card')->name('check_id_card');
 
+Route::get('customers_warehouse','Frontend\RegisterController@customers_warehouse')->name('customers_warehouse');
+
 
 Route::get('ProfileUpload', function () {
 

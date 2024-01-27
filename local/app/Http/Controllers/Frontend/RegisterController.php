@@ -119,14 +119,21 @@ class RegisterController extends Controller
             $data = ['data' => $resule, 'line_type_back' => $line_type, 'provinces' => $provinces, 'business_location' => $business_location,
              'country' => $country,'bill'=>$bill,'type'=>$type,'get_branch'=> $get_branch,'dataset_bank'=>$dataset_bank];
 
-            return view('frontend/register', compact('data'));
+             if($type == 'warehouse'){
+                return view('frontend/register_warehouse', compact('data'));
+             }else{
+                return view('frontend/register', compact('data'));
+             }
+
+
+
         }
     }
 
 
     public function member_register(Request $request)
     {
-        //  dd('1');
+        // dd($request->all());
 
         //return response()->json(['status' => 'fail', 'ms' => 'ลงทะเบียนไม่สำเร็จกรุณาลงทะเบียนไหม่sss']);
 
@@ -521,6 +528,7 @@ class RegisterController extends Controller
 
                     if($rs_order['status'] == 'success'){
 
+
                         $customer_insert[$i]->order_id_fk =$rs_order['order_id_fk'];
                         $customer_insert[$i]->code_order =$rs_order['code_order'];
                     }else{
@@ -685,7 +693,17 @@ class RegisterController extends Controller
             return $data;
 
         }
-        $insert_db_orders->pay_type_id = $rs->pay_type_id;
+
+        // dd($rs->pay_type_id);
+        // $insert_db_orders->pay_type_id = $rs->pay_type_id;
+
+        // $pay_type_name = DB::table('dataset_order_pay')
+        // ->select('*')
+        // ->where('id', '=', $rs->pay_type_id)
+        // ->first();
+
+        $insert_db_orders->pay_type_name =  $rs->make_payment;
+
 
         // dd($insert_db_orders->toArray());
 
@@ -724,11 +742,14 @@ class RegisterController extends Controller
                 $insert_db_products_list[] = [
                     'code_order'=>$code_order,
                     'product_id_fk'=>$value['id'],
-                    'product_unit_id_fk'=>@$value['product_unit_id'],
+
                     'customers_username' =>  $user_name,
                     'selling_price' =>  $value['price'],
                     'product_name' =>  $value['name'],
                     'amt' =>  $value['quantity'],
+                    'amt_out_stock' =>  $value['quantity'],
+                    'product_unit_id_fk' => $value['attributes']['product_unit_id'],
+                    'product_unit_name' =>$value['attributes']['product_unit_name'],
                     'pv' =>   $value['attributes']['pv'],
                     'total_pv' => $total_pv,
                     'total_price' => $total_price,
@@ -822,9 +843,60 @@ class RegisterController extends Controller
         $insert_db_orders->pv_total = $pv_total;
         $insert_db_orders->tax = $vat;
         $insert_db_orders->tax_total = $vat_total_sum;
-        $insert_db_orders->order_status_id_fk = 2;
+        $insert_db_orders->order_status_id_fk = 9;
         $insert_db_orders->quantity = $quantity ;
         $insert_db_orders->code_order = $code_order;
+
+
+        $file_slip = $rs->file('img_pay');
+
+
+        // $orderstatus_id = 2;
+        if (isset($file_slip)) {
+            $url = 'local/public/files_slip/' . date('Ym');
+            $i=0;
+            foreach($file_slip as $value){
+              $i++;
+              $f_name = date('YmdHis_').''.$i.'_'.$customer_id.'.'.$value->getClientOriginalExtension();
+              if ($value->move($url, $f_name)) {
+                $insert_db_orders->transfer_price = $total_price;
+                $insert_db_orders->img_pay = $url.'/'.$f_name;
+
+                // DB::table('payment_slip')
+                //     ->insert(['customer_id' => $customer_id, 'url' => $url, 'file' => $f_name,'code_order' => $rs->code_order, 'order_id' => $rs->id]);
+
+                // $db_orders = DB::table('db_orders')
+                //     ->where('id', $rs->id)
+                //     ->update(['order_status_id_fk' => $orderstatus_id,'approve_status'=>1,'transfer_price'=>$rs->total_price,'pay_type_id_fk'=>'1']);
+                    $resule = ['status' => 'success', 'message' => 'ชำระเงินแบบโอนชำระสำเร็จ'];
+                }
+            }
+
+        }
+
+        $file_slip2 = $rs->file('img_idcard_pay');
+        // $orderstatus_id = 2;
+        if (isset($file_slip2)) {
+            // Your code here
+            $url = 'local/public/files_slip_card/' . date('Ym');
+            $i=0;
+            foreach($file_slip2 as $value){
+              $i++;
+              $f_name = date('YmdHis_').''.$i.'_'.$customer_id.'.'.$value->getClientOriginalExtension();
+              if ($value->move($url, $f_name)) {
+                $insert_db_orders->transfer_price = $total_price;
+                $insert_db_orders->img_idcard_pay = $url.'/'.$f_name;
+
+                // DB::table('payment_slip')
+                //     ->insert(['customer_id' => $customer_id, 'url' => $url, 'file' => $f_name,'code_order' => $rs->code_order, 'order_id' => $rs->id]);
+
+                // $db_orders = DB::table('db_orders')
+                //     ->where('id', $rs->id)
+                //     ->update(['order_status_id_fk' => $orderstatus_id,'approve_status'=>1,'transfer_price'=>$rs->total_price,'pay_type_id_fk'=>'1']);
+                    $resule = ['status' => 'success', 'message' => 'ชำระเงินแบบโอนชำระสำเร็จ'];
+                }
+            }
+        }
 
 
         try {
@@ -834,7 +906,7 @@ class RegisterController extends Controller
         $insert_order_products_list::insert($insert_db_products_list);
 
 
-        //  Cart::session('register')->clear();
+         Cart::session('register')->clear();
          $resule = ['status' => 'success', 'ms' => 'Order Success','order_id_fk'=>$insert_db_orders->id,'code_order'=>$code_order];
 
 
@@ -927,4 +999,28 @@ class RegisterController extends Controller
         }
 
   }
+
+
+
+    public static function customers_warehouse(Request $rs){
+
+        if($rs->tambon_id){
+          $resule = DB::table('customers_warehouse')
+
+          ->where('tambon_id_fk','=',$rs->tambon_id)
+          ->count();
+
+          if($resule > 0){
+            $rs = ['status'=>'fail'];
+          }else{
+            $rs = ['status'=>'success'];
+          }
+
+        }else{
+
+          $rs = ['status'=>'fail'];
+        }
+            return $rs;
+        }
 }
+
