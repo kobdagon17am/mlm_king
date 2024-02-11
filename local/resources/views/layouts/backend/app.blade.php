@@ -486,6 +486,11 @@
     <script src="{{ asset('backend/plugins/flatpickr/flatpickr.js') }}"></script>
     <script src="{{ asset('backend/assets/js/dashboard/dashboard_1.js') }}"></script> --}}
     <!-- Page Level Plugin/Script Ends -->
+
+
+
+
+
     @yield('js')
 </body>
 </html>

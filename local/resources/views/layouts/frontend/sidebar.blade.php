@@ -10,14 +10,15 @@
                     </div>
                 </a>
             </li>
-            {{-- <li class="menu">
-                <a href="{{route('Register')}}" aria-expanded="false" class="dropdown-toggle" >
+            <li class="menu {{ (request()->is('RegisterNew') ) ? 'active' : '' }}">
+                <a href="{{route('RegisterNew')}}" aria-expanded="false" class="dropdown-toggle" data-active="{{ (request()->is('RegisterNew') ) ? 'true' : '' }}">
                     <div class="">
                         <i class="las la-user-plus"></i>
                         <span>สมัครสมาชิก</span>
                     </div>
                 </a>
-            </li> --}}
+            </li>
+
             <li class="menu {{ (request()->is('tree') ) ? 'active' : '' }}">
                 <a href="{{route('tree')}}"  aria-expanded="false" class="dropdown-toggle" data-active="{{ (request()->is('tree') ) ? 'true' : '' }}">
                     <div class="">
@@ -26,6 +27,9 @@
                     </div>
                 </a>
             </li>
+
+
+
             <li class="menu {{ (request()->is('DirectSponsor') ) ? 'active' : '' }}">
                 <a href="{{route('DirectSponsor')}}"  aria-expanded="false" class="dropdown-toggle" data-active="{{ (request()->is('DirectSponsor') ) ? 'true' : '' }}">
                     <div class="">

@@ -47,6 +47,7 @@ Route::get('home_check_customer_id','Frontend\TreeController@home_check_customer
 Route::post('search','Frontend\TreeController@search')->name('search');
 Route::get('modal_tree','Frontend\TreeController@modal_tree')->name('modal_tree');
 Route::get('modal_add','Frontend\TreeController@modal_add')->name('modal_add');
+Route::get('modal_add_tree','Frontend\TreeController@modal_add_tree')->name('modal_add_tree');
 Route::get('tree','Frontend\TreeController@index')->name('tree');
 Route::get('home_type_tree','Frontend\TreeController@home_type_tree')->name('home_type_tree');
 Route::post('tree','Frontend\TreeController@index')->name('tree');
@@ -101,7 +102,12 @@ Route::get('Order', function () {
 
 
 
-Route::get('Register/{username?}/{line_type?}/{type?}','Frontend\RegisterController@index')->name('Register');
+Route::get('RegisterNew/{username?}/{type?}','Frontend\RegisterController@register_new')->name('RegisterNew');
+
+Route::get('check_data_register','Frontend\RegisterController@check_data_register')->name('check_data_register');
+
+
+Route::get('Register/{username?}/{line_type?}/{type?}/{sponser?}','Frontend\RegisterController@index')->name('Register');
 
 
 Route::post('Register_member','Frontend\RegisterController@member_register')->name('Register_member');

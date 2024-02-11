@@ -18,10 +18,10 @@ class RegisterSuccessController extends Controller
         //   dd('111');
 
         $get_customers = DB::table('customers_warning')
-            ->where('id_card',$id_card)
-            ->get();
+        ->where('id_card', 'like',$id_card.'%')
+        ->get();
 
-        // dd($get_customers);
+
 
 
         return view('frontend.register_success', compact('get_customers'));

@@ -29,15 +29,23 @@ class RegisterController extends Controller
         $this->middleware('customer');
     }
 
-    public function index($user_name, $line_type,$type)
+    public function index($user_name, $line_type,$type,$sponser)
     {
-
-
-
 
         if (empty($user_name) || empty($line_type)) {
             return redirect('tree')->withError('กรุณาเลือกตำแหน่งที่ต้องการ Add User');
         } else {
+
+            $sponser_data = DB::table('customers')
+            ->select('id','username','business_name','prefix_name','first_name','last_name','profile_img','upline_id','qualification_id')
+            ->where('username','=',$sponser)
+            ->first();
+
+            if (empty($sponser_data)) {
+                return redirect('tree')->withError('ไม่พบรหัสผู้แนะนำ');
+            }
+
+
             $resule = DB::table('customers')
                 ->select('*')
                 ->where('username', '=', $user_name)
@@ -117,7 +125,7 @@ class RegisterController extends Controller
 
 
             $data = ['data' => $resule, 'line_type_back' => $line_type, 'provinces' => $provinces, 'business_location' => $business_location,
-             'country' => $country,'bill'=>$bill,'type'=>$type,'get_branch'=> $get_branch,'dataset_bank'=>$dataset_bank];
+             'country' => $country,'bill'=>$bill,'type'=>$type,'get_branch'=> $get_branch,'dataset_bank'=>$dataset_bank,'sponser_data'=> $sponser_data];
 
              if($type == 'warehouse'){
                 return view('frontend/register_warehouse', compact('data'));
@@ -128,6 +136,69 @@ class RegisterController extends Controller
 
 
         }
+    }
+
+
+    public function register_new($username='',$type='')
+    {
+        if($username and $type){
+
+            $customers = DB::table('customers')
+            ->select(
+              'customers.id',
+              'customers.username',
+              'customers.first_name',
+              'customers.last_name',
+              'customers.upline_id',
+              'customers.line_type',
+            )
+           ->where('customers.username', '=', $username)
+           ->first();
+
+            $data =['status'=>'select','username'=>$customers,'type'=>$type];
+            return view('frontend/register_new',compact('data'));
+        }else{
+            $data =  \App\Http\Controllers\Frontend\FC\UplineAllController::all_upline(Auth::guard('c_user')->user()->username);
+
+            return view('frontend/register_new',compact('data'));
+        }
+
+
+
+    }
+
+    public function check_data_register(Request $rs)
+    {
+
+
+        if($rs->line_type == 'A'){
+            $las_a_id = \App\Http\Controllers\Frontend\TreeController::check_under_a($rs->sponser);
+            $rs = ['status'=>'success','customer'=>$las_a_id];
+        }elseif($rs->line_type == 'B'){
+            $las_b_id = \App\Http\Controllers\Frontend\TreeController::check_under_b($rs->sponser);
+            $rs = ['status'=>'success','customer'=>$las_b_id];
+        }else{
+            $rs = ['status'=>'fail'];
+        }
+        return $rs;
+
+    }
+
+
+    public function under_a($username)
+    {
+
+        $username = $username;
+        $las_a_id = \App\Http\Controllers\Frontend\TreeController::m_under_a($username);
+        return $las_a_id;
+    }
+
+    public function under_b($username)
+    {
+        $username = $username;
+
+        $las_b_id = \App\Http\Controllers\Frontend\TreeController::m_under_b($username);
+        return $las_b_id;
     }
 
 
@@ -381,7 +452,7 @@ class RegisterController extends Controller
                         }
                         $user_name_success[] = $c_code;
 
-                    $customer_insert[$i] = new Customer;
+                    $customer_insert[$i] = new Customer_warning;
                     $customer_insert[$i]->username = $c_code;
 
                     $id_card = (trim($request->input('id_card')) == '') ? null : $request->input('id_card');
@@ -490,6 +561,7 @@ class RegisterController extends Controller
                         return redirect()->back()->withErrors($validator)->withInput()->with('error', $rs_order['ms'] );
                     }
 
+
                     $customer_insert->save();
                     // dd($customer_insert);
                     // $customers_address_card_insert->customer_id = $customer_insert->id;
@@ -522,7 +594,6 @@ class RegisterController extends Controller
 
 
 
-
                 for ($i = 0; $i < 3; $i++) {
                     DB::BeginTransaction();
 
@@ -537,7 +608,8 @@ class RegisterController extends Controller
                     }
 
 
-                    $customer_insert[$i]->save();
+                    $rs = $customer_insert[$i]->save();
+                    DB::commit();
                     // dd($customer_insert);
                     // $customers_address_card_insert[$i]->customer_id = $customer_insert[$i]->id;
                     // $customers_address_card_insert[$i]->username = $customer_insert[$i]->username;
@@ -553,10 +625,12 @@ class RegisterController extends Controller
                 }
 
 
+
                 if($rs_order['status'] == 'success'){
 
-
                     DB::commit();
+
+
                     return redirect('RegisterSuccess/'.$id_card)->withSuccess('สมัครสมาชิกสำเร็จ รอการตรวจสอบจาก Admin');
                 }else{
                     DB::rollback();
@@ -612,6 +686,9 @@ class RegisterController extends Controller
 
 
 
+
+
+
         if($rs->address_type_order == '1'){//ตามที่อยู่ลงทะเบียน
 
 
@@ -621,7 +698,23 @@ class RegisterController extends Controller
 
             }
 
+            $dataset_changwat = DB::table('dataset_provinces')
+            ->select('name_th')
+            ->where('id',$rs->sent_changwat)
+            ->first();
 
+
+            $dataset_amphuress = DB::table('dataset_amphures')
+            ->select('name_th')
+            ->where('id',$rs->sent_amphur)
+            ->first();
+
+
+
+            $dataset_tambon = DB::table('dataset_districts')
+            ->select('name_th')
+            ->where('id',$rs->sent_tambon)
+            ->first();
 
             $insert_db_orders->address_sent = 'system';
             $insert_db_orders->delivery_province_id = $rs->sent_changwat;
@@ -633,11 +726,12 @@ class RegisterController extends Controller
             $insert_db_orders->tambon_id = $rs->sent_tambon;
             $insert_db_orders->district_id = $rs->sent_amphur;
             $insert_db_orders->province_id = $rs->sent_changwat;
+            $insert_db_orders->district = $dataset_amphuress->name_th;
+            $insert_db_orders->tambon =$dataset_tambon->name_th;
+            $insert_db_orders->province = $dataset_changwat->name_th;
             $insert_db_orders->zipcode = $rs->sent_zipcode;
-
             $insert_db_orders->tel = $rs->phone;
             $insert_db_orders->name = $rs->firstname .' '. $rs->lastname;
-
 
         }
 
@@ -646,22 +740,36 @@ class RegisterController extends Controller
             if(empty($rs->sent_branch_order)){
                 $data = ['status'=>'fail','ms'=>'กรุณาเลือกสาขา'];
                 return $data;
-
             }
 
             $insert_db_orders->address_sent = 'branch';
             $insert_db_orders->sentto_branch_id = $rs->sent_branch_order;
-
             $insert_db_orders->tel = $rs->same_phone;
-            $insert_db_orders->name = $rs->sam_name;
-
+            $insert_db_orders->name = $rs->firstname .' '. $rs->lastname;
         }
 
 
 
-
-
         if($rs->address_type_order == '3'){ //ที่อยู่อื่นๆ
+
+            $dataset_changwat = DB::table('dataset_provinces')
+            ->select('name_th')
+            ->where('id',$rs->sent_changwat)
+            ->first();
+
+
+            $dataset_amphuress = DB::table('dataset_amphures')
+            ->select('name_th')
+            ->where('id',$rs->sent_amphur)
+            ->first();
+
+
+
+            $dataset_tambon = DB::table('dataset_districts')
+            ->select('name_th')
+            ->where('id',$rs->sent_tambon)
+            ->first();
+
 
             $insert_db_orders->address_sent = 'other';
             $insert_db_orders->address_sent = 'system';
@@ -674,13 +782,14 @@ class RegisterController extends Controller
             $insert_db_orders->tambon_id = $rs->sent_tambon_order;
             $insert_db_orders->district_id = $rs->sent_amphur_order;
             $insert_db_orders->province_id = $rs->sent_changwat_order;
+            $insert_db_orders->district = $dataset_amphuress->name_th;
+            $insert_db_orders->tambon ==$dataset_tambon->name_th;
+            $insert_db_orders->province = $dataset_changwat->name_th;
             $insert_db_orders->zipcode = $rs->sent_zipcode_order;
 
             $insert_db_orders->tel = $rs->phone;
             $insert_db_orders->name = $rs->firstname .' '. $rs->lastname;
         }
-
-
 
 
         // เงินโอน
@@ -786,16 +895,12 @@ class RegisterController extends Controller
         //ราคาสินค้า
         $price = Cart::session('register')->getTotal();
 
-        $vat = DB::table('dataset_vat')
-        ->where('business_location_id_fk', '=', $business_location_id)
-        ->first();
 
-       $vat = $vat->vat;
        //vatใน 7%
 
         //มูลค่าสินค้า
-        $price_vat = $price - $vat_total_sum;
-        $insert_db_orders->product_value = $price_vat ;
+        $price_vat = $price;
+        $insert_db_orders->product_value = $price_vat;
 
         $shipping = RegisterController::fc_shipping($pv_total);
         // $shipping_zipcode = \App\Http\Controllers\Frontend\ShippingController::fc_shipping_zip_code($insert_db_orders->zipcode);
@@ -839,13 +944,13 @@ class RegisterController extends Controller
 
 
         $insert_db_orders->shipping_price = $shipping;
-        $insert_db_orders->total_price = $total_price;
+        $insert_db_orders->total_price = $price+$shipping;
         $insert_db_orders->pv_total = $pv_total;
-        $insert_db_orders->tax = $vat;
         $insert_db_orders->tax_total = $vat_total_sum;
         $insert_db_orders->order_status_id_fk = 9;
         $insert_db_orders->quantity = $quantity ;
         $insert_db_orders->code_order = $code_order;
+        $insert_db_orders->phone_pay = $rs->phone_pay;
 
 
         $file_slip = $rs->file('img_pay');
@@ -854,13 +959,15 @@ class RegisterController extends Controller
         // $orderstatus_id = 2;
         if (isset($file_slip)) {
             $url = 'local/public/files_slip/' . date('Ym');
+
             $i=0;
-            foreach($file_slip as $value){
-              $i++;
-              $f_name = date('YmdHis_').''.$i.'_'.$customer_id.'.'.$value->getClientOriginalExtension();
-              if ($value->move($url, $f_name)) {
-                $insert_db_orders->transfer_price = $total_price;
-                $insert_db_orders->img_pay = $url.'/'.$f_name;
+
+              $f_name = date('YmdHis_').''.$i.'_'.$customer_id.'.'.$file_slip->getClientOriginalExtension();
+
+              if ($file_slip->move($url, $f_name)) {
+                $insert_db_orders->transfer_price = $price;
+                $insert_db_orders->img_card = $url.'/'.$f_name;
+
 
                 // DB::table('payment_slip')
                 //     ->insert(['customer_id' => $customer_id, 'url' => $url, 'file' => $f_name,'code_order' => $rs->code_order, 'order_id' => $rs->id]);
@@ -870,23 +977,22 @@ class RegisterController extends Controller
                 //     ->update(['order_status_id_fk' => $orderstatus_id,'approve_status'=>1,'transfer_price'=>$rs->total_price,'pay_type_id_fk'=>'1']);
                     $resule = ['status' => 'success', 'message' => 'ชำระเงินแบบโอนชำระสำเร็จ'];
                 }
-            }
+
 
         }
 
         $file_slip2 = $rs->file('img_idcard_pay');
         // $orderstatus_id = 2;
+
         if (isset($file_slip2)) {
+
             // Your code here
             $url = 'local/public/files_slip_card/' . date('Ym');
             $i=0;
-            foreach($file_slip2 as $value){
               $i++;
-              $f_name = date('YmdHis_').''.$i.'_'.$customer_id.'.'.$value->getClientOriginalExtension();
-              if ($value->move($url, $f_name)) {
-                $insert_db_orders->transfer_price = $total_price;
+              $f_name = date('YmdHis_').''.$i.'_'.$customer_id.'.'.$file_slip2->getClientOriginalExtension();
+              if ($file_slip2->move($url, $f_name)) {
                 $insert_db_orders->img_idcard_pay = $url.'/'.$f_name;
-
                 // DB::table('payment_slip')
                 //     ->insert(['customer_id' => $customer_id, 'url' => $url, 'file' => $f_name,'code_order' => $rs->code_order, 'order_id' => $rs->id]);
 
@@ -895,23 +1001,20 @@ class RegisterController extends Controller
                 //     ->update(['order_status_id_fk' => $orderstatus_id,'approve_status'=>1,'transfer_price'=>$rs->total_price,'pay_type_id_fk'=>'1']);
                     $resule = ['status' => 'success', 'message' => 'ชำระเงินแบบโอนชำระสำเร็จ'];
                 }
-            }
+
         }
 
 
         try {
             DB::BeginTransaction();
 
+
         $insert_db_orders->save();
         $insert_order_products_list::insert($insert_db_products_list);
 
-
          Cart::session('register')->clear();
          $resule = ['status' => 'success', 'ms' => 'Order Success','order_id_fk'=>$insert_db_orders->id,'code_order'=>$code_order];
-
-
          DB::commit();
-
          return $resule;
 
 
@@ -974,8 +1077,8 @@ class RegisterController extends Controller
       $code =  IdGenerator::generate([
           'table' => 'customer_code',
           'field' => 'c_code',
-          'length' => 10,
-          'prefix' => 'PSB',
+          'length' => 7,
+          'prefix' => '0',
           'reset_on_prefix_change' => true
       ]);
 

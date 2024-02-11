@@ -27,7 +27,7 @@ use App\Http\Controllers\Frontend\TreeController;
                         <nav class="breadcrumb-one" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    <span>โครงสร้างสายงาน</span>
+                                    <span>โครงสร้างขาาน</span>
                                 </li>
                             </ol>
                         </nav>
@@ -66,12 +66,12 @@ use App\Http\Controllers\Frontend\TreeController;
 
                                 @if (empty($data['lv2_a']) || empty($data['lv3_a_a']))
                                     <button class="btn btn-success btn-sm btn-disabled disabled mt-2"
-                                        style="color: #FFF;font-size: 16px"><i class="las la-sort-down"></i> ดิ่งขา A</button>
+                                        style="color: #FFF;font-size: 16px"><i class="las la-sort-down"></i> ดิ่งขาซ้าย</button>
 
                                 @else
                                     <a href="#" onclick="event.preventDefault();
                     document.getElementById('under_a').submit();" class="btn btn-success btn-sm mt-2"
-                                        style="color: #FFF;font-size:16px"><i class="las la-sort-down"></i> ดิ่งขา A</a>
+                                        style="color: #FFF;font-size:16px"><i class="las la-sort-down"></i> ดิ่งขาซ้าย</a>
 
                                     <form id="under_a" action="{{ route('under_a') }}" method="POST"
                                         style="display: none;">
@@ -84,13 +84,12 @@ use App\Http\Controllers\Frontend\TreeController;
 
                                 @if (empty($data['lv2_b']) || empty($data['lv3_b_b']))
                                     <button class="btn btn-success btn-sm btn-disabled disabled mt-2"
-                                        style="color: #FFF;font-size: 16px"><i class="las la-sort-down"></i> ดิ่งขา
-                                        B</button>
+                                        style="color: #FFF;font-size: 16px"><i class="las la-sort-down"></i> ดิ่งขาขวา </button>
 
                                 @else
                                     <a href="#" onclick="event.preventDefault();
                     document.getElementById('under_b').submit();" class="btn btn-sm btn-success mt-2"
-                                        style="color: #FFF;font-size: 16px"><i class="las la-sort-down"></i> ดิ่งขา B</a>
+                                        style="color: #FFF;font-size: 16px"><i class="las la-sort-down"></i> ดิ่งขาขวา</a>
 
                                     <form id="under_b" action="{{ route('under_b') }}" method="POST"
                                         style="display: none;">
@@ -176,16 +175,19 @@ use App\Http\Controllers\Frontend\TreeController;
                                                $data_lv2 =$data['lv2_a'];
                                                $model_lv2 = 'lv2_a';
                                                $type = 'a';
-                                               $line_lv2 = 'A';
+                                               $line_lv2 = 'ซ้าย';
+                                               $line_lv2_add = 'A';
                                              }elseif($i==2){
                                                $data_lv2 =$data['lv2_b'];
                                                $model_lv2 = 'lv2_b';
                                                $type = 'b';
-                                               $line_lv2 = 'B';
+                                               $line_lv2 = 'ขวา';
+                                               $line_lv2_add = 'B';
                                              }else{
                                                $data_lv2 = null;
                                                $model_lv2 = null;
                                                $line_lv2 = null;
+                                               $line_lv2_add = null;
                                              }
                                              ?>
 
@@ -212,7 +214,7 @@ use App\Http\Controllers\Frontend\TreeController;
 
 
                                                                     <div class="member-detailsr">
-                                                                      <h6 class="mt-2">สาย {{$line_lv2}} : {{$data_lv2->username}}</h6>
+                                                                      <h6 class="mt-2">ขา{{$line_lv2}} : {{$data_lv2->username}}</h6>
                                                                       <h6 class="text-primary">
                                                                           {{$data_lv2->prefix_name.' '.$data_lv2->first_name.' '.$data_lv2->last_name }}
                                                                       </h6>
@@ -229,20 +231,25 @@ use App\Http\Controllers\Frontend\TreeController;
                                                       if($j==1){
                                                        $data_lv3 =$data['lv3_'.$type.'_a'];
                                                        $model_lv3 = 'lv3_'.$type.'_a';
-                                                       $line_lv3 = 'A';
+                                                       $line_lv3 = 'ซ้าย';
                                                        $type_v3 = 'a';
+                                                       $line_lv3_add = 'A';
                                                      }elseif($j==2){
                                                        $data_lv3 =$data['lv3_'.$type.'_b'];
                                                        $model_lv3 = 'lv3_'.$type.'_b';
-                                                       $line_lv3 = 'B';
+                                                       $line_lv3 = 'ขวา';
                                                        $type_v3 = 'b';
+                                                       $line_lv3_add = 'B';
                                                      }else{
                                                        $data_lv3 = null;
                                                        $model_lv3 = null;
                                                        $line_lv3 = null;
+                                                       $line_lv3_add = null;
                                                      }
+
                                                      ?>
                                                      @if($data_lv3)
+
                                                         <li>
                                                             <a href="javascript:void(0);">
                                                                 <div class="member-view-box">
@@ -265,7 +272,7 @@ use App\Http\Controllers\Frontend\TreeController;
 
 
                                                                     <div class="member-detailsr">
-                                                                      <h6 class="mt-2">สาย {{$line_lv3}} : {{$data_lv3->username}}</h6>
+                                                                      <h6 class="mt-2">ขา{{$line_lv3}} : {{$data_lv3->username}}</h6>
                                                                       <h6 class="text-primary">
                                                                          {{$data_lv3->prefix_name.' '.$data_lv3->first_name.' '.$data_lv3->last_name }}
                                                                       </h6>
@@ -282,20 +289,25 @@ use App\Http\Controllers\Frontend\TreeController;
                                                               if($k==1){
                                                                $data_lv4 =$data['lv4_'.$type.'_'.$type_v3.'_a'];
                                                                $model_lv4 = 'lv4_'.$type.'_'.$type_v3.'_a';
-                                                               $line_lv4 = 'A';
+                                                               $line_lv4 = 'ซ้าย';
+                                                               $line_lv4_add = 'A';
                                                              }elseif($k==2){
                                                               $data_lv4 =$data['lv4_'.$type.'_'.$type_v3.'_b'];
                                                                $model_lv4 = 'lv4_'.$type.'_'.$type_v3.'_b';
-                                                               $line_lv4 = 'B';
+                                                               $line_lv4 = 'ขวา';
+                                                               $line_lv4_add = 'B';
 
                                                              }else{
                                                                $data_lv4 = null;
                                                                $model_lv4 = null;
                                                                $line_lv4 = null;
+                                                               $line_lv4_add = null;
                                                              }
+
 
                                                              ?>
                                                              @if($data_lv4)
+
                                                                 <li>
                                                                     <a href="javascript:void(0);">
                                                                         <div class="member-view-box">
@@ -319,7 +331,7 @@ use App\Http\Controllers\Frontend\TreeController;
 
 
                                                                              <div class="member-detailsr last">
-                                                                              <h6 class="mt-2"><span class="d-none d-md-inline-block">สาย {{$line_lv3}} :</span>  {{$data_lv4->username}}</h6>
+                                                                              <h6 class="mt-2"><span class="d-none d-md-inline-block">ขา{{$line_lv4}} :</span>  {{$data_lv4->username}}</h6>
                                                                               <h6 class="text-primary">
                                                                                <span class="d-none d-md-block">{{ $data_lv4->prefix_name.' '.$data_lv4->first_name.' '.$data_lv4->last_name }}</span>
                                                                                <span class="d-block d-md-none">
@@ -338,9 +350,10 @@ use App\Http\Controllers\Frontend\TreeController;
                                                                 <a href="javascript:void(0);">
                                                                   <div class="member-view-box">
                                                                       <div class="member-image">
-                                                                          <img onclick="modal_add('{{$data_lv3->username}}','{{$line_lv4}}')" src="{{asset('frontend/assets/icon/add_user.png') }}">
+                                                                          <img onclick="modal_add('{{$data_lv3->username}}','{{$line_lv4_add}}')" src="{{asset('frontend/assets/icon/add_user.png') }}">
+                                                                           {{-- <img src="{{asset('frontend/assets/icon/add_user.png')}}"> --}}
                                                                           <div class="member-detailsr">
-                                                                            <h6 class="f-w-600 mt-2 text-success">เพิ่ม {{$line_lv4}}</h6>
+                                                                            <h6 class="f-w-600 mt-2 text-success">ขา{{$line_lv4}}</h6>
                                                                           </div>
                                                                       </div>
                                                                   </div>
@@ -362,9 +375,10 @@ use App\Http\Controllers\Frontend\TreeController;
                                                                     <a href="javascript:void(0);">
                                                                       <div class="member-view-box">
                                                                           <div class="member-image">
-                                                                              <img onclick="modal_add('{{$data_lv2->username}}','{{$line_lv3}}')" src="{{asset('frontend/assets/icon/add_user.png')}}">
+                                                                              <img onclick="modal_add('{{$data_lv2->username}}','{{$line_lv3_add}}')" src="{{asset('frontend/assets/icon/add_user.png')}}">
+                                                                            {{-- <img src="{{asset('frontend/assets/icon/add_user.png')}}"> --}}
                                                                               <div class="member-detailsr">
-                                                                                <h6 class="mt-2 text-success">เพิ่ม {{$line_lv3}} </h6>
+                                                                                <h6 class="mt-2 text-success">ขา{{$line_lv3}} </h6>
                                                                                 @if ($data['lv3_a_a'] || $data['lv3_b_a'])
                                                                                   <h6 class="invisible">fake</h6>
                                                                                 @endif
@@ -379,7 +393,7 @@ use App\Http\Controllers\Frontend\TreeController;
                                                                                   <div class="member-image">
                                                                                       <img src="{{asset('frontend/assets/icon/add_user_not.png')}}">
                                                                                     <div class="member-detailsr">
-                                                                                      <h6 class="f-w-600 mt-2 text-success">สาย A</h6>
+                                                                                      <h6 class="f-w-600 mt-2 text-success">ขาซ้าย</h6>
                                                                                     </div>
                                                                                   </div>
                                                                               </div>
@@ -391,7 +405,7 @@ use App\Http\Controllers\Frontend\TreeController;
                                                                                 <div class="member-image">
                                                                                     <img src="{{asset('frontend/assets/icon/add_user_not.png')}}">
                                                                                     <div class="member-detailsr">
-                                                                                      <h6 class="f-w-600 mt-2 text-success">สาย B</h6>
+                                                                                      <h6 class="f-w-600 mt-2 text-success">ขาขวา</h6>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -408,7 +422,7 @@ use App\Http\Controllers\Frontend\TreeController;
                                                                         <div class="member-image">
                                                                             <img   src="{{asset('frontend/assets/icon/add_user_not.png')}}">
                                                                             <div class="member-detailsr">
-                                                                              <h6 class="f-w-600 mt-2 text-success">สาย {{$line_lv3}}</h6>
+                                                                              <h6 class="f-w-600 mt-2 text-success">ขา{{$line_lv3}}</h6>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -430,9 +444,10 @@ use App\Http\Controllers\Frontend\TreeController;
                                               <a href="javascript:void(0);">
                                                 <div class="member-view-box">
                                                     <div class="member-image">
-                                                        <img onclick="modal_add('{{ $data['lv1']->username }}','{{ $line_lv2 }}')" src="{{asset('frontend/assets/icon/add_user.png')}}">
+                                                        <img onclick="modal_add('{{ $data['lv1']->username }}','{{ $line_lv2_add }}')" src="{{asset('frontend/assets/icon/add_user.png')}}">
+                                                        {{-- <img src="{{asset('frontend/assets/icon/add_user.png')}}"> --}}
                                                         <div class="member-detailsr">
-                                                          <h6 class="f-w-600 mt-2 text-success">เพิ่ม {{$line_lv2}}</h6>
+                                                          <h6 class="f-w-600 mt-2 text-success">ขา{{$line_lv2}}</h6>
                                                           <h6 class="text-muted">ภายใต้ :  {{@$data['lv1']->prefix_name.' '.@$data['lv1']->first_name.' '.@$data['lv1']->last_name }} </h6>
                                                         </div>
                                                     </div>
@@ -446,7 +461,7 @@ use App\Http\Controllers\Frontend\TreeController;
                                                       <div class="member-image">
                                                           <img src="{{asset('frontend/assets/icon/add_user_not.png')}}">
                                                           <div class="member-detailsr">
-                                                            <h6 class="f-w-600 mt-2 text-success">สาย A</h6>
+                                                            <h6 class="f-w-600 mt-2 text-success">ขาซ้าย</h6>
                                                           </div>
                                                       </div>
                                                   </div>
@@ -458,7 +473,7 @@ use App\Http\Controllers\Frontend\TreeController;
                                                         <div class="member-image">
                                                             <img src="{{asset('frontend/assets/icon/add_user_not.png')}}">
                                                             <div class="member-detailsr">
-                                                              <h6 class="f-w-600 mt-2 text-success">สาย A</h6>
+                                                              <h6 class="f-w-600 mt-2 text-success">ขาซ้าย</h6>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -470,7 +485,7 @@ use App\Http\Controllers\Frontend\TreeController;
                                                       <div class="member-image">
                                                           <img src="{{asset('frontend/assets/icon/add_user_not.png')}}">
                                                           <div class="member-detailsr">
-                                                            <h6 class="f-w-600 mt-2 text-success">สาย B</h6>
+                                                            <h6 class="f-w-600 mt-2 text-success">ขาขวา</h6>
                                                           </div>
                                                       </div>
                                                   </div>
@@ -484,7 +499,7 @@ use App\Http\Controllers\Frontend\TreeController;
                                                     <div class="member-image">
                                                         <img src="{{asset('frontend/assets/icon/add_user_not.png')}}">
                                                         <div class="member-detailsr">
-                                                          <h6 class="f-w-600 mt-2 text-success">สาย B</h6>
+                                                          <h6 class="f-w-600 mt-2 text-success">ขาขวา</h6>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -497,7 +512,7 @@ use App\Http\Controllers\Frontend\TreeController;
                                                       <div class="member-image">
                                                           <img src="{{asset('frontend/assets/icon/add_user_not.png')}}">
                                                           <div class="member-detailsr">
-                                                            <h6 class="f-w-600 mt-2 text-success">สาย A</h6>
+                                                            <h6 class="f-w-600 mt-2 text-success">ขาซ้าย</h6>
                                                           </div>
                                                       </div>
                                                   </div>
@@ -510,7 +525,7 @@ use App\Http\Controllers\Frontend\TreeController;
                                                     <div class="member-image">
                                                         <img src="{{asset('frontend/assets/icon/add_user_not.png')}}">
                                                         <div class="member-detailsr">
-                                                          <h6 class="f-w-600 mt-2 text-success">สาย B</h6>
+                                                          <h6 class="f-w-600 mt-2 text-success">ขาขวา</h6>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -580,7 +595,7 @@ $.ajax({
 
     function modal_add(username, type) {
         $.ajax({
-                url: '{{ route('modal_add') }}',
+                url: '{{ route('modal_add_tree') }}',
                 type: 'GET',
                 data: {
                   username: username,

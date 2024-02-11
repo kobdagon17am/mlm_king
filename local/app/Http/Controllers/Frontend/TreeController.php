@@ -43,6 +43,7 @@ class TreeController extends Controller
 
     public function modal_tree(Request $request)
     {
+
         $username = $request->username;
 
         $user = DB::table('customers')
@@ -63,14 +64,37 @@ class TreeController extends Controller
 
     public function modal_add(Request $request)
     {
+
         $username = $request->username;
+        $sponser = $request->sponser;
         $type = $request->type;
         $data = DB::table('customers')
             ->select('*')
             ->where('username', '=', $username)
             ->first();
-        return view('frontend/modal/modal_add', ['data' => $data, 'type' => $type]);
+
+        $sponser = DB::table('customers')
+            ->select('*')
+            ->where('username', '=', $sponser)
+            ->first();
+
+        return view('frontend/modal/modal_add', ['data' => $data, 'type' => $type,'sponser'=>$sponser]);
     }
+
+    public function modal_add_tree(Request $request)
+    {
+
+        $username = $request->username;
+
+        $type = $request->type;
+        $data = DB::table('customers')
+            ->select('*')
+            ->where('username', '=', $username)
+            ->first();
+        return view('frontend/modal/modal_add_tree', ['data'=>$data,'type'=>$type]);
+    }
+
+
 
     public function home_type_tree(Request $request)
     {
@@ -413,9 +437,8 @@ class TreeController extends Controller
 
             for ($i=1; $i<$j; $i++) {
 
-
                 $last_id_a = DB::table('customers')
-                ->select('upline_id','username','upline_id','qualification_id')
+                ->select('username','upline_id','qualification_id')
                 ->where('upline_id','=',$username)
                 ->where('line_type','=','A')
                 ->first();
@@ -423,12 +446,10 @@ class TreeController extends Controller
                 if($last_id_a){
                     $j = $j+$i;
                     $username	= $last_id_a->username;
-
                 }else{
                     $j = 0;
-
                     $last_id_a = DB::table('customers')
-                    ->select('upline_id','username','upline_id','qualification_id')
+                    ->select('username','upline_id','qualification_id')
                     ->where('username','=',$username)
                     ->where('line_type','=','A')
                     ->first();
@@ -451,24 +472,99 @@ class TreeController extends Controller
 
             for ($i=1; $i<$j; $i++) {
 
-                $last_id_a = DB::table('customers')
-                ->select('upline_id','username','upline_id','qualification_id')
+                $last_id_b = DB::table('customers')
+                ->select('username','upline_id','qualification_id')
                 ->where('upline_id','=',$username)
                 ->where('line_type','=','B')
+                ->first();
+
+                if($last_id_b){
+                    $j = $j+$i;
+                    $username	= $last_id_b->username;
+                }else{
+                    $j = 0;
+
+                    $last_id_b = DB::table('customers')
+                    ->select('username','upline_id','qualification_id')
+                    ->where('username','=',$username)
+                    ->where('line_type','=','B')
+                    ->first();
+                    return $last_id_b->upline_id;
+                }
+
+            }
+
+        }
+    }
+    public static function check_under_a($username=''){
+
+
+        if (empty($username)) {
+
+            return null;
+        }else{
+            $j = 2;
+
+            for ($i=1; $i<$j; $i++) {
+
+
+                $last_id_a = DB::table('customers')
+                ->select('username','business_name','prefix_name','first_name','last_name','profile_img','upline_id','qualification_id')
+                ->where('upline_id','=',$username)
+                ->where('line_type','=','A')
                 ->first();
 
                 if($last_id_a){
                     $j = $j+$i;
                     $username	= $last_id_a->username;
+
                 }else{
                     $j = 0;
 
+
+
                     $last_id_a = DB::table('customers')
-                    ->select('upline_id','username','upline_id','qualification_id')
+                    ->select('username','business_name','prefix_name','first_name','last_name','profile_img','upline_id','qualification_id')
                     ->where('username','=',$username)
-                    ->where('line_type','=','B')
                     ->first();
-                    return $last_id_a->upline_id;
+
+
+                    return $last_id_a;
+
+                }
+
+            }
+
+        }
+    }
+
+    public static function check_under_b($username=''){
+
+        if (empty($username)) {
+
+            return null;
+        }else{
+            $j = 2;
+
+            for ($i=1; $i<$j; $i++) {
+
+                $last_id_b = DB::table('customers')
+                ->select('username','business_name','prefix_name','first_name','last_name','profile_img','upline_id','qualification_id')
+                ->where('upline_id','=',$username)
+                ->where('line_type','=','B')
+                ->first();
+
+                if($last_id_b){
+                    $j = $j+$i;
+                    $username	= $last_id_b->username;
+                }else{
+                    $j = 0;
+
+                    $last_id_b = DB::table('customers')
+                    ->select('username','business_name','prefix_name','first_name','last_name','profile_img','upline_id','qualification_id')
+                    ->where('username','=',$username)
+                    ->first();
+                    return $last_id_b;
                 }
 
             }

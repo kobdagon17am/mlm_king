@@ -143,6 +143,8 @@
     <script src="{{ asset('backend/plugins/owl-carousel/owl.carousel.js') }}"></script>
     <script src="{{ asset('backend/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/authentication/auth_1.js') }}"></script>
+    <script src="{{ asset('frontend/plugins/sweetalerts/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/basicui/sweet_alerts.js') }}"></script>
     @include('layouts.frontend.flash-message')
     <!-- Page Level Plugin/Script Ends -->
 </body>

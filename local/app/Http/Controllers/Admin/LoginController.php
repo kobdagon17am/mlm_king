@@ -18,18 +18,21 @@ class LoginController extends Controller
     public function admin_login(Request $req)
     {
 
-
-
         $admin = Admin::where('username',$req->username)
             // ->whereIn('status', [1, 2])
             ->first();
-            Auth::guard('admin')->login($admin);
-            return redirect('admin/Dashboard');
+            // Auth::guard('admin')->login($admin);
+            // return redirect('admin/Dashboard');
 
         if ($admin) {
 
-            if (Hash::check($req->password, $admin->password)) {
-                Auth::guard('admin')->login($admin);
+            $get_users = Admin::where('username','=',$req->username)
+            ->where('password','=',md5($req->password))
+            ->first();
+
+            if ($get_users) {
+
+                Auth::guard('admin')->login($get_users);
                 return redirect('admin/Dashboard');
             } else {
                 return redirect('admin')->withError(

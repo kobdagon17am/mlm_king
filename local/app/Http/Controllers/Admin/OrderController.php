@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Customers;
-use App\Orders;
+use App\Modal\Order;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -21,7 +21,7 @@ use App\StockMovement;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use PDF;
-use  Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrderController extends Controller
 {
@@ -34,9 +34,9 @@ class OrderController extends Controller
     {
 
 
-        $Shipping_type =DB::table('dataset_shipping_type')
-        ->where('status', '=', 1)
-        ->get();
+        $Shipping_type = DB::table('dataset_shipping_type')
+            ->where('status', '=', 1)
+            ->get();
         $branch = DB::table('branch')
             ->where('status', '=', 1)
             ->get();
@@ -56,19 +56,82 @@ class OrderController extends Controller
         $i = 0;
         foreach ($products_list as $value) {
             $i++;
-
+             $total_price = number_format($value->total_price);
             $html .= "
             <tr>
             <td>$i</td>
             <td>$value->product_name</td>
             <td>$value->amt</td>
-            <td>$value->amt_out_stock</td>
-            <td>$value->product_unit_name</td>
-            <td>$value->type</td>
+            <td>$total_price</td>
         </tr>
             ";
         }
-        return $html;
+
+        $orders = DB::table('db_orders')
+            ->where('id', '=', $request->id)
+            ->first();
+        if (empty($orders)) {
+            $html_order = '';
+            $img = '';
+        } else {
+
+
+            $html_order = '<tr>
+            <td>
+                <h6>จำนวนสินค้า :</h6>
+            </td>
+            <td>
+                <strong>
+                   ' . number_format($orders->quantity) . '
+                    ชิ้น</strong>
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <th>คะแนนที่ได้รับ :</th>
+            <th><strong class="text-success" >
+                    ' . number_format($orders->pv_total) . '
+                    PV</th>
+        </tr>
+
+        <tr>
+        <th>ค่าส่ง :</th>
+        <th><strong class="text-success" >
+                ' . number_format($orders->pv_total) . '
+                PV</th>
+
+        </tr>
+        <tr>
+            <th>ยอดชำระทั้งหมด :</th>
+            <th>
+            ' . number_format($orders->total_price) . '
+            บาท</th>
+        </tr>';
+            $img01 = asset($orders->img_card);
+            $img02 = asset($orders->img_idcard_pay);
+
+            $img = '<div class="demo-gallery">
+                <ul id="lightgallery" class="list-unstyled row">
+                <li class="col-xs-6 col-sm-6 col-md-6" data-responsive="' . $img01 . '" data-src="' . $img01 . '" data-sub-html="<h4>Amazing lightbox</h4><p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>">
+                <a href="#!">
+                    <img class="img-responsive" src="' . $img01 . '">
+                </a>
+            </li>
+            <li class="col-xs-6 col-sm-6 col-md-6" data-responsive="' . $img02 . '" data-src="' . $img02 . '" data-sub-html="<h4>Touch and support for mobile devices.</h4><p>Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>">
+                <a href="#!">
+                    <img class="img-responsive" src="' . $img02 . '">
+                </a>
+            </li>
+            </ul>
+        </div>';
+        }
+
+
+        $data = ['html' => $html, 'html_order' => $html_order, 'img' => $img];
+
+        return $data;
     }
 
 
@@ -118,7 +181,7 @@ class OrderController extends Controller
             ->leftjoin('customers', 'customers.id', '=', 'db_orders.customers_id_fk')
             ->where('dataset_order_status.lang_id', '=', 1)
 
-            ->whereIn('db_orders.order_status_id_fk',['5','9'])
+            ->whereIn('db_orders.order_status_id_fk', ['5', '9'])
             // ->where('db_orders.sent_stock_type', '=', 'send')
             ->whereRaw(("case WHEN '{$code_order}' != '' THEN  db_orders.code_order = '{$code_order}' else 1 END"))
             //->whereRaw(("case WHEN '{$type}' != '' THEN  db_orders.type = '{$type}' else 1 END"))
@@ -175,21 +238,17 @@ class OrderController extends Controller
             //     return   $time . ' น';
             // })
 
-                ->editColumn('type', function ($query) {
-                    $html = '';
-                    if($query->type == 'register'){
-                        $html = 'สมัครสมาชิก';
+            ->editColumn('type', function ($query) {
+                $html = '';
+                if ($query->type == 'register') {
+                    $html = 'สมัครสมาชิก';
+                }
 
-                    }
-
-                    if($query->type == 'order'){
-                        $html = 'ซื้อซ้ำ';
-
-                    }
+                if ($query->type == 'order') {
+                    $html = 'ซื้อซ้ำ';
+                }
 
                 return   $html;
-
-
             })
 
 
@@ -197,18 +256,23 @@ class OrderController extends Controller
                 $html = '';
                 if ($query->order_status_id_fk == '5') {
 
-                    $html = '<a onclick="updatestatus(\''.$query->code_order.'\','.$query->id.')" class="btn btn-sm btn-success mr-2"> Tracking </a>';
+                    $html = '<a onclick="updatestatus(\'' . $query->code_order . '\',' . $query->id . ')" class="btn btn-sm btn-success mr-2"> Tracking </a>';
                 }
 
                 if ($query->order_status_id_fk == '9') {
-                    $html = '<a onclick="updatestatus_tranfer(\''.$query->code_order.'\','.$query->id.')" class="btn btn-sm btn-warning mr-2"> ตรวจเอกสาร </a>';
+                    $html = '<a onclick="updatestatus_tranfer(\'' . $query->code_order . '\',' . $query->id . ')" class="btn btn-sm btn-warning mr-2"> ตรวจเอกสาร </a>';
                 }
 
-            return   $html;
+                return   $html;
+            })
 
-
-        })
-
+            ->editColumn('print', function ($query) {
+                $url = route('admin/export_pdf_history',['id'=>$query->id]);
+                $html ='<a target="_blank" href="'.$url.'"class="p-2">
+                 <i class="las la-print font-30 text-primary"></i></a>';
+                return   $html;
+            })
+            ->rawColumns(['print', 'action'])
 
 
             ->make(true);
@@ -453,6 +517,7 @@ class OrderController extends Controller
 
     public function report_order_pdf($type, $date_start, $date_end)
     {
+
         $orders_detail = DB::table('db_orders')
             ->select(
                 'db_orders.*',
@@ -481,15 +546,13 @@ class OrderController extends Controller
             })
             ->get();
 
+
+
         // dd($orders_detail);
 
         $data = [
             'orders_detail' => $orders_detail,
         ];
-
-
-
-
 
         if ($orders_detail->count() > 0) {
 
@@ -498,6 +561,93 @@ class OrderController extends Controller
         } else {
             $status = 'ยังไม่มีรายการสั่งซ์้อ';
             return redirect('admin/orders/list')->withSuccess('Deleted Success');
+        }
+    }
+
+    public function confirm_order(Request $request)
+    {
+
+
+        $orders = DB::table('db_orders')
+            ->where('id', $request->order_id)
+            ->first();
+
+        if (empty($orders)) {
+            return redirect('admin/orders/list')->withError('ไม่พบรายละเอียดบิล');
+        }
+
+
+        $get_customers = DB::table('customers_warning')
+            ->where('order_id_fk', $request->order_id)
+            ->get();
+
+        $customer = [];
+        $delivery = [];
+
+
+        if (count($get_customers) >= 4 || count($get_customers) == 0) {
+            return redirect('admin/orders/list')->withError('อนุมัติบิลไม่สำเร็จกรุณติดต่อ Dev');
+        }
+
+        if (count($get_customers) == 1 || count($get_customers) == 3) {
+
+            try {
+                DB::BeginTransaction();
+                foreach ($get_customers as $val) {
+                    // Convert the object properties to an array
+                    $data = get_object_vars($val);
+                    $customer_id = $data['id'];
+                    // Exclude specified fields
+
+                    unset($data['id']);
+                    unset($data['order_id_fk']);
+                    unset($data['regis_doctranfer_status']);
+                    unset($data['code_order']);
+                    unset($data['created_at']);
+                    unset($data['updated_at']);
+                    unset($data['deleted_at']);
+
+                    // Add the modified array to the $insert array
+                    $customer = $data;
+                    $customer_lastid = DB::table('customers')->insertGetId($customer);
+
+                    $customers_warning = DB::table('customers_warning')
+                        ->where('id', $customer_id)
+                        ->update(['regis_doctranfer_status' => 'success']);
+
+
+                    $customers_address_delivery_warning = DB::table('customers_address_delivery_warning')
+                        ->where('customer_id', $customer_id)
+                        ->get();
+
+                    foreach ($customers_address_delivery_warning as $val_delivery) {
+                        $data_delivery = get_object_vars($val_delivery);
+                        $data_delivery['customer_id']  = $customer_lastid;
+
+                        unset($data_delivery['id']);
+                        unset($data_delivery['created_at']);
+                        unset($data_delivery['updated_at']);
+                        unset($data_delivery['deleted_at']);
+
+                        // Add the modified array to the $insert array
+                        $delivery = $data_delivery;
+                        $delivery_lastid = DB::table('customers_address_delivery')->insertGetId($delivery);
+                    }
+                }
+
+                $orders = DB::table('db_orders')
+                    ->where('id', $request->order_id)
+                    ->update(['order_status_id_fk' => 5]);
+
+                DB::commit();
+
+                return redirect('admin/orders/list')->withSuccess('อนุมัติบิลสำเร็จ');
+            } catch (\Exception $e) {
+
+
+                DB::rollback();
+                return redirect('admin/orders/list')->withError('อนุมัติบิลไม่สำเร็จกรุณติดต่อ Dev');
+            }
         }
     }
 
@@ -681,8 +831,6 @@ class OrderController extends Controller
 
 
                         $data = ['status' => 'success', 'ms' =>  'success'];
-
-
                     } else {
 
                         //ต้องไปตัด lot อื่นเพิ่ม
@@ -728,29 +876,22 @@ class OrderController extends Controller
                         $rs_data = OrderController::order_out_stock($order_id, $code_order, $branch_id, $warehouse_id, 2);
                         if ($rs_data['status'] == 'success') {
                             $data = ['status' => 'success', 'ms' =>  'success'];
-
-
-
                         } elseif ($rs_data['status'] == 'fail') {
 
                             $data = ['status' => 'fail', 'message' => $rs_data['ms']];
-
-
                         } else {
                             $rs_data = OrderController::order_out_stock($order_id, $code_order, $branch_id, $warehouse_id, 3);
                         }
                     }
                 }
             }
-            if($data['status'] == 'success'){
+            if ($data['status'] == 'success') {
                 DB::commit();
                 return $data;
-            }else{
+            } else {
                 DB::rollback();
                 return $data;
             }
-
-
         } catch (Exception $e) {
             DB::rollback();
             $data = ['status' => 'fail', 'message' => $e];
@@ -887,171 +1028,40 @@ class OrderController extends Controller
 
 
 
-    public function view_detail_order_pdf(Request $reques)
+    public function export_pdf_history($id)
     {
 
+        // <a target="_blank" href="{{route('admin/export_pdf_history',['code'=>$order->code_order])}}"class="p-2">
+        // <i class="las la-print font-30 text-primary"></i></a>
 
 
-        // ลบไฟล์ PDF ออกทั้งหมดแล้ววาดใหม่
-        $file = new Filesystem;
-        $file->cleanDirectory(public_path('pdf/'));
+            $order = DB::table('db_orders')
+            ->select(
+            'db_orders.*',
+            'dataset_order_status.detail',
+            'dataset_order_status.css_class'
+            )
 
-        $date_start = null;
-        if ($reques->date_start) {
-            $date_start = date('Y-m-d', strtotime($reques->date_start));
-        }
-        $date_end = null;
-        if ($reques->date_end) {
-            $date_end = date('Y-m-d', strtotime($reques->date_end));
-        }
+            ->leftjoin('dataset_order_status', 'dataset_order_status.orderstatus_id', '=', 'db_orders.order_status_id_fk')
+            ->where('db_orders.id',$id)
+            ->first();
 
-        $arr_code_order = [];
-        if ($date_start != null && $date_end != null) {
+            $db_order_products_list = DB::table('db_order_products_list')
+            ->select('db_order_products_list.*')
+            ->where('code_order', $order->code_order)
+            ->get();
 
-            $orders_date =  DB::table('db_orders')
-                ->select('id', 'code_order', 'tracking_type')
-                ->whereDate('db_orders.created_at', '>=', $date_start)
-                ->whereDate('db_orders.created_at', '<=', $date_end)
-                ->where('db_orders.order_status_id_fk', '=', '5')
-                ->OrderBy('tracking_type', 'asc')
-                ->get();
-
-            foreach ($orders_date as $val) {
-                $dataPrepare = [
-                    'code_order' => $val->code_order,
-                    'tracking_type' => $val->tracking_type
-                ];
-                array_push($arr_code_order,  $dataPrepare);
-            }
-        } else {
-            $dataPrepare = [
-                'code_order' => $reques->code_order,
-                'tracking_type' => 0,
-            ];
-            array_push($arr_code_order, $dataPrepare);
-        }
-
-
-        // $this->count_print_detail($arr_code_order);
-
-
-        // $res_orders_detail = [];
-        foreach ($arr_code_order as $key => $val) {
-
-            $orders_detail = DB::table('db_orders')
-                ->select(
-                    'db_orders.name as customers_name',
-                    'db_orders.customers_id_fk',
-                    'db_orders.code_order',
-                    'db_orders.tracking_type',
-                    'db_orders.tracking_no_sort',
-                    'db_orders.created_at',
-                    'db_orders.position',
-                    'db_orders.bonus_percent',
-                    'db_orders.sum_price',
-                    'db_orders.total_price',
-                    'db_orders.pv_total',
-                    'db_orders.shipping_price',
-                    'db_orders.discount',
-
-
-                )
-                ->leftjoin('dataset_order_status', 'dataset_order_status.orderstatus_id', 'db_orders.order_status_id_fk')
-                ->where('db_orders.code_order', $val['code_order'])
-                // ->where('db_orders.order_status_id_fk', '=', '5')
-                ->OrderBy('tracking_type', 'asc')
-
-                ->get()
-
-                ->map(function ($item) {
-                    $item->address = DB::table('db_orders')
-                        ->select(
-                            'house_no',
-                            'house_name',
-                            'moo',
-                            'soi',
-                            'road',
-
-                            'dataset_districts.name_th as district',
-                            'dataset_provinces.name_en as province',
-                            'dataset_amphures.name_en as tambon',
-                            'db_orders.zipcode',
-                            'db_orders.zipcode',
-                            'tel',
-                        )
-                        ->leftjoin('dataset_provinces', 'dataset_provinces.id', '=', 'db_orders.province_id')
-                        ->leftjoin('dataset_amphures', 'dataset_amphures.id', '=', 'db_orders.tambon_id')
-                        ->leftjoin('dataset_districts', 'dataset_districts.id', '=', 'db_orders.district_id')
-
-                        ->where('code_order', $item->code_order)
-                        ->get();
-
-
-                    return $item;
-                })
-
-                // เอาข้อมูลสินค้าที่อยู่ในรายการ order
-                ->map(function ($item) {
-                    // $item->product_detail = DB::table('db_order_products_list')
-                    //     ->select('products_details.product_name', 'amt', 'product_unit')
-                    //     ->leftjoin('products_details', 'products_details.product_id_fk', 'db_order_products_list.product_id_fk')
-                    //     ->leftjoin('products_images', 'products_images.product_id_fk', 'db_order_products_list.product_id_fk')
-                    //     ->leftjoin('products', 'products.id', 'db_order_products_list.product_id_fk')
-                    //     ->leftjoin('dataset_product_unit', 'dataset_product_unit.product_unit_id', 'products.unit_id')
-                    //     ->where('dataset_product_unit.lang_id', 1)
-                    //     ->where('products_details.lang_id', 1)
-                    //     ->where('db_order_products_list.code_order', $item->code_order)
-                    //     ->GroupBy('products_details.product_name')
-                    //     ->get();
-
-                    $item->product_detail = DB::table('db_order_products_list')
-                        ->select('db_order_products_list.*', 'dataset_product_unit.product_unit_en as product_unit')
-                        ->leftjoin('dataset_product_unit', 'dataset_product_unit.id', 'db_order_products_list.product_unit_id_fk')
-                        ->where('code_order', $item->code_order)
-                        // ->GroupBy('product_images.product_id_fk')
-                        ->get();
-
-
-
-
-                    return $item;
-                });
-
-
-
-            $data = [
-                'orders_detail' => $orders_detail,
-            ];
-
-            // return $data;
-            // dd($data);
-
-            $number_file = '';
-            if ($key <= 9) {
-                $number_file  = '00' . $key;
-            } else if ($key <= 99) {
-                $number_file  = '0' . $key;
+            if (!empty($order)) {
+                //return view('frontend.pdf.payment', compact('order', 'order_items'));
+                $pdf = PDF::loadView('backend/PDF/view_detail_oeder_pdf',compact('order','db_order_products_list'));
+                //   return view('frontend.pdf.payment',compact('data'));
+                //   // return $pdf->download('cover_sheet.pdf'); // โหลดทันที
+                return $pdf->stream('order_'.$order->code_order.'.pdf'); // เปิดไฟลฺ์
             } else {
-                $number_file  = $key;
+                return redirect('admin/Order')->withError('ไม่พบข้อมูลใบเสร็จ');
             }
 
 
-
-            $pdf = PDF::loadView('backend/PDF/view_detail_oeder_pdf', $data);
-            $pathfile = public_path('pdf/' . 'detailproduct_' . $val['tracking_type'] . '_' . $number_file . '.pdf');
-            $pdf->save($pathfile);
-        }
-
-
-
-        $this->merger_pdf();
-
-
-
-        return  'result.pdf';
-
-        // $pdf = PDF::loadView('backend/PDF/view_detail_oeder_pdf', $data);
-        // return $pdf->stream('document.pdf');
     }
 
     public function view_detail_oeder_pdf_success(Request $reques)

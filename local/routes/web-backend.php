@@ -199,8 +199,10 @@ Route::get('admin/Blank', function () {
   })->name('admin/PromotionProducts');
 
 
-
   Route::get('admin/orders/list', 'Admin\OrderController@orders_list')->name('admin/orders/list');
+  Route::get('admin/export_pdf_history/{id}','Admin\OrderController@export_pdf_history')->name('admin/export_pdf_history');
+  Route::post('admin/orders/confirm_order', 'Admin\OrderController@confirm_order')->name('admin/orders/confirm_order');
+
   Route::get('admin/orders/product_list_view', 'Admin\OrderController@product_list_view')->name('admin/orders/product_list_view');
   Route::get('admin/orders/get_data_order_list', 'Admin\OrderController@get_data_order_list')->name('admin/orders/get_data_order_list');
 

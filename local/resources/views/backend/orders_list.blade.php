@@ -7,6 +7,20 @@
     <link href="{{ asset('backend/assets/css/pages/profile.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend/assets/css/forms/form-widgets.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
+
+
+
+    <link href="{{ asset('backend/assets/css/basic-ui/custom_lightbox.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/plugins/lightbox/css/lightgallery.css') }}" rel="stylesheet">
+    <style>
+        .demo-gallery img {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .demo-gallery img:hover {
+            transform: scale(1.2);
+        }
+    </style>
 @endsection
 @section('page-header')
     <nav class="breadcrumb-one" aria-label="breadcrumb">
@@ -24,7 +38,7 @@
                 <div class="col-lg-2 mt-2">
                     <label>วันที่เริ่มต้น</label>
                     <input type="date" class="form-control  myCustom date_start" name="date_start"
-                        placeholder="วันที่เริ่มต้น" value="{{ date('Y-m-d') }}">
+                        placeholder="วันที่เริ่มต้น" value="{{ date('Y-m-01') }}">
                 </div>
 
                 <div class="col-lg-2 mt-2">
@@ -50,9 +64,6 @@
                     </select>
                 </div>
 
-
-
-
                 <div class="col-lg-4 mb-2 " style="margin-top: 42px">
                     {{-- <button type="button" class="btn btn-outline-success btn-rounded" id="search-form"><i class="las la-search font-15"></i>
                         สืบค้น</button> --}}
@@ -75,8 +86,6 @@
 
                 </div>
 
-
-
                 {{-- <div class="col-lg-2 mb-2 mt-2" style="margin-top:15px">
                     <select class="form-control myWhere" name="status">
                         <option value="0">ทั้งหมด</option>
@@ -89,8 +98,7 @@
                 </div> --}}
             </div>
 
-
-            <div class="modal fade bd-example-modal-lg" id="updatestatus" tabindex="-1" role="dialog"
+            {{-- <div class="modal fade bd-example-modal-lg" id="updatestatus" tabindex="-1" role="dialog"
                 aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <form method="post" action="{{ route('admin/orders/tracking_no') }}">
@@ -201,17 +209,17 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="modal fade bd-example-modal-lg" id="updatestatus_tranfer" tabindex="-1" role="dialog"
             aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <form method="post" action="{{ route('admin/orders/tracking_no') }}">
+            <div class="modal-dialog modal-xl" role="document">
+                <form method="post" action="{{ route('admin/orders/confirm_order') }}">
                     @csrf
                     <div class="modal-content">
                         <!-- BEGIN: Modal Header -->
                         <div class="modal-header">
-                            <h3 class="font-medium text-base mr-auto">อัพเดทรหัสจัดส่งสินค้าและตัดคลัง</h3>
+                            <h3 class="font-medium text-base mr-auto">อนุมัติรายการสั่งซื้อ</h3>
                         </div>
                         <!-- END: Modal Header -->
                         <!-- BEGIN: Modal Body -->
@@ -222,106 +230,106 @@
                             <div class="row col-md-12">
                                 <div class="col-md-6 col-lg-6">
 
-                                    <img src="http://localhost/mlm_king/frontend/assets/img/logo/Kingthong-Baiyok-Logo.png"   class="img-fluid">
+                                    {{-- <img src="http://localhost/mlm_king/frontend/assets/img/logo/Kingthong-Baiyok-Logo.png"   class="img-fluid"> --}}
+
+
+                                        <div class="profile-shadow w-100 mt-2">
+                                            <div class="border border-light p-3  rounded mb-3">
+                                                <h5 class="mb-3"><b>เอกสารการโอนชำระ</b>
+                                                </h5>
+                                                <div id="img">
+
+                                                </div>
+                                                {{-- <div class="demo-gallery">
+                                                    <ul id="lightgallery" class="list-unstyled row">
+                                                        <li class="col-xs-6 col-sm-6 col-md-6" data-responsive="http://localhost/mlm_king/frontend/assets/img/logo/Kingthong-Baiyok-Logo.png" data-src="http://localhost/mlm_king/frontend/assets/img/logo/Kingthong-Baiyok-Logo.png" data-sub-html="<h4>Amazing lightbox</h4><p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>">
+                                                            <a href="">
+                                                                <img class="img-responsive" src="http://localhost/mlm_king/frontend/assets/img/logo/Kingthong-Baiyok-Logo.png">
+                                                            </a>
+                                                        </li>
+                                                        <li class="col-xs-6 col-sm-6 col-md-6" data-responsive="http://localhost/mlm_king/frontend/assets/img/logo/Kingthong-Baiyok-Logo.png" data-src="http://localhost/mlm_king/frontend/assets/img/logo/Kingthong-Baiyok-Logo.png" data-sub-html="<h4>Touch and support for mobile devices.</h4><p>Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>">
+                                                            <a href="">
+                                                                <img class="img-responsive" src="http://localhost/mlm_king/frontend/assets/img/logo/Kingthong-Baiyok-Logo.png">
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div> --}}
+                                            </div>
+                                        </div>
+
+
 
                                 </div>
 
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                    <div class="profile-shadow w-100 mt-4">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="profile-shadow w-100 mt-2">
                                         <div class="border border-light p-3  rounded mb-3">
                                             <h5 class="mb-3"><b>สรุปยอดการสั่งซื้อสินค้า</b>
                                             </h5>
                                             <div class="table-responsive">
                                                 <table class="table mb-0" id="ordertable"
                                                     style="width:100%">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <h6>จำนวนสินค้า :</h6>
-                                                            </td>
-                                                            <td>
-                                                                <strong id="quantity_bill">
-                                                                   1
-                                                                    ชิ้น</strong>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <h6>ราคาสินค้ารวม :</h6>
-                                                            </td>
-                                                            <td>
-                                                                <strong class=""
-                                                                    id="price_total">
-                                                                   1000
-                                                                    บาท</strong>
-                                                            </td>
-                                                        </tr>
+                                                    <tbody id="order_detail">
 
-                                                        <tr>
-                                                            <th>คะแนนที่ได้รับ :</th>
-                                                            <th><strong class="text-success"
-                                                                    id="pv">
-                                                                   500
-                                                                    PV</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>ยอดชำระทั้งหมด :</th>
-                                                            <th id="price_total_tax_ship">
-                                                               1000
-                                                                บาท</th>
-                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
 
+                                <div class="col-lg-6 mt-2">
+                                    <div class="profile-shadow w-100 ">
+                                        <div class="border border-light p-3  rounded mb-3">
+                                        <p class="sub-header">
+                                          รายการสินค้า
+                                        </p>
+                                        <br>
+                                        <div class="table-responsive">
+                                            <table class="table mb-0">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>ชื่อสินค้า</th>
+                                                    <th>จำนวนสั่งซื้อ</th>
+                                                    <th>ราคา</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody id="product_list">
 
 
-
-                                <input type="hidden" name="page_type" value="process">
-                                <div class="col-lg-12 mt-2">
-                                <div class="widget-content widget-content-area">
-                                    <p class="sub-header">
-                                      รายการสินค้า
-                                    </p>
-                                    <br>
-                                    <div class="table-responsive">
-                                        <table class="table mb-0">
-                                            <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>ชื่อสินค้า</th>
-                                                <th>จำนวนสั่งซื้อ</th>
-                                                <th>จำนวนค้างจ่าย/(ชิ้น)</th>
-                                                <th>หน่วยนับ</th>
-                                                <th>ทั่วไป/โปรโมชั่น</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody id="product_list">
-
-
-                                            </tbody>
-                                        </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="profile-shadow w-100 mt-2">
+                                        <div class="border border-light p-3  rounded mb-3">
+                                            <h5 class="mb-3"><b>สรุปยอดการสั่งซื้อสินค้า</b>
+                                            </h5>
+                                            <div class="table-responsive">
+                                                <table class="table mb-0" id="ordertable"
+                                                    style="width:100%">
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
+                                <input type="hidden" name="page_type" value="process">
                             </div>
-
                         </div>
-
-
-
                         <!-- END: Modal Body -->
                         <!-- BEGIN: Modal Footer -->
                         <div class="modal-footer">
                             <button type="button" data-tw-dismiss="modal"
                                 class="btn btn-outline-secondary w-20 mr-1" data-dismiss="modal">ยกเลิก</button>
-                            <button type="submit" class="btn btn-primary w-20">ยืนยันการอนุมัติสลิป</button>
+                                <button type="submit" class="btn btn-primary w-20" onclick="return confirm('คุณต้องการที่จะยืนยันการอนุมัติสลิปหรือไม่?')">ยืนยันการอนุมัติสลิป</button>
                         </div>
                         <!-- END: Modal Footer -->
                     </div>
@@ -351,6 +359,14 @@
     <script src="{{ asset('backend/plugins/table/datatable/button-ext/pdfmake.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/table/datatable/button-ext/vfs_fonts.js') }}"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#lightgallery').lightGallery();
+        });
+    </script>
+
+    <script src="{{ asset('backend/plugins/lightbox/js/lightgallery-all.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/lightbox/js/jquery.mousewheel.min.js') }}"></script>
     <script>
         function printErrorMsg(msg) {
             console.log(msg);
@@ -711,7 +727,7 @@
                     },
 
                     {
-                        data: "id",
+                        data: "print",
                         title: "",
                         className: "table-report__action text-center",
                     },
@@ -747,9 +763,6 @@
                     // $('td:nth-last-child(2)', nRow).html(
                     //     `<a  onclick="view_detail_oeder('${code_order}')" class="btn btn-sm btn-warning mr-2 "> Print </a>`
                     // );
-                    $('td:nth-last-child(1)', nRow).html(
-                        `<a  onclick="view_detail_oeder_pdf('${code_order}')" class="btn btn-sm btn-success mr-2"> Print </a>`
-                    );
 
 
                 },
@@ -780,7 +793,10 @@
                     'code_order': code_order
                 },
                 success: function(data) {
-                    $('#product_list').html(data);
+
+                    $('#product_list').html(data['html']);
+
+
                     $("#updatestatus").modal();
                 }
             })
@@ -791,7 +807,6 @@
         function updatestatus_tranfer(code_order,id) {
             $('#code_order').val(code_order);
             $('#order_id').val(id);
-            $('#tracking_no').val('');
 
 
             $.ajax({
@@ -799,21 +814,22 @@
                 type: 'get',
                 data: {
                     '_token': '{{ csrf_token() }}',
-                    'code_order': code_order
+                    'code_order': code_order,
+                    'id': id
                 },
                 success: function(data) {
-                    $('#product_list').html(data);
+
+                    console.log(data['html_order']);
+                    $('#product_list').html(data['html']);
+                    $('#order_detail').html(data['html_order']);
+                    $('#img').html(data['img']);
+
                     $("#updatestatus_tranfer").modal();
                 }
             })
 
 
         }
-
-
-
-
-
 
 
 

@@ -50,7 +50,7 @@
                                         <div class="row"> --}}
                                         <div class="col-md-12 mx-0">
 
-                                            <form id="msform" method="post" action="{{ route('Register_member') }}">
+                                            <form id="msform" method="post" action="{{ route('Register_member') }}" enctype="multipart/form-data" >
                                                 @csrf
                                                 <input type="hidden" name="pay_type_id" id="pay_type_id">
 
@@ -89,27 +89,37 @@
                                                                     <input type="text"
                                                                         class="form-control @error('sponsor') is-invalid @enderror"
                                                                         name="sponsor" placeholder="ผู้แนะนำ"
-                                                                        value="{{ Auth::guard('c_user')->user()->first_name }} {{ Auth::guard('c_user')->user()->last_name }} ( {{ Auth::guard('c_user')->user()->username }} )"
+                                                                        value="{{ $data['sponser_data']->first_name }} {{ $data['sponser_data']->last_name }} ( {{ $data['sponser_data']->username }} )"
                                                                         disabled>
                                                                     <input type="hidden" name="sponsor"
-                                                                        value="{{ Auth::guard('c_user')->user()->username }}">
+                                                                        value="{{ $data['sponser_data']->username }}">
                                                                     @error('sponsor')
                                                                         <div class="invalid-feedback">{{ $message }}</div>
                                                                     @enderror
 
                                                                     <input type="hidden" name="sponsor"
-                                                                        value="{{ Auth::guard('c_user')->user()->username }}">
+                                                                        value="{{ $data['sponser_data']->username }}">
 
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <div class="form-group">
-                                                                    <label for="side">สาย</label>
+                                                                    <label for="side">ฝั่งขา</label>
                                                                     {{-- <span class="text-danger">* </span></label> --}}
+                                                                    @if($data['line_type_back']  == 'A')
+                                                                    <?php
+                                                                     $linetext = 'ซ้าย';
+                                                                    ?>
+
+                                                                    @else
+                                                                    <?php
+                                                                    $linetext = 'ขวา';
+                                                                   ?>
+                                                                    @endif
                                                                     <input type="text"
                                                                         class="form-control @error('side') is-invalid @enderror"
                                                                         placeholder="สาย"
-                                                                        value="{{ $data['line_type_back'] }}" disabled>
+                                                                        value="{{ $linetext }}" disabled>
 
                                                                     <input type="hidden" name="side" placeholder="สาย"
                                                                         value="{{ $data['line_type_back'] }}">
@@ -657,18 +667,23 @@
                                                         <div class="row">
 
                                                             <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="number_of_member">จองรหัส
-                                                                        <span class="text-danger">*</span></label>
-                                                                    <select name="number_of_member"
-                                                                        class="form-control "id="number_of_member">
 
-                                                                        <option value="1">ทั่วไป (400 PV)</option>
-                                                                        <option value="3">จอง 3 รหัส (1200 PV)
-                                                                        </option>
+                                                                <div class="alert alert-danger mb-4" role="alert">
+                                                                    <div class="form-group">
+                                                                        <label for="number_of_member"><b>จองรหัส</b>
+                                                                            <span class="text-danger">*</span></label>
+                                                                        <select name="number_of_member"
+                                                                            class="form-control "id="number_of_member" >
 
-                                                                    </select>
+                                                                            <option value="1">ทั่วไป (400 PV)</option>
+                                                                            <option value="3">จอง 3 รหัส (1200 PV)
+                                                                            </option>
+
+                                                                        </select>
+                                                                    </div>
                                                                 </div>
+
+
                                                             </div>
 
                                                         </div>
@@ -1148,8 +1163,7 @@
                                                                     <h5 class="font-16"><b>การชำระเงิน</b></h5>
                                                                     <hr>
                                                                     <h6 class="font-16 ml-4"><b>รูปแบบการชำระ</b></h6>
-                                                                    <div
-                                                                        class="widget-content widget-content-area tab-horizontal-line">
+                                                                    <div class="widget-content widget-content-area tab-horizontal-line">
                                                                         <ul class="nav nav-tabs mb-3" id="animateLine"
                                                                             role="tablist">
 
@@ -1193,8 +1207,7 @@
                                                                                         class="d-flex align-items-center mt-5  btn-list">
 
                                                                                         <button type="button"
-                                                                                            name="make_payment"
-                                                                                            onclick="submit_confirm(1)"
+                                                                                            onclick="submit_confirm(1,'qr_payment')"
                                                                                             class="action-button btn btn-primary"
                                                                                             value="qr">ชำระเงินออนไลน์
                                                                                         </button>
@@ -1218,7 +1231,8 @@
 
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-md-6 col-sm-12 col-12 text-center">
+                                                                                    <div
+                                                                                        class="col-md-6 col-sm-12 col-12 text-center">
                                                                                         <div class="row">
                                                                                             <div
                                                                                                 class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -1227,10 +1241,10 @@
                                                                                                 <div
                                                                                                     class="upload text-center img-thumbnail">
                                                                                                     <input type="file"
-                                                                                                        id="img_card"
-                                                                                                        name="img_card"
+                                                                                                        id="img_pay"
+                                                                                                        name="img_pay"
                                                                                                         class="dropify"
-                                                                                                        data-default-file=""
+                                                                                                        data-default-file="{{ asset('frontend/assets/img/AGRI-OR-BIO-DESEL-.jpg') }}"
                                                                                                         required>
                                                                                                 </div>
                                                                                             </div>
@@ -1245,18 +1259,20 @@
                                                                                                 <div
                                                                                                     class="upload text-center img-thumbnail">
                                                                                                     <input type="file"
-                                                                                                        id="slip_image_idcard"
-                                                                                                        name="slip_image_idcard"
+                                                                                                        id="img_idcard_pay"
+                                                                                                        name="img_idcard_pay"
                                                                                                         class="dropify"
-                                                                                                        data-default-file=""
+                                                                                                        data-default-file="{{ asset('frontend/assets/img/idcard.png') }}"
                                                                                                         required>
                                                                                                 </div>
                                                                                                 <div
                                                                                                     class="col-lg-12 col-md-12 col-sm-12 col-12">
 
                                                                                                     <div class="row">
-                                                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                                                            <div class="form-group">
+                                                                                                        <div
+                                                                                                            class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                                                                            <div
+                                                                                                                class="form-group">
                                                                                                                 <label
                                                                                                                     for="phone">หมายเลขโทรศัพท์
                                                                                                                     <span
@@ -1280,56 +1296,34 @@
 
 
                                                                                                         </div>
+                                                                                                        <input
+                                                                                                            type="hidden"
+                                                                                                            name="make_payment"
+                                                                                                            id="make_payment">
+                                                                                                        <div
+                                                                                                            class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                                                                            <button
+                                                                                                                type="button"
+                                                                                                                onclick="submit_confirm(4,'trafer')"
+                                                                                                                class="action-button btn btn-primary"
+                                                                                                                value="tranfer">ชำระเงินบัตรเกตรสุขใจ
+                                                                                                            </button>
 
-                                                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                                                                                            <button type="button"
-                                                                                                           name="make_payment"
-                                                                                                           onclick="submit_confirm(4)"
-                                                                                                           class="action-button btn btn-primary"
-                                                                                                           value="tranfer">ชำระเงินบัตรเกตรสุขใจ </button>
-                                                                                                   </div>
-
-
-
-
-
+                                                                                                        </div>
 
                                                                                                     </div>
 
-
                                                                                                 </div>
                                                                                             </div>
-
                                                                                         </div>
-
-
-
                                                                                     </div>
                                                                                 </div>
-
-
-
-
-
-
-
-
                                                                             </div>
-
-
-
-
                                                                         </div>
-
-
-
-
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                 </fieldset>
-
-
-
-
-
                                             </form>
                                         </div>
                                     </div>
@@ -1381,8 +1375,47 @@
 
         }
 
+        function submit_confirm(pay_type, type) {
+            $('#make_payment').val(type);
 
-        function submit_confirm(pay_type) {
+            if (pay_type == 4) {
+
+                var $fileInput1 = $('#img_pay');
+
+                // Check if the file input is empty or null
+                if ($fileInput1[0].files.length === 0) {
+                    // File input is empty
+                    alert("กรุณาเพิ่มข้อมูลภาพบัตรเกษตรสุขใจ");
+                    console.log('File input is empty.');
+                    return; // หยุดการทำงานของ each
+
+                }
+
+                var $fileInput = $('#img_idcard_pay');
+
+                // Check if the file input is empty or null
+                if ($fileInput[0].files.length === 0) {
+                    // File input is empty
+                    alert("กรุณาเพิ่มข้อมูลภาพถ่ายบัตรประชาชน");
+                    console.log('File input is empty.');
+                    return; // หยุดการทำงานของ each
+
+                }
+
+
+                var $phonePayInput = $('[name="phone_pay"]');
+
+                // Check if the input value is null or empty
+                if ($phonePayInput.val() === null || $phonePayInput.val().trim() === '') {
+                    // Input is null or empty
+                    alert("กรุณากรอกหมายเลขโทรศัพท์");
+                    console.log('Phone pay input is null or empty.');
+                    return; // หยุดการทำงานของ each
+
+                }
+            }
+
+
             $('#pay_type_id').val(pay_type);
             var address_type_order = $('[name="address_type_order"]:checked').val();
             foundEmpty = false;
@@ -1423,6 +1456,8 @@
 
             }
 
+
+
             if (address_type_order == 3) {
                 $('#address_others input[required]').each(function() {
                     var value = $(this).val();
@@ -1458,8 +1493,6 @@
 
                 }
             }
-
-
 
 
             number_of_member = $('#number_of_member').val();
@@ -1521,8 +1554,8 @@
 
             }
 
-
         }
+
 
 
 
