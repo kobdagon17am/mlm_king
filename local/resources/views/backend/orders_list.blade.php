@@ -12,13 +12,14 @@
 
     <link href="{{ asset('backend/assets/css/basic-ui/custom_lightbox.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/plugins/lightbox/css/lightgallery.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/assets/css/forms/radio-theme.cs') }}" rel="stylesheet">
+
     <style>
         .demo-gallery img {
             transition: transform 0.3s ease-in-out;
         }
-
         .demo-gallery img:hover {
-            transform: scale(1.2);
+            transform: scale(3.2);
         }
     </style>
 @endsection
@@ -64,152 +65,10 @@
                     </select>
                 </div>
 
-                <div class="col-lg-4 mb-2 " style="margin-top: 42px">
-                    {{-- <button type="button" class="btn btn-outline-success btn-rounded" id="search-form"><i class="las la-search font-15"></i>
-                        สืบค้น</button> --}}
-
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-outline-primary btn-rounded btn-sm dropdown-toggle"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ออกใบปะหน้า <i
-                                class="las la-angle-down"></i></button>
-                        <div class="dropdown-menu" style="will-change: transform;">
-                            <a class="dropdown-item report_pdf" data-type="all" href="#">All</a>
-
-                        </div>
-
-                    </div>
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-outline-primary btn-rounded btn-sm all_bill "
-                            target="_blank">ใบรายละเอียดสินค้าหลายใบ </a>
-
-                    </div>
-
-                </div>
-
-                {{-- <div class="col-lg-2 mb-2 mt-2" style="margin-top:15px">
-                    <select class="form-control myWhere" name="status">
-                        <option value="0">ทั้งหมด</option>
-                        <option selected value="1">รออนุมัติ</option>
-                        <option value="2">อนุมัติ</option>
-                        <option value="3">ไม่อนุมัติ</option>
-                    </select>
 
 
-                </div> --}}
             </div>
 
-            {{-- <div class="modal fade bd-example-modal-lg" id="updatestatus" tabindex="-1" role="dialog"
-                aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <form method="post" action="{{ route('admin/orders/tracking_no') }}">
-                        @csrf
-                        <div class="modal-content">
-                            <!-- BEGIN: Modal Header -->
-                            <div class="modal-header">
-                                <h3 class="font-medium text-base mr-auto">อัพเดทรหัสจัดส่งสินค้าและตัดคลัง</h3>
-                            </div>
-                            <!-- END: Modal Header -->
-                            <!-- BEGIN: Modal Body -->
-                            <input id="order_id" name="order_id" type="hidden" class="form-control">
-
-
-                            <div class="modal-body">
-                                <div class="row col-md-12">
-                                    <div class="col-md-4 col-lg-4">
-                                        <label for="modal-form-1" class="form-label">รหัส</label>
-                                        <input id="code_order" name="code_order" readonly type="text"
-                                            class="form-control">
-                                    </div>
-                                    <div class="col-md-4 col-lg-4">
-                                        <label for="modal-form-2" class="form-label">รหัสจัดส่งสินค้า</label>
-                                        <input id="tracking_no" name="tracking_no" type="text" required
-                                            class="form-control">
-                                    </div>
-
-                                    <div class="col-md-4 col-lg-4">
-                                        <label for="modal-form-6" class="form-label">ขนส่ง</label>
-
-                                        <select class="form-control" name="tracking_type" id="tracking_type">
-
-                                            <option value="Kerry Express"> Kerry Express</option>
-                                            <option value="Flash Express"> Flash Express </option>
-                                            <option value="Nim Express">Nim Express</option>
-                                            <option value="ไปรษณีย์ไทย">ไปรษณีย์ไทย</option>
-
-
-                                        </select>
-                                    </div>
-
-
-
-                                    <div class="col-lg-4  mt-2 text-left">
-                                        <label><b>สาขา:</b></label>
-                                        <span class="form-label text-danger branch_out_id_fk_err _err"></span>
-                                        <select class="form-control branch_out_select" name="branch_out_id_fk"  required>
-                                            <option selected disabled value=""> เลือกสาขา  </option>
-                                            @foreach ($branch as $val)
-                                                <option value="{{ $val->id }}">
-                                                    {{ $val->branch_name }}
-                                                    ({{ $val->branch_code }})
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-4  mt-2 text-left">
-                                        <label><b>คลังสินค้า:</b></label>
-                                        <span class="form-label text-danger warehouse_out_id_fk_err _err"></span>
-                                        <select class="form-control warehouse_out_select" name="warehouse_out_id_fk" disabled required>
-                                            <option selected value=""> เลือกคลังปลายทาง
-                                            </option>
-                                        </select>
-                                    </div>
-
-                                    <input type="hidden" name="page_type" value="process">
-                                    <div class="col-lg-12 mt-2">
-                                    <div class="widget-content widget-content-area">
-                                        <p class="sub-header">
-                                          รายการสินค้า
-                                        </p>
-                                        <br>
-                                        <div class="table-responsive">
-                                            <table class="table mb-0">
-                                                <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>ชื่อสินค้า</th>
-                                                    <th>จำนวนสั่งซื้อ</th>
-                                                    <th>จำนวนค้างจ่าย/(ชิ้น)</th>
-                                                    <th>หน่วยนับ</th>
-                                                    <th>ทั่วไป/โปรโมชั่น</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody id="product_list">
-
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-
-                            <!-- END: Modal Body -->
-                            <!-- BEGIN: Modal Footer -->
-                            <div class="modal-footer">
-                                <button type="button" data-tw-dismiss="modal"
-                                    class="btn btn-outline-secondary w-20 mr-1" data-dismiss="modal">ยกเลิก</button>
-                                <button type="submit" class="btn btn-primary w-20">บันทึก</button>
-                            </div>
-                            <!-- END: Modal Footer -->
-                        </div>
-                    </form>
-                </div>
-            </div> --}}
 
             <div class="modal fade bd-example-modal-lg" id="updatestatus_tranfer" tabindex="-1" role="dialog"
             aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -308,20 +167,42 @@
                                 </div>
 
                                 <div class="col-lg-6 col-md-6">
-                                    <div class="profile-shadow w-100 mt-2">
-                                        <div class="border border-light p-3  rounded mb-3">
-                                            <h5 class="mb-3"><b>สรุปยอดการสั่งซื้อสินค้า</b>
-                                            </h5>
-                                            <div class="table-responsive">
-                                                <table class="table mb-0" id="ordertable"
-                                                    style="width:100%">
 
-                                                </table>
+
+                                    <div class="statbox widget box box-shadow mt-2">
+                                        <div class="widget-header">
+                                            <div class="row">
+                                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                                    <h4>กรณีไม่อนุมัตรายการสินค้า</h4>
+                                                </div>
                                             </div>
+                                        </div>
+                                        <div class="widget-content widget-content-area">
+                                            <div class="form-group">
+                                                <label for="exampleSelect1">ยกเลิกรายการ
+                                                <span class="text-danger">*</span></label>
+                                                <select class="form-control" id="exampleSelect1" name="vertical">
+                                                    <option value="ใช้ Slip ซ้ำ">ใช้ Slip ซ้ำ</option>
+                                                    <option value="ไม่ใช่บัญชีบริษัท">ไม่ใช่บัญชีบริษัท</option>
+                                                    <option value="ภาพไม่ชัด">ภาพไม่ชัด</option>
+                                                    <option value="ไม่ใช้ภาพ Slip">ไม่ใช้ภาพ Slip</option>
+                                                    <option value="อื่น ๆ">อื่น ๆ </option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-1">
+                                                <label for="exampleTextarea">รายละเอียด
+                                                <span class="text-danger">*</span></label>
+                                                <textarea class="form-control" name="info_other" id="exampleTextarea" rows="3"></textarea>
+                                            </div>
+
+                                        </div>
+                                        <div class="widget-footer text-right">
+                                            <button type="submit" value="cancel" name="submit"  onclick="return confirm('ยืนยันการยกเลิกรายการ')" class="btn btn-danger mr-2">ไม่อนุมัติ</button>
+
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" name="page_type" value="process">
+
                             </div>
                         </div>
                         <!-- END: Modal Body -->
@@ -329,7 +210,7 @@
                         <div class="modal-footer">
                             <button type="button" data-tw-dismiss="modal"
                                 class="btn btn-outline-secondary w-20 mr-1" data-dismiss="modal">ยกเลิก</button>
-                                <button type="submit" class="btn btn-primary w-20" onclick="return confirm('คุณต้องการที่จะยืนยันการอนุมัติสลิปหรือไม่?')">ยืนยันการอนุมัติสลิป</button>
+                                <button type="submit" value="confirm" name="submit" class="btn btn-primary w-20" onclick="return confirm('คุณต้องการที่จะยืนยันการอนุมัติสลิปหรือไม่?')">ยืนยันการอนุมัติสลิป</button>
                         </div>
                         <!-- END: Modal Footer -->
                     </div>
@@ -687,14 +568,15 @@
                     },
                     {
                         data: "customers_user_name",
-                        title: "รหัสผู้สั่งซื้อ",
+                        title: "รหัสผู้ทำรายการ",
                         className: "table-report__action w-10 text-center whitespace-nowrap",
                     },
                     {
-                        data: "name",
-                        title: "ผู้สั่งซื้อ",
+                        data: "customers_user_name_send",
+                        title: "ซื้อให้รหัส",
                         className: "table-report__action  text-center whitespace-nowrap",
                     },
+
                     {
                         data: "pay_type_name",
                         title: "รูปแบบการชำระเงิน",

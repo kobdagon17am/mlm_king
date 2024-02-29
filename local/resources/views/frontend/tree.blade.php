@@ -593,26 +593,31 @@ $.ajax({
 
 }
 
+    // function modal_add(username, type) {
+    //     $.ajax({
+    //             url: '{{ route('modal_add_tree') }}',
+    //             type: 'GET',
+    //             data: {
+    //               username: username,
+    //               type: type
+    //             },
+    //         })
+    //         .done(function(data) {
+    //             console.log("success");
+    //             $('#modal_add').html(data);
+    //             $('#modal_add_show').modal('show');
+    //         })
+    //         .fail(function() {
+    //             console.log("error");
+    //         })
+    //         .always(function() {
+    //             console.log("complete");
+    //         });
+
+    // }
+
     function modal_add(username, type) {
-        $.ajax({
-                url: '{{ route('modal_add_tree') }}',
-                type: 'GET',
-                data: {
-                  username: username,
-                  type: type
-                },
-            })
-            .done(function(data) {
-                console.log("success");
-                $('#modal_add').html(data);
-                $('#modal_add_show').modal('show');
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                console.log("complete");
-            });
+        window.location.assign("{{route('RegisterNew')}}")
 
     }
 

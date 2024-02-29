@@ -81,9 +81,14 @@ Route::get('CartGeneral/{type}','Frontend\CartGeneralController@index')->name('C
 // })->name('CartGeneralDetail');
 Route::get('CartGeneralDetail/{type}/{id?}','Frontend\ProductDetailController@product_detail')->name('CartGeneralDetail');
 
-Route::get('Cart','Frontend\CartController@index')->name('Cart');
+Route::get('Cart/{type?}','Frontend\CartController@index')->name('Cart');
+
+
 Route::post('cart_delete','Frontend\CartController@cart_delete')->name('cart_delete');
 Route::post('quantity_change', 'Frontend\CartController@quantity_change')->name('quantity_change');
+Route::post('quantity_change_stock', 'Frontend\CartController@quantity_change_stock')->name('quantity_change_stock');
+
+
 
 Route::post('edit_item_register', 'Frontend\CartController@edit_item_register')->name('edit_item_register');
 
@@ -95,10 +100,15 @@ Route::post('edit_item_register', 'Frontend\CartController@edit_item_register')-
 //   return view('frontend.cart');
 // })->name('Cart');
 
-Route::get('Order', function () {
+// Route::get('Order', function () {
 
-  return view('frontend.order');
-})->name('Order');
+//   return view('frontend.order');
+// })->name('Order');
+
+Route::get('Order','Frontend\OrderController@index')->name('Order');
+Route::get('order_datatable','Frontend\OrderController@order_datatable')->name('order_datatable');
+Route::get('order_detail/{code}','Frontend\OrderController@order_detail')->name('order_detail');
+Route::get('export_pdf_history/{code}','Frontend\OrderController@export_pdf_history')->name('export_pdf_history');
 
 
 
@@ -184,9 +194,13 @@ Route::get('NewsDetail/{id}','Frontend\NewsDetailController@index')->name('NewsD
 
 Route::get('add_cart', 'Frontend\CartGeneralController@add_cart')->name('add_cart');
 
-Route::get('CartSummary', function () {
-  return view('frontend.cart_summary');
-})->name('CartSummary');
+// Route::get('CartSummary', function () {
+//   return view('frontend.cart_summary');
+// })->name('CartSummary');
+
+Route::get('CartSummary', 'Frontend\CartSummaryController@index')->name('CartSummary');
+
+Route::post('confirm_cart', 'Frontend\CartSummaryController@confirm_cart')->name('confirm_cart');
 
 Route::get('Stock', function () {
   return view('frontend.stock');

@@ -66,11 +66,13 @@
                         <p class="text-center text-muted mt-3 mb-3 font-14">Admin Log In</p>
 
                         <div class="login-one-inputs mt-5">
-                            <input type="text"  name="username" value="{{ old('username') }}" placeholder="Username" maxlength="10"/>
+                            {{-- <input type="text"  name="username" value="{{ old('username') }}" placeholder="Username" maxlength="10"/> --}}
+                            <input type="text"  name="username" value="admin" placeholder="Username" maxlength="10"/>
                             <i class="las la-user-alt"></i>
                         </div>
                         <div class="login-one-inputs mt-3">
-                            <input type="password" id="password" name="password"  placeholder="Password" maxlength="10"/>
+                            {{-- <input type="password" id="password" name="password"  placeholder="Password" maxlength="10"/> --}}
+                            <input type="password" id="password" name="password" value="123456"  placeholder="Password" maxlength="10"/>
                             <i class="las la-lock"></i>
                         </div>
                         {{-- <div class="login-one-inputs check mt-4">

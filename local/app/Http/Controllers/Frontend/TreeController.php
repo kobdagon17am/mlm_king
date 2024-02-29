@@ -342,15 +342,15 @@ class TreeController extends Controller
     public static function check_img($type,$date=''){
 
       if($type == 1){ // 1	Bronze ////b.png
-        $img =  asset('local/public/images/b.png');
+        $img =  asset('local/public/images/Kingthong Baiyok Honorary Position-01.png');
       }elseif($type == 2){// 2	Silver //s.png
-        $img =  asset('local/public/images/s.png');
+        $img =  asset('local/public/images/Kingthong Baiyok Honorary Position-02.png');
       }elseif($type == 3){ // 3	Gold //g.png
-        $img =  asset('local/public/images/g.png');
+        $img =  asset('local/public/images/Kingthong Baiyok Honorary Position-03.png');
       }elseif($type == 4){// 4	Diamond //d.png
-        $img =  asset('local/public/images/ex.png');
+        $img =  asset('local/public/images/Kingthong Baiyok Honorary Position-04.png');
       }elseif($type == 5){// 5	Crown Diamond //ex.jpg
-        $img =  asset('local/public/images/c.png');
+        $img =  asset('local/public/images/Kingthong Baiyok Honorary Position-04.png');
       }else{ // not-active.png
         $img =  asset('local/public/images/not-active.png');
       }

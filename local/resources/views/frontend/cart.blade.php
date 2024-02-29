@@ -95,14 +95,25 @@
                                                                 style="object-fit: cover;">
                                                         </td>
                                                         <td>
+                                                            @php
+                                                                $description = $value['attributes']['descriptions'];
+                                                                $maxLength = 150;
+                                                                $trimmedDescription = strlen($description) > $maxLength ? substr($description, 0, $maxLength) . '...' : $description;
+                                                            @endphp
+
                                                             <p><b>{{ $value['name'] }}</b><br>
-                                                                {!! $value['attributes']['descriptions'] !!}</p>
+                                                                {!! $trimmedDescription !!}</p>
                                                         </td>
                                                         <td>
                                                             <button  type="button"  class="btn btn-outline-primary" onclick="quantity_change({{$value['id']}},{{$value['quantity']}})">{{ $value['quantity'] }}</button>
                                                             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered  modal-sm" role="document">
-                                                                      <form action="{{ route('quantity_change') }}" method="POST">
+                                                                    @if(request()->is('Cart/stock'))
+                                                                    <form action="{{ route('quantity_change_stock') }}" method="POST">
+                                                                    @else
+                                                                    <form action="{{ route('quantity_change') }}" method="POST">
+                                                                    @endif
+
                                                                                 @csrf
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
@@ -187,64 +198,46 @@
                                                             <h6>{{Cart::session('1')->getTotalQuantity()}}</h6>
                                                         </td>
                                                     </tr>
+
                                                     <tr>
                                                         <td>
-                                                            <h6>ราคาสินค้ารวม :</h6>
+                                                            <h6>ราคาสินค้า :</h6>
                                                         </td>
                                                         <td>
-                                                            <h6>฿200</h6>
+                                                            <strong class=""
+                                                                id="price_total_not_ship">
+                                                                {{ $bill['price_total_not_ship'] }}
+                                                                บาท</strong>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h6>Vat (7.00%) :</h6>
-                                                        </td>
-                                                        <td>
-                                                            <h6>฿200</h6>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h6>ราคาสินค้ารวม + Vat :</h6>
-                                                        </td>
-                                                        <td>
-                                                            <h6>฿200</h6>
-                                                        </td>
-                                                    </tr>
+
+
+
                                                     <tr>
                                                         <td>
                                                             <h6>ค่าจัดส่ง :</h6>
                                                         </td>
                                                         <td>
-                                                            <h6>{{ number_format(Cart::session('1')->getTotal(),2) }}</h6>
+                                                            <strong class="" id="shipping">
+                                                            {{ $bill['shipping'] }}
+                                                            บาท</strong>
+                                                            <h6 ></h6>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td class="text-success-teal strong">ค่าส่งสินค้า : </td>
-                                                        <td class="text-success-teal strong">{{$bill['shipping']}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <?php
-                                                        $cartCollection = Cart::session('1')->getContent();
-                                                        $data = $cartCollection->toArray();
 
-                                                        if ($data) {
-                                                            foreach ($data as $value) {
-                                                                $pv[] = $value['quantity'] * $value['attributes']['pv'];
-                                                            }
-                                                            $pv_total = array_sum($pv);
-                                                        } else {
-                                                            $pv_total = 0;
-                                                        }
-
-                                                        ?>
-                                                        <th>คะแนนที่ได้รับ :</th>
-                                                        <th>{{ number_format($pv_total,2)}} PV</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>ยอดชำระทั้งหมด :</th>
-                                                        <th>{{ number_format(Cart::session('1')->getTotal()+$bill['shipping']) }} บาท</th>
-                                                    </tr>
+                                                <tr>
+                                                    <th>คะแนนที่ได้รับ :</th>
+                                                    <th><strong class="text-success"
+                                                            id="pv">
+                                                            {{ $bill['pv_total'] }}
+                                                            PV</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>ยอดชำระทั้งหมด :</th>
+                                                    <th id="price_total_tax_ship">
+                                                        {{ $bill['price_total'] }}
+                                                        บาท</th>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>

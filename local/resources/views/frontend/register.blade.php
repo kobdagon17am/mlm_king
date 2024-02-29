@@ -1098,17 +1098,7 @@
                                                                                                 ชิ้น</strong>
                                                                                         </td>
                                                                                     </tr>
-                                                                                    <tr>
-                                                                                        <td>
-                                                                                            <h6>ราคาสินค้ารวม :</h6>
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            <strong class=""
-                                                                                                id="price_total">
-                                                                                                {{ $data['bill']['price_total'] }}
-                                                                                                บาท</strong>
-                                                                                        </td>
-                                                                                    </tr>
+
                                                                                     {{-- <tr>
                                                                                             <td>
                                                                                                 <h6>Vat (7.00%) :</h6>
@@ -1117,23 +1107,30 @@
                                                                                                 <h6>฿200</h6>
                                                                                             </td>
                                                                                         </tr> --}}
-                                                                                    {{-- <tr>
+
+                                                                                        <tr>
                                                                                             <td>
-                                                                                                <h6>ราคาสินค้ารวม + Vat :</h6>
+                                                                                                <h6>ราคาสินค้า :</h6>
                                                                                             </td>
                                                                                             <td>
-                                                                                                <h6>฿200</h6>
+                                                                                                <strong class=""
+                                                                                                    id="price_total">
+                                                                                                    {{ $data['bill']['price_total'] }}
+                                                                                                    บาท</strong>
                                                                                             </td>
-                                                                                        </tr> --}}
-                                                                                    {{-- <tr>
+                                                                                        </tr>
+                                                                                        <tr>
                                                                                             <td>
                                                                                                 <h6>ค่าจัดส่ง :</h6>
                                                                                             </td>
                                                                                             <td>
-                                                                                                <h6>฿0</h6>
+                                                                                                <strong class="" id="shipping">
+                                                                                                {{ $data['bill']['shipping'] }}
+                                                                                                บาท</strong>
+                                                                                                <h6 ></h6>
                                                                                             </td>
                                                                                         </tr>
-                                                                                   --}}
+
                                                                                     <tr>
                                                                                         <th>คะแนนที่ได้รับ :</th>
                                                                                         <th><strong class="text-success"
@@ -1189,6 +1186,14 @@
                                                                                     aria-selected="false">
                                                                                     บัตรเกษตรสุขใจ</a>
                                                                             </li>
+
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link " id="animated-underline-bank-tab"
+                                                                                    data-toggle="tab" href="#animated-underline-bank" role="tab"
+                                                                                    aria-controls="animated-underline-bank" aria-selected="false"> โอนชำระ</a>
+                                                                            </li>
+
+
                                                                         </ul>
                                                                         <div class="tab-content"
                                                                             id="animateLineContent-4">
@@ -1198,7 +1203,7 @@
                                                                                 role="tabpanel"
                                                                                 aria-labelledby="animated-underline-about-tab">
                                                                                 <div class="text-center">
-                                                                                    <img src="http://localhost/mlm_king/frontend/assets/img/thai_qr_payment.png"
+                                                                                    <img src="{{ asset('frontend/assets/img/thai_qr_payment.png')}}"
                                                                                         class="img-fluid mx-auto rounded"
                                                                                         alt="Responsive image">
                                                                                 </div>
@@ -1225,7 +1230,7 @@
                                                                                 <div class="row">
                                                                                     <div class="col-md-6 col-sm-12 col-12">
                                                                                         <div class="text-center">
-                                                                                            <img src="http://localhost/mlm_king/frontend/assets/img/w960.jpg"
+                                                                                            <img src="{{ asset('frontend/assets/img/w960.jpg')}}"
                                                                                                 class="img-fluid mx-auto"
                                                                                                 alt="Responsive image">
 
@@ -1318,6 +1323,43 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+                                                                            </div>
+
+                                                                            <div class="tab-pane fade" id="animated-underline-bank"
+                                                                            role="tabpanel" aria-labelledby="animated-underline-bank-tab">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="text-center">
+                                                                                        <img src="{{ asset('frontend/assets/img/scb.png') }}"
+                                                                                            class="img-fluid mx-auto" alt="Responsive image">
+                                                                                        <p class="font-20"><b>xxxx</b></p>
+                                                                                        <p class="font-13">ธนาคารไทยพาณิชย์</p>
+                                                                                        <p class="font-13">บริษัท กิ่งทองใบหยก จำกัด</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6 text-center">
+                                                                                    <label
+                                                                                        for="slip_image"><b>อัพโหลดหลักฐานการชำระเงิน</b></label>
+                                                                                    <div class="upload text-center img-thumbnail">
+                                                                                        <input type="file" id="slip_image" name="slip_image"
+                                                                                            class="dropify" data-default-file="">
+                                                                                    </div>
+
+                                                                                    <div
+                                                                                    class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                                                    <button
+                                                                                        type="button"
+                                                                                        onclick="submit_confirm(5,'trafer_bank')"
+                                                                                        class="action-button btn btn-primary"
+                                                                                        value="tranfer">โอนชำระ
+                                                                                    </button>
+
+                                                                                </div>
+                                                                                </div>
+
+                                                                            </div>
+
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1413,6 +1455,20 @@
                     return; // หยุดการทำงานของ each
 
                 }
+            }
+
+            if (pay_type == 5) {
+                var $fileInput_slip = $('#slip_image');
+
+                // Check if the file input is empty or null
+                if ($fileInput_slip[0].files.length === 0) {
+                    // File input is empty
+                    alert("กรุณาเพิ่มข้อมูลสลิปการโอนเงิน");
+                    console.log('File input is empty.');
+                    return; // หยุดการทำงานของ each
+
+                }
+
             }
 
 
@@ -1983,6 +2039,7 @@
                     $('#price_total_tax_ship').html(data['price_total'] + ' บาท');
                     $('#pv').html(data['pv_total'] + ' PV');
                     $('#pv_total_js').val(data['pv_total_js']);
+                    $('#shipping').html(data['shipping']+ ' บาท');
                     calculateSumPriceAndPv(item_id, qty)
                     console.log(data);
                     console.log("success");

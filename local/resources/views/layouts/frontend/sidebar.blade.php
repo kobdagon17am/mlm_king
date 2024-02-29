@@ -66,6 +66,16 @@
                 </ul>
             </li>
 
+
+            <li class="menu {{ (request()->is('Order') ) ? 'active' : '' }}">
+                <a href="{{ route('Order')}}" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <i class="las la-clipboard-list"></i>
+                        <span>ประวัติการสั่งซื้อ</span>
+                    </div>
+                </a>
+            </li>
+
             <li class="menu">
                 <a href="{{ route('Order')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -75,33 +85,32 @@
                 </a>
             </li>
 
+
             <li class="menu">
                 <a href="{{ route('Order')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <i class="las la-clipboard-list"></i>
-                        <span>ประวัติการสั่งซื้อ</span>
+                        <i class="las la-box-open"></i>
+                        <span>ยอดสะสมปุ๋ยเม็ด</span>
                     </div>
                 </a>
             </li>
-            <li class="menu">
+            {{-- <li class="menu">
                 <a href="#stock" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="las la-box-open"></i>
-                        <span>สต๊อกสินค้า</span>
+                        <span>ยอดสะสมปุ๋ยเม็ด</span>
                     </div>
                     <div>
                         <i class="las la-angle-right sidemenu-right-icon"></i>
                     </div>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="stock" data-parent="#accordionExample">
+
                     <li>
-                        <a href="{{route('Stock')}}"> สต๊อกสินค้า </a>
-                    </li>
-                    <li>
-                        <a href="{{route('StockHistory')}}"> ประวัติสต๊อกสินค้า </a>
+                        <a href="{{route('StockHistory')}}"> ประวัติยอดสะสมปุ๋ยเม็ด </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="menu">
                 <a href="#salespage" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">

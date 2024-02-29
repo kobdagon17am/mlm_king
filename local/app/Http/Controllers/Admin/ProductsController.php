@@ -24,6 +24,7 @@ class ProductsController extends Controller
       ->select('products.*','product_images.product_image_url','product_images.product_image_name')
       ->leftJoin('product_images', 'product_images.product_id_fk', '=', 'products.id')
       ->where('product_images.product_image_orderby','=','1')
+      ->orderBy('products.product_code')
       ->get();
 // dd($get_products);
 

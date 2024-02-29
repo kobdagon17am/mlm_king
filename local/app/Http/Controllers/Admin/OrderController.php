@@ -99,8 +99,8 @@ class OrderController extends Controller
         <tr>
         <th>ค่าส่ง :</th>
         <th><strong class="text-success" >
-                ' . number_format($orders->pv_total) . '
-                PV</th>
+                ' . number_format($orders->shipping_price) . '
+                บาท</th>
 
         </tr>
         <tr>
@@ -111,19 +111,39 @@ class OrderController extends Controller
         </tr>';
             $img01 = asset($orders->img_card);
             $img02 = asset($orders->img_idcard_pay);
-
-            $img = '<div class="demo-gallery">
-                <ul id="lightgallery" class="list-unstyled row">
-                <li class="col-xs-6 col-sm-6 col-md-6" data-responsive="' . $img01 . '" data-src="' . $img01 . '" data-sub-html="<h4>Amazing lightbox</h4><p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>">
+            $img03 = asset($orders->file_slip);
+            $img_123 ='';
+            if($orders->img_card){
+                $img_123 .='<li class="col-xs-6 col-sm-6 col-md-6" data-responsive="' . $img01 . '" data-src="' . $img01 . '" data-sub-html="<h4>Amazing lightbox</h4><p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>">
                 <a href="#!">
                     <img class="img-responsive" src="' . $img01 . '">
                 </a>
-            </li>
-            <li class="col-xs-6 col-sm-6 col-md-6" data-responsive="' . $img02 . '" data-src="' . $img02 . '" data-sub-html="<h4>Touch and support for mobile devices.</h4><p>Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>">
+            </li>';
+
+            }
+
+            if($orders->img_idcard_pay){
+                $img_123 .='<li class="col-xs-6 col-sm-6 col-md-6" data-responsive="' . $img02 . '" data-src="' . $img02 . '" data-sub-html="<h4>Touch and support for mobile devices.</h4><p>Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>">
                 <a href="#!">
                     <img class="img-responsive" src="' . $img02 . '">
                 </a>
-            </li>
+            </li>';
+
+            }
+
+            if($orders->file_slip){
+                $img_123 .='<li class="col-xs-6 col-sm-6 col-md-6" data-responsive="' . $img03 . '" data-src="' . $img03 . '" data-sub-html="<h4>Touch and support for mobile devices.</h4><p>Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>">
+                <a href="#!">
+                    <img class="img-responsive" src="' . $img03 . '">
+                </a>
+            </li>';
+
+            }
+
+
+            $img = '<div class="demo-gallery">
+                <ul id="lightgallery" class="list-unstyled row">
+                '.$img_123.'
             </ul>
         </div>';
         }
@@ -239,7 +259,7 @@ class OrderController extends Controller
             // })
 
             ->editColumn('type', function ($query) {
-                $html = '';
+                $html = $query->type;
                 if ($query->type == 'register') {
                     $html = 'สมัครสมาชิก';
                 }
@@ -567,6 +587,7 @@ class OrderController extends Controller
     public function confirm_order(Request $request)
     {
 
+       if($request->submit == 'confirm'){
 
         $orders = DB::table('db_orders')
             ->where('id', $request->order_id)
@@ -649,6 +670,20 @@ class OrderController extends Controller
                 return redirect('admin/orders/list')->withError('อนุมัติบิลไม่สำเร็จกรุณติดต่อ Dev');
             }
         }
+
+       }
+
+       if($request->submit == 'cancel'){
+
+            $orders = DB::table('db_orders')
+            ->where('id', $request->order_id)
+            ->update(['cancel_type'=>$request->vertical,'note'=>$request->info_other,'order_status_id_fk' => 8]);
+            return redirect('admin/orders/list')->withSuccess('ยกเลิกรายการสำเร็จ');
+
+       }
+
+       return redirect('admin/orders/list')->withError('ทำรายการไม่สำเร็จ');
+
     }
 
     public function tracking_no(Request $request)

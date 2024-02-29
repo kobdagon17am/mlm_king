@@ -63,13 +63,9 @@ class RegisterController extends Controller
                 ->get();
 
 
-
             $get_branch = DB::table('branch')
             ->where('status', 1)
             ->get();
-
-
-
 
             if (Auth::guard('c_user')->user()->business_location_id  == '1' || Auth::guard('c_user')->user()->business_location_id  == null) {
                 $business_location_id = 1;
@@ -109,20 +105,19 @@ class RegisterController extends Controller
             } else {
                 $pv_total = 0;
             }
+            $shipping = RegisterController::fc_shipping($pv_total);
 
             $price = Cart::session('register')->getTotal();
-            $price_total = number_format($price, 2);
+            $price_total = number_format($price+$shipping, 2);
 
             $bill = array('price_total' => $price_total,
                 'pv_total' => number_format($pv_total),
                 'pv_total_js' => $pv_total,
                 'data' => $data,
+                'shipping'=>$shipping,
                 'quantity' => $quantity,
                 'status' => 'success',
-
             );
-
-
 
             $data = ['data' => $resule, 'line_type_back' => $line_type, 'provinces' => $provinces, 'business_location' => $business_location,
              'country' => $country,'bill'=>$bill,'type'=>$type,'get_branch'=> $get_branch,'dataset_bank'=>$dataset_bank,'sponser_data'=> $sponser_data];
@@ -132,8 +127,6 @@ class RegisterController extends Controller
              }else{
                 return view('frontend/register', compact('data'));
              }
-
-
 
         }
     }
@@ -415,12 +408,29 @@ class RegisterController extends Controller
                 $customers_address_delivery_insert->sent_home_name = trim($request->sent_home_name);
                 $customers_address_delivery_insert->sent_soi = trim($request->sent_soi);
                 $customers_address_delivery_insert->sent_road = trim($request->sent_road);
-                $customers_address_delivery_insert->sent_tambon_id_fk = '1';
-                $customers_address_delivery_insert->sent_tambon = trim($request->sent_tambon);
-                $customers_address_delivery_insert->sent_district_id_fk = '1';
-                $customers_address_delivery_insert->sent_district = trim($request->sent_amphur);
-                $customers_address_delivery_insert->sent_province_id_fk = '1';
-                $customers_address_delivery_insert->sent_province = trim($request->sent_changwat);
+
+
+                $dataset_changwat = DB::table('dataset_provinces')
+                ->select('name_th')
+                ->where('id',$request->sent_changwat)
+                ->first();
+
+                $dataset_amphuress = DB::table('dataset_amphures')
+                ->select('name_th')
+                ->where('id',$request->sent_amphur)
+                ->first();
+
+                $dataset_tambon = DB::table('dataset_districts')
+                ->select('name_th')
+                ->where('id',$request->sent_tambon)
+                ->first();
+
+                $customers_address_delivery_insert->sent_tambon_id_fk =  trim($request->sent_tambon);
+                $customers_address_delivery_insert->sent_tambon = $dataset_tambon->name_th;
+                $customers_address_delivery_insert->sent_district_id_fk =trim($request->sent_amphur);
+                $customers_address_delivery_insert->sent_district =  $dataset_amphuress->name_th;
+                $customers_address_delivery_insert->sent_province_id_fk = trim($request->sent_changwat);
+                $customers_address_delivery_insert->sent_province = $dataset_changwat->name_th;
                 $customers_address_delivery_insert->sent_zipcode = trim($request->sent_zipcode);
 
 
@@ -520,12 +530,28 @@ class RegisterController extends Controller
                     $customers_address_delivery_insert[$i]->sent_home_name = trim($request->sent_home_name);
                     $customers_address_delivery_insert[$i]->sent_soi = trim($request->sent_soi);
                     $customers_address_delivery_insert[$i]->sent_road = trim($request->sent_road);
-                    $customers_address_delivery_insert[$i]->sent_tambon_id_fk = '1';
-                    $customers_address_delivery_insert[$i]->sent_tambon = trim($request->sent_tambon);
-                    $customers_address_delivery_insert[$i]->sent_district_id_fk = '1';
-                    $customers_address_delivery_insert[$i]->sent_district = trim($request->sent_amphur);
-                    $customers_address_delivery_insert[$i]->sent_province_id_fk = '1';
-                    $customers_address_delivery_insert[$i]->sent_province = trim($request->sent_changwat);
+
+                    $dataset_changwat = DB::table('dataset_provinces')
+                    ->select('name_th')
+                    ->where('id',$request->sent_changwat)
+                    ->first();
+
+                    $dataset_amphuress = DB::table('dataset_amphures')
+                    ->select('name_th')
+                    ->where('id',$request->sent_amphur)
+                    ->first();
+
+                    $dataset_tambon = DB::table('dataset_districts')
+                    ->select('name_th')
+                    ->where('id',$request->sent_tambon)
+                    ->first();
+
+                    $customers_address_delivery_insert[$i]->sent_tambon_id_fk =  trim($request->sent_tambon);
+                    $customers_address_delivery_insert[$i]->sent_tambon = $dataset_tambon->name_th;
+                    $customers_address_delivery_insert[$i]->sent_district_id_fk =trim($request->sent_amphur);
+                    $customers_address_delivery_insert[$i]->sent_district =  $dataset_amphuress->name_th;
+                    $customers_address_delivery_insert[$i]->sent_province_id_fk = trim($request->sent_changwat);
+                    $customers_address_delivery_insert[$i]->sent_province = $dataset_changwat->name_th;
                     $customers_address_delivery_insert[$i]->sent_zipcode = trim($request->sent_zipcode);
 
 
@@ -656,7 +682,6 @@ class RegisterController extends Controller
     public function payment_submit($rs)
     {
 
-
         $insert_db_orders = new Order();
         $insert_order_products_list= new OrderProductsList();
 
@@ -772,7 +797,6 @@ class RegisterController extends Controller
 
 
             $insert_db_orders->address_sent = 'other';
-            $insert_db_orders->address_sent = 'system';
             $insert_db_orders->delivery_province_id = $rs->sent_changwat_order;
             $insert_db_orders->house_no = $rs->sent_no_order;
             $insert_db_orders->house_name =$rs->sent_home_name_order;
@@ -783,7 +807,7 @@ class RegisterController extends Controller
             $insert_db_orders->district_id = $rs->sent_amphur_order;
             $insert_db_orders->province_id = $rs->sent_changwat_order;
             $insert_db_orders->district = $dataset_amphuress->name_th;
-            $insert_db_orders->tambon ==$dataset_tambon->name_th;
+            $insert_db_orders->tambon = $dataset_tambon->name_th;
             $insert_db_orders->province = $dataset_changwat->name_th;
             $insert_db_orders->zipcode = $rs->sent_zipcode_order;
 
@@ -813,7 +837,6 @@ class RegisterController extends Controller
 
         $insert_db_orders->pay_type_name =  $rs->make_payment;
 
-
         // dd($insert_db_orders->toArray());
 
         // $location = Location::location($business_location_id, $business_location_id);
@@ -842,11 +865,10 @@ class RegisterController extends Controller
                 ->first();
 
                 if($products_vat){
-                    $vat_total =  ($total_price*$value['quantity'])*7/100;
+                    $vat_total =  ($total_price)*7/100;
                 }else{
                     $vat_total = 0;
                 }
-
 
                 $insert_db_products_list[] = [
                     'code_order'=>$code_order,
@@ -899,7 +921,7 @@ class RegisterController extends Controller
        //vatใน 7%
 
         //มูลค่าสินค้า
-        $price_vat = $price;
+        $price_vat = $price-$vat_total_sum;
         $insert_db_orders->product_value = $price_vat;
 
         $shipping = RegisterController::fc_shipping($pv_total);
@@ -926,7 +948,7 @@ class RegisterController extends Controller
         }
         $insert_db_orders->shipping_cost_name = $shipping_cost_name->shipping_name;
 
-        $insert_db_orders->sum_price = $price;
+        $insert_db_orders->sum_price = $price_vat;
 
         $data_user =  DB::table('customers')
         ->select('dataset_qualification.business_qualifications as qualification_name','dataset_qualification.bonus')
@@ -952,9 +974,34 @@ class RegisterController extends Controller
         $insert_db_orders->code_order = $code_order;
         $insert_db_orders->phone_pay = $rs->phone_pay;
 
+        $slip_image = $rs->file('slip_image');
+
+        if (isset($slip_image)) {
+            $url = 'local/public/files_slip/' . date('Ym');
+
+            $i=0;
+
+              $f_name = date('YmdHis_').''.$i.'_'.$customer_id.'.'.$slip_image->getClientOriginalExtension();
+
+              if ($slip_image->move($url, $f_name)) {
+                $insert_db_orders->transfer_price = $price;
+                $insert_db_orders->file_slip = $url.'/'.$f_name;
+
+                // DB::table('payment_slip')
+                //     ->insert(['customer_id' => $customer_id, 'url' => $url, 'file' => $f_name,'code_order' => $rs->code_order, 'order_id' => $rs->id]);
+
+                // $db_orders = DB::table('db_orders')
+                //     ->where('id', $rs->id)
+                //     ->update(['order_status_id_fk' => $orderstatus_id,'approve_status'=>1,'transfer_price'=>$rs->total_price,'pay_type_id_fk'=>'1']);
+                    $resule = ['status' => 'success', 'message' => 'ชำระเงินแบบโอนชำระสำเร็จ'];
+                }
+
+
+        }
+
+
 
         $file_slip = $rs->file('img_pay');
-
 
         // $orderstatus_id = 2;
         if (isset($file_slip)) {

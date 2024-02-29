@@ -26,10 +26,10 @@
     <link href="{{ asset('frontend/plugins/sweetalerts/sweetalert.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('frontend/assets/css/basic-ui/custom_sweetalert.css') }}" rel="stylesheet" type="text/css" />
     <style>
-  
+
   .nav-item.dropdown.notification-dropdown .blink {
     position: relative;
-    
+
     width: 17px; /* เปลี่ยนขนาดของกล่องแจ้งเตือน */
     height: 17px; /* เปลี่ยนขนาดของกล่องแจ้งเตือน */
     background-color: red; /* เปลี่ยนสีของกล่องแจ้งเตือน */
@@ -90,26 +90,40 @@
                             <img src="{{ asset('frontend/assets/img/flag/usa-flag.png')}}" class="flag-width" alt="flag">
                             <span class="align-self-center">&nbsp;English</span>
                         </a>
-                       
+
                     </div>
                 </li>
-              
+
                 <li class="nav-item dropdown notification-dropdown">
-                    <a href="{{ route('Cart') }}" class="nav-link dropdown-toggle position-relative" id="order" >
-                        
+                    @if(request()->is('CartGeneral/stock') || request()->is('Cart/stock') )
+                    <a href="{{ route('Cart',['type'=>'stock']) }}" class="nav-link dropdown-toggle position-relative" id="order" >
+
                         <i class="las la-shopping-cart"> </i>
-                        
+
                         <div class="blink " style="top: -9px;right: 8px;">
-                            
-                 
-                            <b class="" style="font-size: 12px;color: white;" id="count_cart"> {{Cart::session(1)->getTotalQuantity() }}</b>
-                        
-                             
+
+                            <b class="" style="font-size: 12px;color: white;" id="count_cart"> {{Cart::session(2)->getTotalQuantity() }}</b>
+
+
                         </div>
                     </a>
-                     
+                    @else
+                    <a href="{{ route('Cart') }}" class="nav-link dropdown-toggle position-relative" id="order" >
+
+                        <i class="las la-shopping-cart"> </i>
+
+                        <div class="blink " style="top: -9px;right: 8px;">
+
+                            <b class="" style="font-size: 12px;color: white;" id="count_cart"> {{Cart::session(1)->getTotalQuantity() }}</b>
+
+
+                        </div>
+                    </a>
+
+                    @endif
+
                 </li>
-                 
+
                 <li class="nav-item dropdown user-profile-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         <img class="rounded-circle img-thumbnail" src="{{ asset('frontend/assets/img/profile-16.jpg') }}" alt="avatar">

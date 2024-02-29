@@ -49,9 +49,9 @@
                                 <a class="nav-link" id="v-border-pills-team-tab" data-toggle="pill"
                                     href="#v-border-pills-team" role="tab" aria-controls="v-border-pills-team"
                                     aria-selected="false"><i class="las la-sitemap"></i> ข้อมูลสายงาน</a>
-                                <a class="nav-link" id="v-border-pills-work-tab" data-toggle="pill"
+                                {{-- <a class="nav-link" id="v-border-pills-work-tab" data-toggle="pill"
                                     href="#v-border-pills-work" role="tab" aria-controls="v-border-pills-work"
-                                    aria-selected="false"><i class="las la-home"></i> ที่อยู่อาศัย</a>
+                                    aria-selected="false"><i class="las la-home"></i> ที่อยู่อาศัย</a> --}}
                                 <a class="nav-link" id="v-border-pills-products-tab" data-toggle="pill"
                                     href="#v-border-pills-products" role="tab" aria-controls="v-border-pills-products"
                                     aria-selected="false"><i class="las la-shipping-fast"></i> ที่อยู่จัดส่ง</a>
@@ -223,101 +223,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="v-border-pills-work" role="tabpanel"
-                                    aria-labelledby="v-border-pills-work-tab">
-                                    <div class="media">
-                                        <div class="profile-shadow w-100">
-                                            <h5 class="font-16 mb-3"><b>ที่อยู่ตามบัตรประชาชน (ADDRESS)</b></h5>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="no">บ้านเลขที่
-                                                            <span class="text-danger">* </span></label>
-                                                        <input type="text" class="form-control" id="no"
-                                                            placeholder="บ้านเลขที่">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="moo">หมู่ที่
-                                                            <span class="text-danger">* </span></label>
-                                                        <input type="text" class="form-control" id="moo"
-                                                            placeholder="หมู่ที่">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="homename">หมู่บ้าน/อาคาร
-                                                            <span class="text-danger">* </span></label>
-                                                        <input type="text" class="form-control" id="homename"
-                                                            placeholder="หมู่บ้าน/อาคาร">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="soi">ตรอก/ซอย
-                                                            <span class="text-danger"> </span></label>
-                                                        <input type="text" class="form-control" id="soi"
-                                                            placeholder="ตรอก/ซอย">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="road">ถนน
-                                                            <span class="text-danger"> </span></label>
-                                                        <input type="text" class="form-control" id="road"
-                                                            placeholder="ถนน">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="tambon">แขวง/ตำบล
-                                                            <span class="text-danger">*</span></label>
-                                                        <select class="form-control" id="tambon">
-                                                            <option>แขวง/ตำบล</option>
-                                                            <option> </option>
-                                                            <option> </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="amphur">เขต/อำเภอ
-                                                            <span class="text-danger">*</span></label>
-                                                        <select class="form-control" id="amphur">
-                                                            <option>เขต/อำเภอ</option>
-                                                            <option> </option>
-                                                            <option> </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="changwat">จังหวัด
-                                                            <span class="text-danger">*</span></label>
-                                                        <select class="form-control" id="changwat">
-                                                            <option>จังหวัด</option>
-                                                            <option> </option>
-                                                            <option> </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="zipcode">รหัสไปรษณีย์
-                                                            <span class="text-danger">* </span></label>
-                                                        <input type="text" class="form-control" id="zipcode"
-                                                            placeholder="รหัสไปรษณีย์">
-                                                    </div>
-                                                </div>
-                                                <div class="info-area col-md-12 text-right">
-                                                    <button type="reset" class="btn btn-info mr-2">
-                                                        <i class="las la-save"></i></i> บันทึก</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="tab-pane fade" id="v-border-pills-products" role="tabpanel"
                                     aria-labelledby="v-border-pills-work-tab">
                                     <div class="media">

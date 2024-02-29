@@ -17,15 +17,18 @@ class CartController extends Controller
 
     }
 
-    public function index()
+    public function index($type='')
     {
-
-
-        $cartCollection = Cart::session(1)->getContent();
+        if($type == 'stock'){
+            $cart = 2;
+        }else{
+            $cart = 1;
+        }
+        $cartCollection = Cart::session($cart)->getContent();
         $data = $cartCollection->toArray();
 
 
-        $quantity = Cart::session(1)->getTotalQuantity();
+        $quantity = Cart::session($cart)->getTotalQuantity();
 
         if($quantity  == 0){
             return redirect('CartGeneral/general')->withWarning('ไม่มีสินค้าในตะกร้าสินค้า กรุณาเลือกสินค้า');
@@ -52,30 +55,30 @@ class CartController extends Controller
 
 
 
-        $price = Cart::session(1)->getTotal();
-        if($pv_total >= 400){
-          $shipping =  0;
-        }else{
-          $shipping = 50;
-        }
+        $price = Cart::session($cart)->getTotal();
+
+
+        $shipping = \App\Http\Controllers\Frontend\RegisterController::fc_shipping($pv_total);
 
 
         $price_total = number_format($price+$shipping, 2);
 
         // $discount = floor($pv_total * $data_user->bonus/100);
 
-        $bill = array(
-            'price_total' => $price_total,
-            'shipping'=>$shipping,
-            'pv_total' => $pv_total,
-            'data' => $data,
-            // 'bonus'=>$data_user->bonus,
-            // 'discount'=>$discount,
-            // 'position'=>$data_user->qualification_name,
-            'quantity' => $quantity,
-            'status' => 'success',
 
-        );
+        $bill = array('price_total' => $price_total,
+        'pv_total' => number_format($pv_total),
+        'pv_total_js' => $pv_total,
+        'data' => $data,
+        'price_total_not_ship'=>number_format($price),
+        'shipping'=>$shipping,
+        'quantity' => $quantity,
+        'cart'=> $cart,
+        'status' => 'success',
+
+    );
+
+
 
 
 
@@ -102,6 +105,23 @@ class CartController extends Controller
             return redirect('Cart')->withSuccess('แก้ไขจำนวนสำเร็จ');
         }else{
             return redirect('Cart')->withError('ไม่สามารถแก้ไขจำนวนสินค้าได้');
+
+        }
+
+
+    }
+
+    public function quantity_change_stock(Request $request){
+        if ($request->product_id) {
+            Cart::session(2)->update($request->product_id, array(
+                'quantity' => array(
+                    'relative' => false,
+                    'value' => $request->productQty,
+                ),
+            ));
+            return redirect('Cart/stock')->withSuccess('แก้ไขจำนวนสำเร็จ');
+        }else{
+            return redirect('Cart/stock')->withError('ไม่สามารถแก้ไขจำนวนสินค้าได้');
 
         }
 
@@ -192,8 +212,17 @@ class CartController extends Controller
                 $pv_total = 0;
             }
 
+
+
+            if($pv_total < 500){
+              $shipping = 50;
+            }else{
+              $shipping = 0;
+            }
+
+
             $price = Cart::session($type)->getTotal();
-            $price_total = number_format($price, 2);
+            $price_total = number_format($price+$shipping, 2);
 
             $bill = array('price_total' => $price_total,
                 'action_id' => $request->item_id,
@@ -202,6 +231,7 @@ class CartController extends Controller
                 'data' => $data,
                 'quantity' => $quantity,
                 'status' => 'success',
+                'shipping'=> $shipping,
             );
 
             return $bill;

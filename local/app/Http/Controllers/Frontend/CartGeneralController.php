@@ -21,12 +21,13 @@ class CartGeneralController extends Controller
 
 
     if($type == 'general'){
-        $data = ['1','9','10','11'];
+        $data = ['12'];
+
         $get_category = DB::table('categories')
           //->select('categories.*', 'products.*', 'product_images.product_image_url', 'product_images.product_image_name')
           //->leftJoin('products', 'products.product_category_id_fk', '=', 'categories.id')
           //->leftJoin('product_images', 'products.id', '=', 'product_images.product_id_fk')
-          ->wherein('categories.id',$data)
+          ->whereNotin('categories.id',$data)
           ->get();
 
     }elseif($type == 'stock'){
@@ -39,13 +40,14 @@ class CartGeneralController extends Controller
           ->get();
 
     }else{
-        $data = ['1','9','10','11'];
+        $data = ['12'];
         $get_category = DB::table('categories')
-          //->select('categories.*', 'products.*', 'product_images.product_image_url', 'product_images.product_image_name')
-          //->leftJoin('products', 'products.product_category_id_fk', '=', 'categories.id')
-          //->leftJoin('product_images', 'products.id', '=', 'product_images.product_id_fk')
-          ->wherein('categories.id',$data)
-          ->get();
+        //->select('categories.*', 'products.*', 'product_images.product_image_url', 'product_images.product_image_name')
+        //->leftJoin('products', 'products.product_category_id_fk', '=', 'categories.id')
+        //->leftJoin('product_images', 'products.id', '=', 'product_images.product_id_fk')
+        ->whereNotin('categories.id',$data)
+        ->get();
+
     }
 
 
@@ -61,7 +63,7 @@ class CartGeneralController extends Controller
     ->leftJoin('product_images', 'product_images.product_id_fk', '=', 'products.id')
     //->where('products.product_category_name', '=', 'คลังเกษตร')
     ->where('product_images.product_image_orderby', '=', '1')
-    // ->where('products.product_category_id_fk', '=',$c_id)
+    ->whereNotin('products.product_category_id_fk',['12'])
     ->where('products.status', '=', '1')
     ->get();
 
@@ -71,7 +73,7 @@ class CartGeneralController extends Controller
     ->leftJoin('product_images', 'product_images.product_id_fk', '=', 'products.id')
     //->where('products.product_category_name', '=', 'คลังเกษตร')
     ->where('product_images.product_image_orderby', '=', '1')
-    ->where('products.product_category_id_fk', '=',$c_id)
+    ->where('products.product_category_id_fk',$c_id)
     ->where('products.status', '=', '1')
     ->get();
 
@@ -116,6 +118,12 @@ class CartGeneralController extends Controller
   public function add_cart(Request $rs)
   {
 
+    if($rs->type == 'stock'){
+        $cart = 2;
+    }else{
+        $cart = 1;
+    }
+
       $product = DB::table('products')
       ->select(
           'products.*',
@@ -145,7 +153,7 @@ class CartGeneralController extends Controller
 
 
       if ($product) {
-          Cart::session(1)->add(array(
+          Cart::session($cart)->add(array(
               'id' => $product->products_id, // inique row ID
               'name' => $product->product_name,
               'price' =>  $price,
@@ -163,7 +171,7 @@ class CartGeneralController extends Controller
               ),
           ));
 
-          $getTotalQuantity = Cart::session(1)->getTotalQuantity();
+          $getTotalQuantity = Cart::session($cart)->getTotalQuantity();
 
           // $item = Cart::session($request->type)->getContent();
           $data = ['status' => 'success', 'qty' => $getTotalQuantity];

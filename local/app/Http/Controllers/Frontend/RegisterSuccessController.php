@@ -19,9 +19,8 @@ class RegisterSuccessController extends Controller
 
         $get_customers = DB::table('customers_warning')
         ->where('id_card', 'like',$id_card.'%')
+        ->where('regis_doctranfer_status','pending')
         ->get();
-
-
 
 
         return view('frontend.register_success', compact('get_customers'));

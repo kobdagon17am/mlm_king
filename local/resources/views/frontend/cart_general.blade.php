@@ -248,6 +248,7 @@
 var id = product_id;
 //  alert(id);
 var quantity = qty;
+var type = '{{$type}}';
 
 $.ajax({
         url: '{{ route('add_cart') }}',
@@ -255,7 +256,8 @@ $.ajax({
         // dataType: 'json',
         data: {
             id: id,
-            quantity: quantity
+            quantity: quantity,
+            type: type
         },
     })
     .done(function(data) {
