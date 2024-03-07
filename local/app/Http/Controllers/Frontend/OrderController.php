@@ -38,13 +38,17 @@ class OrderController extends Controller
     ->select(
       'db_orders.*',
       'dataset_order_status.detail',
-      'dataset_order_status.css_class'
+      'dataset_order_status.css_class',
+      'branch.branch_name',
+
       )
 
     ->leftjoin('dataset_order_status', 'dataset_order_status.orderstatus_id', '=', 'db_orders.order_status_id_fk')
+    ->leftjoin('branch', 'branch.id', '=', 'db_orders.sentto_branch_id')
     ->where('customers_user_name',Auth::guard('c_user')->user()->username)
     ->where('db_orders.code_order',$code)
     ->first();
+
 
 
     $db_order_products_list = DB::table('db_order_products_list')
@@ -167,15 +171,16 @@ class OrderController extends Controller
       // <a target="_blank" href="{{route('admin/export_pdf_history',['code'=>$order->code_order])}}"class="p-2">
       // <i class="las la-print font-30 text-primary"></i></a>
 
-
           $order = DB::table('db_orders')
           ->select(
-          'db_orders.*',
-          'dataset_order_status.detail',
-          'dataset_order_status.css_class'
-          )
+            'db_orders.*',
+            'dataset_order_status.detail',
+            'dataset_order_status.css_class',
+            'branch.branch_name',
+            )
 
           ->leftjoin('dataset_order_status', 'dataset_order_status.orderstatus_id', '=', 'db_orders.order_status_id_fk')
+          ->leftjoin('branch', 'branch.id', '=', 'db_orders.sentto_branch_id')
           ->where('db_orders.id',$id)
           ->first();
 

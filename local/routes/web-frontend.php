@@ -11,6 +11,11 @@ Route::get('/c', function () {
 });
 
 
+Route::get('payment_form', 'Frontend\FC\ApiPAymentController@payment_form')->name('payment_form');
+Route::post('payment_complete_backend', 'Frontend\FC\ApiPAymentController@payment_complete_backend')->name('payment_complete_backend');
+Route::post('payment_complete', 'Frontend\FC\ApiPAymentController@payment_complete')->name('payment_complete_backend');
+
+
 Auth::routes();
 
 

@@ -14,9 +14,10 @@ class ApiPAymentController extends Controller
 
     public function payment_complete_backend(Request $rs)
     {
-        Log::channel('payment')->info('Payment complete backend request:', ['data' => $rs->all()]);
+        // Log::channel('payment')->info('Payment complete backend request:', ['data' => $rs->all()]);
 
         $payment = new Payment();
+
                         $payment->customer_id = $rs->CustomerId;
                         $payment->order_id_fk = $rs->OrderNo;
                         $payment->pay_transaction_id = $rs->TransactionId;
@@ -34,15 +35,34 @@ class ApiPAymentController extends Controller
                         $payment->pay_currency = $rs->Currency;
                         $payment->pay_customer_name = $rs->CustomerName;
                         $payment->pay_check_sum = $rs->CheckSum;
-                        if($rs->PaymentStatus==0){
+
+                        try {
+                            DB::BeginTransaction();
+
+                        if($rs->respCode==0){
                             $payment->payment_status = 1;
+
+                            $order_data = DB::table('db_orders')
+                            ->where('id', '=', $rs->OrderNo)
+                            ->first();
+
+
+                            if($order_data->order_status_id_fk != 6 and  $order_data->order_status_id_fk != 7){
+
+                                $order = DB::table('db_orders')
+                                ->where('id', '=',$rs->OrderNo)
+                                ->update(['order_status_id_fk' => '6' ,'pay_type_name'=>$rs->BankCode,'approve_date'=>now()]);
+
+
+
+                            }
+
+
                         }else{
                             $payment->payment_status = 2;
                         }
 
-                        try {
-                            DB::BeginTransaction();
-                            $payment->save();
+                        $payment->save();
 
                          DB::commit();
 
@@ -50,13 +70,11 @@ class ApiPAymentController extends Controller
 
 
                          } catch (\Exception $e) {
-                            Log::channel('payment')->info('Payment complete backend request:', ['data' => $rs->all(),'error'=> $e->getMessage()]);
+                        // Log::channel('payment')->info('Fail:', ['data' => $rs->all(),'error'=> $e->getMessage()]);
                         DB::rollback();
                         return response()->json(array('result' => 'FAIL', "msg" => $e->getMessage()));
 
                         }
-
-
 
                         // $insert_db_orders->pay_type_id = 3;
                         // $pay_type_name = DB::table('dataset_order_pay')
@@ -66,9 +84,8 @@ class ApiPAymentController extends Controller
 
                         // $insert_db_orders->pay_type_name =  $pay_type_name->name;
 
-
-
     }
+
 
     public static function payment_form()
     {

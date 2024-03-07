@@ -67,18 +67,27 @@
 
                                             {{-- <p class="inv-street-addr">โทร : 081-195-3908</p> --}}
                                             <br>
-                                            <p class="inv-email-address"><b>ที่อยู่จัดส่ง</b> <br>
-                                                {{ $order->name }}<br>
-
-
-                                                {{ $order->house_no }} หมู่. {{ $order->moo }} หมู่บ้าน. {{ $order->moo }} ซอย. {{ $order->soi }} ถนน.
-                                                {{ $order->road }} ตำบล. {{ $order->tambon }}
-                                                อำเภอ. {{ $order->district }}<br> จังหวัด. {{ $order->province }}   {{ $order->zipcode }}
+                                            @if($order->address_sent =='branch')
+                                            <p class="inv-email-address"><b>รับที่สาขา</b>
 
                                                 <br>
-                                                เบอร์โทรศัพท์ : {{ $order->tel }}
+                                               สาขา: {{ $order->branch_name }} <br>
 
-                                            </p>
+                                            @else
+                                            <p class="inv-email-address"><b>ที่อยู่จัดส่ง</b>
+                                                <br>
+                                               {{ $order->name }}<br>
+                                               {{ $order->house_no }} หมู่. {{ $order->moo }} หมู่บ้าน. {{ $order->moo }} ซอย. {{ $order->soi }} ถนน.
+                                               {{ $order->road }} ตำบล. {{ $order->tambon }}
+                                               อำเภอ. {{ $order->district }}<br> จังหวัด. {{ $order->province }}   {{ $order->zipcode }}
+
+                                               <br>
+                                               เบอร์โทรศัพท์ : {{ $order->tel }}
+
+                                           </p>
+
+                                            @endif
+
                                         </div>
 
                                         <div class="col-md-3 col-lg-3 col-sm-0 align-self-center">

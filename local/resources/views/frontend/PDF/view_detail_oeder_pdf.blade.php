@@ -92,44 +92,47 @@
 
                 <th style="text-align: left;">
                     <p style="font-size: 18px;color: #123d71"> TopUp </p>
-                    <p class="inv-email-address"><b>ที่อยู่จัดส่ง</b> <br>
 
+                    @if($order->address_sent =='branch')
+                    <p class="inv-email-address"><b>รับที่สาขา</b>
 
-                       {{ $order->name }}<br>
-
-                        @if ($order->house_no)
-                            {{ $order->house_no }}
-                        @endif
-                        @if ($order->moo != '-' and $order->moo != '')
-                            หมู่.{{ $order->moo }}
-                        @endif
-                        @if ($order->house_name != '-' and $order->house_name != '')
-                            หมู่บ้าน.{{ $order->house_name }}
-                        @endif
-                        @if ($order->soi != '-' and $order->soi != '')
-                            ซอย.{{ $order->soi }}
-                        @endif
-                        @if ($order->road != '-' and $order->road != '')
-                            ถนน.{{ $order->road }}
-                        @endif
-                        @if ($order->district != '-' and $order->district != '')
-                            อำเภอ{{ $order->district }}
-                        @endif
-                        @if ($order->tambon != '-' and $order->tambon != '')
-                            ตำบล{{ $order->tambon }}
-                        @endif
                         <br>
-                        @if ($order->province != '-' and $order->province != '')
-                            จังหวัด{{ $order->province }}
-                        @endif
-                        @if ($order->zipcode)
-                            {{ $order->zipcode }}
-                        @endif
+                       สาขา: {{ $order->branch_name }} <br>
 
-                        เบอร์โทรศัพท์ : {{ $order->tel }}
-
-                    </p>
-                </p>
+                    @else
+                    <p class="inv-email-address"><b>ที่อยู่จัดส่ง</b> <br>
+                        {{ $order->name }}<br>
+                         @if ($order->house_no)
+                             {{ $order->house_no }}
+                         @endif
+                         @if ($order->moo != '-' and $order->moo != '')
+                             หมู่.{{ $order->moo }}
+                         @endif
+                         @if ($order->house_name != '-' and $order->house_name != '')
+                             หมู่บ้าน.{{ $order->house_name }}
+                         @endif
+                         @if ($order->soi != '-' and $order->soi != '')
+                             ซอย.{{ $order->soi }}
+                         @endif
+                         @if ($order->road != '-' and $order->road != '')
+                             ถนน.{{ $order->road }}
+                         @endif
+                         @if ($order->district != '-' and $order->district != '')
+                             อำเภอ{{ $order->district }}
+                         @endif
+                         @if ($order->tambon != '-' and $order->tambon != '')
+                             ตำบล{{ $order->tambon }}
+                         @endif
+                         <br>
+                         @if ($order->province != '-' and $order->province != '')
+                             จังหวัด{{ $order->province }}
+                         @endif
+                         @if ($order->zipcode)
+                             {{ $order->zipcode }}
+                         @endif
+                         เบอร์โทรศัพท์ : {{ $order->tel }}
+                     </p>
+                    @endif
                 </th>
 
             <th align="left">
