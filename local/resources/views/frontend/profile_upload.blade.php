@@ -1,4 +1,4 @@
-@extends('layouts.frontend.app')
+ @extends('layouts.frontend.app')
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/dropify/dropify.min.css') }}">
     <link href="{{ asset('frontend/assets/css/pages/profile_edit.css') }}" rel="stylesheet" type="text/css" />
@@ -28,23 +28,34 @@
         </div>
         <p></p>
         <div class="row layout-spacing pt-4">
-            <div class="col-md-4">
 
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
+                <form action="{{route('update_img_profile')}}" method="POST" enctype="multipart/form-data" id="addemployee">
+                    @csrf
                 <div class="upload text-center img-thumbnail">
-                    <input type="file" id="idcard_image" class="dropify"
-                        data-default-file="{{ asset('frontend/assets/img/user.png') }}"/>
+                    @if(Auth::guard('c_user')->user()->profile_img)
+
+
+
+                    <input type="file" id="img" name="img" class="dropify"
+                    data-default-file="{{asset('local/public/profile_customer/'.Auth::guard('c_user')->user()->profile_img)}}"/>
+                    @else
+
+
+                     <input type="file" id="img" name="img" class="dropify"
+                     data-default-file="{{ asset('frontend/assets/img/user.png') }}"/>
+                    @endif
+
+
                     <p></p>
                     <div class="info-area col-md-12 text-center">
                         <button type="submit" class="btn btn-info ">
                             <i class="las la-cloud-upload-alt font-20"></i> อัพโหลดรูปภาพ</button>
                     </div>
                 </div>
+                </form>
             </div>
-            <div class="col-md-4">
 
-            </div>
         </div>
         <!-- Main Body Ends -->
     </div>
@@ -53,3 +64,4 @@
     <script src="{{ asset('frontend/plugins/dropify/dropify.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/pages/profile_edit.js') }}"></script>
 @endsection
+

@@ -27,16 +27,24 @@
     <link href="{{ asset('frontend/assets/css/basic-ui/custom_sweetalert.css') }}" rel="stylesheet" type="text/css" />
     <style>
 
-  .nav-item.dropdown.notification-dropdown .blink {
+.nav-item.dropdown.notification-dropdown .blink {
     position: relative;
 
-    width: 17px; /* เปลี่ยนขนาดของกล่องแจ้งเตือน */
-    height: 17px; /* เปลี่ยนขนาดของกล่องแจ้งเตือน */
+    width: 33px; /* เปลี่ยนขนาดของกล่องแจ้งเตือน */
+    height: 30px; /* เปลี่ยนขนาดของกล่องแจ้งเตือน */
     background-color: red; /* เปลี่ยนสีของกล่องแจ้งเตือน */
     border-radius: 50%; /* ทำให้มีรูปร่างเป็นวงกลม */
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.rounded-circle {
+    border-radius: 20%!important;
+}
+
+.navbar .navbar-item .nav-item.dropdown.notification-dropdown .nav-link i {
+
+    font-size: 41px;
 }
     </style>
     @yield('css')
@@ -126,7 +134,15 @@
 
                 <li class="nav-item dropdown user-profile-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <img class="rounded-circle img-thumbnail" src="{{ asset('frontend/assets/img/profile-16.jpg') }}" alt="avatar">
+
+
+                        @if(Auth::guard('c_user')->user()->profile_img)
+
+                        <img class="rounded-circle img-thumbnail" src="{{asset('local/public/profile_customer/'.Auth::guard('c_user')->user()->profile_img)}}" alt="avatar"  >
+                        @else
+                        <img class="rounded-circle img-thumbnail" src="{{ asset('frontend/assets/img/user.png') }}" alt="avatar">
+
+                        @endif
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                         <div class="nav-drop is-account-dropdown">
@@ -136,9 +152,16 @@
                                         <div class="media align-center">
                                             <div class="media-left">
                                                 <div class="image">
+                                                    @if(Auth::guard('c_user')->user()->profile_img)
+
+
                                                     <img class="rounded-circle avatar-xs"
-                                                        src="{{ asset('frontend/assets/img/profile-16.jpg') }}"
-                                                        alt="">
+                                                    src="{{asset('local/public/profile_customer/'.Auth::guard('c_user')->user()->profile_img)}}"
+                                                    alt="">
+                                                    @else
+                                                    <img class="rounded-circle avatar-xs" src="{{ asset('frontend/assets/img/user.png') }}" alt="">
+
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="media-content ml-3">

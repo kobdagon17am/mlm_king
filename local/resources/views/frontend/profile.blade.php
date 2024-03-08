@@ -31,14 +31,25 @@
                 <div class="col-xl-3 col-lg-4 col-md-4  mb-4">
                     <div class="profile-left">
                         <div class="image-area">
-                            <img class="rounded-circle img-thumbnail user-image" src="{{ asset('frontend/assets/img/profile-16.jpg') }}">
+                            @if(Auth::guard('c_user')->user()->profile_img)
+
+                            <img class="rounded-circle img-thumbnail user-image" src="{{asset('local/public/profile_customer/'.Auth::guard('c_user')->user()->profile_img)}}">
+                            @else
+                            <img class="rounded-circle img-thumbnail user-image" src="{{ asset('frontend/assets/img/user.png') }}">
+
+                            @endif
+
                             <a href="{{ asset('ProfileUpload') }}" class="follow-area">
                                 <i class="las la-pen"></i>
                             </a>
                         </div>
                         <div class="info-area">
-                            <h5><b>กิ่งทองใบหยก (A001)</b></h5>
-                            <p>GOLD</p>
+                            @if(Auth::guard('c_user')->user()->type == 1)
+                            <h5><b> {{Auth::guard('c_user')->user()->first_name}}  {{Auth::guard('c_user')->user()->last_name}}</b></h5>
+                            @else
+                            <h5><b> {{Auth::guard('c_user')->user()->business_name}}</b></h5>
+                            @endif
+                            {{-- <p>GOLD</p> --}}
                         </div>
                         <div class="profile-tabs">
                             <div class="nav flex-column nav-pills mb-sm-0 mb-3 mx-auto" id="v-border-pills-tab"

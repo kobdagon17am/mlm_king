@@ -1207,9 +1207,9 @@
                                                                                         class="img-fluid mx-auto rounded"
                                                                                         alt="Responsive image">
                                                                                 </div>
-                                                                                <div class="col-md-12">
-                                                                                    <div
-                                                                                        class="d-flex align-items-center mt-5  btn-list">
+
+                                                                                <div class="col-md-12 text-center">
+                                                                                    <div class="align-items-center mt-5  btn-list">
 
                                                                                         <button type="button"
                                                                                             onclick="submit_confirm(1,'qr_payment')"
@@ -1221,6 +1221,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
+
 
 
                                                                             <div class="tab-pane fade"

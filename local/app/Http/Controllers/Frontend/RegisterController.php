@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Customer;
 
 use App\Customer_warning;
-use App\Modal\Order;
-use App\Modal\OrderProductsList;
+use App\Model\Order;
+use App\Model\OrderProductsList;
 
 
 
@@ -604,13 +604,24 @@ class RegisterController extends Controller
                     if($rs_order['status'] == 'success'){
 
                         DB::commit();
-                        return redirect('RegisterSuccess/'.$id_card)->withSuccess('สมัครสมาชิกสำเร็จ รอการตรวจสอบจาก Admin');
+
+                        if ($request->make_payment == 'qr_payment') {
+                            $order_data = DB::table('db_orders')
+                            ->where('id',$rs_order['order_id_fk'])
+                            ->first();
+
+                            return view('frontend/payment/payment_form',compact('order_data'));
+
+                        }else{
+
+                            return redirect('RegisterSuccess/'.$id_card)->withSuccess('สมัครสมาชิกสำเร็จ');
+                        }
+
+
                     }else{
                         DB::rollback();
                         return redirect()->back()->withErrors($validator)->withInput()->with('error', $rs_order['ms'] );
                     }
-
-
 
 
 
@@ -656,8 +667,21 @@ class RegisterController extends Controller
 
                     DB::commit();
 
+                    if ($rs->make_payment == 'qr_payment') {
+                        $order_data = DB::table('db_orders')
+                        ->where('id',$rs_order['order_id_fk'])
+                        ->first();
 
-                    return redirect('RegisterSuccess/'.$id_card)->withSuccess('สมัครสมาชิกสำเร็จ รอการตรวจสอบจาก Admin');
+                        return view('frontend/payment/payment_form',compact('order_data'));
+
+                    }else{
+
+                        return redirect('RegisterSuccess/'.$id_card)->withSuccess('สมัครสมาชิกสำเร็จ รอการตรวจสอบจาก Admin');
+                    }
+
+
+
+
                 }else{
                     DB::rollback();
                     return redirect()->back()->withErrors($validator)->withInput()->with('error', $rs_order['ms'] );
@@ -708,9 +732,6 @@ class RegisterController extends Controller
         $insert_db_orders->business_location_id_fk =  $business_location_id;
 
         $insert_db_orders->status_payment_sent_other = 0;
-
-
-
 
 
 
@@ -974,31 +995,31 @@ class RegisterController extends Controller
         $insert_db_orders->code_order = $code_order;
         $insert_db_orders->phone_pay = $rs->phone_pay;
 
-        $slip_image = $rs->file('slip_image');
+        if ($rs->make_payment != 'qr_payment') {
+            $slip_image = $rs->file('slip_image');
 
-        if (isset($slip_image)) {
-            $url = 'local/public/files_slip/' . date('Ym');
+            if (isset($slip_image)) {
+                $url = 'local/public/files_slip/' . date('Ym');
 
-            $i=0;
+                $i=0;
 
-              $f_name = date('YmdHis_').''.$i.'_'.$customer_id.'.'.$slip_image->getClientOriginalExtension();
+                  $f_name = date('YmdHis_').''.$i.'_'.$customer_id.'.'.$slip_image->getClientOriginalExtension();
 
-              if ($slip_image->move($url, $f_name)) {
-                $insert_db_orders->transfer_price = $price;
-                $insert_db_orders->file_slip = $url.'/'.$f_name;
+                  if ($slip_image->move($url, $f_name)) {
+                    $insert_db_orders->transfer_price = $price;
+                    $insert_db_orders->file_slip = $url.'/'.$f_name;
 
-                // DB::table('payment_slip')
-                //     ->insert(['customer_id' => $customer_id, 'url' => $url, 'file' => $f_name,'code_order' => $rs->code_order, 'order_id' => $rs->id]);
+                    // DB::table('payment_slip')
+                    //     ->insert(['customer_id' => $customer_id, 'url' => $url, 'file' => $f_name,'code_order' => $rs->code_order, 'order_id' => $rs->id]);
 
-                // $db_orders = DB::table('db_orders')
-                //     ->where('id', $rs->id)
-                //     ->update(['order_status_id_fk' => $orderstatus_id,'approve_status'=>1,'transfer_price'=>$rs->total_price,'pay_type_id_fk'=>'1']);
-                    $resule = ['status' => 'success', 'message' => 'ชำระเงินแบบโอนชำระสำเร็จ'];
-                }
+                    // $db_orders = DB::table('db_orders')
+                    //     ->where('id', $rs->id)
+                    //     ->update(['order_status_id_fk' => $orderstatus_id,'approve_status'=>1,'transfer_price'=>$rs->total_price,'pay_type_id_fk'=>'1']);
+                        $resule = ['status' => 'success', 'message' => 'ชำระเงินแบบโอนชำระสำเร็จ'];
+                    }
 
 
-        }
-
+            }
 
 
         $file_slip = $rs->file('img_pay');
@@ -1052,6 +1073,13 @@ class RegisterController extends Controller
         }
 
 
+        }
+
+
+
+
+
+
         try {
             DB::BeginTransaction();
 
@@ -1060,6 +1088,9 @@ class RegisterController extends Controller
         $insert_order_products_list::insert($insert_db_products_list);
 
          Cart::session('register')->clear();
+
+
+
          $resule = ['status' => 'success', 'ms' => 'Order Success','order_id_fk'=>$insert_db_orders->id,'code_order'=>$code_order];
          DB::commit();
          return $resule;

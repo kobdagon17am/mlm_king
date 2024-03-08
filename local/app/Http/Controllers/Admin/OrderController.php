@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Customers;
-use App\Modal\Order;
+use App\Model\Order;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;

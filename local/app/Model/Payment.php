@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modal;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 // use App\Models\CustomerGallery;

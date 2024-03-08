@@ -131,10 +131,9 @@ Route::get('check_id_card','Frontend\RegisterController@check_id_card')->name('c
 Route::get('customers_warehouse','Frontend\RegisterController@customers_warehouse')->name('customers_warehouse');
 
 
-Route::get('ProfileUpload', function () {
+Route::get('ProfileUpload','Frontend\ProfileController@editprofileimg')->name('ProfileUpload');
 
-  return view('frontend.profile_upload');
-})->name('ProfileUpload');
+Route::post('update_img_profile','Frontend\ProfileController@update_img_profile')->name('update_img_profile');
 
 // Route::get('Document', function () {
 //   return view('frontend.doc');

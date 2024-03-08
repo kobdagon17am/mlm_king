@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Customer;
 
 use App\Customer_warning;
-use App\Modal\Order;
-use App\Modal\OrderProductsList;
+use App\Model\Order;
+use App\Model\OrderProductsList;
 
 use App\Customers_address_card;
 use App\Customers_address_delivery;
@@ -267,7 +267,7 @@ class CartSummaryController extends Controller
 
         if ($quantity  == 0) {
             $resule = ['status' => 'fail', 'ms' => 'ไม่มีสินค้าที่เลือก กรุณาทำรายการไหม่'];
-            return $resule;
+            return redirect('CartGeneral/general')->withError('ไม่มีสินค้าที่เลือก กรุณาทำรายการไหม่');
         }
         $i = 0;
 

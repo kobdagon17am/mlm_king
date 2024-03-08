@@ -140,7 +140,8 @@ return [
     |
     */
 
-    'path' => '/',
+    // 'path' => '/',
+    'path' => '/;samesite=none',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,7 +167,8 @@ return [
     |
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE', null),
+    // 'secure' => env('SESSION_SECURE_COOKIE', null),
+    'secure' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -194,6 +196,7 @@ return [
     |
     */
 
-    'same_site' => 'lax',
+    // 'same_site' => 'lax',
+    'same_site' => 'none',
 
 ];
