@@ -17,7 +17,7 @@ class ApiPAymentController extends Controller
     public function payment_complete_backend(Request $rs)
     {
         //  Log::channel('payment')->info('Payment complete backend request:', ['data' => $rs->all()]);
-        Log::channel('payment')->info('Fail:', ['data' => $rs->all(),'error'=> 1]);
+        // Log::channel('payment')->info('Fail:', ['data' => $rs->all(),'error'=> 1]);
         $payment = new Payment();
 
                         $payment->customer_id = $rs->CustomerId;
@@ -36,7 +36,7 @@ class ApiPAymentController extends Controller
                         $payment->pay_currency = $rs->Currency;
                         $payment->pay_customer_name = $rs->CustomerName;
                         $payment->pay_check_sum = $rs->CheckSum;
-                        // Log::channel('payment')->info('Fail:', ['data' => $rs->all(),'error'=> 2]);
+
                         try {
                             DB::BeginTransaction();
 
@@ -44,7 +44,7 @@ class ApiPAymentController extends Controller
                             $payment->payment_status = 1;
 
                             $order_data = DB::table('db_orders')
-                            ->where('id', '=', $rs->OrderNo)
+                            ->where('id','=', $rs->OrderNo)
                             ->first();
                             // Log::channel('payment')->info('Fail:', ['data' => $rs->all(),'error'=> 3]);
 
@@ -52,10 +52,10 @@ class ApiPAymentController extends Controller
 
 
 
+                                    if (empty($order_data)) {
+                                        Log::channel('payment')->info('Payment complete backend FAIL:', ['data' => $rs->all(),'error'=>'ไม่พบรายละเอียดบิล code error 01']);
+                                        return response()->json(array('result' => 'FAIL', "msg" => 'OK'));
 
-
-                                    if (empty($orders)) {
-                                        return redirect('admin/orders/list')->withError('ไม่พบรายละเอียดบิล');
                                     }
 
 
@@ -137,35 +137,33 @@ class ApiPAymentController extends Controller
 
 
 
-
                             }else{
                                 if($order_data->order_status_id_fk != 6 and  $order_data->order_status_id_fk != 7){
 
                                     $order = DB::table('db_orders')
                                     ->where('id', '=',$rs->OrderNo)
                                     ->update(['order_status_id_fk' => '6' ,'pay_type_name'=>$rs->BankCode,'approve_date'=>now()]);
-
+                                    $payment->save();
+                                    DB::commit();
+                                    return response()->json(array('result' => 'SUCCESS', "msg" => 'OK'));
 
                                 }
 
                             }
 
-
-
                         }else{
-                            // Log::channel('payment')->info('Fail:', ['data' => $rs->all(),'error'=> 4]);
                             $payment->payment_status = 2;
+                               Log::channel('payment')->info('Fail:', ['data' => $rs->all(),'error'=> 'ไม่สำเร็จจากธนาคาร']);
+                               $payment->save();
+                               DB::commit();
+                               return response()->json(array('result' => 'SUCCESS', "msg" => 'OK'));
                         }
-
-                        $payment->save();
-                         DB::commit();
-                         return response()->json(array('result' => 'SUCCESS', "msg" => 'OK'));
 
 
                          } catch (\Exception $e) {
 
 
-                        // Log::channel('payment')->info('Fail:', ['data' => $rs->all(),'error'=> $e->getMessage()]);
+                        Log::channel('payment')->info('Fail:', ['data' => $rs->all(),'error'=> $e->getMessage()]);
                         DB::rollback();
                         return response()->json(array('result' => 'FAIL', "msg" => $e->getMessage()));
 

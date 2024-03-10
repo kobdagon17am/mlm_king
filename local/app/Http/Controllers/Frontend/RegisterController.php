@@ -646,7 +646,7 @@ class RegisterController extends Controller
 
 
                     $rs = $customer_insert[$i]->save();
-                    DB::commit();
+
                     // dd($customer_insert);
                     // $customers_address_card_insert[$i]->customer_id = $customer_insert[$i]->id;
                     // $customers_address_card_insert[$i]->username = $customer_insert[$i]->username;
@@ -658,6 +658,7 @@ class RegisterController extends Controller
                     // $customers_address_card_insert[$i]->save();
                     $customers_address_delivery_insert[$i]->save();
                     $customers_bank_insert[$i]->save();
+                    DB::commit();
 
                 }
 

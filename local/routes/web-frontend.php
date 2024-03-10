@@ -70,9 +70,9 @@ Route::get('Blank', function () {
     return view('frontend.blank');
   });
 
-Route::get('Profile', function () {
-    return view('frontend.profile');
-  })->name('Profile');
+// Route::get('Profile', function () {
+//     return view('frontend.profile');
+//   })->name('Profile');
 
 // Route::get('CartGeneral', function () {
 //   return view('frontend.cart_general');
@@ -134,6 +134,8 @@ Route::get('customers_warehouse','Frontend\RegisterController@customers_warehous
 Route::get('ProfileUpload','Frontend\ProfileController@editprofileimg')->name('ProfileUpload');
 
 Route::post('update_img_profile','Frontend\ProfileController@update_img_profile')->name('update_img_profile');
+
+Route::get('Profile','Frontend\ProfileController@index')->name('Profile');
 
 // Route::get('Document', function () {
 //   return view('frontend.doc');
